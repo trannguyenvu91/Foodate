@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Alamofire",
+        "repositoryURL": "https://github.com/Alamofire/Alamofire.git",
+        "state": {
+          "branch": null,
+          "revision": "f96b619bcb2383b43d898402283924b80e2c4bae",
+          "version": "5.4.3"
+        }
+      },
+      {
+        "package": "CoreStore",
+        "repositoryURL": "https://github.com/JohnEstropia/CoreStore.git",
+        "state": {
+          "branch": null,
+          "revision": "dda69389eb95bc992141b15a11d9a4fbaf26223e",
+          "version": "8.0.1"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

@@ -1,0 +1,147 @@
+{
+    "id": 3,
+    "username": "vutran",
+    "first_name": "Vũ",
+    "last_name": "Trần",
+    "bio": "Điểm yếu của mình là đồ ăn và đàn ông - đúng theo thứ tự ấy",
+    "job": "Kĩ sư lập trình tại StoryTree",
+    "location": "-33.86746,151.207090",
+    "birthday": "1991-06-10T12:05:04Z",
+    "email": "trannguyenvu91@gmail.com",
+    "photos": [
+        "https://scontent.fhan3-1.fna.fbcdn.net/v/t1.0-9/120136698_3362367297150247_6683055635574757240_n.jpg?_nc_cat=110&ccb=3&_nc_sid=09cbfe&_nc_ohc=QUueppoIxHkAX8Z_Tv-&_nc_ht=scontent.fhan3-1.fna&oh=b844f2afb87a784d336ba539a94207a1&oe=6053B53D"
+    ],
+    "bulletin_board": [
+        {
+            "id": 7,
+            "owner": {
+                "id": 1,
+                "first_name": "Foodate",
+                "last_name": "Admin",
+                "avatar_url": null
+            },
+            "title": "Phan Duc Linh di an banh va cafe di khong?",
+            "start_at": "2020-07-23T09:04:51Z",
+            "end_at": "2020-07-23T12:05:04Z",
+            "state": "matched",
+            "share_bill": "100",
+            "place": {
+                "place_id": "ChIJ7UGhYGyrNTER9vtdjEMY8_Y",
+                "name": "Helio Daewoo Cafe",
+                "location": "21.0312326,105.8122152",
+                "price_level": 1,
+                "rating": 4.0,
+                "user_ratings_total": 272,
+                "vicinity": "29 Liễu Giai, Ngọc Khánh",
+                "business_status": "OPERATIONAL",
+                "photos": [
+                    {
+                        "width": 4032.0,
+                        "height": 3024.0,
+                        "base_url": "https://scontent.fhan3-2.fna.fbcdn.net/v/t1.0-9/548957_440354979334273_1154528976_n.jpg?_nc_cat=103&ccb=3&_nc_sid=cdbe9c&_nc_ohc=bF3HL4urde4AX8IrCsL&_nc_ht=scontent.fhan3-2.fna&oh=a4f0806e732c87e905eaab071b141aff&oe=605DCAD6"
+                    }
+                ],
+                "types": [
+                    "cafe",
+                    "food"
+                ]
+            },
+            "to_user": {
+                "id": 3,
+                "first_name": "Vũ",
+                "last_name": "Trần",
+                "avatar_url": "https://scontent.fhan3-1.fna.fbcdn.net/v/t1.0-9/120136698_3362367297150247_6683055635574757240_n.jpg?_nc_cat=110&ccb=3&_nc_sid=09cbfe&_nc_ohc=QUueppoIxHkAX8Z_Tv-&_nc_ht=scontent.fhan3-1.fna&oh=b844f2afb87a784d336ba539a94207a1&oe=6053B53D"
+            },
+            "requests_total": 0,
+            "requests": []
+        },
+        {
+            "id": 8,
+            "owner": {
+                "id": 2,
+                "first_name": "Root",
+                "last_name": "Admin",
+                "avatar_url": null
+            },
+            "title": "Vu oi, di Helio choi di?",
+            "start_at": "2021-02-21T18:00:00Z",
+            "end_at": "2021-02-21T19:00:00Z",
+            "state": "pending",
+            "share_bill": "50",
+            "place": {
+                "place_id": "ChIJ7UGhYGyrNTER9vtdjEMY8_Y",
+                "name": "Helio Daewoo Cafe",
+                "location": "21.0312326,105.8122152",
+                "price_level": 1,
+                "rating": 4.0,
+                "user_ratings_total": 272,
+                "vicinity": "29 Liễu Giai, Ngọc Khánh",
+                "business_status": "OPERATIONAL",
+                "photos": [
+                    {
+                        "width": 4032.0,
+                        "height": 3024.0,
+                        "base_url": "https://scontent.fhan3-2.fna.fbcdn.net/v/t1.0-9/548957_440354979334273_1154528976_n.jpg?_nc_cat=103&ccb=3&_nc_sid=cdbe9c&_nc_ohc=bF3HL4urde4AX8IrCsL&_nc_ht=scontent.fhan3-2.fna&oh=a4f0806e732c87e905eaab071b141aff&oe=605DCAD6"
+                    }
+                ],
+                "types": [
+                    "cafe",
+                    "food"
+                ]
+            },
+            "to_user": {
+                "id": 3,
+                "first_name": "Vũ",
+                "last_name": "Trần",
+                "avatar_url": "https://scontent.fhan3-1.fna.fbcdn.net/v/t1.0-9/120136698_3362367297150247_6683055635574757240_n.jpg?_nc_cat=110&ccb=3&_nc_sid=09cbfe&_nc_ohc=QUueppoIxHkAX8Z_Tv-&_nc_ht=scontent.fhan3-1.fna&oh=b844f2afb87a784d336ba539a94207a1&oe=6053B53D"
+            },
+            "requests_total": 0,
+            "requests": []
+        },
+        {
+            "id": 9,
+            "owner": {
+                "id": 3,
+                "first_name": "Vũ",
+                "last_name": "Trần",
+                "avatar_url": "https://scontent.fhan3-1.fna.fbcdn.net/v/t1.0-9/120136698_3362367297150247_6683055635574757240_n.jpg?_nc_cat=110&ccb=3&_nc_sid=09cbfe&_nc_ohc=QUueppoIxHkAX8Z_Tv-&_nc_ht=scontent.fhan3-1.fna&oh=b844f2afb87a784d336ba539a94207a1&oe=6053B53D"
+            },
+            "title": "Ngày mai tôi sẽ đi hẹn hò một mình ở Helio Cafe nhé",
+            "start_at": "2021-02-26T03:51:43Z",
+            "end_at": "2021-02-26T05:51:48Z",
+            "state": "pending",
+            "share_bill": "100",
+            "place": {
+                "place_id": "ChIJ7UGhYGyrNTER9vtdjEMY8_Y",
+                "name": "Helio Daewoo Cafe",
+                "location": "21.0312326,105.8122152",
+                "price_level": 1,
+                "rating": 4.0,
+                "user_ratings_total": 272,
+                "vicinity": "29 Liễu Giai, Ngọc Khánh",
+                "business_status": "OPERATIONAL",
+                "photos": [
+                    {
+                        "width": 4032.0,
+                        "height": 3024.0,
+                        "base_url": "https://scontent.fhan3-2.fna.fbcdn.net/v/t1.0-9/548957_440354979334273_1154528976_n.jpg?_nc_cat=103&ccb=3&_nc_sid=cdbe9c&_nc_ohc=bF3HL4urde4AX8IrCsL&_nc_ht=scontent.fhan3-2.fna&oh=a4f0806e732c87e905eaab071b141aff&oe=605DCAD6"
+                    }
+                ],
+                "types": [
+                    "cafe",
+                    "food"
+                ]
+            },
+            "to_user": {
+                "id": 5,
+                "first_name": "Linh",
+                "last_name": "Phan",
+                "avatar_url": null
+            },
+            "requests_total": 0,
+            "requests": []
+        }
+    ],
+    "bulletin_total": 3,
+    "token": "7021dbf062d38aa1f0bccd8e303a59474181a8e7"
+}

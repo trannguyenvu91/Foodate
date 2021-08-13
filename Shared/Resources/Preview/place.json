@@ -1,0 +1,21 @@
+{
+  "place_id": "ChIJ7UGhYGyrNTER9vtdjEMY8_Y",
+  "name": "Helio Daewoo Cafe",
+  "location": "21.0312326,105.8122152",
+  "price_level": 1,
+  "rating": 4,
+  "user_ratings_total": 272,
+  "vicinity": "29 Liễu Giai, Ngọc Khánh",
+  "business_status": "OPERATIONAL",
+  "photos": [
+    {
+      "width": 4032,
+      "height": 3024,
+      "base_url": "https://scontent.fhan3-2.fna.fbcdn.net/v/t1.0-9/548957_440354979334273_1154528976_n.jpg?_nc_cat=103&ccb=3&_nc_sid=cdbe9c&_nc_ohc=bF3HL4urde4AX8IrCsL&_nc_ht=scontent.fhan3-2.fna&oh=a4f0806e732c87e905eaab071b141aff&oe=605DCAD6"
+    }
+  ],
+  "types": [
+    "cafe",
+    "food"
+  ]
+}
