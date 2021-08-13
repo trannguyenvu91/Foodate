@@ -144,6 +144,7 @@
 		4992DA0726BBE269007576DC /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4992DA0526BBE269007576DC /* Font.swift */; };
 		49BB722C26B2A63F00329341 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BB722B26B2A63F00329341 /* UserCell.swift */; };
 		49BB722D26B2A63F00329341 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BB722B26B2A63F00329341 /* UserCell.swift */; };
+		49CA79F526C61F96005B79D9 /* BulletinBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4914AECC26A96648002F2634 /* BulletinBoardView.swift */; };
 		49CCED2C26B14E040033469B /* SegmentedPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CCED2B26B14E040033469B /* SegmentedPicker.swift */; };
 		49CCED2D26B14E040033469B /* SegmentedPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CCED2B26B14E040033469B /* SegmentedPicker.swift */; };
 		49DA1EAB26A031A6001BF85B /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DA1EAA26A031A6001BF85B /* UserProfileView.swift */; };
@@ -398,13 +399,9 @@
 			isa = PBXGroup;
 			children = (
 				49FDFEDD26AEB7FC001185D3 /* Base */,
-				4914AEED26A99217002F2634 /* UserHeader.swift */,
-				4914AEF226AA5D6C002F2634 /* TimeHeader.swift */,
-				4914AEFC26AA793A002F2634 /* PlaceHeader.swift */,
-				4914AF0126AA7AD2002F2634 /* RateHeader.swift */,
-				4914AEF726AA6409002F2634 /* GroupPhotosView.swift */,
+				49CA79F826C61FA2005B79D9 /* User */,
+				49CA79F226C61F84005B79D9 /* Place */,
 				49DA1F3226A135B9001BF85B /* PhotosPageView.swift */,
-				4914AECC26A96648002F2634 /* BulletinBoardView.swift */,
 				49BB722E26B2B10900329341 /* Invitation */,
 			);
 			path = SubViews;
@@ -634,6 +631,8 @@
 		49BB722E26B2B10900329341 /* Invitation */ = {
 			isa = PBXGroup;
 			children = (
+				4914AECC26A96648002F2634 /* BulletinBoardView.swift */,
+				4914AEF226AA5D6C002F2634 /* TimeHeader.swift */,
 				49BB722F26B2B12700329341 /* Footers */,
 			);
 			path = Invitation;
@@ -649,6 +648,24 @@
 				49FDFED826AEB1A5001185D3 /* InviteFooter.swift */,
 			);
 			path = Footers;
+			sourceTree = "<group>";
+		};
+		49CA79F226C61F84005B79D9 /* Place */ = {
+			isa = PBXGroup;
+			children = (
+				4914AEFC26AA793A002F2634 /* PlaceHeader.swift */,
+				4914AF0126AA7AD2002F2634 /* RateHeader.swift */,
+			);
+			path = Place;
+			sourceTree = "<group>";
+		};
+		49CA79F826C61FA2005B79D9 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				4914AEED26A99217002F2634 /* UserHeader.swift */,
+				4914AEF726AA6409002F2634 /* GroupPhotosView.swift */,
+			);
+			path = User;
 			sourceTree = "<group>";
 		};
 		49DA1EA126A027B3001BF85B /* Onboarding */ = {
@@ -1041,6 +1058,7 @@
 				4965F29B26BA589D00C9B8E7 /* PlaceCell.swift in Sources */,
 				4914AEF926AA6409002F2634 /* GroupPhotosView.swift in Sources */,
 				49DE75C826AD56D900B4D883 /* FDSessionUser.swift in Sources */,
+				49CA79F526C61F96005B79D9 /* BulletinBoardView.swift in Sources */,
 				495F53E826B154A600E6E981 /* ListViewModel.swift in Sources */,
 				492D0379269FD5D100F944D0 /* PaginatorProtocol.swift in Sources */,
 				492D034E269EED9100F944D0 /* NetworkPage.swift in Sources */,
