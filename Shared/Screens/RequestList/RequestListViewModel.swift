@@ -28,17 +28,12 @@ class RequestListViewModel: BaseViewModel, ListViewModel {
     }
     
     func bindAcceptRequester() {
-        acceptRequester.flatMap({ [unowned self] in
+        let publisher = acceptRequester.flatMap({ [unowned self] in
             NetworkService.acceptRequest(for: self.invitationID, requestID: $0.$requestID)
-        }).sink { (result) in
-            switch result {
-            case .failure(let error):
-                self.error = error
-            case .finished:
-                self.viewDismissalModePublisher.send(true)
-            }
-        } receiveValue: { _ in }
-        .store(in: &cancelableSet)
+        }).eraseToAnyPublisher()
+        execute(publisher: publisher) { [weak self] _ in
+            self?.viewDismissalModePublisher.send(true)
+        }
     }
     
 }

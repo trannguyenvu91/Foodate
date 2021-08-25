@@ -60,7 +60,6 @@ struct PickerButton: View {
 }
 
 struct SegmentedPicker: View {
-    @State private var justSwitchedToCompactView: Bool = false
     @State private var allFit: Bool = true
 
     @Binding var selectedSegment: Int
@@ -74,49 +73,7 @@ struct SegmentedPicker: View {
     }
 
     private func appropriateView(stackProxy: GeometryProxy) -> some View {
-        if justSwitchedToCompactView {
-            justSwitchedToCompactView = false
-            return AnyView(compactView(stackProxy: stackProxy))
-        } else {
-            return AnyView(regularView(stackProxy: stackProxy))
-        }
-    }
-
-    private func selectionIndicator(containerGeometry: GeometryProxy, preferences: [ButtonPreferenceData]) -> some View {
-        if let preference = preferences.first(where: { $0.viewIdx == self.selectedSegment }) {
-            let anchorBounds = preference.bounds
-            let bounds = containerGeometry[anchorBounds]
-            return AnyView(RoundedRectangle(cornerRadius: markerHeight / 2)
-                            .fill()
-                            .foregroundColor(Color.black)
-                            .frame(width: bounds.width, height: markerHeight)
-                            .offset(x: bounds.minX, y: bounds.maxY)
-                            .animation(.easeInOut(duration: 0.33)))
-        } else {
-            return AnyView(EmptyView())
-        }
-    }
-
-    private func compactView(stackProxy: GeometryProxy) -> some View {
-        let validMenuItems = labels.filter {
-            $0 != labels[selectedSegment]
-        }
-
-        return HStack {
-            Text(labels[selectedSegment]).foregroundColor(Color(UIColor.label))
-            Image(systemName: "arrowtriangle.down.circle").foregroundColor(Color(UIColor.label))
-        }
-        .padding()
-        .background(Color(UIColor.systemBackground))
-        .cornerRadius(12)
-        .contextMenu {
-            ForEach(validMenuItems, id: \.self) { menuItem in
-                Button(menuItem) {
-                    selectedSegment = labels.firstIndex(of: menuItem)!
-                }
-            }
-        }
-        .frame(width: stackProxy.size.width, height: stackProxy.size.height, alignment: .center)
+        return AnyView(regularView(stackProxy: stackProxy))
     }
 
     private func regularView(stackProxy: GeometryProxy) -> some View {
@@ -130,68 +87,24 @@ struct SegmentedPicker: View {
             processPreferenceValue(containerGeometry: stackProxy, preferences: preferences)
         }
     }
-
+    
     private func processPreferenceValue(containerGeometry: GeometryProxy, preferences: [ButtonPreferenceData]) -> some View {
-        let fits = fitsContainer(containerGeometry: containerGeometry, preferences: preferences)
-        switchViewIfNeeded(fits: fits)
-
-        return Group {
-            if  fits {
-                showSelectionIndicator(containerGeometry: containerGeometry, preferences: preferences)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-            } else {
-                EmptyView()
-            }
-        }
+        return
+            showSelectionIndicator(containerGeometry: containerGeometry, preferences: preferences)
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
     }
-
-    private func fitsContainer(containerGeometry: GeometryProxy, preferences: [ButtonPreferenceData]) -> Bool {
-        let requiredWidth = preferences.reduce(0) { (result, pref) -> CGFloat in
-            let anchorBounds = pref.bounds
-            let bounds = containerGeometry[anchorBounds]
-            return result + bounds.width
-        }
-
-        return requiredWidth <= containerGeometry.size.width
-    }
-
-    private func switchViewIfNeeded(fits: Bool) {
-        if fits {
-            justSwitchedToCompactView = false
-            if !allFit {
-                // We were in compact mode and need to switch to regular mode
-                DispatchQueue.main.async {
-                    allFit = true
-                }
-            }
-        } else {
-            if allFit {
-                // We were in regular mode and need to switch to regular compact mode
-                justSwitchedToCompactView = true
-                DispatchQueue.main.async {
-                    allFit = false
-                }
-            }  else {
-                // We were in compact mode and need to switch to regular mode, for a full retry.
-                justSwitchedToCompactView = false
-                DispatchQueue.main.async {
-                    allFit = true
-                }
-            }
-        }
-    }
-
+    
     private func showSelectionIndicator(containerGeometry: GeometryProxy, preferences: [ButtonPreferenceData]) -> some View {
         if let preference = preferences.first(where: { $0.viewIdx == self.selectedSegment }) {
             let anchorBounds = preference.bounds
             let bounds = containerGeometry[anchorBounds]
             return AnyView(RoundedRectangle(cornerRadius: markerHeight / 2)
-                .fill()
-                .foregroundColor(Color.black)
-                .frame(width: bounds.width, height: markerHeight)
-                .fixedSize()
-                .offset(x: bounds.minX, y: bounds.maxY)
-                .animation(.easeInOut(duration: 0.33)))
+                            .fill()
+                            .foregroundColor(Color.black)
+                            .frame(width: bounds.width, height: markerHeight)
+                            .fixedSize()
+                            .offset(x: bounds.minX, y: bounds.maxY)
+                            .animation(.easeInOut(duration: 0.33)))
         } else {
             return AnyView(EmptyView())
         }

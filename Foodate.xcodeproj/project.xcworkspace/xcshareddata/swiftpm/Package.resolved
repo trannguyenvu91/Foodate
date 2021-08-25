@@ -11,12 +11,30 @@
         }
       },
       {
+        "package": "ASCollectionView",
+        "repositoryURL": "https://github.com/apptekstudios/ASCollectionView.git",
+        "state": {
+          "branch": null,
+          "revision": "ed9edd52d23195c789cd2fb8102ca9eb9894651e",
+          "version": "2.1.0"
+        }
+      },
+      {
         "package": "CoreStore",
         "repositoryURL": "https://github.com/JohnEstropia/CoreStore.git",
         "state": {
           "branch": null,
           "revision": "dda69389eb95bc992141b15a11d9a4fbaf26223e",
           "version": "8.0.1"
+        }
+      },
+      {
+        "package": "DifferenceKit",
+        "repositoryURL": "https://github.com/ra1028/DifferenceKit",
+        "state": {
+          "branch": null,
+          "revision": "62745d7780deef4a023a792a1f8f763ec7bf9705",
+          "version": "1.2.0"
         }
       }
     ]

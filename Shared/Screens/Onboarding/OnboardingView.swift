@@ -42,6 +42,7 @@ struct OnboardingView: View {
         .resignKeyboardOnDragGesture()
         .overlay(switchView, alignment: .bottom)
         .bindErrorAlert(to: $model)
+        .animation(.easeInOut)
     }
     
     func inputView(icon: Image, textField: TextField<Text>) -> some View {

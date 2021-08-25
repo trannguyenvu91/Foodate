@@ -63,13 +63,9 @@ class OnboardingViewModel: BaseViewModel {
     }
     
     func authenticateUser() {
-        authorizePublisher
-            .sink(receiveCompletion: { [weak self] (result) in
-                self?.error = result.error
-            }) { (user) in
-                AppConfig.shared.sessionUser = user.asSnapshot()
-            }
-            .store(in: &cancelableSet)
+        execute(publisher: authorizePublisher) { _ in
+            AppConfig.shared.sessionUser = try? FDCoreStore.shared.fetchSessionUser()
+        }
     }
     
     func switchType() {

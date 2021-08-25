@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 import CoreStore
-import UIKit
+import SwiftUI
 
 class AppConfig: ObservableObject {
     
@@ -28,6 +28,17 @@ class AppConfig: ObservableObject {
     func setupUI() {
         UITableView.appearance().separatorStyle = .none
         UITableViewCell.appearance().selectionStyle = .none
+    }
+    
+    func logOut() {
+        withAnimation {
+            sessionUser = nil
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            let _ = try? FDCoreStore.shared.dataStack.perform { transaction in
+                try? transaction.deleteAll(From<FDSessionUser>())
+            }
+        }
     }
     
 }

@@ -41,18 +41,7 @@ class SearchViewModel: BaseViewModel {
     init(_ tabs: [SearchType] = SearchType.allCases) {
         self.tabs = tabs
         super.init()
-        bindSearchModels()
-    }
-    
-    func bindSearchModels() {
-        userSearch.objectWillChange
-            .merge(with: placeSearch.objectWillChange, invitationSearch.objectWillChange)
-            .sink { [weak self] search in
-                DispatchQueue.main.async {
-                    self?.objectWillChange.send()
-                }
-            }
-            .store(in: &cancelableSet)
+        bind([userSearch, placeSearch, invitationSearch].map(\.objectWillChange))
     }
     
 }

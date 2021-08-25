@@ -29,14 +29,15 @@ struct UserProfileView: View {
                     BulletinBoardView(snapshot.$bulletinBoard)
                 }
                 .navigationTitle(snapshot.name)
-                .ignoresSafeArea()
-                .listStyle(PlainListStyle())
             }
         }
         .onAppear {
             model.refreshProfile()
         }
         .bindErrorAlert(to: $model)
+        .ignoresSafeArea()
+        .listStyle(PlainListStyle())
+        .navigationBarItems(trailing: model.objectPubliser.isSession ? logOutButton.asAnyView() : EmptyView().asAnyView())
     }
     
     func personalInfoView(_ snapshot: ObjectSnapshot<FDUserProfile>) -> AnyView {
@@ -118,6 +119,19 @@ struct UserProfileView: View {
         }
         .buttonStyle(PlainButtonStyle())
         .foregroundColor(.orange)
+    }
+    
+    var logOutButton: some View {
+        Button {
+            AppConfig.shared.logOut()
+        } label: {
+            Image(systemName: "square.and.arrow.up")
+                .resizable()
+                .scaledToFit()
+                .frame(maxWidth: 30, maxHeight: 30)
+                .rotationEffect(Angle(degrees: 90))
+        }
+
     }
     
     
