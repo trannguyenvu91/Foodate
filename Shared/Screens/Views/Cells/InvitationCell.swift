@@ -21,7 +21,7 @@ struct InvitationCell: View {
     var body: some View {
         ObjectReader(model.objectPubliser) { snapshot in
             VStack(spacing: 0) {
-                TimeHeader(start: snapshot.$startAt, end: snapshot.$endAt, privacy: snapshot.privacy)
+                TimeHeader(snapshot)
                 contentView(snapshot)
             }
             .clipShape(RoundedRectangle(cornerRadius: 30))

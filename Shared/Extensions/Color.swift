@@ -11,6 +11,7 @@ import SwiftUI
 
 extension Color {
     
+    // invitation
     static var openInvitation: Color {
         Color(hex: 0x1FC1DB)
     }
@@ -20,9 +21,17 @@ extension Color {
     static var matched: Color {
         Color(hex: 0x00C653)
     }
-    static var delinced: Color {
-        Color(hex: 0xEE1247)
+    static var rejected: Color {
+        Color(hex: 0xEE1247, alpha: 0.3)
     }
+    static var archived: Color {
+        Color(hex: 0x14BFAD)
+    }
+    static var canceled: Color {
+        Color(hex: 0xf3e8d2)
+    }
+    
+    //MARK:
     static var placeBackground: Color {
         Color(hex: 0xF0F2F5)
     }

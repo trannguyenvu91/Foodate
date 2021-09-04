@@ -31,12 +31,6 @@ enum FDInvitationState: String {
     }
 }
 
-enum InvitationPrivacy {
-    case direct
-    case open
-    case matched
-}
-
 enum InvitationAction {
     case viewReply(ObjectSnapshot<FDUser>)
     case viewRequests
@@ -46,16 +40,6 @@ enum InvitationAction {
 }
 
 extension ObjectSnapshot where O: FDInvitation {
-    
-    var privacy: InvitationPrivacy {
-        guard let _ = self.$toUser else {
-            return .open
-        }
-        if self.$state == .matched {
-            return .matched
-        }
-        return .direct
-    }
     
     var action: InvitationAction {
         let toUser = self.$toUser?.asSnapshot(in: .defaultStack)
