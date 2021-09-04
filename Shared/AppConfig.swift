@@ -13,9 +13,9 @@ import SwiftUI
 class AppConfig: ObservableObject {
     
     static let shared = AppConfig()
-    @Published var sessionUser: ObjectSnapshot<FDSessionUser>? {
+    @Published var sessionUser: ObjectPublisher<FDSessionUser>? {
         willSet {
-            NetworkConfig.token = newValue?.$token
+            NetworkConfig.token = newValue?.asSnapshot(in: .defaultStack)?.$token
         }
     }
     
@@ -40,5 +40,6 @@ class AppConfig: ObservableObject {
             }
         }
     }
+
     
 }

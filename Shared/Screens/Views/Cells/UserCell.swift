@@ -40,7 +40,7 @@ struct UserCell: View {
                         infoView(snapshot)
                     }
                 }
-                .padding(.top)
+                .padding([.top, .bottom])
             }
         }
     }

@@ -43,9 +43,9 @@ enum OnboardingMode {
 
 class OnboardingViewModel: BaseViewModel {
     @Published var mode: OnboardingMode = .login
-    var email = ""
+    @Lowercased var email = ""
     var password = "honglong"
-    var username = "vutran"
+    @Lowercased var username = "vutran"
     
     var isSignup: Bool {
         mode == .signUp

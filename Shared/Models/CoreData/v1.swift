@@ -59,7 +59,9 @@ extension v1 {
         
         override func update(from source: JSON, in transaction: BaseDataTransaction) throws {
             try super.update(from: source, in: transaction)
-            userName = source["username"] as? String
+            if let _username = source["username"] as? String {
+                userName = _username
+            }
         }
         
     }

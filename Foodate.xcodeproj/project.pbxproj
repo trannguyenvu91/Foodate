@@ -87,10 +87,13 @@
 		492D03D826A021DA00F944D0 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D02F2269ED30700F944D0 /* Error.swift */; };
 		492D03DE26A0221200F944D0 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D03DD26A0221200F944D0 /* View.swift */; };
 		492D03DF26A0221200F944D0 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D03DD26A0221200F944D0 /* View.swift */; };
+		49315C8226D8963200D09430 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CA79FB26C67020005B79D9 /* EditProfileView.swift */; };
 		493705DD26AD780900E4E5A0 /* ReplyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493705DC26AD780900E4E5A0 /* ReplyStateView.swift */; };
 		493705DE26AD780900E4E5A0 /* ReplyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493705DC26AD780900E4E5A0 /* ReplyStateView.swift */; };
 		4948F78526D5D0E1003232DE /* DraftInvitation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4948F78426D5D0E1003232DE /* DraftInvitation.swift */; };
 		4948F78626D5D0E1003232DE /* DraftInvitation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4948F78426D5D0E1003232DE /* DraftInvitation.swift */; };
+		495A9F0426E25726003F65B3 /* DraftUserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495A9F0326E25726003F65B3 /* DraftUserProfile.swift */; };
+		495A9F0526E25726003F65B3 /* DraftUserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495A9F0326E25726003F65B3 /* DraftUserProfile.swift */; };
 		495F53E326B1545200E6E981 /* SearchInvitationPaginator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495F53E226B1545200E6E981 /* SearchInvitationPaginator.swift */; };
 		495F53E426B1545200E6E981 /* SearchInvitationPaginator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495F53E226B1545200E6E981 /* SearchInvitationPaginator.swift */; };
 		495F53E726B154A600E6E981 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495F53E626B154A600E6E981 /* ListViewModel.swift */; };
@@ -136,6 +139,8 @@
 		4989B6AA269D442600611D10 /* CoreStore in Frameworks */ = {isa = PBXBuildFile; productRef = 4989B6A9269D442600611D10 /* CoreStore */; };
 		4989B6B0269D462C00611D10 /* FDCoreStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4989B6AF269D462C00611D10 /* FDCoreStore.swift */; };
 		4989B6B1269D462C00611D10 /* FDCoreStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4989B6AF269D462C00611D10 /* FDCoreStore.swift */; };
+		49904CDF26E26D9A006CE74F /* PropertyWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49904CDE26E26D9A006CE74F /* PropertyWrapper.swift */; };
+		49904CE026E26D9A006CE74F /* PropertyWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49904CDE26E26D9A006CE74F /* PropertyWrapper.swift */; };
 		4992D9F726BB92BA007576DC /* InviteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4992D9F626BB92BA007576DC /* InviteView.swift */; };
 		4992D9F826BB92BA007576DC /* InviteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4992D9F626BB92BA007576DC /* InviteView.swift */; };
 		4992D9FC26BB93B9007576DC /* InviteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4992D9FB26BB93B9007576DC /* InviteViewModel.swift */; };
@@ -147,7 +152,6 @@
 		49BB722C26B2A63F00329341 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BB722B26B2A63F00329341 /* UserCell.swift */; };
 		49BB722D26B2A63F00329341 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BB722B26B2A63F00329341 /* UserCell.swift */; };
 		49CA79F526C61F96005B79D9 /* BulletinBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4914AECC26A96648002F2634 /* BulletinBoardView.swift */; };
-		49CA79FC26C67020005B79D9 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CA79FB26C67020005B79D9 /* EditProfileView.swift */; };
 		49CA79FD26C67020005B79D9 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CA79FB26C67020005B79D9 /* EditProfileView.swift */; };
 		49CA7A0626C67061005B79D9 /* EditProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CA7A0526C67061005B79D9 /* EditProfileViewModel.swift */; };
 		49CA7A0726C67061005B79D9 /* EditProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CA7A0526C67061005B79D9 /* EditProfileViewModel.swift */; };
@@ -285,6 +289,7 @@
 		492D03DD26A0221200F944D0 /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		493705DC26AD780900E4E5A0 /* ReplyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplyStateView.swift; sourceTree = "<group>"; };
 		4948F78426D5D0E1003232DE /* DraftInvitation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraftInvitation.swift; sourceTree = "<group>"; };
+		495A9F0326E25726003F65B3 /* DraftUserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraftUserProfile.swift; sourceTree = "<group>"; };
 		495F53E226B1545200E6E981 /* SearchInvitationPaginator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchInvitationPaginator.swift; sourceTree = "<group>"; };
 		495F53E626B154A600E6E981 /* ListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
 		495F53E926B156D100E6E981 /* SearchProfilePaginator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchProfilePaginator.swift; sourceTree = "<group>"; };
@@ -317,6 +322,7 @@
 		4989B681269D43C900611D10 /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
 		4989B683269D43C900611D10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4989B6AF269D462C00611D10 /* FDCoreStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FDCoreStore.swift; sourceTree = "<group>"; };
+		49904CDE26E26D9A006CE74F /* PropertyWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyWrapper.swift; sourceTree = "<group>"; };
 		4992D9F626BB92BA007576DC /* InviteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteView.swift; sourceTree = "<group>"; };
 		4992D9FB26BB93B9007576DC /* InviteViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteViewModel.swift; sourceTree = "<group>"; };
 		4992DA0026BBD837007576DC /* MultilineTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultilineTextField.swift; sourceTree = "<group>"; };
@@ -426,6 +432,7 @@
 				492D033D269EEBB100F944D0 /* CoreData */,
 				49DA1EEE26A0413E001BF85B /* BaseViewModel.swift */,
 				49DA1F4626A137B5001BF85B /* ObjectBaseViewModel.swift */,
+				49904CDE26E26D9A006CE74F /* PropertyWrapper.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -688,6 +695,7 @@
 			children = (
 				49CA79FB26C67020005B79D9 /* EditProfileView.swift */,
 				49CA7A0526C67061005B79D9 /* EditProfileViewModel.swift */,
+				495A9F0326E25726003F65B3 /* DraftUserProfile.swift */,
 			);
 			path = "Edit Profile";
 			sourceTree = "<group>";
@@ -979,6 +987,7 @@
 				4965F28626B9333400C9B8E7 /* RequestPaginator.swift in Sources */,
 				49DA1F3326A135B9001BF85B /* PhotosPageView.swift in Sources */,
 				492D02A2269D4FCF00F944D0 /* CoreStore+Schema.swift in Sources */,
+				495A9F0426E25726003F65B3 /* DraftUserProfile.swift in Sources */,
 				49DA1EB126A031BA001BF85B /* UserProfileViewModel.swift in Sources */,
 				492D030D269ED30700F944D0 /* NSCoder.swift in Sources */,
 				492D0309269ED30700F944D0 /* Combine.swift in Sources */,
@@ -1008,6 +1017,7 @@
 				49DA1ED726A03B87001BF85B /* PreviewResource.swift in Sources */,
 				492D034B269EED9100F944D0 /* NetworkService.swift in Sources */,
 				49DE75C726AD56D900B4D883 /* FDSessionUser.swift in Sources */,
+				49904CDF26E26D9A006CE74F /* PropertyWrapper.swift in Sources */,
 				492D02B0269D68AF00F944D0 /* FDUser.swift in Sources */,
 				492D0362269EF37000F944D0 /* Codable.swift in Sources */,
 				49DE75CA26AD677D00B4D883 /* SendRequestFooter.swift in Sources */,
@@ -1033,12 +1043,12 @@
 				495F53E326B1545200E6E981 /* SearchInvitationPaginator.swift in Sources */,
 				492D02C3269D6DF300F944D0 /* FDPhoto.swift in Sources */,
 				49FDFEE626AEBA2D001185D3 /* LazyView.swift in Sources */,
-				49CA79FC26C67020005B79D9 /* EditProfileView.swift in Sources */,
 				492D02DF269D83F000F944D0 /* FieldStorableTypes.swift in Sources */,
 				49DA1EEF26A0413E001BF85B /* BaseViewModel.swift in Sources */,
 				49FDFEE126AEB80C001185D3 /* NavigationButton.swift in Sources */,
 				4914AF0226AA7AD2002F2634 /* RateHeader.swift in Sources */,
 				492D02D8269D7AE500F944D0 /* FDRequester.swift in Sources */,
+				49315C8226D8963200D09430 /* EditProfileView.swift in Sources */,
 				493705DD26AD780900E4E5A0 /* ReplyStateView.swift in Sources */,
 				4965F2A426BA8CCC00C9B8E7 /* PlaceProfileViewModel.swift in Sources */,
 				495F53F326B15A8A00E6E981 /* SearchInvitationModel.swift in Sources */,
@@ -1075,6 +1085,7 @@
 				49DA1ED126A039BD001BF85B /* Bundle.swift in Sources */,
 				492D02A3269D4FCF00F944D0 /* CoreStore+Schema.swift in Sources */,
 				495F53E426B1545200E6E981 /* SearchInvitationPaginator.swift in Sources */,
+				49904CE026E26D9A006CE74F /* PropertyWrapper.swift in Sources */,
 				4965F28226B932D300C9B8E7 /* RequestListViewModel.swift in Sources */,
 				495F53F426B15A8A00E6E981 /* SearchInvitationModel.swift in Sources */,
 				4965F29626B93AAF00C9B8E7 /* PresentButton.swift in Sources */,
@@ -1121,6 +1132,7 @@
 				492D03BE26A01DAB00F944D0 /* OnboardingView.swift in Sources */,
 				493705DE26AD780900E4E5A0 /* ReplyStateView.swift in Sources */,
 				49CA79FD26C67020005B79D9 /* EditProfileView.swift in Sources */,
+				495A9F0526E25726003F65B3 /* DraftUserProfile.swift in Sources */,
 				492D02BD269D6AD500F944D0 /* FDLocation.swift in Sources */,
 				492D03A3269FF50B00F944D0 /* NetworkService+User.swift in Sources */,
 				4965F2AD26BA924300C9B8E7 /* NetworkService+Place.swift in Sources */,

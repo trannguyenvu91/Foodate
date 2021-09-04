@@ -34,7 +34,7 @@ class NetworkService: NSObject {
                                method: HTTPMethod,
                                parameters: JSON?,
                                headers: HTTPHeaders = NetworkConfig.headers) -> JSONPublisher {
-        return JSONPublisher { (promise) in
+        return JSONPublisher { (handler) in
             let _ = AF.request(url,
                               method: method,
                               parameters: parameters,
@@ -46,12 +46,12 @@ class NetworkService: NSObject {
                     case .success(let value):
                         if let error = self.validateError(code: response.response?.statusCode,
                                                           info: value) {
-                            promise(.failure(error))
+                            handler(.failure(error))
                             return
                         }
-                        promise(.success(value as! JSON))
+                        handler(.success(value as! JSON))
                     case .failure(let error):
-                        promise(.failure(error))
+                        handler(.failure(error))
                     }
             }
         }

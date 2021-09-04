@@ -47,15 +47,20 @@ struct PlaceProfileView: View {
                     .foregroundColor(.gray)
                     .font(.subheadline)
             }
-            Text(snapshot.categoryText + " " + String.dotText + " " + snapshot.priceLevelText)
-                .foregroundColor(.gray)
-                .font(.subheadline)
+            categoryView(snapshot)
             RateHeader(snapshot.$rating ?? 5, totalRatings: snapshot.$userRatingsTotal ?? 0)
             Text(snapshot.$vicinity ?? "--")
                 .foregroundColor(.gray)
                 .font(.subheadline)
             inviteView
         }
+    }
+    
+    func categoryView(_ snapshot: ObjectSnapshot<FDPlace>) -> some View {
+        let text = snapshot.categoryText + " " + String.dotText + " " + snapshot.priceLevelText
+        return Text(text)
+            .font(.subheadline)
+            .foregroundColor(.gray)
     }
     
     var inviteView: some View {

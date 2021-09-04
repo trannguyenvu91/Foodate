@@ -37,7 +37,7 @@ extension NetworkService {
 extension NetworkService {
     
     class func updateUser(ID: Int, parameters: JSON) -> NetworkPublisher<FDUserProfile> {
-        return NetworkResource(method: .put,
+        return NetworkResource(method: .patch,
                                params: parameters,
                                api: "/api/v1/users/\(ID)/")
             .requestPubliser()

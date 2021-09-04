@@ -28,10 +28,12 @@ class FDCoreStore {
         )
     }
     
-    func fetchSessionUser() throws -> ObjectSnapshot<FDSessionUser>? {
-        try dataStack.fetchAll(From<FDSessionUser>()).first?.asSnapshot()
+    func fetchSessionUser() throws -> ObjectPublisher<FDSessionUser>? {
+        try dataStack.fetchAll(From<FDSessionUser>()).first?.asPublisher(in: .defaultStack)
     }
     
 }
 
-
+extension ImportableUniqueObject where Self: CoreStoreObject {
+    
+}

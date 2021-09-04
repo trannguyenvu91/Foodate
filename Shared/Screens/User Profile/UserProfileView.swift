@@ -105,9 +105,8 @@ struct UserProfileView: View {
     }
     
     var editView: some View {
-        Button(action: {
-            self.pushEditProfile.toggle()
-        }) {
+        let session = model.objectPubliser.asSnapshot(in: .defaultStack)
+        return PresentButton(destination: LazyView(EditProfileView(session!))) {
             HStack {
                 Image(systemName: "gear")
                     .resizable()
@@ -116,9 +115,8 @@ struct UserProfileView: View {
                 Text("Sửa trang cá nhân")
                     .fontWeight(.medium)
             }
+            .foregroundColor(.orange)
         }
-        .buttonStyle(PlainButtonStyle())
-        .foregroundColor(.orange)
     }
     
     var logOutButton: some View {

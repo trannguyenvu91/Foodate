@@ -19,16 +19,6 @@ struct TabBarView: View {
                     .resizable()
                     .font(.system(size: tabFontSize))
             }
-//            scheduleView.tabItem {
-//                Image(systemName: "calendar")
-//                    .resizable()
-//                    .font(.system(size: tabFontSize))
-//            }
-//            invitationView.tabItem {
-//                Image(systemName: "envelope")
-//                    .resizable()
-//                    .font(.system(size: tabFontSize))
-//            }
             profileView.tabItem {
                 Image(systemName: "person.circle")
                     .resizable()
@@ -55,17 +45,6 @@ struct TabBarView: View {
         }
     }
     
-//    var scheduleView: some View {
-//        NavigationView {
-//            ScheduleView()
-//        }
-//    }
-    
-//    var invitationView: some View {
-//        NavigationView {
-//            InvitationList()
-//        }
-//    }
 }
 
 struct TabView_Previews: PreviewProvider {

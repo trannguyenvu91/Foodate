@@ -69,12 +69,12 @@ class DraftInvitation: ObservableObject {
     }
     
     func getData() -> JSONPublisher {
-        Future { [unowned self] (promise) in
+        Future { [unowned self] (handler) in
             do {
                 try validate()
-                promise(.success(self.jsonData()))
+                handler(.success(self.jsonData()))
             } catch let error {
-                promise(.failure(error))
+                handler(.failure(error))
             }
         }
     }
