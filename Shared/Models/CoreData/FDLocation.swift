@@ -26,6 +26,10 @@ struct FDLocation: Codable {
         longtitude = elements.last!
     }
     
+    var toString: String {
+        "\(latitude),\(longtitude)"
+    }
+    
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         latitude = try container.decode(Double.self, forKey: .latitude)

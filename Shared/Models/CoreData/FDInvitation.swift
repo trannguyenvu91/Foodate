@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreStore
+import ObjectMapper
 
 enum FDInvitationState: String {
     case pending = "pending"
@@ -76,13 +77,14 @@ extension FDInvitation: ImportableUniqueObject, ImportableJSONObject {
     }
     
     func update(from source: JSON, in transaction: BaseDataTransaction) throws {
-        id = source["id"] as? Int ?? 0
-        title = source["title"] as? String
-        startAt = DateFormatter.standard.date(from: source["start_at"] as? String ?? "")
-        endAt = DateFormatter.standard.date(from: source["end_at"] as? String ?? "")
-        state = FDInvitationState(rawValue: source["state"] as? String ?? "")
-        shareBill = FDShareBill(rawValue: source["share_bill"] as? String ?? "")
-        requestsTotal = source["requests_total"] as? Int ?? 0
+        let map = Map(mappingType: .fromJSON, JSON: source)
+        id <- map["id"]
+        title <- map["title"]
+        startAt <- (map["start_at"], FDDateTransform())
+        endAt  <- (map["end_at"], FDDateTransform())
+        state <- map["state"]
+        shareBill <- map["share_bill"]
+        requestsTotal <- map["requests_total"]
         owner = try transaction.importUniqueObject(Into<FDUser>(), source: (source["owner"] as? JSON)!)
         if let toUserInfo = source["to_user"] as? JSON {
             toUser = try transaction.importUniqueObject(Into<FDUser>(), source: toUserInfo)

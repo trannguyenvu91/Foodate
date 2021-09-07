@@ -57,7 +57,7 @@ extension FDUserProfile {
 extension FDUser: ImportableUniqueObject, ImportableJSONObject {
     
     static var uniqueIDKeyPath: String {
-        #keyPath(FDUser.id)
+        "id"
     }
     
     static func uniqueID(from source: JSON, in transaction: BaseDataTransaction) throws -> Int? {

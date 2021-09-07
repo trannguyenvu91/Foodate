@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreStore
+import ObjectMapper
 
 extension FDPhoto: ImportableObject {
     
@@ -18,11 +19,14 @@ extension FDPhoto: ImportableObject {
 }
 
 extension FDPlacePhoto: ImportableObject {
+    
     typealias ImportSource = JSON
+    
     func didInsert(from source: JSON, in transaction: BaseDataTransaction) throws {
-        baseURL = source["base_url"] as? String
-        width = source["width"] as? Double
-        height = source["height"] as? Double
+        let map = Map(mappingType: .fromJSON, JSON: source)
+        baseURL <- map["base_url"]
+        width <- map["width"]
+        height <- map["height"]
     }
     
 }

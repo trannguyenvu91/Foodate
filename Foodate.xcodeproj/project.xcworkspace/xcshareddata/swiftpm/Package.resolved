@@ -36,6 +36,15 @@
           "revision": "62745d7780deef4a023a792a1f8f763ec7bf9705",
           "version": "1.2.0"
         }
+      },
+      {
+        "package": "ObjectMapper",
+        "repositoryURL": "https://github.com/tristanhimmelman/ObjectMapper.git",
+        "state": {
+          "branch": null,
+          "revision": "0b96a734de3ea1c87374ae677064f86adb0716ec",
+          "version": "4.2.0"
+        }
       }
     ]
   },

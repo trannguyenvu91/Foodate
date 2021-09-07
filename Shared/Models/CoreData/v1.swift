@@ -8,6 +8,7 @@
 import Foundation
 import CoreStore
 import CoreData
+import ObjectMapper
 
 struct v1 {
     
@@ -30,8 +31,8 @@ extension v1 {
     
     class FDBaseUser: CoreStoreObject {
         
-        @Field.Stored("id", dynamicInitialValue: { 0 })
-        @objc var id: Int
+        @Field.Stored("id")
+        var id: Int = 0
         @Field.Stored("first_name")
         var firstName: String!
         @Field.Stored("last_name")
@@ -40,10 +41,11 @@ extension v1 {
         var avatarURL: String?
         
         func update(from source: JSON, in transaction: BaseDataTransaction) throws {
-            id = source["id"] as? Int ?? 0
-            firstName = source["first_name"] as? String
-            lastName = source["last_name"] as? String
-            avatarURL = source["avatar_url"] as? String
+            let map = Map(mappingType: .fromJSON, JSON: source)
+            id <- map["id"]
+            firstName <- map["first_name"]
+            lastName <- map["last_name"]
+            avatarURL <- map["avatar_url"]
         }
         
     }
@@ -59,9 +61,11 @@ extension v1 {
         
         override func update(from source: JSON, in transaction: BaseDataTransaction) throws {
             try super.update(from: source, in: transaction)
-            if let _username = source["username"] as? String {
-                userName = _username
+            guard source.keys.contains("username") else {
+                return
             }
+            let map = Map(mappingType: .fromJSON, JSON: source)
+            userName <- map["username"]
         }
         
     }
@@ -81,20 +85,21 @@ extension v1 {
         var photos: Array<FDPhoto>
         @Field.Relationship("bulletin_board")
         var bulletinBoard: Array<FDInvitation>
-        @Field.Stored("bulletin_total", dynamicInitialValue: { 0 })
-        var bulletinTotal: Int
+        @Field.Stored("bulletin_total")
+        var bulletinTotal: Int = 0
         
         override func update(from source: JSON, in transaction: BaseDataTransaction) throws {
             try super.update(from: source, in: transaction)
             guard source.keys.contains("bio") else {
                 return
             }
-            bio = source["bio"] as? String
-            job = source["job"] as? String
-            location = try? FDLocation(from: source["location"] as? String)
-            birthday = DateFormatter.standard.date(from: source["birthday"] as? String ?? "")
-            email = source["email"] as? String
-            bulletinTotal = source["bulletin_total"] as? Int ?? 0
+            let map = Map(mappingType: .fromJSON, JSON: source)
+            bio <- map["bio"]
+            job <- map["job"]
+            email <- map["email"]
+            bulletinTotal <- map["bulletin_total"]
+            location <- (map["location"], LocationTransform())
+            birthday <- (map["birthday"], FDDateTransform())
             photos = try transaction.importObjects(Into<FDPhoto>(),
                                               sourceArray: source["photos"] as? [String] ?? [])
             avatarURL = photos.first?.baseURL
@@ -112,20 +117,22 @@ extension v1 {
             guard source.keys.contains("token") else {
                 return
             }
-            token = source["token"] as? String
+            let map = Map(mappingType: .fromJSON, JSON: source)
+            token <- map["token"]
         }
     }
     
     class FDRequester: FDBaseUser {
-        @Field.Stored("request_id", dynamicInitialValue: { 0 })
-        @objc var requestID: Int
+        @Field.Stored("request_id")
+        @objc var requestID: Int = 0
         //private
         @Field.Relationship("invitation", inverse: \.$requests)
         private var invitation: FDInvitation?
         
         override func update(from source: JSON, in transaction: BaseDataTransaction) throws {
             try super.update(from: source, in: transaction)
-            requestID = source["request_id"] as? Int ?? 0
+            let map = Map(mappingType: .fromJSON, JSON: source)
+            requestID <- map["request_id"]
         }
     }
 
@@ -161,8 +168,8 @@ extension v1 {
 extension v1 {
     
     class FDPlace: CoreStoreObject {
-        @Field.Stored("place_id", dynamicInitialValue: { "" })
-        @objc var id: String
+        @Field.Stored("place_id")
+        @objc var id: String = ""
         @Field.Stored("name")
         var name: String!
         @Field.Coded("location", coder: FieldCoders.Json.self)
@@ -177,8 +184,8 @@ extension v1 {
         var vicinity: String!
         @Field.Stored("business_status")
         var businessStatus: FDBusinessStatus!
-        @Field.Stored("types", dynamicInitialValue: { [] })
-        var types: SimpleStringSet
+        @Field.Stored("types")
+        var types: SimpleStringSet = []
         @Field.Relationship("photos")
         var photos: Array<FDPlacePhoto>
         //private
@@ -192,8 +199,8 @@ extension v1 {
 extension v1 {
     
     class FDInvitation: CoreStoreObject {
-        @Field.Stored("id", dynamicInitialValue: { 0 })
-        @objc var id: Int
+        @Field.Stored("id")
+        @objc var id: Int = 0
         @Field.Stored("title")
         var title: String?
         @Field.Stored("start_at")

@@ -8,6 +8,7 @@
 import Foundation
 import CoreStore
 import MapKit
+import ObjectMapper
 
 enum FDBusinessStatus: String {
     
@@ -102,15 +103,16 @@ extension FDPlace: ImportableUniqueObject, ImportableJSONObject {
     }
     
     func update(from source: JSON, in transaction: BaseDataTransaction) throws {
-        id = source["place_id"] as? String ?? ""
-        name = source["name"] as? String
-        location = try? FDLocation(from: source["location"] as? String)
-        priceLevel = source["price_level"] as? Double
-        rating = source["rating"] as? Double
-        userRatingsTotal = source["user_ratings_total"] as? Int
-        vicinity = source["vicinity"] as? String
-        businessStatus = FDBusinessStatus(rawValue: source["business_status"] as? String ?? "")
-        types = source["types"] as? [String] ?? []
+        let map = Map(mappingType: .fromJSON, JSON: source)
+        id <- map["place_id"]
+        name <- map["name"]
+        priceLevel <- map["price_level"]
+        rating <- map["rating"]
+        userRatingsTotal <- map["user_ratings_total"]
+        vicinity <- map["vicinity"]
+        businessStatus <- map["business_status"]
+        types <- map["types"]
+        location  <- (map["location"], LocationTransform())
         photos = try transaction.importObjects(Into<FDPlacePhoto>(), sourceArray: source["photos"] as? [JSON] ?? [])
     }
     

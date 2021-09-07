@@ -139,6 +139,11 @@
 		4989B6AA269D442600611D10 /* CoreStore in Frameworks */ = {isa = PBXBuildFile; productRef = 4989B6A9269D442600611D10 /* CoreStore */; };
 		4989B6B0269D462C00611D10 /* FDCoreStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4989B6AF269D462C00611D10 /* FDCoreStore.swift */; };
 		4989B6B1269D462C00611D10 /* FDCoreStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4989B6AF269D462C00611D10 /* FDCoreStore.swift */; };
+		498CAD7626E72EAF00478403 /* ObjectMapper in Frameworks */ = {isa = PBXBuildFile; productRef = 498CAD7526E72EAF00478403 /* ObjectMapper */; };
+		498CAD7A26E765A300478403 /* FDDateTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498CAD7926E765A300478403 /* FDDateTransform.swift */; };
+		498CAD7B26E765A300478403 /* FDDateTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498CAD7926E765A300478403 /* FDDateTransform.swift */; };
+		498CAD8226E767AA00478403 /* LocationTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498CAD8126E767AA00478403 /* LocationTransform.swift */; };
+		498CAD8326E767AA00478403 /* LocationTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498CAD8126E767AA00478403 /* LocationTransform.swift */; };
 		49904CDF26E26D9A006CE74F /* PropertyWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49904CDE26E26D9A006CE74F /* PropertyWrapper.swift */; };
 		49904CE026E26D9A006CE74F /* PropertyWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49904CDE26E26D9A006CE74F /* PropertyWrapper.swift */; };
 		4992D9F726BB92BA007576DC /* InviteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4992D9F626BB92BA007576DC /* InviteView.swift */; };
@@ -322,6 +327,8 @@
 		4989B681269D43C900611D10 /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
 		4989B683269D43C900611D10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4989B6AF269D462C00611D10 /* FDCoreStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FDCoreStore.swift; sourceTree = "<group>"; };
+		498CAD7926E765A300478403 /* FDDateTransform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FDDateTransform.swift; sourceTree = "<group>"; };
+		498CAD8126E767AA00478403 /* LocationTransform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTransform.swift; sourceTree = "<group>"; };
 		49904CDE26E26D9A006CE74F /* PropertyWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyWrapper.swift; sourceTree = "<group>"; };
 		4992D9F626BB92BA007576DC /* InviteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteView.swift; sourceTree = "<group>"; };
 		4992D9FB26BB93B9007576DC /* InviteViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteViewModel.swift; sourceTree = "<group>"; };
@@ -361,6 +368,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				498CAD7626E72EAF00478403 /* ObjectMapper in Frameworks */,
 				4989B6AA269D442600611D10 /* CoreStore in Frameworks */,
 				492D035D269EEDF500F944D0 /* Alamofire in Frameworks */,
 				49CA7A1326C67FB7005B79D9 /* ASCollectionViewDynamic in Frameworks */,
@@ -433,6 +441,7 @@
 				49DA1EEE26A0413E001BF85B /* BaseViewModel.swift */,
 				49DA1F4626A137B5001BF85B /* ObjectBaseViewModel.swift */,
 				49904CDE26E26D9A006CE74F /* PropertyWrapper.swift */,
+				498CAD7E26E7678300478403 /* ObjectMapper */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -640,6 +649,15 @@
 			path = "Tests macOS";
 			sourceTree = "<group>";
 		};
+		498CAD7E26E7678300478403 /* ObjectMapper */ = {
+			isa = PBXGroup;
+			children = (
+				498CAD7926E765A300478403 /* FDDateTransform.swift */,
+				498CAD8126E767AA00478403 /* LocationTransform.swift */,
+			);
+			path = ObjectMapper;
+			sourceTree = "<group>";
+		};
 		4992DA0C26BBE782007576DC /* Invite */ = {
 			isa = PBXGroup;
 			children = (
@@ -808,6 +826,7 @@
 				4989B6A9269D442600611D10 /* CoreStore */,
 				492D035C269EEDF500F944D0 /* Alamofire */,
 				49CA7A1226C67FB7005B79D9 /* ASCollectionViewDynamic */,
+				498CAD7526E72EAF00478403 /* ObjectMapper */,
 			);
 			productName = "Foodate (iOS)";
 			productReference = 4989B662269D43C900611D10 /* Foodate.app */;
@@ -909,6 +928,7 @@
 				4989B6A8269D442600611D10 /* XCRemoteSwiftPackageReference "CoreStore" */,
 				492D035B269EEDF500F944D0 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				49CA7A1126C67FB7005B79D9 /* XCRemoteSwiftPackageReference "ASCollectionView" */,
+				498CAD7426E72EAF00478403 /* XCRemoteSwiftPackageReference "ObjectMapper" */,
 			);
 			productRefGroup = 4989B663269D43C900611D10 /* Products */;
 			projectDirPath = "";
@@ -975,6 +995,7 @@
 				492D03C526A01DD000F944D0 /* OnboardingViewModel.swift in Sources */,
 				492D03DE26A0221200F944D0 /* View.swift in Sources */,
 				492D034F269EED9100F944D0 /* NetworkConfig.swift in Sources */,
+				498CAD8226E767AA00478403 /* LocationTransform.swift in Sources */,
 				495F53ED26B1574100E6E981 /* SearchPlacePaginator.swift in Sources */,
 				4965F28B26B935AE00C9B8E7 /* RequesterCell.swift in Sources */,
 				4914AEF326AA5D6C002F2634 /* TimeHeader.swift in Sources */,
@@ -987,6 +1008,7 @@
 				4965F28626B9333400C9B8E7 /* RequestPaginator.swift in Sources */,
 				49DA1F3326A135B9001BF85B /* PhotosPageView.swift in Sources */,
 				492D02A2269D4FCF00F944D0 /* CoreStore+Schema.swift in Sources */,
+				498CAD7A26E765A300478403 /* FDDateTransform.swift in Sources */,
 				495A9F0426E25726003F65B3 /* DraftUserProfile.swift in Sources */,
 				49DA1EB126A031BA001BF85B /* UserProfileViewModel.swift in Sources */,
 				492D030D269ED30700F944D0 /* NSCoder.swift in Sources */,
@@ -1117,6 +1139,7 @@
 				492D0367269EF37100F944D0 /* Codable.swift in Sources */,
 				4914AEFE26AA793A002F2634 /* PlaceHeader.swift in Sources */,
 				49DA1F5926A1814E001BF85B /* ASRemoteImageView.swift in Sources */,
+				498CAD7B26E765A300478403 /* FDDateTransform.swift in Sources */,
 				492D02AA269D4FF500F944D0 /* v1.swift in Sources */,
 				4992D9F826BB92BA007576DC /* InviteView.swift in Sources */,
 				492D0308269ED30700F944D0 /* Date.swift in Sources */,
@@ -1130,6 +1153,7 @@
 				49CA7A0726C67061005B79D9 /* EditProfileViewModel.swift in Sources */,
 				49CCED2D26B14E040033469B /* SegmentedPicker.swift in Sources */,
 				492D03BE26A01DAB00F944D0 /* OnboardingView.swift in Sources */,
+				498CAD8326E767AA00478403 /* LocationTransform.swift in Sources */,
 				493705DE26AD780900E4E5A0 /* ReplyStateView.swift in Sources */,
 				49CA79FD26C67020005B79D9 /* EditProfileView.swift in Sources */,
 				495A9F0526E25726003F65B3 /* DraftUserProfile.swift in Sources */,
@@ -1549,6 +1573,14 @@
 				minimumVersion = 8.0.1;
 			};
 		};
+		498CAD7426E72EAF00478403 /* XCRemoteSwiftPackageReference "ObjectMapper" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/tristanhimmelman/ObjectMapper.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.2.0;
+			};
+		};
 		49CA7A1126C67FB7005B79D9 /* XCRemoteSwiftPackageReference "ASCollectionView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apptekstudios/ASCollectionView.git";
@@ -1569,6 +1601,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4989B6A8269D442600611D10 /* XCRemoteSwiftPackageReference "CoreStore" */;
 			productName = CoreStore;
+		};
+		498CAD7526E72EAF00478403 /* ObjectMapper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 498CAD7426E72EAF00478403 /* XCRemoteSwiftPackageReference "ObjectMapper" */;
+			productName = ObjectMapper;
 		};
 		49CA7A1226C67FB7005B79D9 /* ASCollectionViewDynamic */ = {
 			isa = XCSwiftPackageProductDependency;
