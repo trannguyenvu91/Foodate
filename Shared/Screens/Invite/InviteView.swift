@@ -13,27 +13,24 @@ struct InviteView: View {
     
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var model = InviteViewModel()
-    let leftWidth: CGFloat = 40
-    let iconWidth: CGFloat = 22
+    @State var isEditingStart = false
     
     var body: some View {
-        NavigationView {
-            ScrollView {
+        GeometryReader(content: { geometry in
+            ScrollView(.vertical, showsIndicators: false) {
+                Spacer(minLength: 110)
                 titleView
-                scheduleView
                 placeView
+                scheduleView
                 guestView
                 splitBillView
-                settingHeader
-                reminderView
-                calendarView
-                Spacer(minLength: 40)
+                Spacer(minLength: 100)
             }
             .animation(.linear)
             .padding([.leading, .trailing])
-            .navigationBarTitle("Lời mời mới", displayMode: .inline)
-            .navigationBarItems(leading: cancelButton, trailing: sendButton)
-        }
+            .overlay(createButton(geometry.size.width), alignment: .bottom)
+            .overlay(cancelButton, alignment: .topLeading)
+        })
         .onReceive(model.didCreateCommand) { _ in
             self.presentationMode.wrappedValue.dismiss()
         }
@@ -42,44 +39,23 @@ struct InviteView: View {
     }
     
     var scheduleView: some View {
-        HStack(spacing: 0) {
-            iconView("clock")
-            VStack(alignment: .leading) {
-                timeView(at: model.draft.startAt) {
-                    self.isEditingEnd = false
-                    self.isEditingStart.toggle()
-                }
-                if isEditingStart {
-                    datePicker(date: $model.draft.startAt)
-                }
-                timeView(at: model.draft.endAt) {
-                    self.isEditingStart = false
-                    self.isEditingEnd.toggle()
-                }
-                if isEditingEnd {
-                    datePicker(date: $model.draft.endAt)
-                }
-                Divider()
-            }
-        }
-    }
-    
-    var settingHeader: some View {
         VStack(alignment: .leading) {
-            Spacer()
+            sectionLabel("Bắt đầu")
+            timeView(at: model.draft.startAt) {
+                self.isEditingStart.toggle()
+            }
+            if isEditingStart {
+                datePicker(date: $model.draft.startAt)
+            }
             Divider()
-            Text("Cài đặt của bạn")
-                .font(.subheadline)
-                .foregroundColor(.gray)
-                .padding(.leading, leftWidth)
         }
     }
     
     var titleView: some View {
         VStack {
-            MultilineTextField("Thêm tiêu đề", text: $model.draft.title)
+            sectionLabel("Tiêu đề")
+            MultilineTextField("Đi ăn tối, cà phê...", text: $model.draft.title)
                 .font(.title)
-                .padding(.leading, leftWidth)
                 .padding(.top)
             Divider()
         }
@@ -87,62 +63,35 @@ struct InviteView: View {
     }
     
     var placeView: some View {
-        HStack(spacing: 0) {
-            iconView("mappin.circle")
-            VStack(alignment: .leading) {
-                if let place = model.draft.place {
-                    placeInfo(place)
-                } else {
-                    addPlaceView
-                }
-                Divider()
+        VStack(alignment: .leading) {
+            sectionLabel("Địa điểm")
+            if let place = model.draft.place {
+                placeInfo(place)
+            } else {
+                addPlaceView
             }
+            Divider()
         }
     }
     
     var guestView: some View {
-        HStack(alignment: .center, spacing: 0) {
-            iconView("person.2")
-            VStack(alignment: .leading) {
-                if let toUser = model.draft.toUser {
-                    personInfo(toUser)
-                } else {
-                    addPersonView
-                }
-                Divider()
+        VStack(alignment: .leading) {
+            sectionLabel("Mời")
+            if let toUser = model.draft.toUser {
+                personInfo(toUser)
+            } else {
+                addPersonView
             }
+            Divider()
         }
     }
     
     var splitBillView: some View {
-        HStack(spacing:0) {
-            iconView("dollarsign.circle")
-            VStack(alignment: .leading) {
-                Text("Cách thức trả tiền")
-                    .foregroundColor(.gray)
-                    .font(.subheadline)
-                billPicker
-            }
-        }
-    }
-    
-    var reminderView: some View {
-        HStack(spacing:0) {
-            iconView("bell")
-            VStack(alignment: .leading) {
-                Text("Trước 30 phút")
-            }
-            Spacer()
-        }
-    }
-    
-    var calendarView: some View {
-        HStack(spacing:0) {
-            iconView("calendar.badge.plus")
-            VStack(alignment: .leading) {
-                Text("Thêm vào lịch Apple")
-            }
-            Spacer()
+        VStack(alignment: .leading) {
+            sectionLabel("Cách thức trả tiền")
+                .foregroundColor(.gray)
+                .font(.subheadline)
+            billPicker
         }
     }
     
@@ -151,7 +100,11 @@ struct InviteView: View {
             self.presentationMode.wrappedValue.dismiss()
         }) {
             xCloseImage
-                .frame(width: 18, height: 18)
+                .frame(width: 12, height: 12)
+                .padding(14)
+                .background(Color.groupTableViewBackground)
+                .clipShape(Circle())
+                .padding()
         }
     }
     
@@ -161,18 +114,6 @@ struct InviteView: View {
             .scaledToFit()
     }
     
-    var sendButton: some View {
-        Button(action: {
-            model.createCommand.send(nil)
-        }) {
-            Image(systemName: "paperplane")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 22, height: 22)
-                .foregroundColor(model.draft.isValid ? .blue : .gray)
-        }
-    }
-    
     var billPicker: some View {
         Picker("Bill Type", selection: $model.draft.shareBill) {
             ForEach(FDShareBill.allCases, id: \.self) { type in
@@ -180,15 +121,6 @@ struct InviteView: View {
             }
         }
         .pickerStyle(SegmentedPickerStyle())
-    }
-    
-    func iconView(_ systemName: String) -> some View {
-        Image(systemName: systemName)
-            .resizable()
-            .scaledToFit()
-            .frame(width: iconWidth, height: iconWidth)
-            .padding(.trailing, leftWidth - iconWidth)
-            .foregroundColor(.orange)
     }
     
     func mapView(_ snapshot: ObjectSnapshot<FDPlace>) -> some View {
@@ -202,13 +134,20 @@ struct InviteView: View {
     }
     
     func timeView(at date: Date, didPress: @escaping () -> Void) -> some View {
-        Button(action: didPress) {
-            HStack {
-                Text(date.dayText + ", " + date.monthText)
-                Spacer()
-                Text(date.timeText)
+        HStack {
+            Button(action: didPress) {
+                Text(date.timeText + "  " + date.dayText + ", " + date.monthText)
+                    .fontWeight(.semibold)
+                    .height(30)
             }
-            .height(30)
+            Text("trong")
+                .foregroundColor(.gray)
+            Button(action: {
+                
+            }, label: {
+                Text(model.draft.durationText)
+                    .fontWeight(.semibold)
+            })
         }
     }
     
@@ -243,9 +182,8 @@ struct InviteView: View {
         HStack {
             ObjectReader(user) { snapshot in
                 UserHeader(snapshot)
-                    .height(34)
+                    .height(50)
             }
-            Spacer()
             Button {
                 model.draft.toUser = nil
             } label: {
@@ -262,22 +200,60 @@ struct InviteView: View {
         PresentButton(destination: LazyView(
                         SearchView([.place], selectionCommand: model.selectionCommand)
         )) {
-            Text("Thêm địa điểm")
-            .bold()
+            HStack {
+                Image(systemName: "pin")
+                    .resizable()
+                    .aspectRatio(1, contentMode: .fit)
+                    .frame(width: 14, height: 14)
+                Text("Thêm nhà hàng, quán ăn")
+                    .fontWeight(.semibold)
+            }
+            .padding()
+            .foregroundColor(.orange)
+            .background(Color.orange.opacity(0.2))
         }
+        .clipShape(StadiumShape())
     }
     
     var addPersonView: some View {
         PresentButton(destination: LazyView(
                         SearchView([.account], selectionCommand: model.selectionCommand)
         )) {
-            Text("Thêm bạn bè")
-                .bold()
+            CircleView(Image(systemName: "person.badge.plus")
+                        .resizable()
+                        .frame(width: 16, height: 16)
+                        .padding(22)
+                        .foregroundColor(.blue)
+                        .background(Color.blue.opacity(0.2)),
+                       lineWidth: 1,
+                       lineColor: .clear)
         }
     }
     
-    @State var isEditingStart = false
-    @State var isEditingEnd = false
+    func sectionLabel(_ text: String) -> some View {
+        HStack {
+            Text(text)
+                .foregroundColor(.gray)
+                .fontWeight(.medium)
+                .padding(.bottom, 6)
+            Spacer()
+        }
+    }
+    
+    func createButton(_ width: CGFloat) -> some View {
+        Button(action: {
+            model.createCommand.send(nil)
+        }, label: {
+            Text("Gửi lời mời")
+                .font(.title2)
+                .fontWeight(.semibold)
+                .padding([.top, .bottom], 16)
+                .width(width - 40)
+        })
+        .foregroundColor(.white)
+        .background(Color.blue)
+        .cornerRadius(16)
+    }
     
     func datePicker(date: Binding<Date>) -> some View {
         DatePicker(selection: date,

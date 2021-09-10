@@ -25,7 +25,7 @@ struct TimeHeader: View {
             Text(invitation.$startAt?.dayText ?? "--")
                 .padding([.leading, .trailing], 8)
                 .padding([.top, .bottom], 4)
-                .background(Color.white.cornerRadius(14))
+                .background(Color.white.clipShape(StadiumShape()))
                 .foregroundColor(invitation.backgroundColor)
                 .padding(6)
             Text(invitation.$startAt?.monthText ?? "--")

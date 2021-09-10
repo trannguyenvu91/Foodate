@@ -154,6 +154,8 @@
 		4992DA0226BBD837007576DC /* MultilineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4992DA0026BBD837007576DC /* MultilineTextField.swift */; };
 		4992DA0626BBE269007576DC /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4992DA0526BBE269007576DC /* Font.swift */; };
 		4992DA0726BBE269007576DC /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4992DA0526BBE269007576DC /* Font.swift */; };
+		499D079826E9B60E00F0056C /* StadiumShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499D079726E9B60E00F0056C /* StadiumShape.swift */; };
+		499D079926E9B60E00F0056C /* StadiumShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499D079726E9B60E00F0056C /* StadiumShape.swift */; };
 		49BB722C26B2A63F00329341 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BB722B26B2A63F00329341 /* UserCell.swift */; };
 		49BB722D26B2A63F00329341 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BB722B26B2A63F00329341 /* UserCell.swift */; };
 		49CA79F526C61F96005B79D9 /* BulletinBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4914AECC26A96648002F2634 /* BulletinBoardView.swift */; };
@@ -334,6 +336,7 @@
 		4992D9FB26BB93B9007576DC /* InviteViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteViewModel.swift; sourceTree = "<group>"; };
 		4992DA0026BBD837007576DC /* MultilineTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultilineTextField.swift; sourceTree = "<group>"; };
 		4992DA0526BBE269007576DC /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		499D079726E9B60E00F0056C /* StadiumShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StadiumShape.swift; sourceTree = "<group>"; };
 		49BB722B26B2A63F00329341 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		49CA79FB26C67020005B79D9 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 		49CA7A0526C67061005B79D9 /* EditProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewModel.swift; sourceTree = "<group>"; };
@@ -438,9 +441,7 @@
 			isa = PBXGroup;
 			children = (
 				492D033D269EEBB100F944D0 /* CoreData */,
-				49DA1EEE26A0413E001BF85B /* BaseViewModel.swift */,
-				49DA1F4626A137B5001BF85B /* ObjectBaseViewModel.swift */,
-				49904CDE26E26D9A006CE74F /* PropertyWrapper.swift */,
+				498CAD8626E7885900478403 /* View Models */,
 				498CAD7E26E7678300478403 /* ObjectMapper */,
 			);
 			path = Models;
@@ -658,6 +659,15 @@
 			path = ObjectMapper;
 			sourceTree = "<group>";
 		};
+		498CAD8626E7885900478403 /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				49DA1EEE26A0413E001BF85B /* BaseViewModel.swift */,
+				49DA1F4626A137B5001BF85B /* ObjectBaseViewModel.swift */,
+			);
+			path = "View Models";
+			sourceTree = "<group>";
+		};
 		4992DA0C26BBE782007576DC /* Invite */ = {
 			isa = PBXGroup;
 			children = (
@@ -750,6 +760,7 @@
 		49DA1ECE26A0390F001BF85B /* Utilites */ = {
 			isa = PBXGroup;
 			children = (
+				49904CDE26E26D9A006CE74F /* PropertyWrapper.swift */,
 				49DA1F5C26A18153001BF85B /* ASImage */,
 				492D0356269EEDA100F944D0 /* Network */,
 			);
@@ -791,6 +802,7 @@
 				49FDFEE026AEB80C001185D3 /* NavigationButton.swift */,
 				4965F29426B93AAF00C9B8E7 /* PresentButton.swift */,
 				4914AEE826A98416002F2634 /* CircleView.swift */,
+				499D079726E9B60E00F0056C /* StadiumShape.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -1052,6 +1064,7 @@
 				4992DA0626BBE269007576DC /* Font.swift in Sources */,
 				4914AEE026A97654002F2634 /* InvitationCellModel.swift in Sources */,
 				492D03BD26A01DAB00F944D0 /* OnboardingView.swift in Sources */,
+				499D079826E9B60E00F0056C /* StadiumShape.swift in Sources */,
 				4914AEFD26AA793A002F2634 /* PlaceHeader.swift in Sources */,
 				495F53EA26B156D100E6E981 /* SearchProfilePaginator.swift in Sources */,
 				4914AEF826AA6409002F2634 /* GroupPhotosView.swift in Sources */,
@@ -1138,6 +1151,7 @@
 				4914AF0F26AA9B43002F2634 /* RequestsFooter.swift in Sources */,
 				492D0367269EF37100F944D0 /* Codable.swift in Sources */,
 				4914AEFE26AA793A002F2634 /* PlaceHeader.swift in Sources */,
+				499D079926E9B60E00F0056C /* StadiumShape.swift in Sources */,
 				49DA1F5926A1814E001BF85B /* ASRemoteImageView.swift in Sources */,
 				498CAD7B26E765A300478403 /* FDDateTransform.swift in Sources */,
 				492D02AA269D4FF500F944D0 /* v1.swift in Sources */,

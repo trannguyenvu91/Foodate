@@ -11,7 +11,7 @@ import SwiftUI
 struct RateHeader: View {
     
     var value: Int
-    var totalRatings: Int
+    var totalRatings: Int?
     
     var body: some View {
         HStack {
@@ -27,7 +27,9 @@ struct RateHeader: View {
                     }
                 }
             }
-            Text("(\(totalRatings))")
+            if let count = totalRatings {
+                Text("(\(count))")
+            }
         }
         .foregroundColor(.gray)
         .font(.subheadline)
@@ -44,7 +46,7 @@ struct RateHeader: View {
 
 extension RateHeader {
     
-    init(_ rating: Double, totalRatings: Int) {
+    init(_ rating: Double, totalRatings: Int?) {
         self.value = Int(round(rating))
         self.totalRatings = totalRatings
     }

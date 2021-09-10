@@ -32,6 +32,18 @@ extension DateFormatter {
     
 }
 
+extension TimeInterval {
+    var hourString: String {
+        let hours: Int = Int(self / 3600)
+        let mininutes: Int = Int((self - Double(hours) * 3600) / 60)
+        var str = mininutes != 0 ? "\(mininutes)m": ""
+        if hours != 0 {
+            str = "\(hours)h" + str
+        }
+        return str
+    }
+}
+
 extension Date {
     
     var timeText: String {

@@ -32,9 +32,9 @@ struct SendRequestFooter: View {
             }
         }
         .paddingForBorderBackground()
-        .foregroundColor(requestSent ? .white : .black)
-        .background(requestSent ? Color.blue : .groupTableViewBackground)
-        .buttonRounded()
+        .foregroundColor(requestSent ? .white : .orange)
+        .background(requestSent ? Color.blue : Color.orange.opacity(0.2))
+        .clipShape(StadiumShape())
     }
     
 }

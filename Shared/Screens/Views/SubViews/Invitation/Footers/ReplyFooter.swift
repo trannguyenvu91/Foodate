@@ -21,19 +21,23 @@ struct ReplyFooter: View {
                 model.reply.send(.matched)
             } label: {
                 Text("Đồng ý")
+                    .font(.footnote)
+                    .fontWeight(.medium)
                     .paddingForBorderBackground()
                     .foregroundColor(.white)
                     .background(Color.blue)
             }
-            .buttonRounded()
+            .clipShape(StadiumShape())
             Button {
                 model.reply.send(.rejected)
             } label: {
                 Text("Từ chối")
+                    .font(.footnote)
+                    .fontWeight(.medium)
                     .paddingForBorderBackground()
                     .background(Color.groupTableViewBackground)
-                    .buttonRounded()
             }
+            .clipShape(StadiumShape())
         }
     }
 }

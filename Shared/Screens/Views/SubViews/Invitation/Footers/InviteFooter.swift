@@ -21,7 +21,12 @@ struct InviteFooter: View {
                     .aspectRatio(1, contentMode: .fit)
                     .height(16)
                 Text("Rủ bạn bè")
+                    .font(.footnote)
+                    .fontWeight(.medium)
             }
+            .paddingForBorderBackground()
+            .background(Color.groupTableViewBackground)
+            .clipShape(StadiumShape())
         }
     }
 }

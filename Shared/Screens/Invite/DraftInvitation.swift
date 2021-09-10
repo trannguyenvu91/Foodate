@@ -12,23 +12,21 @@ import Foundation
 class DraftInvitation: ObservableObject {
     
     @Published var title = ""
-    @Published var startAt = Date().shift(day: 1, at: 19, minute: 0) {
-        didSet {
-            if endAt <= startAt {
-                endAt = startAt.addingTimeInterval(3600)
-            }
-        }
-    }
-    @Published var endAt = Date().shift(day: 1, at: 20, minute: 0) {
-        didSet {
-            if endAt <= startAt {
-                startAt = endAt.addingTimeInterval(-3600)
-            }
-        }
-    }
+    @Published var startAt = Date().shift(day: 1, at: 19, minute: 0)
     @Published var toUser: ObjectPublisher<FDUserProfile>?
     @Published var place: ObjectPublisher<FDPlace>?
     @Published var shareBill = FDShareBill.fifty
+    @Published var duration: TimeInterval = 3600
+    
+    var endAt: Date {
+        get {
+            startAt.advanced(by: duration)
+        }
+    }
+    
+    var durationText: String {
+        duration.hourString
+    }
     
     var isValid: Bool {
         do {

@@ -40,7 +40,7 @@ struct PlaceHeader: View {
             Text(snapshot.$name ?? "--")
                 .fontWeight(.semibold)
                 .foregroundColor(.black)
-            RateHeader(snapshot.$rating ?? 5, totalRatings: snapshot.$userRatingsTotal ?? 0)
+            RateHeader(snapshot.$rating ?? 5, totalRatings: nil)
             Text(snapshot.$vicinity ?? "--")
                 .fontWeight(.light)
                 .font(.footnote)
