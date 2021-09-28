@@ -7,6 +7,8 @@
 //
 
 import Combine
+import Foundation
+import Alamofire
 
 extension NetworkPage: ImportableJSONObject {
     static func importObject(from source: JSON) throws -> NetworkPage<T> {
@@ -14,6 +16,18 @@ extension NetworkPage: ImportableJSONObject {
             nextURL: source["next"] as? String,
             results: try T.importObjects(from: source["results"] as? [JSON] ?? [])
         )
+    }
+    
+    init(nextURL: String?, results: [T]?, params: JSON? = nil) {
+        if let path = nextURL,
+           var components = URLComponents(string: path),
+           let queryItems = params?.map({ URLQueryItem(name: $0.key, value: "\($0.value)") }) {
+            components.queryItems?.append(contentsOf: queryItems)
+            self.nextURL = components.path
+        } else {
+            self.nextURL = nextURL
+        }
+        self.results = results
     }
     
 }

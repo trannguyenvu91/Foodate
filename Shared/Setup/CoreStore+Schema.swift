@@ -38,9 +38,9 @@ extension CoreStoreSchema {
             "FDPlace": [0x81d3bb4d4935964a, 0xda9ce1409e6853ff, 0x4fc053cfb5f064e, 0xea8023832f0a3468],
             "FDPlacePhoto": [0xf46222e2028476d9, 0xf4086dd95d62b97, 0xa2f7f232797fa1aa, 0xc8f1db65dc1487a2],
             "FDRequester": [0x5d7ff76d13cf8eb0, 0x8cb44b87c1e0523d, 0xc19eea4ea048fdc0, 0x7b4e66e63065e8dd],
-            "FDSessionUser": [0x2cf58a46d96c7028, 0xf094f92fc681013c, 0xedbc687f36a017a, 0x93fa5a81c43cdc9c],
+            "FDSessionUser": [0x99a9daa7720c764b, 0xf898a2e0f417b39c, 0x7d4f476462beeef2, 0x6deb9058d9e5bb5d],
             "FDUser": [0x804699ef75b99dd9, 0x7f003847ff83efc5, 0x88bce1022a13865f, 0x343d490d6da4c248],
-            "FDUserProfile": [0x1c60b1fcd060a151, 0xb8560638e6874c51, 0xff3a2b767e411792, 0x6ba9e280228c4704],
+            "FDUserProfile": [0x4296c3ceeca07ec8, 0x31533e9001e5fb9, 0x7bde68e8ae400b35, 0x3ec05ef68a4e683],
             "FPInvitation": [0xbb4458b283dd282c, 0x3195fc4d33c06e57, 0x43f87771a9fd01ee, 0xf4227e9ce45ef79f]
         ]
     }

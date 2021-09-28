@@ -85,8 +85,6 @@ extension v1 {
         var photos: Array<FDPhoto>
         @Field.Relationship("bulletin_board")
         var bulletinBoard: Array<FDInvitation>
-        @Field.Stored("bulletin_total")
-        var bulletinTotal: Int = 0
         
         override func update(from source: JSON, in transaction: BaseDataTransaction) throws {
             try super.update(from: source, in: transaction)
@@ -97,7 +95,6 @@ extension v1 {
             bio <- map["bio"]
             job <- map["job"]
             email <- map["email"]
-            bulletinTotal <- map["bulletin_total"]
             location <- (map["location"], LocationTransform())
             birthday <- (map["birthday"], FDDateTransform())
             photos = try transaction.importObjects(Into<FDPhoto>(),
