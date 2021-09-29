@@ -15,7 +15,9 @@ class SearchPlaceModel: BaseViewModel, ListViewModel {
     override init() {
         self.paginator = SearchPlacePaginator(nil)
         super.init()
-        fetchNext()
+        asyncDo { [weak self] in
+            try await self?.fetchNext()
+        }
     }
     
     var places: [ObjectPublisher<FDPlace>] {

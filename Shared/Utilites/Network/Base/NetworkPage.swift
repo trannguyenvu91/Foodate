@@ -6,7 +6,6 @@
 //  Copyright © 2019 Vu Tran. All rights reserved.
 //
 
-import Combine
 import Foundation
 import Alamofire
 
@@ -41,17 +40,14 @@ struct NetworkPage<T> where T: ImportableJSONObject {
         case nextURL = "next", results
     }
     
-    func fetchNext() -> AnyPublisher<NetworkPage<T>, Error> {
+    func fetchNext() async throws -> NetworkPage<T> {
         guard let nextUrl = nextURL else {
-            return Fail(outputType: NetworkPage<T>.self,
-                        failure: NetworkError(code: 999, message: "There is not a next page"))
-                .eraseToAnyPublisher()
+            throw NetworkError(code: 999, message: "There is not a next page")
         }
-        return NetworkService.requestPubliser(url: nextUrl,
-                                              method: .get,
-                                              parameters: nil)
-            .tryMap({ try NetworkPage<T>.importObject(from: $0) })
-            .eraseToAnyPublisher()
+        let response = try await NetworkService.request(url: nextUrl,
+                                                        method: .get,
+                                                        parameters: nil)
+        return try NetworkPage<T>.importObject(from: response)
     }
     
 }

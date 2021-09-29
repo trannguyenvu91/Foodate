@@ -8,13 +8,6 @@
 
 import Foundation
 import Alamofire
-import Combine
-
-typealias FailureBlock = (Error) -> Void
-typealias SuccessBlock<T> = (T) -> Void
-typealias CompletionBlock = () -> Void
-typealias JSONPublisher = Future<JSON, Error>
-typealias NetworkPublisher<T> = AnyPublisher<T, Error>
 
 class NetworkService: NSObject {
     
@@ -30,31 +23,31 @@ class NetworkService: NSObject {
         return encoder
     }()
     
-    class func requestPubliser(url: String,
-                               method: HTTPMethod,
-                               parameters: JSON?,
-                               headers: HTTPHeaders = NetworkConfig.headers) -> JSONPublisher {
-        return JSONPublisher { (handler) in
+    class func request(url: String,
+                       method: HTTPMethod,
+                       parameters: JSON?,
+                       headers: HTTPHeaders = NetworkConfig.headers) async throws -> JSON {
+        return try await withCheckedThrowingContinuation({ continuation in
             let _ = AF.request(url,
-                              method: method,
-                              parameters: parameters,
-                              encoding: method.encoding,
-                              headers: headers)
+                               method: method,
+                               parameters: parameters,
+                               encoding: method.encoding,
+                               headers: headers)
                 .validate(statusCode: self.acceptableStatusCodes)
                 .responseJSON { (response) in
                     switch response.result {
                     case .success(let value):
                         if let error = self.validateError(code: response.response?.statusCode,
                                                           info: value) {
-                            handler(.failure(error))
+                            continuation.resume(throwing: error)
                             return
                         }
-                        handler(.success(value as! JSON))
+                        continuation.resume(returning: value as! JSON)
                     case .failure(let error):
-                        handler(.failure(error))
+                        continuation.resume(throwing: error)
                     }
-            }
-        }
+                }
+        })
     }
     
     static var errorStatusCodes: [Int] {
@@ -72,9 +65,9 @@ class NetworkService: NSObject {
             return NetworkError(code: 400, message: "The response is not JSON")
         }
         guard let code = code,
-            errorStatusCodes.contains(code) else {
-            return nil
-        }
+              errorStatusCodes.contains(code) else {
+                  return nil
+              }
         let message = info["detail"] as? String ?? info.reduce("", { (message, arg1) in
             let (key, value) = arg1
             return message + "\(key): \(value) "
@@ -93,10 +86,4 @@ extension HTTPMethod {
         return JSONEncoding.default
     }
     
-}
-
-extension JSONPublisher {
-    func tryImportObject<T>() -> NetworkPublisher<T> where T: ImportableJSONObject {
-        tryMap({ try T.importObject(from: $0) }).eraseToAnyPublisher()
-    }
 }

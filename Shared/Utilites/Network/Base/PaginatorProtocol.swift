@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Combine
 
 protocol ImportableJSONObject {
     static func importObject(from source: JSON) throws -> Self
@@ -23,12 +22,11 @@ protocol PaginatorProtocol {
     associatedtype modelClass: ImportableJSONObject
     init(_ initial: NetworkPage<modelClass>)
     var hasNext: Bool { get }
-    var isCanceled: Bool { get set }
     var isFetching: Bool { get }
     var items: [modelClass] { get set }
     
-    func fetchNextPage(completion: CompletionBlock?, failure: FailureBlock?)
-    func refresh(completion: CompletionBlock?, failure: FailureBlock?)
+    func fetchNext() async throws
+    func refresh() async throws
     func reset()
     func remove(item: modelClass)
 }

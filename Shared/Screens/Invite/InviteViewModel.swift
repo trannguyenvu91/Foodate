@@ -36,14 +36,12 @@ class InviteViewModel: BaseViewModel, Identifiable {
     }
     
     func bindCreateCommand() {
-        createCommand.sink(receiveValue: { [unowned self] _ in
-            let publisher = self.draft.getData()
-                .flatMap({ NetworkService.createInvitation(parameters: $0) })
-                .eraseToAnyPublisher()
-            self.execute(publisher: publisher, success: { (invitation) in
-                self.didCreateCommand.send(invitation)
-            })
-        })
+        createCommand.sink { [unowned self] _ in
+            asyncDo {
+                let invitation = try await NetworkService.createInvitation(parameters: try draft.getData())
+                didCreateCommand.send(invitation)
+            }
+        }
         .store(in: &cancelableSet)
     }
     

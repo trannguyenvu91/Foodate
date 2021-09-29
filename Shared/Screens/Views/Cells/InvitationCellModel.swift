@@ -22,17 +22,22 @@ class InvitationCellModel: ObjectBaseViewModel<FDInvitation> {
     }
     
     func bindSendRequest() {
-        let publisher = sendRequest.flatMap({ [unowned self] in
-            $0 ? NetworkService.createRequest(for: self.objectPubliser.id!) : NetworkService.deleteRequest(for: self.objectPubliser.id!)
-        }).eraseToAnyPublisher()
-        execute(publisher: publisher)
+        sendRequest.sink { [unowned self] isSending in
+            let id = self.objectPubliser.id!
+            asyncDo {
+                let _ = isSending ? try await NetworkService.createRequest(for: id) : try await NetworkService.deleteRequest(for: id)
+            }
+        }
+        .store(in: &cancelableSet)
     }
     
     func bindReply() {
-        let publisher = reply.flatMap({ [unowned self] in
-            NetworkService.replyInvitation(ID: self.objectPubliser.id!, state: $0)
-        }).eraseToAnyPublisher()
-        execute(publisher: publisher)
+        reply.sink{ [unowned self] state in
+            asyncDo {
+                let _ = try await NetworkService.replyInvitation(ID: objectPubliser.id!, state: state)
+            }
+        }
+            .store(in: &cancelableSet)
     }
     
     func bindInviteCommand() {
@@ -41,11 +46,10 @@ class InvitationCellModel: ObjectBaseViewModel<FDInvitation> {
                 return
             }
             let updates = ["to_user": ["id": user.id ?? 0]]
-            
-            let publisher = NetworkService.updateInvitation(ID: objectPubliser.id ?? 0,
-                                                            parameters: updates)
-                .eraseToAnyPublisher()
-            execute(publisher: publisher)
+            asyncDo {
+                let _ = try await NetworkService.updateInvitation(ID: objectPubliser.id ?? 0,
+                                                          parameters: updates)
+            }
         }
         .store(in: &cancelableSet)
     }

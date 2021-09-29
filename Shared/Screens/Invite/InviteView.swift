@@ -26,7 +26,7 @@ struct InviteView: View {
                 splitBillView
                 Spacer(minLength: 100)
             }
-            .animation(.linear)
+            .animation(.linear, value: 1)
             .padding([.leading, .trailing])
             .overlay(createButton(geometry.size.width), alignment: .bottom)
             .overlay(cancelButton, alignment: .topLeading)

@@ -7,45 +7,27 @@
 //
 
 import Foundation
-import Combine
 
-protocol ListViewModel: ObservableObject {
+protocol ListViewModel: NSObjectProtocol {
     associatedtype modelClass: Equatable & ImportableJSONObject
     var paginator: Paginator<modelClass> { get }
     var error: Error? { get set }
-    func refresh()
-    func didFinishFetching()
-    func fetchNext()
+    func refresh() async throws
+    func fetchNext() async throws
 }
 
-extension ListViewModel where Self.ObjectWillChangePublisher == ObservableObjectPublisher {
+extension ListViewModel {
     
     var items: [modelClass] {
         paginator.items
     }
     
-    func refresh() {
-        paginator.refresh(completion: { [weak self] in
-            self?.didFinishFetching()
-        }) { [weak self] error in
-            self?.error = error
-            self?.didFinishFetching()
-        }
+    func refresh() async throws {
+        try await paginator.refresh()
     }
     
-    func fetchNext() {
-        paginator.fetchNextPage(completion: { [weak self] in
-            self?.didFinishFetching()
-        }){ [weak self] (error) in
-            self?.error = error
-            self?.didFinishFetching()
-        }
-    }
-    
-    func didFinishFetching() {
-        DispatchQueue.main.async { [weak self] in
-            self?.objectWillChange.send()
-        }
+    func fetchNext() async throws {
+        try await paginator.fetchNext()
     }
     
 }

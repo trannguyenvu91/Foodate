@@ -6,48 +6,42 @@
 //
 
 import Foundation
-import Combine
 
 extension NetworkService {
     
-    class func getInvitation(ID: Int) -> NetworkPublisher<FDInvitation> {
-        return NetworkResource(method: .get,
-                               params: nil,
-                               api: "/api/v1/invitations/\(ID)/")
-            .requestPubliser()
-            .tryImportObject()
+    class func getInvitation(ID: Int) async throws -> FDInvitation {
+        try await NetworkResource(method: .get,
+                                  params: nil,
+                                  api: "/api/v1/invitations/\(ID)/")
+            .request()
     }
     
-    class func deleteInvitation(ID: Int) -> NetworkPublisher<FDInvitation> {
-        return NetworkResource(method: .delete,
-                               params: nil,
-                               api: "/api/v1/invitations/\(ID)/")
-            .requestPubliser()
-            .tryImportObject()
+    class func deleteInvitation(ID: Int) async throws -> FDInvitation {
+        try await NetworkResource(method: .delete,
+                                  params: nil,
+                                  api: "/api/v1/invitations/\(ID)/")
+            .request()
     }
     
-    class func updateInvitation(ID: Int, parameters: JSON) -> NetworkPublisher<FDInvitation> {
-        return NetworkResource(method: .put,
-                               params: parameters,
-                               api: "/api/v1/invitations/\(ID)/")
-            .requestPubliser()
-            .tryImportObject()
+    class func updateInvitation(ID: Int, parameters: JSON) async throws -> FDInvitation {
+        try await NetworkResource(method: .put,
+                                  params: parameters,
+                                  api: "/api/v1/invitations/\(ID)/")
+            .request()
     }
     
-    class func replyInvitation(ID: Int, state: FDInvitationState) -> NetworkPublisher<FDInvitation> {
-        return NetworkResource(method: .post,
-                               params: ["state": state.rawValue],
-                               api: "/api/v1/invitations/\(ID)/reply/")
-            .requestPubliser()
-            .tryImportObject()
+    class func replyInvitation(ID: Int, state: FDInvitationState) async throws -> FDInvitation {
+        try await NetworkResource(method: .post,
+                                  params: ["state": state.rawValue],
+                                  api: "/api/v1/invitations/\(ID)/reply/")
+            .request()
     }
     
-    class func createInvitation(parameters: JSON) -> NetworkPublisher<FDInvitation> {
-        return NetworkResource(method: .post,
-                               params: parameters,
-                               api: "/api/v1/invitations/")
-            .requestPubliser()
-            .tryImportObject()
+    class func createInvitation(parameters: JSON) async throws -> FDInvitation {
+        try await NetworkResource(method: .post,
+                                  params: parameters,
+                                  api: "/api/v1/invitations/")
+            .request()
     }
     
 }

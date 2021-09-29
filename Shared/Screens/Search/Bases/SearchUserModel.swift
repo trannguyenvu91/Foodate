@@ -15,7 +15,9 @@ class SearchUserModel: BaseViewModel, ListViewModel {
     override init() {
         self.paginator = SearchProfilePaginator(nil)
         super.init()
-        fetchNext()
+        asyncDo { [weak self] in
+            try await self?.fetchNext()
+        }
     }
     
     var users: [ObjectPublisher<FDUserProfile>] {

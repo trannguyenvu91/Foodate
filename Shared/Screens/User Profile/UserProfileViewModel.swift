@@ -9,13 +9,25 @@ import Foundation
 import Combine
 import CoreStore
 
-class UserProfileViewModel: ObjectBaseViewModel<FDUserProfile> {
+class UserProfileViewModel: ObjectBaseViewModel<FDUserProfile>, ListViewModel {
     
-    func refreshProfile() {
+    var paginator: Paginator<FDInvitation>
+    
+    init(_ user: ObjectPublisher<FDUserProfile>) {
+        self.paginator = InvitationPaginator.paginator(userID: user.id!)
+        super.init()
+        self.objectPubliser = user
+    }
+    
+    var invitations: [ObjectPublisher<FDInvitation>] {
+        paginator.items.compactMap({ $0.asPublisher(in: .defaultStack) })
+    }
+    
+    func refresh() async throws {
         guard let id = objectPubliser.id else {
             return
         }
-        execute(publisher: NetworkService.getUser(ID: id))
+        let _ = try await NetworkService.getUser(ID: id)
+        try await paginator.refresh()
     }
-    
 }

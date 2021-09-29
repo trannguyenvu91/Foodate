@@ -19,8 +19,10 @@ class RequestListViewModel: BaseViewModel, ListViewModel {
         self.paginator = RequestPaginator(invitationID)
         self.invitationID = invitationID
         super.init()
-        fetchNext()
         bindAcceptRequester()
+        asyncDo { [weak self] in
+            try await self?.fetchNext()
+        }
     }
     
     var requesters: [ObjectSnapshot<FDRequester>] {
@@ -28,12 +30,13 @@ class RequestListViewModel: BaseViewModel, ListViewModel {
     }
     
     func bindAcceptRequester() {
-        let publisher = acceptRequester.flatMap({ [unowned self] in
-            NetworkService.acceptRequest(for: self.invitationID, requestID: $0.$requestID)
-        }).eraseToAnyPublisher()
-        execute(publisher: publisher) { [weak self] _ in
-            self?.viewDismissalModePublisher.send(true)
+        acceptRequester.sink { [unowned self] requester in
+            asyncDo {
+                let _ = try await NetworkService.acceptRequest(for: invitationID, requestID: requester.$requestID)
+                viewDismissalModePublisher.send(true)
+            }
         }
+        .store(in: &cancelableSet)
     }
     
 }

@@ -10,7 +10,11 @@ import Alamofire
 import Combine
 import Foundation
 
-extension JSON {
+extension JSON: ImportableJSONObject {
+    static func importObject(from source: JSON) throws -> JSON {
+        source
+    }
+    
     func nullified() -> JSON {
         return self.filter({ type(of: $0.key) != NSNull.self && type(of: $0.value) != NSNull.self })
     }
@@ -27,7 +31,7 @@ struct NetworkError: Error {
     
 }
 
-struct NetworkResource {
+struct NetworkResource<T> where T: ImportableJSONObject {
     
     let method: HTTPMethod
     let params: JSON?
@@ -37,10 +41,11 @@ struct NetworkResource {
         return NetworkConfig.baseURL + api
     }
     
-    func requestPubliser() -> JSONPublisher {
-        return NetworkService.requestPubliser(url: urlPath,
-                                              method: method,
-                                              parameters: params)
+    func request() async throws -> T {
+        let response = try await NetworkService.request(url: urlPath,
+                                                        method: method,
+                                                        parameters: params)
+        return try T.importObject(from: response)
     }
     
 }

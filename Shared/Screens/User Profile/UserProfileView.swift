@@ -26,13 +26,18 @@ struct UserProfileView: View {
                         .listRowInsets(EdgeInsets())
                         .frame(width: proxy.size.width, height: proxy.size.width)
                     personalInfoView(snapshot)
-                    BulletinBoardView(snapshot.$bulletinBoard)
+                    BulletinBoardView(model.invitations)
                 }
                 .navigationTitle(snapshot.name)
             }
         }
         .onAppear {
-            model.refreshProfile()
+            model.asyncDo {
+                try await model.refresh()
+            }
+        }
+        .refreshable {
+            try? await model.refresh()
         }
         .bindErrorAlert(to: $model)
         .ignoresSafeArea()

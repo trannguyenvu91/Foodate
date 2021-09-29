@@ -6,17 +6,14 @@
 //
 
 import Foundation
-import Combine
-
 
 extension NetworkService {
     
-    class func getPlace(ID: String) -> NetworkPublisher<FDPlace> {
-        return NetworkResource(method: .get,
-                               params: nil,
-                               api: "/api/v1/places/\(ID)/")
-            .requestPubliser()
-            .tryImportObject()
+    class func getPlace(ID: String) async throws -> FDPlace {
+        try await NetworkResource(method: .get,
+                                  params: nil,
+                                  api: "/api/v1/places/\(ID)/")
+            .request()
     }
     
 }

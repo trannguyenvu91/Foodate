@@ -41,7 +41,7 @@ struct EditProfileView: View {
     
     var updateButton: some View {
         Button(action: {
-            self.model.updateCommand.send(nil)
+            self.model.update()
         }) {
             Text("Update")
                 .bold()

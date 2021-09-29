@@ -32,8 +32,12 @@ struct PlaceProfileView: View {
             }
         }
         .onAppear {
-            model.refreshProfile()
-            model.fetchNext()
+            model.asyncDo {
+                try await self.model.refresh()
+            }
+        }
+        .refreshable {
+            try? await self.model.refresh()
         }
         .bindErrorAlert(to: $model)
     }

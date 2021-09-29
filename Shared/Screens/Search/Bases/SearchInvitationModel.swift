@@ -15,7 +15,9 @@ class SearchInvitationModel: BaseViewModel, ListViewModel {
     override init() {
         self.paginator = SearchInvitationPaginator(nil)
         super.init()
-        fetchNext()
+        asyncDo { [weak self] in
+            try await self?.fetchNext()
+        }
     }
     
     var invitations: [ObjectPublisher<FDInvitation>] {

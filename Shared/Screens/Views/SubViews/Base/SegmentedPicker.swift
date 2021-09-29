@@ -104,7 +104,7 @@ struct SegmentedPicker: View {
                             .frame(width: bounds.width, height: markerHeight)
                             .fixedSize()
                             .offset(x: bounds.minX, y: bounds.maxY)
-                            .animation(.easeInOut(duration: 0.33)))
+                            .animation(.easeInOut(duration: 0.33), value: 1))
         } else {
             return AnyView(EmptyView())
         }

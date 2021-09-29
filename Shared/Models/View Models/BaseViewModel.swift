@@ -19,13 +19,12 @@ class BaseViewModel: NSObject, ObservableObject {
         }
     }
     
-    func execute<T>(publisher: NetworkPublisher<T>, success: ((T) -> Void)? = nil) {
-        publisher.sink { (result) in
-            self.error = result.error
-        } receiveValue: { object in
-            success?(object)
+    func asyncDo(_ action: @escaping () async throws -> Void) {
+        Foodate.asyncDo(action) { [unowned self] err in
+            DispatchQueue.main.async {
+                error = err
+            }
         }
-        .store(in: &cancelableSet)
     }
     
     func bind(_ willChanges: [ObservableObjectPublisher]) {
@@ -37,4 +36,14 @@ class BaseViewModel: NSObject, ObservableObject {
         .store(in: &cancelableSet)
     }
     
+}
+
+func asyncDo(_ action: @escaping () async throws -> Void, failed: ((Error) -> Void)? = nil) {
+    Task {
+        do {
+            try await action()
+        } catch {
+            failed?(error)
+        }
+    }
 }

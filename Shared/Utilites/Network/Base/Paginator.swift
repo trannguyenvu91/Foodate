@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Combine
 
 class Paginator <T>: PaginatorProtocol where T: Equatable & ImportableJSONObject {
     
@@ -24,54 +23,31 @@ class Paginator <T>: PaginatorProtocol where T: Equatable & ImportableJSONObject
             append(results: currentPage?.results)
         }
     }
-    var cancelableSet: Set<AnyCancellable> = []
-
+    
     required init(_ initial: NetworkPage<modelClass>) {
         self.initialPage = initial
         self.currentPage = initial
     }
     
-    var isCanceled = false {
-        didSet {
-            if isCanceled {
-                cancelableSet.forEach({ $0.cancel() })
-            }
-        }
-    }
-    
     var hasNext: Bool {
-        return currentPage?.nextURL != nil
+        currentPage?.nextURL != nil
     }
     
-    func fetchNextPage(completion: CompletionBlock?, failure: FailureBlock?) {
+    func fetchNext() async throws {
         guard !isFetching, hasNext else {
             return
         }
         isFetching = true
-        currentPage?.fetchNext().sink(receiveCompletion: { [weak self] (receive) in
-            self?.isFetching = false
-            switch receive {
-            case .failure(let error):
-                failure?(error)
-            default:
-                completion?()
-                break
-            }
-        }, receiveValue: { (page) in
-            self.currentPage = page
-        })
-        .store(in: &cancelableSet)
+        currentPage = try await currentPage?.fetchNext()
+        isFetching = false
     }
     
-    func refresh(completion: CompletionBlock?, failure: FailureBlock?) {
-        isCanceled = true
-        isFetching = false
-        currentPage = initialPage
-        fetchNextPage(completion: completion, failure: failure)
+    func refresh() async throws {
+        reset()
+        try await fetchNext()
     }
     
     func reset() {
-        isCanceled = true
         isFetching = false
         items.removeAll()
         currentPage = initialPage
@@ -89,5 +65,5 @@ extension Paginator {
         guard let results = results else { return }
         items.append(contentsOf: results)
     }
-
+    
 }

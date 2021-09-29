@@ -22,11 +22,12 @@ class PlaceProfileViewModel: ObjectBaseViewModel<FDPlace>, ListViewModel {
         paginator.items.compactMap({ $0.asPublisher(in: .defaultStack) })
     }
     
-    func refreshProfile() {
+    func refresh() async throws {
         guard let id = objectPubliser.id else {
             return
         }
-        execute(publisher: NetworkService.getPlace(ID: id))
+        let _ = try await NetworkService.getPlace(ID: id)
+        try await paginator.refresh()
     }
     
 }
