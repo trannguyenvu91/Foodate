@@ -7,8 +7,9 @@
 //
 
 import Foundation
+import Combine
 
-protocol ListViewModel: NSObjectProtocol {
+protocol ListViewModel: ObservableObject {
     associatedtype modelClass: Equatable & ImportableJSONObject
     var paginator: Paginator<modelClass> { get }
     var error: Error? { get set }
@@ -16,7 +17,7 @@ protocol ListViewModel: NSObjectProtocol {
     func fetchNext() async throws
 }
 
-extension ListViewModel {
+extension ListViewModel where Self.ObjectWillChangePublisher == ObservableObjectPublisher  {
     
     var items: [modelClass] {
         paginator.items
@@ -24,10 +25,16 @@ extension ListViewModel {
     
     func refresh() async throws {
         try await paginator.refresh()
+        DispatchQueue.main.async {
+            self.objectWillChange.send()
+        }
     }
     
     func fetchNext() async throws {
         try await paginator.fetchNext()
+        DispatchQueue.main.async {
+            self.objectWillChange.send()
+        }
     }
     
 }

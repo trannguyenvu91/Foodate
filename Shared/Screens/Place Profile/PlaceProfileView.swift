@@ -27,8 +27,6 @@ struct PlaceProfileView: View {
                     placeInfoView(snapshot)
                 }
                 BulletinBoardView(model.invitations, showPlace: false)
-                    .ignoresSafeArea()
-                    .listStyle(PlainListStyle())
             }
         }
         .onAppear {
@@ -40,6 +38,8 @@ struct PlaceProfileView: View {
             try? await self.model.refresh()
         }
         .bindErrorAlert(to: $model)
+        .ignoresSafeArea()
+        .listStyle(PlainListStyle())
     }
     
     func placeInfoView(_ snapshot: ObjectSnapshot<FDPlace>) -> some View {

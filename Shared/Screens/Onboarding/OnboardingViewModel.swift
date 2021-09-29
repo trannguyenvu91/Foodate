@@ -7,6 +7,7 @@
 
 import Combine
 import CoreStore
+import Foundation
 
 enum OnboardingMode {
     case signUp
@@ -61,7 +62,9 @@ class OnboardingViewModel: BaseViewModel {
                                                           password: password,
                                                           email: email)
             }
-            AppConfig.shared.sessionUser = try? FDCoreStore.shared.fetchSessionUser()
+            DispatchQueue.main.async {
+                AppConfig.shared.sessionUser = try? FDCoreStore.shared.fetchSessionUser()
+            }
         }
     }
     

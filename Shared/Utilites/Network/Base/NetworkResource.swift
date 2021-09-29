@@ -31,7 +31,7 @@ struct NetworkError: Error {
     
 }
 
-struct NetworkResource<T> where T: ImportableJSONObject {
+struct NetworkResource<Result> where Result: ImportableJSONObject {
     
     let method: HTTPMethod
     let params: JSON?
@@ -41,11 +41,11 @@ struct NetworkResource<T> where T: ImportableJSONObject {
         return NetworkConfig.baseURL + api
     }
     
-    func request() async throws -> T {
+    func request() async throws -> Result {
         let response = try await NetworkService.request(url: urlPath,
                                                         method: method,
                                                         parameters: params)
-        return try T.importObject(from: response)
+        return try Result.importObject(from: response)
     }
     
 }

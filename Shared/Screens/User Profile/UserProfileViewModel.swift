@@ -29,5 +29,8 @@ class UserProfileViewModel: ObjectBaseViewModel<FDUserProfile>, ListViewModel {
         }
         let _ = try await NetworkService.getUser(ID: id)
         try await paginator.refresh()
+        DispatchQueue.main.async {
+            self.objectWillChange.send()
+        }
     }
 }
