@@ -9,7 +9,7 @@
 import Foundation
 import Alamofire
 
-let serverBaseURL = "http://192.168.1.5:8000/"
+let serverBaseURL = "http://192.168.1.5:8000"
 
 class NetworkConfig: NSObject {
     static var baseURL: String { serverBaseURL }

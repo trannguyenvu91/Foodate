@@ -151,39 +151,35 @@ struct InviteView: View {
         }
     }
     
-    func placeInfo(_ place: ObjectPublisher<FDPlace>) -> some View {
-        ObjectReader(place) { snapshot in
-            VStack(alignment: .leading) {
-                HStack {
-                    VStack(alignment: .leading) {
-                        Text(snapshot.$name ?? "--")
-                            .fontWeight(.medium)
-                        Text(snapshot.$vicinity ?? "--")
-                            .foregroundColor(.gray)
-                            .font(.subheadline)
-                    }
-                    Spacer()
-                    Button {
-                        model.draft.place = nil
-                    } label: {
-                        xCloseImage
-                            .frame(width: 8, height: 8)
-                            .padding(6)
-                            .background(Color.groupTableViewBackground)
-                            .cornerRadius(10)
-                    }
+    func placeInfo(_ snapshot: ObjectSnapshot<FDPlace>) -> some View {
+        VStack(alignment: .leading) {
+            HStack {
+                VStack(alignment: .leading) {
+                    Text(snapshot.$name ?? "--")
+                        .fontWeight(.medium)
+                    Text(snapshot.$vicinity ?? "--")
+                        .foregroundColor(.gray)
+                        .font(.subheadline)
                 }
-                mapView(snapshot)
+                Spacer()
+                Button {
+                    model.draft.place = nil
+                } label: {
+                    xCloseImage
+                        .frame(width: 8, height: 8)
+                        .padding(6)
+                        .background(Color.groupTableViewBackground)
+                        .cornerRadius(10)
+                }
             }
+            mapView(snapshot)
         }
     }
     
-    func personInfo(_ user: ObjectPublisher<FDUserProfile>) -> some View {
+    func personInfo(_ snapshot: ObjectSnapshot<FDUserProfile>) -> some View {
         HStack {
-            ObjectReader(user) { snapshot in
-                UserHeader(snapshot)
-                    .height(50)
-            }
+            UserHeader(snapshot)
+                .height(50)
             Button {
                 model.draft.toUser = nil
             } label: {
@@ -271,8 +267,8 @@ extension InviteView {
     
     init(person: ObjectPublisher<FDUserProfile>? = nil, to place: ObjectPublisher<FDPlace>? = nil) {
         self.init()
-        self.model.draft.toUser = person
-        self.model.draft.place = place
+        self.model.draft.toUser = person?.asSnapshot(in: .defaultStack)
+        self.model.draft.place = place?.asSnapshot(in: .defaultStack)
     }
     
 }

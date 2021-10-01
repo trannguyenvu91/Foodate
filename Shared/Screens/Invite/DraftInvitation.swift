@@ -13,8 +13,8 @@ class DraftInvitation: ObservableObject {
     
     @Published var title = ""
     @Published var startAt = Date().shift(day: 1, at: 19, minute: 0)
-    @Published var toUser: ObjectPublisher<FDUserProfile>?
-    @Published var place: ObjectPublisher<FDPlace>?
+    @Published var toUser: ObjectSnapshot<FDUserProfile>?
+    @Published var place: ObjectSnapshot<FDPlace>?
     @Published var shareBill = FDShareBill.fifty
     @Published var duration: TimeInterval = 3600
     
@@ -54,7 +54,7 @@ class DraftInvitation: ObservableObject {
     
     func jsonData() -> JSON {
         var json: JSON = [
-            "place": ["place_id": place?.id ?? ""],
+            "place": ["place_id": place?.$id ?? ""],
             "title": title,
             "start_at": DateFormatter.standard.string(from: startAt),
             "end_at": DateFormatter.standard.string(from: endAt),

@@ -27,22 +27,24 @@ class InviteViewModel: BaseViewModel, Identifiable {
     func bindSelectionCommand() {
         selectionCommand.sink { [unowned self] object in
             if let user = object as? ObjectPublisher<FDUserProfile> {
-                self.draft.toUser = user
+                self.draft.toUser = user.asSnapshot(in: .defaultStack)
             } else if let place = object as? ObjectPublisher<FDPlace> {
-                self.draft.place = place
+                self.draft.place = place.asSnapshot(in: .defaultStack)
             }
         }
         .store(in: &cancelableSet)
     }
     
     func bindCreateCommand() {
-        createCommand.sink { [unowned self] _ in
-            asyncDo {
-                let invitation = try await NetworkService.createInvitation(parameters: try draft.getData())
-                didCreateCommand.send(invitation)
+        createCommand
+            .receive(on: RunLoop.main)
+            .sink { [unowned self] _ in
+                asyncDo {
+                    let invitation = try await NetworkService.createInvitation(parameters: try draft.getData())
+                    didCreateCommand.send(invitation)
+                }
             }
-        }
-        .store(in: &cancelableSet)
+            .store(in: &cancelableSet)
     }
     
 }

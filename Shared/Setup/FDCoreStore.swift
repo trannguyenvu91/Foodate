@@ -28,8 +28,10 @@ class FDCoreStore {
         )
     }
     
-    func fetchSessionUser() throws -> ObjectPublisher<FDSessionUser>? {
-        try dataStack.fetchAll(From<FDSessionUser>()).first?.asPublisher(in: .defaultStack)
+    func fetchSessionUser() throws -> ObjectSnapshot<FDSessionUser>? {
+        try dataStack.fetchAll(From<FDSessionUser>())
+            .first?
+            .asSnapshot(in: .defaultStack)
     }
     
 }

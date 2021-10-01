@@ -1,24 +1,16 @@
 import Alamofire
-import Combine
 import Foundation
 
-var cancellables = Set<AnyCancellable>()
-
-let randomNumberGenerator = Timer
-        .publish(every: 1, on: .main, in: .common)
-        .autoconnect()
-        .map { _ in Int.random(in: 1...100) }
-        .share()
-
-randomNumberGenerator
-    .sink { number in
-        print(number)
+func asyncPrint() async throws {
+    let _: Int = try await withCheckedThrowingContinuation { continuation in
+        DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+            print("Hello")
+            continuation.resume(returning: 1)
+        }
     }
-    .store(in: &cancellables)
+    print("Vu")
+}
 
-randomNumberGenerator
-    .sink { number in
-        print(number)
-    }
-    .store(in: &cancellables)
-
+Task {
+    try await asyncPrint()
+}

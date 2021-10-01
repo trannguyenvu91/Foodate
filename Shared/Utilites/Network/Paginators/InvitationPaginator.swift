@@ -19,10 +19,10 @@ class InvitationPaginator: Paginator<FDInvitation> {
 
 extension InvitationPaginator {
     class func paginator(placeID: String) -> InvitationPaginator {
-        InvitationPaginator("api/v1/places/\(placeID)/invitations/")
+        InvitationPaginator("/api/v1/places/\(placeID)/invitations/")
     }
     class func paginator(userID: Int) -> InvitationPaginator {
-        InvitationPaginator("api/v1/users/\(userID)/invitations/")
+        InvitationPaginator("/api/v1/users/\(userID)/invitations/")
     }
     
 }

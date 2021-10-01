@@ -24,7 +24,9 @@ class EditProfileViewModel: BaseViewModel {
     func update() {
         asyncDo { [unowned self] in
             let _ = try await NetworkService.updateUser(ID: self.session.$id, parameters: self.draft.json)
-            self.didUpdateProfile.send(true)
+            DispatchQueue.main.async {
+                self.didUpdateProfile.send(true)
+            }
         }
     }
     
