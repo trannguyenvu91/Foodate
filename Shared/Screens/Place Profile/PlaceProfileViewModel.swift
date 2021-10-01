@@ -28,9 +28,7 @@ class PlaceProfileViewModel: ObjectBaseViewModel<FDPlace>, ListViewModel {
         }
         let _ = try await NetworkService.getPlace(ID: id)
         try await paginator.refresh()
-        DispatchQueue.main.async {
-            self.objectWillChange.send()
-        }
+        self.objectWillChange.send()
     }
     
 }

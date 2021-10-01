@@ -37,7 +37,6 @@ class InviteViewModel: BaseViewModel, Identifiable {
     
     func bindCreateCommand() {
         createCommand
-            .receive(on: RunLoop.main)
             .sink { [unowned self] _ in
                 asyncDo {
                     let invitation = try await NetworkService.createInvitation(parameters: try draft.getData())

@@ -62,9 +62,7 @@ class OnboardingViewModel: BaseViewModel {
                                                           password: password,
                                                           email: email)
             }
-            DispatchQueue.main.async {
-                AppConfig.shared.sessionUser = try? FDCoreStore.shared.fetchSessionUser()
-            }
+            AppConfig.shared.sessionUser = try? FDCoreStore.shared.fetchSessionUser()
         }
     }
     

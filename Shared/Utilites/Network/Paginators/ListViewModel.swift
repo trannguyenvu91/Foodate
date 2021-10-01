@@ -25,16 +25,12 @@ extension ListViewModel where Self.ObjectWillChangePublisher == ObservableObject
     
     func refresh() async throws {
         try await paginator.refresh()
-        DispatchQueue.main.async {
-            self.objectWillChange.send()
-        }
+        self.objectWillChange.send()
     }
     
     func fetchNext() async throws {
         try await paginator.fetchNext()
-        DispatchQueue.main.async {
-            self.objectWillChange.send()
-        }
+        self.objectWillChange.send()
     }
     
 }
