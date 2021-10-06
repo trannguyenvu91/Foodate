@@ -23,7 +23,7 @@ struct UserCell: View {
         HStack(alignment: .center, spacing: 0) {
             if let _ = selectionCommand {
                 Button {
-                    selectionCommand?.send(user)
+                    selectionCommand?.send(user.asSnapshot(in: .defaultStack) as Any)
                 } label: {
                     Image(systemName: "checkmark.circle")
                         .resizable()

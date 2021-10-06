@@ -26,10 +26,10 @@ class InviteViewModel: BaseViewModel, Identifiable {
     
     func bindSelectionCommand() {
         selectionCommand.sink { [unowned self] object in
-            if let user = object as? ObjectPublisher<FDUserProfile> {
-                self.draft.toUser = user.asSnapshot(in: .defaultStack)
-            } else if let place = object as? ObjectPublisher<FDPlace> {
-                self.draft.place = place.asSnapshot(in: .defaultStack)
+            if let user = object as? ObjectSnapshot<FDUserProfile> {
+                self.draft.toUser = user
+            } else if let place = object as? ObjectSnapshot<FDPlace> {
+                self.draft.place = place
             }
         }
         .store(in: &cancelableSet)

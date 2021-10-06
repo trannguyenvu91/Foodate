@@ -17,27 +17,22 @@ extension NetworkPage: ImportableJSONObject {
         )
     }
     
-    init(nextURL: String?, results: [T]?, params: JSON? = nil) {
-        if let path = nextURL,
-           var components = URLComponents(string: path),
-           let queryItems = params?.map({ URLQueryItem(name: $0.key, value: "\($0.value)") }) {
-            components.queryItems?.append(contentsOf: queryItems)
-            self.nextURL = components.path
-        } else {
-            self.nextURL = nextURL
-        }
-        self.results = results
-    }
-    
 }
 
 struct NetworkPage<T> where T: ImportableJSONObject {
     
     let nextURL: String?
     let results: [T]?
+    let params: JSON?
     
     enum CodingKeys: String, CodingKey {
         case nextURL = "next", results
+    }
+    
+    init(nextURL: String?, results: [T]?, params: JSON? = nil) {
+        self.nextURL = nextURL
+        self.params = params
+        self.results = results
     }
     
     func fetchNext() async throws -> NetworkPage<T> {

@@ -68,18 +68,6 @@ class NetworkService: NSObject {
     
     static private let actor = ServiceActor()
     
-    static let decoder: JSONDecoder = {
-        let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .formatted(.standard)
-        return decoder
-    }()
-    
-    static let encoder: JSONEncoder = {
-        let encoder = JSONEncoder()
-        encoder.dateEncodingStrategy = .formatted(.standard)
-        return encoder
-    }()
-    
     @MainActor
     class func request(url: String,
                        method: HTTPMethod,

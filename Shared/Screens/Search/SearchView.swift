@@ -44,6 +44,9 @@ struct SearchView: View {
         .onReceive(selectionCommand ?? PassthroughSubject<Any, Never>()) { _ in
             self.presentationMode.wrappedValue.dismiss()
         }
+        .refreshable {
+            await model.refresh()
+        }
     }
     
     var searchBar: some View {
@@ -72,18 +75,18 @@ struct SearchView: View {
     }
     
     var invitationList: some View {
-        BulletinBoardView(model.invitationSearch.invitations)
+        BulletinBoardView(model.invitations)
     }
     
     var userList: some View {
-        ForEach(model.userSearch.users, id: \.self) { user in
+        ForEach(model.users, id: \.self) { user in
             UserCell(user, selectionCommand: selectionCommand)
         }
         .listRowInsets(EdgeInsets())
     }
     
     var placeList: some View {
-        ForEach(model.placeSearch.places, id: \.self) { place in
+        ForEach(model.places, id: \.self) { place in
             PlaceCell(place, selectionCommand: selectionCommand)
         }
         .listRowInsets(EdgeInsets())

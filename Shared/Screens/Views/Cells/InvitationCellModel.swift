@@ -14,8 +14,8 @@ class InvitationCellModel: ObjectBaseViewModel<FDInvitation> {
     let inviteFriend = PassthroughSubject<Any, Never>()
     let reply = PassthroughSubject<FDInvitationState, Never>()
     
-    override init() {
-        super.init()
+    override init(_ invitation: ObjectPublisher<FDInvitation>) {
+        super.init(invitation)
         bindSendRequest()
         bindReply()
         bindInviteCommand()
@@ -42,12 +42,12 @@ class InvitationCellModel: ObjectBaseViewModel<FDInvitation> {
     
     func bindInviteCommand() {
         inviteFriend.sink { [unowned self] user in
-            guard let user = user as? ObjectPublisher<FDUserProfile> else {
+            guard let user = user as? ObjectSnapshot<FDUserProfile> else {
                 return
             }
-            let updates = ["to_user": ["id": user.id ?? 0]]
+            let updates = ["to_user": ["id": user.$id]]
             asyncDo {
-                let _ = try await NetworkService.updateInvitation(ID: objectPubliser.id ?? 0,
+                let _ = try await NetworkService.updateInvitation(ID: objectSnapshot.$id,
                                                           parameters: updates)
             }
         }

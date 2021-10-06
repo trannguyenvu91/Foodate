@@ -17,20 +17,29 @@ protocol ListViewModel: ObservableObject {
     func fetchNext() async throws
 }
 
-extension ListViewModel where Self.ObjectWillChangePublisher == ObservableObjectPublisher  {
+extension ListViewModel where Self: BaseViewModel  {
     
     var items: [modelClass] {
         paginator.items
     }
     
-    func refresh() async throws {
-        try await paginator.refresh()
-        self.objectWillChange.send()
+    func refresh() async {
+        do {
+            try await paginator.refresh()
+            self.objectWillChange.send()
+        } catch {
+            self.error = error
+        }
+        
     }
     
-    func fetchNext() async throws {
-        try await paginator.fetchNext()
-        self.objectWillChange.send()
+    func fetchNext() async {
+        do {
+            try await paginator.fetchNext()
+            self.objectWillChange.send()
+        } catch {
+            self.error = error
+        }
     }
     
 }

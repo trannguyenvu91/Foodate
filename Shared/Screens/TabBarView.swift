@@ -19,6 +19,11 @@ struct TabBarView: View {
                     .resizable()
                     .font(.system(size: tabFontSize))
             }
+            calendarView.tabItem {
+                Image(systemName: "calendar")
+                    .resizable()
+                    .font(.system(size: tabFontSize))
+            }
             profileView.tabItem {
                 Image(systemName: "person.circle")
                     .resizable()
@@ -42,6 +47,12 @@ struct TabBarView: View {
     var sugguestView: some View {
         NavigationView {
             SearchView()
+        }
+    }
+    
+    var calendarView: some View {
+        NavigationView {
+            CalendarView()
         }
     }
     

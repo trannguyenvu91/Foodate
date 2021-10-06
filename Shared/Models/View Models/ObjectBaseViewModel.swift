@@ -12,15 +12,18 @@ import CoreStore
 class ObjectBaseViewModel<T>: BaseViewModel where T: CoreStoreObject {
     
     var objectPubliser: ObjectPublisher<T>!
+    var objectSnapshot: ObjectSnapshot<T>!
     
-    convenience init(_ object: T) {
-        self.init()
+    init(_ object: T) {
+        super.init()
         objectPubliser = object.asPublisher(in: .defaultStack)
+        objectSnapshot = object.asSnapshot(in: .defaultStack)
     }
     
-    convenience init(_ publiser: ObjectPublisher<T>) {
-        self.init()
+    init(_ publiser: ObjectPublisher<T>) {
+        super.init()
         objectPubliser = publiser
+        objectSnapshot = publiser.asSnapshot(in: .defaultStack)
     }
 }
 

@@ -30,12 +30,12 @@ struct PlaceProfileView: View {
             }
         }
         .onAppear {
-            model.asyncDo {
-                try await self.model.refresh()
+            Task {
+                await self.model.refresh()
             }
         }
         .refreshable {
-            try? await self.model.refresh()
+            await self.model.refresh()
         }
         .bindErrorAlert(to: $model)
         .ignoresSafeArea()

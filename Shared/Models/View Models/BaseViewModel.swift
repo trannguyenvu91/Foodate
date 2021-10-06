@@ -20,9 +20,11 @@ class BaseViewModel: NSObject, ObservableObject {
     }
     
     func asyncDo(_ action: @escaping () async throws -> Void) {
-        Foodate.asyncDo(action) { [unowned self] err in
-            DispatchQueue.main.async {
-                error = err
+        Task {
+            do {
+                try await action()
+            } catch {
+                self.error = error
             }
         }
     }
@@ -36,14 +38,4 @@ class BaseViewModel: NSObject, ObservableObject {
         .store(in: &cancelableSet)
     }
     
-}
-
-func asyncDo(_ action: @escaping () async throws -> Void, failed: ((Error) -> Void)? = nil) {
-    Task {
-        do {
-            try await action()
-        } catch {
-            failed?(error)
-        }
-    }
 }

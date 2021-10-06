@@ -25,7 +25,7 @@ struct PlaceCell: View {
         HStack(alignment: .center, spacing: 0) {
             if let _ = selectionCommand {
                 Button {
-                    selectionCommand?.send(place)
+                    selectionCommand?.send(place.asSnapshot(in: .defaultStack) as Any)
                 } label: {
                     Image(systemName: "checkmark.circle")
                         .resizable()

@@ -12,23 +12,26 @@ class PlaceProfileViewModel: ObjectBaseViewModel<FDPlace>, ListViewModel {
     
     var paginator: Paginator<FDInvitation>
     
-    init(_ place: ObjectPublisher<FDPlace>) {
+    override init(_ place: ObjectPublisher<FDPlace>) {
         self.paginator = InvitationPaginator.paginator(placeID: place.id!)
-        super.init()
-        self.objectPubliser = place
+        super.init(place)
     }
     
     var invitations: [ObjectPublisher<FDInvitation>] {
         paginator.items.compactMap({ $0.asPublisher(in: .defaultStack) })
     }
     
-    func refresh() async throws {
+    func refresh() async {
         guard let id = objectPubliser.id else {
             return
         }
-        let _ = try await NetworkService.getPlace(ID: id)
-        try await paginator.refresh()
-        self.objectWillChange.send()
+        do {
+            let _ = try await NetworkService.getPlace(ID: id)
+            try await paginator.refresh()
+            self.objectWillChange.send()
+        } catch {
+            self.error = error
+        }
     }
     
 }

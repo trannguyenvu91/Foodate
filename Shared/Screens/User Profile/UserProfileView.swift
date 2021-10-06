@@ -32,12 +32,12 @@ struct UserProfileView: View {
             }
         }
         .onAppear {
-            model.asyncDo {
-                try await model.refresh()
+            Task {
+                await model.refresh()
             }
         }
         .refreshable {
-            try? await model.refresh()
+            await model.refresh()
         }
         .bindErrorAlert(to: $model)
         .ignoresSafeArea()

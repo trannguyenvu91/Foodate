@@ -13,22 +13,26 @@ class UserProfileViewModel: ObjectBaseViewModel<FDUserProfile>, ListViewModel {
     
     var paginator: Paginator<FDInvitation>
     
-    init(_ user: ObjectPublisher<FDUserProfile>) {
-        self.paginator = InvitationPaginator.paginator(userID: user.id!)
-        super.init()
-        self.objectPubliser = user
+    override init(_ user: ObjectPublisher<FDUserProfile>) {
+        self.paginator = InvitationPaginator.paginator(userID: user.id!, type: .events)
+        super.init(user)
     }
     
     var invitations: [ObjectPublisher<FDInvitation>] {
         paginator.items.compactMap({ $0.asPublisher(in: .defaultStack) })
     }
     
-    func refresh() async throws {
+    func refresh() async {
         guard let id = objectPubliser.id else {
             return
         }
-        let _ = try await NetworkService.getUser(ID: id)
-        try await paginator.refresh()
-        self.objectWillChange.send()
+        do {
+            let _ = try await NetworkService.getUser(ID: id)
+            try await paginator.refresh()
+            self.objectWillChange.send()
+        } catch {
+            self.error = error
+        }
+        
     }
 }
