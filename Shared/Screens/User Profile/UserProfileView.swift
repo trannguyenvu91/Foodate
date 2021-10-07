@@ -26,7 +26,9 @@ struct UserProfileView: View {
                         .listRowInsets(EdgeInsets())
                         .frame(width: proxy.size.width, height: proxy.size.width)
                     personalInfoView(snapshot)
-                    BulletinBoardView(model.invitations)
+                    BulletinBoardView(model.invitations) {
+                        Task { await model.fetchNext() }
+                    }
                 }
                 .navigationTitle(snapshot.name)
             }
@@ -95,7 +97,7 @@ struct UserProfileView: View {
     }
     
     func inviteView(_ snapshot: ObjectSnapshot<FDUserProfile>) -> AnyView {
-        PresentButton(destination: LazyView(InviteView(person: model.objectPubliser, to: nil))) {
+        PresentButton(destination: LazyView(InviteView(model.objectPubliser, to: nil))) {
             HStack {
                 Image(systemName: "calendar.badge.plus")
                     .resizable()

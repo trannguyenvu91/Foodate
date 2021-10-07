@@ -265,12 +265,17 @@ struct InviteView: View {
 
 extension InviteView {
     
-    init(person: ObjectPublisher<FDUserProfile>? = nil, to place: ObjectPublisher<FDPlace>? = nil) {
+    init(_ person: ObjectPublisher<FDUserProfile>? = nil, to place: ObjectPublisher<FDPlace>? = nil) {
         self.init()
         self.model.draft.toUser = person?.asSnapshot(in: .defaultStack)
         self.model.draft.place = place?.asSnapshot(in: .defaultStack)
     }
     
+    init(_ person: ObjectSnapshot<FDUserProfile>? = nil, to place: ObjectSnapshot<FDPlace>? = nil) {
+        self.init()
+        self.model.draft.toUser = person
+        self.model.draft.place = place
+    }
 }
 
 extension FDShareBill {

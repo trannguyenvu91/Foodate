@@ -75,7 +75,9 @@ struct SearchView: View {
     }
     
     var invitationList: some View {
-        BulletinBoardView(model.invitations)
+        BulletinBoardView(model.invitations) {
+            model.asyncDo { try await model.invitationPaginator.fetchNext() }
+        }
     }
     
     var userList: some View {

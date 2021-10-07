@@ -16,15 +16,20 @@ struct CalendarView: View {
         VStack {
             Picker("", selection: $model.selectedTab) {
                 ForEach(CalendarType.allCases, id: \.self) { type in
-                    Text(type.rawValue)
+                    Text(type.title)
+                        .tag(type)
                 }
             }
             .pickerStyle(SegmentedPickerStyle())
             .padding()
-            BulletinBoardView(model.invitations)
-            Spacer()
+            List {
+                BulletinBoardView(model.invitations) {
+                    Task { await model.fetchNext() }
+                }
+            }
         }
         .navigationBarHidden(true)
+        .listStyle(PlainListStyle())
         .refreshable {
             await model.refresh()
         }

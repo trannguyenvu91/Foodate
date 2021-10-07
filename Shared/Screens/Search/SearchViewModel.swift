@@ -67,6 +67,7 @@ class SearchViewModel: BaseViewModel {
             case .place:
                 try await placePaginator.refresh()
             }
+            objectWillChange.send()
         } catch {
             self.error = error
         }

@@ -152,6 +152,11 @@
 		499B0F9D270AF05A00CB1CD1 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499B0F9B270AF05A00CB1CD1 /* CalendarViewModel.swift */; };
 		499D079826E9B60E00F0056C /* StadiumShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499D079726E9B60E00F0056C /* StadiumShape.swift */; };
 		499D079926E9B60E00F0056C /* StadiumShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499D079726E9B60E00F0056C /* StadiumShape.swift */; };
+		49B9D544270EEDE1005BD619 /* InviteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B9D543270EEDE0005BD619 /* InviteCell.swift */; };
+		49B9D545270EEDE1005BD619 /* InviteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B9D543270EEDE0005BD619 /* InviteCell.swift */; };
+		49B9D554270EF806005BD619 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 49B9D557270EF806005BD619 /* Localizable.strings */; };
+		49B9D555270EF806005BD619 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 49B9D557270EF806005BD619 /* Localizable.strings */; };
+		49B9D55B270EF8B0005BD619 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FDFF8626B11EA2001185D3 /* TabBarView.swift */; };
 		49BB722C26B2A63F00329341 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BB722B26B2A63F00329341 /* UserCell.swift */; };
 		49BB722D26B2A63F00329341 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BB722B26B2A63F00329341 /* UserCell.swift */; };
 		49CA79F526C61F96005B79D9 /* BulletinBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4914AECC26A96648002F2634 /* BulletinBoardView.swift */; };
@@ -329,6 +334,9 @@
 		499B0F9B270AF05A00CB1CD1 /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
 		499C85DB2701841C0073224D /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		499D079726E9B60E00F0056C /* StadiumShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StadiumShape.swift; sourceTree = "<group>"; };
+		49B9D543270EEDE0005BD619 /* InviteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteCell.swift; sourceTree = "<group>"; };
+		49B9D556270EF806005BD619 /* en */ = {isa = PBXFileReference; explicitFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		49B9D55C270EF92E005BD619 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
 		49BB722B26B2A63F00329341 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		49CA79FB26C67020005B79D9 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 		49CA7A0526C67061005B79D9 /* EditProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewModel.swift; sourceTree = "<group>"; };
@@ -403,6 +411,7 @@
 				4965F28A26B935AE00C9B8E7 /* RequesterCell.swift */,
 				4914AEDA26A97609002F2634 /* InvitationCell.swift */,
 				4914AEDF26A97654002F2634 /* InvitationCellModel.swift */,
+				49B9D543270EEDE0005BD619 /* InviteCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -581,6 +590,7 @@
 				492D0315269ED30F00F944D0 /* Extensions */,
 				49DA1ECC26A038EF001BF85B /* Resources */,
 				4989B65D269D43C900611D10 /* Assets.xcassets */,
+				49B9D557270EF806005BD619 /* Localizable.strings */,
 				499C85DB2701841C0073224D /* MyPlayground.playground */,
 			);
 			path = Shared;
@@ -923,6 +933,7 @@
 			knownRegions = (
 				en,
 				Base,
+				vi,
 			);
 			mainGroup = 4989B655269D43C600611D10;
 			packageReferences = (
@@ -948,6 +959,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4914AF1826AA9E92002F2634 /* invitation.json in Resources */,
+				49B9D554270EF806005BD619 /* Localizable.strings in Resources */,
 				4989B688269D43C900611D10 /* Assets.xcassets in Resources */,
 				4914AF1326AA9D41002F2634 /* place.json in Resources */,
 				4965F29026B936F000C9B8E7 /* requester.json in Resources */,
@@ -959,6 +971,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49B9D555270EF806005BD619 /* Localizable.strings in Resources */,
 				4989B689269D43C900611D10 /* Assets.xcassets in Resources */,
 				4914AF1926AA9E92002F2634 /* invitation.json in Resources */,
 				4965F29126B936F000C9B8E7 /* requester.json in Resources */,
@@ -1079,6 +1092,7 @@
 				49DA1EFD26A125D0001BF85B /* Alert.swift in Sources */,
 				4965F28126B932D300C9B8E7 /* RequestListViewModel.swift in Sources */,
 				492D0303269ED30700F944D0 /* Color.swift in Sources */,
+				49B9D544270EEDE1005BD619 /* InviteCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1114,6 +1128,7 @@
 				492D030E269ED30700F944D0 /* NSCoder.swift in Sources */,
 				49FDFEF126B01190001185D3 /* NetworkService+Request.swift in Sources */,
 				492D030A269ED30700F944D0 /* Combine.swift in Sources */,
+				49B9D55B270EF8B0005BD619 /* TabBarView.swift in Sources */,
 				4965F2B226BA987400C9B8E7 /* InvitationPaginator.swift in Sources */,
 				4965F29B26BA589D00C9B8E7 /* PlaceCell.swift in Sources */,
 				4914AEF926AA6409002F2634 /* GroupPhotosView.swift in Sources */,
@@ -1133,6 +1148,7 @@
 				492D034C269EED9100F944D0 /* NetworkService.swift in Sources */,
 				492D02B1269D68AF00F944D0 /* FDUser.swift in Sources */,
 				4914AF0F26AA9B43002F2634 /* RequestsFooter.swift in Sources */,
+				49B9D545270EEDE1005BD619 /* InviteCell.swift in Sources */,
 				4914AEFE26AA793A002F2634 /* PlaceHeader.swift in Sources */,
 				499D079926E9B60E00F0056C /* StadiumShape.swift in Sources */,
 				49DA1F5926A1814E001BF85B /* ASRemoteImageView.swift in Sources */,
@@ -1208,11 +1224,24 @@
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		49B9D557270EF806005BD619 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				49B9D556270EF806005BD619 /* en */,
+				49B9D55C270EF92E005BD619 /* vi */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		4989B68A269D43C900611D10 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1272,6 +1301,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

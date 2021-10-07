@@ -41,7 +41,7 @@ struct NetworkPage<T> where T: ImportableJSONObject {
         }
         let response = try await NetworkService.request(url: nextUrl,
                                                         method: .get,
-                                                        parameters: nil)
+                                                        parameters: params)
         return try NetworkPage<T>.importObject(from: response)
     }
     

@@ -18,16 +18,24 @@ struct PhotosPageView<T: FDBasePhoto>: View {
     var body: some View {
         GeometryReader { proxy in
             TabView {
-                ForEach(photos, id: \.self) { photo in
-                    ObjectReader(photo) { snapshot in
-                        ASRemoteImageView(path: snapshot.$baseURL)
-                            .scaledToFill()
-                            .frame(width: proxy.size.width, height: proxy.size.width)
-                            .cornerRadius(0)
-                            .onAppear {
-                                guard let url = try? snapshot.$baseURL?.asURL() else { return }
-                                ASRemoteImageManager.shared.load(url)
-                            }
+                if photos.count == 0 {
+                    Image(systemName: "person.fill")
+                        .resizable()
+                        .scaledToFill()
+                        .foregroundColor(.gray.opacity(0.3))
+                        .frame(width: 50, height: 50)
+                } else {
+                    ForEach(photos, id: \.self) { photo in
+                        ObjectReader(photo) { snapshot in
+                            ASRemoteImageView(path: snapshot.$baseURL)
+                                .scaledToFill()
+                                .frame(width: proxy.size.width, height: proxy.size.width)
+                                .cornerRadius(0)
+                                .onAppear {
+                                    guard let url = try? snapshot.$baseURL?.asURL() else { return }
+                                    ASRemoteImageManager.shared.load(url)
+                                }
+                        }
                     }
                 }
             }

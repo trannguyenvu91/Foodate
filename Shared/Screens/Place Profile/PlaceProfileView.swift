@@ -26,7 +26,9 @@ struct PlaceProfileView: View {
                         .navigationTitle(snapshot.$name ?? "Địa điểm")
                     placeInfoView(snapshot)
                 }
-                BulletinBoardView(model.invitations, showPlace: false)
+                BulletinBoardView(model.invitations, showPlace: false) {
+                    Task { await model.fetchNext() }
+                }
             }
         }
         .onAppear {
@@ -68,7 +70,7 @@ struct PlaceProfileView: View {
     }
     
     var inviteView: some View {
-        PresentButton(destination: LazyView(InviteView(person: nil, to: model.objectPubliser))) {
+        PresentButton(destination: LazyView(InviteView(nil, to: model.objectPubliser))) {
             HStack {
                 Image(systemName: "calendar.badge.plus")
                     .resizable()

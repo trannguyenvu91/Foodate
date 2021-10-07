@@ -22,6 +22,6 @@ extension InvitationPaginator {
         InvitationPaginator("/api/v1/places/\(placeID)/invitations/")
     }
     class func paginator(userID: Int, type: CalendarType) -> InvitationPaginator {
-        InvitationPaginator("/api/v1/users/\(userID)/invitations", params: ["type": type.rawValue])
+        InvitationPaginator("/api/v1/users/\(userID)/invitations/", params: ["type": type.rawValue])
     }
 }

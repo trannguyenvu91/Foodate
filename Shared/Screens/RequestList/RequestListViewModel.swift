@@ -21,7 +21,7 @@ class RequestListViewModel: BaseViewModel, ListViewModel {
         super.init()
         bindAcceptRequester()
         asyncDo { [weak self] in
-            try await self?.fetchNext()
+            await self?.fetchNext()
         }
     }
     

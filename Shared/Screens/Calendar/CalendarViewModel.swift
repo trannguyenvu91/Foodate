@@ -12,6 +12,15 @@ import Combine
 enum CalendarType: String, CaseIterable {
     case events = "events"
     case inbox = "inbox"
+    
+    var title: String {
+        switch self {
+        case .events:
+            return NSLocalizedString("CalendarType_Events_Title", comment: "")
+        case .inbox:
+            return NSLocalizedString("CalendarType_Inbox_Title", comment: "")
+        }
+    }
 }
 
 class CalendarViewModel: BaseViewModel, ListViewModel {

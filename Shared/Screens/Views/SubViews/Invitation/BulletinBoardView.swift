@@ -12,16 +12,24 @@ struct BulletinBoardView: View {
     
     var invitations: [ObjectPublisher<FDInvitation>]
     var showPlace = true
+    var reachLast: (() -> Void)?
     
-    init(_ invitations: [ObjectPublisher<FDInvitation>], showPlace: Bool = true) {
+    init(_ invitations: [ObjectPublisher<FDInvitation>], showPlace: Bool = true, reachLast: (() -> Void)? = nil) {
         self.invitations = invitations
         self.showPlace = showPlace
+        self.reachLast = reachLast
     }
+    
     var body: some View {
         ForEach(invitations, id: \.self) { invitation in
             InvitationCell(invitation, showPlace: showPlace)
+                .onAppear {
+                    guard invitations.last == invitation else { return }
+                    reachLast?()
+                }
         }
     }
+    
 }
 
 struct BulletinBoardView_Previews: PreviewProvider {
