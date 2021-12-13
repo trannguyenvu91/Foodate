@@ -1,2 +1,54 @@
 "CalendarType_Inbox_Title" = "Inbox";
 "CalendarType_Events_Title" = "Events";
+
+"Invite_Holder_Title" = "Oh, no. It is empty here.";
+"Invite_Holder_Subtitle_Create" = "Your events will be here. Create now.";
+"Invite_Holder_Subtitle_People" = "Be the first one to invite %@!";
+"Invite_Holder_Subtitle_Place" = "Be the first one to invite someone to %@!";
+
+"Invite_Button_Title" = "Invite";
+"Hello_User_Title" = "Hello, %@";
+
+"EditProfile_Enter_first_name" = "Enter first name";
+"EditProfile_Enter_last_name" = "Enter last name";
+"EditProfile_Enter_user_name" = "Enter user name";
+"EditProfile_Enter_email" = "Enter email";
+"EditProfile_Enter_bio" = "Enter bio";
+"EditProfile_Enter_job" = "Enter job";
+
+"Cancel_Button_Title" = "Cancel";
+"Update_Button_Title" = "Update";
+
+"InviteView_Start_Title" = "Start at";
+"InviteView_Title" = "Title";
+"InviteView_Placeholder" = "Go for dinner, coffee...";
+"InviteView_Place_Title" = "Place";
+"InviteView_ShareBill" = "Split Bill";
+"InviteView_Add_Place_Button_Title" = "Add restaurant, place,...";
+"InviteView_Send_Invitation_Button_Title" = "Invite";
+
+"ShareBill_Fifty_Title" = "50-50";
+"ShareBill_Seventy_Title" = "You pay 70%";
+"ShareBill_OneHundred_Title" = "You pay 100%";
+
+"OnboardingView_Title" = "Welcome to Food8";
+"OnboardingView_Login_Title" = "LOGIN";
+"OnboardingView_Login_Switch_Label" = "Don't have an account?";
+"OnboardingView_Login_Switch_Button" = "Sign Up";
+"OnboardingView_SignUp_Title" = "CREATE AN ACCOUNT";
+"OnboardingView_SignUp_Switch_Label" = "Already have an account?";
+"OnboardingView_SignUp_Switch_Button" = "Login";
+
+"UserProfileView_Edit_Profile_Button_Title" = "Edit Profile";
+"UserProfileView_Edit_Profile_FirstName_Label" = "First Name";
+"UserProfileView_Edit_Profile_LastName_Label" = "Last Name";
+"UserProfileView_Edit_Profile_Job_Label" = "Job";
+"UserProfileView_Edit_Profile_Bio_Label" = "Bio";
+
+"SearchView_Search_PlaceHolder" = "Search for people, places, invitations...";
+"SearchView_Invitation_Tab_Label" = "Invitation";
+"SearchView_Account_Tab_Label" = "Account";
+"SearchView_Place_Tab_Label" = "Place";
+
+"EndResultView_Title" = "No more data";
+"EmptyResultView_Title" = "Empty data";

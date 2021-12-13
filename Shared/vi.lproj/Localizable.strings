@@ -1,2 +1,55 @@
 "CalendarType_Inbox_Title" = "Thư tới";
 "CalendarType_Events_Title" = "Sự kiện";
+
+"Invite_Holder_Title" = "Ôi không, ở đây trống rỗng.";
+"Invite_Holder_Subtitle_Create" = "Sự kiện của bạn sẽ hiện thị ở đây. Tạo ngay.";
+"Invite_Holder_Subtitle_People" = "Hãy là người đầu tiên mời %@!";
+"Invite_Holder_Subtitle_Place" = "Hãy là người đầu tiên mời mọi người tới %@!";
+
+"Invite_Button_Title" = "Mời";
+"Hello_User_Title" = "Xin chào, %@";
+
+
+"EditProfile_Enter_first_name" = "Nhập tên họ";
+"EditProfile_Enter_last_name" = "Nhập tên";
+"EditProfile_Enter_user_name" = "Nhập username";
+"EditProfile_Enter_email" = "Nhập email";
+"EditProfile_Enter_bio" = "Nhập tiểu sử";
+"EditProfile_Enter_job" = "Nhập công việc";
+
+"Cancel_Button_Title" = "Huỷ";
+"Update_Button_Title" = "Cập nhật";
+
+"InviteView_Start_Title" = "Bắt đầu";
+"InviteView_Title" = "Tiêu đề";
+"InviteView_Placeholder" = "Đi ăn tối, cà phê...";
+"InviteView_Place_Title" = "Địa điểm";
+"InviteView_ShareBill" = "Cách thức trả tiền";
+"InviteView_Add_Place_Button_Title" = "Thêm nhà hàng, quán ăn";
+"InviteView_Send_Invitation_Button_Title" = "Gửi lời mời";
+
+"ShareBill_Fifty_Title" = "50-50";
+"ShareBill_Seventy_Title" = "Bạn trả 70%";
+"ShareBill_OneHundred_Title" = "Bạn mời 100%";
+
+"OnboardingView_Title" = "Chào mừng tới Food8";
+"OnboardingView_Login_Title" = "ĐĂNG NHẬP";
+"OnboardingView_Login_Switch_Label" = "Bạn chưa có tài khoản?";
+"OnboardingView_Login_Switch_Button" = "Tạo tài khoản ngay";
+"OnboardingView_SignUp_Title" = "ĐĂNG KÍ";
+"OnboardingView_SignUp_Switch_Label" = "Đã có tài khoản?";
+"OnboardingView_SignUp_Switch_Button" = "Đăng nhập";
+
+"UserProfileView_Edit_Profile_Button_Title" = "Sửa trang cá nhân";
+"UserProfileView_Edit_Profile_FirstName_Label" = "Tên";
+"UserProfileView_Edit_Profile_LastName_Label" = "Họ";
+"UserProfileView_Edit_Profile_Job_Label" = "Công việc";
+"UserProfileView_Edit_Profile_Bio_Label" = "Tiểu sử";
+
+"SearchView_Search_PlaceHolder" = "Tìm kiếm bạn bè, địa điểm, lời mời...";
+"SearchView_Invitation_Tab_Label" = "Lời mời";
+"SearchView_Account_Tab_Label" = "Tài khoản";
+"SearchView_Place_Tab_Label" = "Địa điểm";
+
+"EndResultView_Title" = "Không còn dữ liệu";
+"EmptyResultView_Title" = "Dữ liệu trống";
