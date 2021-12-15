@@ -1,0 +1,77 @@
+{
+            "id": 4,
+            "sender": {
+                "id": 2,
+                "first_name": "Vũ",
+                "last_name": "Trần",
+                "avatar_url": "https://user-images.githubusercontent.com/10230049/130745448-f60d8215-5855-49d3-84d3-6b32bf39c6a4.jpg"
+            },
+            "created": "2021-12-14T14:52:32.453188Z",
+            "invitation": {
+                "id": 2,
+                "owner": {
+                    "id": 3,
+                    "first_name": "Uyên",
+                    "last_name": "Trần",
+                    "avatar_url": "https://user-images.githubusercontent.com/10230049/136374588-9e809f84-7c48-4e8d-bb2d-e07c35ace350.jpg"
+                },
+                "title": "Tôi muốn đi xem phim, có ai hứng thú không nào",
+                "start_at": "2021-12-15T12:00:00Z",
+                "end_at": "2021-12-15T13:00:00Z",
+                "state": "matched",
+                "share_bill": "100",
+                "place": {
+                    "place_id": "ChIJ7UGhYGyrNTER9vtdjEMY8_Y",
+                    "name": "Helio Daewoo Cafe",
+                    "location": "21.0312326,105.8122152",
+                    "price_level": 4,
+                    "rating": 4.0,
+                    "user_ratings_total": 232,
+                    "vicinity": "29 Liễu Giai, Ngọc Khánh",
+                    "business_status": "OPERATIONAL",
+                    "photos": [
+                        {
+                            "width": 500.0,
+                            "height": 500.0,
+                            "base_url": "https://user-images.githubusercontent.com/10230049/128120715-2ed5759a-f44e-40ac-839e-ccb734f9322a.jpg"
+                        },
+                        {
+                            "width": 500.0,
+                            "height": 500.0,
+                            "base_url": "https://user-images.githubusercontent.com/10230049/128120717-873118ca-aa16-483f-94cb-455e57d505f3.jpg"
+                        },
+                        {
+                            "width": 500.0,
+                            "height": 500.0,
+                            "base_url": "https://user-images.githubusercontent.com/10230049/128120722-498fd5b8-ac21-4f7b-adac-a6a009c9efbd.jpg"
+                        },
+                        {
+                            "width": 500.0,
+                            "height": 500.0,
+                            "base_url": "https://user-images.githubusercontent.com/10230049/128120723-712c9543-caa2-4630-9e0a-7b93ff37965e.jpg"
+                        }
+                    ],
+                    "types": [
+                        "cafe",
+                        "food"
+                    ]
+                },
+                "to_user": {
+                    "id": 2,
+                    "first_name": "Vũ",
+                    "last_name": "Trần",
+                    "avatar_url": "https://user-images.githubusercontent.com/10230049/130745448-f60d8215-5855-49d3-84d3-6b32bf39c6a4.jpg"
+                },
+                "requests_total": 1,
+                "requests": [
+                    {
+                        "id": 2,
+                        "first_name": "Vũ",
+                        "last_name": "Trần",
+                        "avatar_url": "https://user-images.githubusercontent.com/10230049/130745448-f60d8215-5855-49d3-84d3-6b32bf39c6a4.jpg",
+                        "request_id": 3
+                    }
+                ]
+            },
+            "type": "NEW_REQUEST"
+        }

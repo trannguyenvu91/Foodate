@@ -11,9 +11,9 @@ import Foundation
 
 class OnboardingViewModel: BaseViewModel {
     @Published var mode: OnboardingMode = .login
-    @Lowercased var email = ""
-    var password = "honglong"
-    @Lowercased var username = "vutran"
+    @Published var email = ""
+    @Published var password = "123456"
+    @Published var username = "vutran"
     
     var isSignup: Bool {
         mode == .signUp

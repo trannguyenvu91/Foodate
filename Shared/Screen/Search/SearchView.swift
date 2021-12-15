@@ -84,7 +84,9 @@ struct SearchView: View {
     }
     
     var userList: some View {
-        PaginationList(model.userPaginator) {
+        PaginationList(model.userPaginator, placeholderBuilder: {
+            EmptyResultView().asAnyView()
+        }) {
             UserCell($0.asPublisher(in: .defaultStack), selectionCommand: selectionCommand)
                 .asAnyView()
         }
@@ -92,7 +94,9 @@ struct SearchView: View {
     }
     
     var placeList: some View {
-        PaginationList(model.placePaginator) {
+        PaginationList(model.placePaginator, placeholderBuilder: {
+            EmptyResultView().asAnyView()
+        }) {
             PlaceCell($0.asPublisher(in: .defaultStack), selectionCommand: selectionCommand)
                 .asAnyView()
         }

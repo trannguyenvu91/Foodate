@@ -33,8 +33,9 @@ class InvitationCellModel: ObjectBaseViewModel<FDInvitation> {
     
     func bindReply() {
         reply.sink{ [unowned self] state in
+            let id = self.objectPubliser.id!
             asyncDo {
-                let _ = try await NetworkService.replyInvitation(ID: objectPubliser.id!, state: state)
+                let _ = try await NetworkService.replyInvitation(ID: id, state: state)
             }
         }
             .store(in: &cancelableSet)

@@ -25,6 +25,7 @@ typealias FDPlacePhoto = v1.FDPlacePhoto
 typealias FDInvitation = v1.FDInvitation
 typealias FDRequester = v1.FDRequester
 typealias FDSessionUser = v1.FDSessionUser
+typealias FDNotification = v1.FDNotification
 
 //MARK: Users
 extension v1 {
@@ -58,6 +59,8 @@ extension v1 {
         private var inbox: Set<FDInvitation>
         @Field.Relationship("outbox", inverse: \.$owner)
         private var outbox: Set<FDInvitation>
+        @Field.Relationship("sentNotifications", inverse: \.$sender)
+        private var sentNotifications: Set<FDNotification>
         
         override func update(from source: JSON, in transaction: BaseDataTransaction) throws {
             try super.update(from: source, in: transaction)
@@ -132,7 +135,20 @@ extension v1 {
             requestID <- map["request_id"]
         }
     }
-
+    
+    class FDNotification: CoreStoreObject {
+        @Field.Stored("id")
+        var id: Int = 0
+        @Field.Stored("created")
+        var created: Date!
+        @Field.Stored("type")
+        var type: NotificationType!
+        @Field.Relationship("sender")
+        var sender: FDUser!
+        @Field.Relationship("invitation")
+        var invitation: FDInvitation!
+    }
+    
 }
 
 //MARK: Photos
@@ -221,6 +237,8 @@ extension v1 {
         //private
         @Field.Relationship("in_bullentin_users", inverse: \.$bulletinBoard)
         private var inBullentinUsers: Set<FDUserProfile>
+        @Field.Relationship("in_notifications", inverse: \.$invitation)
+        private var inNotifications: Set<FDNotification>
     }
     
 }

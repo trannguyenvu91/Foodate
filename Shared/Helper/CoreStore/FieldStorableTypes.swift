@@ -22,6 +22,19 @@ extension FDBusinessStatus: FieldStorableType {
     
 }
 
+extension NotificationType: FieldStorableType {
+    static func cs_fromFieldStoredNativeType(_ value: String) -> NotificationType {
+        NotificationType(rawValue: value) ?? .newEvent
+    }
+    
+    func cs_toFieldStoredNativeType() -> Any? {
+        rawValue
+    }
+    
+    typealias FieldStoredNativeType = String
+    
+}
+
 extension FDShareBill: FieldStorableType {
     
     static func cs_fromFieldStoredNativeType(_ value: String) -> FDShareBill {

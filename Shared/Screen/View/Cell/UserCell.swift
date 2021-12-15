@@ -79,6 +79,7 @@ struct UserCell: View {
                 .font(.subheadline)
         }
         .padding([.leading, .trailing])
+        .fixedSize(horizontal: false, vertical: true)
     }
     
 }

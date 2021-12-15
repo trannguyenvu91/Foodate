@@ -10,7 +10,7 @@ import Foundation
 //MARK: Authentication
 extension NetworkService {
     
-    class func login(username: String,
+    class func login(@Lowercased username: String,
                      password: String) async throws -> FDSessionUser {
         try await NetworkResource(method: .post,
                                   params: ["username": username.lowercased(), "password": password],
@@ -24,6 +24,15 @@ extension NetworkService {
         let _ = try await NetworkResource<JSON>(method: .post,
                                                 params: ["username": username, "password": password, "email": email],
                                                 api: "/api/v1/auth/register")
+            .request()
+        return try await login(username: username, password: password)
+    }
+    
+    class func reset(@Lowercased username: String,
+                        password: String) async throws -> FDSessionUser {
+        let _ = try await NetworkResource<JSON>(method: .post,
+                                                params: ["username": username, "password": password],
+                                                api: "/api/v1/auth/reset")
             .request()
         return try await login(username: username, password: password)
     }

@@ -50,8 +50,12 @@ struct PaginationList<Model>: View where Model: Hashable & Equatable & Importabl
     
     var list: AnyView {
         if paginator.isFetching {
-            return Text("Loading")
-                .asAnyView()
+            return HStack {
+                Spacer()
+                ProgressView()
+                Spacer()
+            }
+            .asAnyView()
         }
         return ForEach(paginator.items, id: \.self) {
             cellBuilder($0)

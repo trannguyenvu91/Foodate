@@ -45,6 +45,7 @@ struct InvitationCell: View {
         }
         .padding(12)
         .background(Color.white.cornerRadius(30))
+        .fixedSize(horizontal: false, vertical: true)
     }
     
     func footer(_ snapshot: ObjectSnapshot<FDInvitation>) -> AnyView {

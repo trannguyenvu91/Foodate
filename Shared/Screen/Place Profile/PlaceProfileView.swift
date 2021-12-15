@@ -62,6 +62,7 @@ struct PlaceProfileView: View {
             Text(snapshot.$vicinity ?? "--")
                 .foregroundColor(.gray)
                 .font(.subheadline)
+                .fixedSize(horizontal: false, vertical: true)
             inviteView
         }
     }

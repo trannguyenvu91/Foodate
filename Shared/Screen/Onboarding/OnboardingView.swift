@@ -24,18 +24,34 @@ struct OnboardingView: View {
                     .padding([.top, .bottom], 30)
                     .foregroundColor(.gray)
                 if self.model.isSignup {
-                    self.inputView(icon: Image(systemName: "envelope"), textField: TextField("Email", text: self.$model.email))
+                    IconInputView(
+                        Image(systemName: "envelope"),
+                        build: TextField("Email", text: self.$model.email)
+                    )
                 }
-                self.inputView(icon: Image(systemName: "person"), textField: TextField("Username", text: self.$model.username))
-                self.inputView(icon: Image(systemName: "lock"), textField: TextField("Password", text: self.$model.password))
+                IconInputView(
+                    Image(systemName: "person"),
+                    build: TextField("Username", text: self.$model.username)
+                )
+                IconInputView(
+                    Image(systemName: "lock"), build: SecureField("Password", text: self.$model.password)
+                )
+                HStack {
+                    Spacer()
+                    forgotPasswordButton
+                        .padding(.trailing, 30)
+                }
                 Button(action: {
                     self.model.authenticateUser()
                 }) {
                     Text(self.model.mode.title)
                         .font(.headline)
                 }
+                .buttonStyle(.borderedProminent)
+                .tint(.blue)
+                .controlSize(.large)
+                .buttonBorderShape(.capsule)
                 .padding(.top, 20)
-                
                 Spacer()
             }
         }
@@ -43,21 +59,6 @@ struct OnboardingView: View {
         .overlay(switchView, alignment: .bottom)
         .bindErrorAlert(to: $model)
         .animation(.easeInOut, value: 1)
-    }
-    
-    func inputView(icon: Image, textField: TextField<Text>) -> some View {
-        HStack {
-            icon
-                .resizable()
-                .scaledToFit()
-                .frame(width: 20, height: 20)
-                .foregroundColor(.blue)
-            textField
-        }
-        .padding(8)
-        .overlay(RoundedRectangle(cornerRadius: 17).stroke(Color.lightGray, lineWidth: 1))
-        .padding([.leading, .trailing], 30)
-        .padding(.bottom, 8)
     }
     
     var switchView: some View {
@@ -71,6 +72,22 @@ struct OnboardingView: View {
             }
         }
         .padding(.bottom, 20)
+    }
+    
+    var forgotPasswordButton: some View {
+        Group {
+            switch model.mode {
+            case .login:
+                PresentButton(destination: LazyView(ResetPasswordView())) {
+                    Text("Forgot password?")
+                        .font(.callout)
+                        .fontWeight(.semibold)
+                        .foregroundColor(.blue)
+                }
+            default:
+                EmptyView()
+            }
+        }
     }
 }
 

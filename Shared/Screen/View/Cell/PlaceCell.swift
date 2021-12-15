@@ -64,6 +64,7 @@ struct PlaceCell: View {
                 .font(.footnote)
         }
         .foregroundColor(.gray)
+        .fixedSize(horizontal: false, vertical: true)
     }
     
     func placeImageView(_ snapshot: ObjectSnapshot<FDPlace>) -> some View {

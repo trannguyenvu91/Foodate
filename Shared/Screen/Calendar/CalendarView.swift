@@ -15,7 +15,8 @@ struct CalendarView: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text("Hello_User_Title".localized(with: [AppConfig.shared.sessionUser?.name ?? ""]))
-                .font(.largeTitle)
+                .font(.title)
+                .fontWeight(.bold)
                 .padding([.leading, .top])
             Picker("", selection: $model.selectedTab) {
                 ForEach(CalendarType.allCases, id: \.self) { type in

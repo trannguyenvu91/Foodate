@@ -34,6 +34,7 @@ struct InviteCell: View {
                     .bold()
                     .padding()
             }
+            .fixedSize(horizontal: true, vertical: false)
             .foregroundColor(.blue)
         }
         .foregroundColor(.gray.opacity(0.3))

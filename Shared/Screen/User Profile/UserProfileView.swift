@@ -69,6 +69,7 @@ struct UserProfileView: View {
                 inviteView(snapshot)
             }
         }
+        .fixedSize(horizontal: false, vertical: true)
         .asAnyView()
     }
     

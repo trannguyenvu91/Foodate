@@ -24,6 +24,11 @@ struct TabBarView: View {
                     .resizable()
                     .font(.system(size: tabFontSize))
             }
+            notificationView.tabItem {
+                Image(systemName: "bell.badge.fill")
+                    .resizable()
+                    .font(.system(size: tabFontSize))
+            }
             profileView.tabItem {
                 Image(systemName: "person.circle")
                     .resizable()
@@ -53,6 +58,12 @@ struct TabBarView: View {
     var calendarView: some View {
         NavigationView {
             CalendarView()
+        }
+    }
+    
+    var notificationView: some View {
+        NavigationView {
+            NotificationView()
         }
     }
     
