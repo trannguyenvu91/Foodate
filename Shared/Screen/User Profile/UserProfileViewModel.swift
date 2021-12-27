@@ -33,7 +33,7 @@ class UserProfileViewModel: ObjectBaseViewModel<FDUserProfile>, ListViewModel {
     }
     
     func getProfile() async throws {
-        guard let id = objectPubliser.id else {
+        guard let id = objectPublisher.id else {
             return
         }
         let _ = try await NetworkService.getUser(ID: id)

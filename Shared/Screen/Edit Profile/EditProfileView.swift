@@ -24,32 +24,39 @@ struct EditProfileView: View {
                     avatarView(proxy.size.width)
                     inputView(
                         TextField("EditProfile_Enter_first_name".localized(),
-                                  text: $model.draft.firstName),
+                                  text: $model.draft.firstName)
+                            .asAnyView(),
                         title: "UserProfileView_Edit_Profile_FirstName_Label".localized()
                     )
                     inputView(
                         TextField("EditProfile_Enter_last_name".localized(),
-                                  text: $model.draft.lastName),
+                                  text: $model.draft.lastName)
+                            .asAnyView(),
                         title: "UserProfileView_Edit_Profile_LastName_Label".localized()
                     )
                     inputView(
                         TextField("EditProfile_Enter_user_name".localized(),
-                                  text: $model.draft.userName),
-                        title: "User Name"
+                                  text: $model.draft.userName)
+                            .asAnyView(),
+                        title: "Username"
                     )
                     inputView(
                         TextField("EditProfile_Enter_email".localized(),
-                                  text: $model.draft.email),
+                                  text: $model.draft.email)
+                            .asAnyView(),
                         title: "Email"
                     )
+                    inputView(birthdayButton.asAnyView(), title: "Birthday")
                     inputView(
                         TextField("EditProfile_Enter_bio".localized(),
-                                  text: $model.draft.bio),
+                                  text: $model.draft.bio)
+                            .asAnyView(),
                         title: "UserProfileView_Edit_Profile_Bio_Label".localized()
                     )
                     inputView(
                         TextField("EditProfile_Enter_job".localized(),
-                                  text: $model.draft.job),
+                                  text: $model.draft.job)
+                            .asAnyView(),
                         title: "UserProfileView_Edit_Profile_Job_Label".localized()
                     )
                 }
@@ -57,24 +64,29 @@ struct EditProfileView: View {
             .navigationBarTitle(model.session.name,displayMode: .inline)
             .navigationBarItems(leading: cancelButton, trailing: updateButton)
         }
-        .onReceive(model.didUpdateProfile) { _ in
-            self.presentationMode.wrappedValue.dismiss()
-        }
         .bindErrorAlert(to: $model)
     }
     
     var updateButton: some View {
-        Button(action: {
-            self.model.update()
-        }) {
+        AsyncButton(task: {
+            try await model.update()
+            presentationMode.wrappedValue.dismiss()
+        }, error: $model.error) {
             Text("Update_Button_Title".localized())
                 .bold()
         }
     }
     
+    var birthdayButton: some View {
+        HStack {
+            DatePicker("", selection: $model.draft.birthday, displayedComponents: [.date])
+            Spacer()
+        }
+    }
+    
     var cancelButton: some View {
         Button(action: {
-            self.model.didUpdateProfile.send(true)
+            presentationMode.wrappedValue.dismiss()
         }) {
             Text("Cancel_Button_Title".localized())
                 .bold()
@@ -92,13 +104,13 @@ struct EditProfileView: View {
             .padding([.top, .bottom], 16)
     }
     
-    func inputView(_ field: TextField<Text>, title: String, withDivider: Bool = true) -> some View {
+    func inputView(_ field: AnyView, title: String, withDivider: Bool = true) -> some View {
         return HStack(alignment: .top, spacing: 16) {
             HStack {
                 Text(title)
                 Spacer(minLength: 0)
             }
-            .width(90)
+            .width(80)
             .padding([.leading, .top], 12)
             VStack {
                 field.padding(12)

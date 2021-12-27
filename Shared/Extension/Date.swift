@@ -56,6 +56,10 @@ extension Date {
         isToday ? "Hôm nay" : DateFormatter.weekday.string(from: self)
     }
     
+    var birthdayText: String {
+        DateFormatter.birthday.string(from: self)
+    }
+    
     var isToday: Bool {
         Calendar.current.isDateInToday(self)
     }

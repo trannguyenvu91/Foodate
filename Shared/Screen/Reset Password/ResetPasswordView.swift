@@ -61,9 +61,9 @@ struct ResetPasswordView: View {
     }
     
     var resetButton: some View {
-        Button {
-            model.resetPassword()
-        } label: {
+        AsyncButton(task: {
+            try await model.resetPassword()
+        }, error: $model.error) {
             HStack {
                 Image(systemName: "arrow.clockwise.circle")
                     .resizable()

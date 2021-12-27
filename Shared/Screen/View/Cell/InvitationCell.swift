@@ -19,7 +19,7 @@ struct InvitationCell: View {
     }
     
     var body: some View {
-        ObjectReader(model.objectPubliser) { snapshot in
+        ObjectReader(model.objectPublisher) { snapshot in
             VStack(spacing: 0) {
                 TimeHeader(snapshot)
                 contentView(snapshot)

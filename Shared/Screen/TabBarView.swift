@@ -14,13 +14,13 @@ struct TabBarView: View {
     
     var body: some View {
         TabView {
-            sugguestView.tabItem {
-                Image(systemName: "magnifyingglass")
+            calendarView.tabItem {
+                Image(systemName: "calendar")
                     .resizable()
                     .font(.system(size: tabFontSize))
             }
-            calendarView.tabItem {
-                Image(systemName: "calendar")
+            sugguestView.tabItem {
+                Image(systemName: "magnifyingglass")
                     .resizable()
                     .font(.system(size: tabFontSize))
             }

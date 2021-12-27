@@ -26,7 +26,8 @@ struct NotificationView: View {
         .refreshable {
             await model.refresh()
         }
-        .listStyle(PlainListStyle())
+        .listStyle(.plain)
+        .listRowSeparator(.hidden)
         .bindErrorAlert(to: $model)
     }
 }

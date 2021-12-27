@@ -19,18 +19,16 @@ class OnboardingViewModel: BaseViewModel {
         mode == .signUp
     }
     
-    func authenticateUser() {
-        asyncDo { [unowned self] in
-            switch mode {
-            case .login:
-                let _ = try await NetworkService.login(username: username, password: password)
-            case .signUp:
-                let _ = try await NetworkService.register(username: username,
-                                                          password: password,
-                                                          email: email)
-            }
-            AppConfig.shared.sessionUser = try? FDCoreStore.shared.fetchSessionUser()
+    func authenticateUser() async throws {
+        switch mode {
+        case .login:
+            let _ = try await NetworkService.login(username: username, password: password)
+        case .signUp:
+            let _ = try await NetworkService.register(username: username,
+                                                      password: password,
+                                                      email: email)
         }
+        AppConfig.shared.sessionUser = try? FDCoreStore.shared.fetchSessionUser()
     }
     
     func switchType() {

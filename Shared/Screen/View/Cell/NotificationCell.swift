@@ -16,8 +16,10 @@ struct NotificationCell: View {
         ObjectReader(notification) { snapshot in
             VStack(alignment: .leading) {
                 senderView(snapshot)
-                invitationTitleView(snapshot)
-                    .padding(.top, -8)
+                NavigationButton(destination: LazyView(InvitationView(model: .init(snapshot.$invitation?.$id ?? 0)))) {
+                    invitationTitleView(snapshot)
+                }
+                .padding(.top, -8)
             }
         }
         .padding(.bottom)
@@ -40,6 +42,9 @@ struct NotificationCell: View {
                         .scaledToFill()
                         .aspectRatio(1, contentMode: .fit)
                 )
+                    .onAppear(perform: {
+                        ASRemoteImageManager.shared.load(path: inviter?.imageURL)
+                    })
                     .frame(width: 30, height: 30)
                     .padding([.bottom, .trailing], -16)
             }
@@ -53,15 +58,12 @@ struct NotificationCell: View {
                     .scaledToFill()
                     .aspectRatio(1, contentMode: .fit)
             )
+                .onAppear(perform: {
+                    ASRemoteImageManager.shared.load(path: sender?.imageURL)
+                })
                 .frame(width: 40, height: 40)
                 .overlay(alignment: .bottomTrailing) {
-                    Image(systemName: "arrowshape.turn.up.forward.circle.fill")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 18, height: 18)
-                        .background(Color.white)
-                        .foregroundColor(.orange)
-                        .clipShape(Circle())
+                    typeIconView(noti)
                 }
             VStack(alignment: .leading) {
                 HStack {
@@ -78,23 +80,38 @@ struct NotificationCell: View {
     }
     
     func detailText(_ noti: ObjectSnapshot<FDNotification>) -> some View {
-        let invitation = noti.$invitation?.asSnapshot(in: .defaultStack)
-        var detail = ""
-        switch noti.$type {
-        case .newRequest:
-            detail = "sent you a join request."
-        default:
-            switch invitation?.$state {
-            case .pending:
-                detail = "sent you an invitation"
-            case .matched:
-                detail = "have an event with you"
-            default:
-                detail = "update state to: \(invitation?.$state?.rawValue ?? "--")"
-            }
-        }
+        let (detail, _, _) = detail(noti)
         return Text(detail)
     }
+    
+    func typeIconView(_ noti: ObjectSnapshot<FDNotification>) -> some View {
+        let (_, imageName, color) = detail(noti)
+        return Image(systemName: imageName)
+            .resizable()
+            .scaledToFit()
+            .frame(width: 18, height: 18)
+            .background(Color.white)
+            .foregroundColor(color)
+            .clipShape(Circle())
+    }
+    
+    func detail(_ noti: ObjectSnapshot<FDNotification>) -> (String, String, Color) {
+        switch noti.$type {
+        case .newRequest:
+            return ("sent you a join request.", "plus.circle.fill", .sentRequest)
+        case .newInvitation:
+            return ("sent you an invitation", "arrowshape.turn.up.forward.circle.fill", .directInvitation)
+        case .newEvent:
+            return ("have an event with you", "person.2.circle.fill", .matched)
+        case .rejectedInvitation:
+            return ("rejected an invitation", "minus.circle.fill", .rejected)
+        case .canceledInvitation:
+            return ("canceled an invitation", "multiply.circle.fill", .canceled)
+        default:
+            return ("update an invitation", "shuffle.circle.fill", .blue)
+        }
+    }
+    
 }
 
 struct NotificationCell_Previews: PreviewProvider {

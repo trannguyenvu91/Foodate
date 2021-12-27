@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ReplyFooter: View {
     
-    var model: InvitationCellModel
+    @ObservedObject var model: InvitationCellModel
     
     init(_ model: InvitationCellModel) {
         self.model = model
@@ -17,27 +17,27 @@ struct ReplyFooter: View {
     
     var body: some View {
         HStack(spacing: 10) {
-            Button {
-                model.reply.send(.matched)
-            } label: {
+            AsyncButton(task: {
+                try await model.reply(.matched)
+            }, error: $model.error) {
                 Text("Đồng ý")
                     .font(.footnote)
                     .fontWeight(.medium)
-                    .paddingForBorderBackground()
-                    .foregroundColor(.white)
-                    .background(Color.blue)
             }
-            .clipShape(StadiumShape())
-            Button {
-                model.reply.send(.rejected)
-            } label: {
+            .tint(.blue)
+            .buttonStyle(.borderedProminent)
+            .buttonBorderShape(.capsule)
+            AsyncButton(task: {
+                try await model.reply(.rejected)
+            }, error: $model.error) {
                 Text("Từ chối")
                     .font(.footnote)
                     .fontWeight(.medium)
-                    .paddingForBorderBackground()
-                    .background(Color.groupTableViewBackground)
+                    .foregroundColor(.secondary)
             }
-            .clipShape(StadiumShape())
+            .tint(.groupTableViewBackground)
+            .buttonStyle(.borderedProminent)
+            .buttonBorderShape(.capsule)
         }
     }
 }

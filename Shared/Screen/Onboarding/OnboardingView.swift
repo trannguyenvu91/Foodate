@@ -41,9 +41,9 @@ struct OnboardingView: View {
                     forgotPasswordButton
                         .padding(.trailing, 30)
                 }
-                Button(action: {
-                    self.model.authenticateUser()
-                }) {
+                AsyncButton(task: {
+                    try await model.authenticateUser()
+                }, error: $model.error) {
                     Text(self.model.mode.title)
                         .font(.headline)
                 }

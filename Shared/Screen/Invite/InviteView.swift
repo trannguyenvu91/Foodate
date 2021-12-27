@@ -237,15 +237,15 @@ struct InviteView: View {
     }
     
     func createButton(_ width: CGFloat) -> some View {
-        Button(action: {
-            model.createCommand.send(nil)
-        }, label: {
+        AsyncButton(task: {
+            try await model.createInvitation()
+        }, error: $model.error) {
             Text("InviteView_Send_Invitation_Button_Title".localized())
                 .font(.title2)
                 .fontWeight(.semibold)
                 .padding([.top, .bottom], 16)
                 .width(width - 40)
-        })
+        }
         .foregroundColor(.white)
         .background(Color.blue)
         .cornerRadius(16)

@@ -22,6 +22,7 @@ typealias FDPlace = v1.FDPlace
 typealias FDBasePhoto = v1.FDBasePhoto
 typealias FDPhoto = v1.FDPhoto
 typealias FDPlacePhoto = v1.FDPlacePhoto
+typealias FDBaseInvitation = v1.FDBaseInvitation
 typealias FDInvitation = v1.FDInvitation
 typealias FDRequester = v1.FDRequester
 typealias FDSessionUser = v1.FDSessionUser
@@ -58,7 +59,7 @@ extension v1 {
         @Field.Relationship("inbox", inverse: \.$toUser)
         private var inbox: Set<FDInvitation>
         @Field.Relationship("outbox", inverse: \.$owner)
-        private var outbox: Set<FDInvitation>
+        private var outbox: Set<FDBaseInvitation>
         @Field.Relationship("sentNotifications", inverse: \.$sender)
         private var sentNotifications: Set<FDNotification>
         
@@ -146,7 +147,7 @@ extension v1 {
         @Field.Relationship("sender")
         var sender: FDUser!
         @Field.Relationship("invitation")
-        var invitation: FDInvitation!
+        var invitation: FDBaseInvitation!
     }
     
 }
@@ -211,11 +212,33 @@ extension v1 {
 //MARK: Invitation
 extension v1 {
     
-    class FDInvitation: CoreStoreObject {
+    class FDBaseInvitation: CoreStoreObject {
         @Field.Stored("id")
         @objc var id: Int = 0
         @Field.Stored("title")
         var title: String?
+        @Field.Relationship("owner")
+        var owner: FDUser!
+        //private
+        @Field.Relationship("in_notifications", inverse: \.$invitation)
+        private var inNotifications: Set<FDNotification>
+        
+        func update(from source: JSON, in transaction: BaseDataTransaction) throws {
+            let map = Map(mappingType: .fromJSON, JSON: source)
+            id <- map["id"]
+            title <- map["title"]
+            owner = try transaction.importUniqueObject(Into<FDUser>(), source: (source["owner"] as? JSON)!)
+        }
+        
+        static func importObject(from source: JSON) throws -> Self {
+            try DataStack.defaultStack.perform { transaction in
+                try transaction.importUniqueObject(Into<Self>(), source: source)!
+            }
+        }
+        
+    }
+    
+    class FDInvitation: FDBaseInvitation {
         @Field.Stored("start_at")
         var startAt: Date!
         @Field.Stored("end_at")
@@ -232,13 +255,28 @@ extension v1 {
         var place: FDPlace!
         @Field.Relationship("to_user")
         var toUser: FDUser?
-        @Field.Relationship("owner")
-        var owner: FDUser!
         //private
         @Field.Relationship("in_bullentin_users", inverse: \.$bulletinBoard)
         private var inBullentinUsers: Set<FDUserProfile>
-        @Field.Relationship("in_notifications", inverse: \.$invitation)
-        private var inNotifications: Set<FDNotification>
+        
+        override func update(from source: JSON, in transaction: BaseDataTransaction) throws {
+            try super.update(from: source, in: transaction)
+            guard source.keys.contains("place") else {
+                return
+            }
+            let map = Map(mappingType: .fromJSON, JSON: source)
+            startAt <- (map["start_at"], FDDateTransform())
+            endAt  <- (map["end_at"], FDDateTransform())
+            state <- map["state"]
+            shareBill <- map["share_bill"]
+            requestsTotal <- map["requests_total"]
+            if let toUserInfo = source["to_user"] as? JSON {
+                toUser = try transaction.importUniqueObject(Into<FDUser>(), source: toUserInfo)
+            }
+            place = try transaction.importUniqueObject(Into<FDPlace>(), source: (source["place"] as? JSON)!)
+            requests = try transaction.importUniqueObjects(Into<FDRequester>(), sourceArray: source["requests"] as? [JSON] ?? [])
+        }
+        
     }
     
 }

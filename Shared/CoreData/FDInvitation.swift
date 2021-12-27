@@ -36,39 +36,16 @@ extension ObjectSnapshot where O: FDInvitation {
     
 }
 
-extension FDInvitation: ImportableUniqueObject, ImportableJSONObject {
+extension FDBaseInvitation: ImportableUniqueObject, ImportableJSONObject {
+    
+    typealias UniqueIDType = Int
+    typealias ImportSource = JSON
     static var uniqueIDKeyPath: String {
-        #keyPath(FDInvitation.id)
+        #keyPath(FDBaseInvitation.id)
     }
     
     static func uniqueID(from source: JSON, in transaction: BaseDataTransaction) throws -> Int? {
         source[uniqueIDKeyPath] as? Int
-    }
-    
-    func update(from source: JSON, in transaction: BaseDataTransaction) throws {
-        let map = Map(mappingType: .fromJSON, JSON: source)
-        id <- map["id"]
-        title <- map["title"]
-        startAt <- (map["start_at"], FDDateTransform())
-        endAt  <- (map["end_at"], FDDateTransform())
-        state <- map["state"]
-        shareBill <- map["share_bill"]
-        requestsTotal <- map["requests_total"]
-        owner = try transaction.importUniqueObject(Into<FDUser>(), source: (source["owner"] as? JSON)!)
-        if let toUserInfo = source["to_user"] as? JSON {
-            toUser = try transaction.importUniqueObject(Into<FDUser>(), source: toUserInfo)
-        }
-        place = try transaction.importUniqueObject(Into<FDPlace>(), source: (source["place"] as? JSON)!)
-        requests = try transaction.importUniqueObjects(Into<FDRequester>(), sourceArray: source["requests"] as? [JSON] ?? [])
-    }
-    
-    typealias UniqueIDType = Int
-    typealias ImportSource = JSON
-    
-    static func importObject(from source: JSON) throws -> Self {
-        try DataStack.defaultStack.perform { transaction in
-            try transaction.importUniqueObject(Into<Self>(), source: source)!
-        }
     }
     
 }

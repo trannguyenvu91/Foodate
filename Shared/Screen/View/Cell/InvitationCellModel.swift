@@ -10,35 +10,21 @@ import CoreStore
 import Combine
 
 class InvitationCellModel: ObjectBaseViewModel<FDInvitation> {
-    let sendRequest = PassthroughSubject<Bool, Never>()
     let inviteFriend = PassthroughSubject<Any, Never>()
-    let reply = PassthroughSubject<InvitationState, Never>()
     
     override init(_ invitation: ObjectPublisher<FDInvitation>) {
         super.init(invitation)
-        bindSendRequest()
-        bindReply()
         bindInviteCommand()
     }
     
-    func bindSendRequest() {
-        sendRequest.sink { [unowned self] isSending in
-            let id = self.objectPubliser.id!
-            asyncDo {
-                let _ = isSending ? try await NetworkService.createRequest(for: id) : try await NetworkService.deleteRequest(for: id)
-            }
-        }
-        .store(in: &cancelableSet)
+    func sendRequest(_ isSending: Bool) async throws {
+        let id = self.objectPublisher.id!
+        let _ = isSending ? try await NetworkService.createRequest(for: id) : try await NetworkService.deleteRequest(for: id)
     }
     
-    func bindReply() {
-        reply.sink{ [unowned self] state in
-            let id = self.objectPubliser.id!
-            asyncDo {
-                let _ = try await NetworkService.replyInvitation(ID: id, state: state)
-            }
-        }
-            .store(in: &cancelableSet)
+    func reply(_ state: InvitationState) async throws {
+        let id = self.objectPublisher.id!
+        let _ = try await NetworkService.replyInvitation(ID: id, state: state)
     }
     
     func bindInviteCommand() {

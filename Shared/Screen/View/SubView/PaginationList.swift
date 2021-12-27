@@ -25,7 +25,7 @@ struct PaginationList<Model>: View where Model: Hashable & Equatable & Importabl
     }
     
     var body: some View {
-        VStack {
+        return VStack {
             if let error = error {
                 Text("Error happened: \(error.alertMessage)")
             } else if !paginator.hasNext && paginator.items.count == 0 {

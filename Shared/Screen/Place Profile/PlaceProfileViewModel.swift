@@ -32,7 +32,7 @@ class PlaceProfileViewModel: ObjectBaseViewModel<FDPlace>, ListViewModel {
     }
     
     func getProfile() async throws {
-        guard let id = objectPubliser.id else {
+        guard let id = objectPublisher.id else {
             return
         }
         let _ = try await NetworkService.getPlace(ID: id)

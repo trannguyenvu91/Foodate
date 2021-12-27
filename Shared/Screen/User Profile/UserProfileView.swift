@@ -20,14 +20,14 @@ struct UserProfileView: View {
     
     var body: some View {
         GeometryReader { proxy in
-            ObjectReader(model.objectPubliser) { snapshot in
+            ObjectReader(model.objectPublisher) { snapshot in
                 List {
                     PhotosPageView(snapshot.$photos)
                         .listRowInsets(EdgeInsets())
                         .frame(width: proxy.size.width, height: proxy.size.width)
                     personalInfoView(snapshot)
                     PaginationList(model.paginator) {
-                        InviteCell(model.objectPubliser)
+                        InviteCell(model.objectPublisher)
                             .asAnyView()
                     } cellBuilder: {
                         InvitationCell($0.asPublisher(in: .defaultStack))
@@ -48,7 +48,7 @@ struct UserProfileView: View {
         .bindErrorAlert(to: $model)
         .ignoresSafeArea()
         .listStyle(PlainListStyle())
-        .navigationBarItems(trailing: model.objectPubliser.isSession ? logOutButton.asAnyView() : EmptyView().asAnyView())
+        .navigationBarItems(trailing: model.objectPublisher.isSession ? logOutButton.asAnyView() : EmptyView().asAnyView())
     }
     
     func personalInfoView(_ snapshot: ObjectSnapshot<FDUserProfile>) -> AnyView {
@@ -102,7 +102,7 @@ struct UserProfileView: View {
     }
     
     func inviteView(_ snapshot: ObjectSnapshot<FDUserProfile>) -> AnyView {
-        PresentButton(destination: LazyView(InviteView(model.objectPubliser, to: nil))) {
+        PresentButton(destination: LazyView(InviteView(model.objectPublisher, to: nil))) {
             HStack {
                 Image(systemName: "calendar.badge.plus")
                     .resizable()
@@ -117,7 +117,7 @@ struct UserProfileView: View {
     }
     
     var editView: some View {
-        let session = model.objectPubliser.asSnapshot(in: .defaultStack)
+        let session = model.objectPublisher.asSnapshot(in: .defaultStack)
         return PresentButton(destination: LazyView(EditProfileView(session!))) {
             HStack {
                 Image(systemName: "gear")

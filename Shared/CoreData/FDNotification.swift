@@ -32,7 +32,7 @@ extension FDNotification: ImportableUniqueObject, ImportableJSONObject {
         type <- map["type"]
         created <- (map["created"], FDDateTransform())
         sender = try transaction.importUniqueObject(Into<FDUser>(), source: (source["sender"] as? JSON)!)
-        invitation = try transaction.importUniqueObject(Into<FDInvitation>(), source: (source["invitation"] as? JSON)!)
+        invitation = try transaction.importUniqueObject(Into<FDBaseInvitation>(), source: (source["invitation"] as? JSON)!)
     }
     
     typealias UniqueIDType = Int

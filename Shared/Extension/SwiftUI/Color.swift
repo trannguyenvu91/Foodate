@@ -30,6 +30,9 @@ extension Color {
     static var canceled: Color {
         Color(hex: 0xf3e8d2)
     }
+    static var sentRequest: Color {
+        .orange
+    }
     
     //MARK:
     static var placeBackground: Color {

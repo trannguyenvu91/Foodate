@@ -9,6 +9,13 @@ import Foundation
 
 extension DateFormatter {
     
+    static let birthday: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.timeZone = TimeZone(abbreviation: "UTC")
+        formatter.dateFormat = "MMM d, yyyy"
+        return formatter
+    }()
+    
     static let standard: DateFormatter = {
         let formatter = DateFormatter()
         formatter.timeZone = TimeZone(abbreviation: "UTC")

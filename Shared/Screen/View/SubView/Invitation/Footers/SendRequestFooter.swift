@@ -10,7 +10,7 @@ import SwiftUI
 struct SendRequestFooter: View {
     
     var requestSent: Bool = false
-    var model: InvitationCellModel
+    @ObservedObject var model: InvitationCellModel
     
     init(_ requestSent: Bool, model: InvitationCellModel) {
         self.requestSent = requestSent
@@ -18,9 +18,9 @@ struct SendRequestFooter: View {
     }
     
     var body: some View {
-        Button {
-            self.model.sendRequest.send(!requestSent)
-        } label: {
+        AsyncButton(task: {
+            try await model.sendRequest(!requestSent)
+        }, error: $model.error) {
             HStack(spacing: 10) {
                 Image(systemName: requestSent ? "arrowshape.turn.up.right.fill" : "person.badge.plus")
                     .resizable()
@@ -31,10 +31,10 @@ struct SendRequestFooter: View {
                     .fontWeight(.medium)
             }
         }
-        .paddingForBorderBackground()
         .foregroundColor(requestSent ? .white : .orange)
-        .background(requestSent ? Color.blue : Color.orange.opacity(0.2))
-        .clipShape(StadiumShape())
+        .tint(requestSent ? Color.blue : Color.orange.opacity(0.2))
+        .buttonStyle(.borderedProminent)
+        .buttonBorderShape(.capsule)
     }
     
 }

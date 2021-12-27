@@ -97,6 +97,8 @@
 		493705DE26AD780900E4E5A0 /* ReplyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493705DC26AD780900E4E5A0 /* ReplyStateView.swift */; };
 		4948F78526D5D0E1003232DE /* DraftInvitation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4948F78426D5D0E1003232DE /* DraftInvitation.swift */; };
 		4948F78626D5D0E1003232DE /* DraftInvitation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4948F78426D5D0E1003232DE /* DraftInvitation.swift */; };
+		494E9CAD2772D4EC00B872D8 /* InvitationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494E9CAB2772D4EC00B872D8 /* InvitationView.swift */; };
+		494E9CB02772FC4100B872D8 /* InvitationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494E9CAE2772FC4100B872D8 /* InvitationViewModel.swift */; };
 		495A9F0426E25726003F65B3 /* DraftUserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495A9F0326E25726003F65B3 /* DraftUserProfile.swift */; };
 		495A9F0526E25726003F65B3 /* DraftUserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495A9F0326E25726003F65B3 /* DraftUserProfile.swift */; };
 		495F53E326B1545200E6E981 /* SearchInvitationPaginator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495F53E226B1545200E6E981 /* SearchInvitationPaginator.swift */; };
@@ -145,6 +147,8 @@
 		496F327A27620A2400DA705E /* PaginationList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496F327827620A2400DA705E /* PaginationList.swift */; };
 		496F327C276357DD00DA705E /* EndResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496F327B276357DD00DA705E /* EndResultView.swift */; };
 		496F327D276357DD00DA705E /* EndResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496F327B276357DD00DA705E /* EndResultView.swift */; };
+		497558C6277975D3009F0132 /* AsyncButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497558C5277975D2009F0132 /* AsyncButton.swift */; };
+		497558C7277975D3009F0132 /* AsyncButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497558C5277975D2009F0132 /* AsyncButton.swift */; };
 		497F9480276066B3003DC213 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497F947F276066B3003DC213 /* HTTPMethod.swift */; };
 		497F9481276066B3003DC213 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497F947F276066B3003DC213 /* HTTPMethod.swift */; };
 		49889A3F2760641300485914 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49889A3E2760641300485914 /* NetworkError.swift */; };
@@ -163,8 +167,10 @@
 		498CAD7B26E765A300478403 /* FDDateTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498CAD7926E765A300478403 /* FDDateTransform.swift */; };
 		498CAD8226E767AA00478403 /* LocationTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498CAD8126E767AA00478403 /* LocationTransform.swift */; };
 		498CAD8326E767AA00478403 /* LocationTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498CAD8126E767AA00478403 /* LocationTransform.swift */; };
+		498E539E277366F600114E28 /* InvitationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494E9CAB2772D4EC00B872D8 /* InvitationView.swift */; };
 		49904CDF26E26D9A006CE74F /* PropertyWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49904CDE26E26D9A006CE74F /* PropertyWrapper.swift */; };
 		49904CE026E26D9A006CE74F /* PropertyWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49904CDE26E26D9A006CE74F /* PropertyWrapper.swift */; };
+		49918C5F27731DFF0079823F /* InvitationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494E9CAE2772FC4100B872D8 /* InvitationViewModel.swift */; };
 		4992D9F726BB92BA007576DC /* InviteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4992D9F626BB92BA007576DC /* InviteView.swift */; };
 		4992D9F826BB92BA007576DC /* InviteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4992D9F626BB92BA007576DC /* InviteView.swift */; };
 		4992D9FC26BB93B9007576DC /* InviteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4992D9FB26BB93B9007576DC /* InviteViewModel.swift */; };
@@ -342,6 +348,8 @@
 		492D03DD26A0221200F944D0 /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		493705DC26AD780900E4E5A0 /* ReplyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplyStateView.swift; sourceTree = "<group>"; };
 		4948F78426D5D0E1003232DE /* DraftInvitation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraftInvitation.swift; sourceTree = "<group>"; };
+		494E9CAB2772D4EC00B872D8 /* InvitationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationView.swift; sourceTree = "<group>"; };
+		494E9CAE2772FC4100B872D8 /* InvitationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationViewModel.swift; sourceTree = "<group>"; };
 		495A9F0326E25726003F65B3 /* DraftUserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraftUserProfile.swift; sourceTree = "<group>"; };
 		495F53E226B1545200E6E981 /* SearchInvitationPaginator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchInvitationPaginator.swift; sourceTree = "<group>"; };
 		495F53E626B154A600E6E981 /* ListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
@@ -366,6 +374,7 @@
 		496F3275276203F700DA705E /* InvitationAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationAction.swift; sourceTree = "<group>"; };
 		496F327827620A2400DA705E /* PaginationList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationList.swift; sourceTree = "<group>"; };
 		496F327B276357DD00DA705E /* EndResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndResultView.swift; sourceTree = "<group>"; };
+		497558C5277975D2009F0132 /* AsyncButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncButton.swift; sourceTree = "<group>"; };
 		497F947F276066B3003DC213 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		49889A3E2760641300485914 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		4989B65B269D43C600611D10 /* FoodateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodateApp.swift; sourceTree = "<group>"; };
@@ -586,6 +595,8 @@
 			isa = PBXGroup;
 			children = (
 				49FDFF8626B11EA2001185D3 /* TabBarView.swift */,
+				494E9CAB2772D4EC00B872D8 /* InvitationView.swift */,
+				494E9CAE2772FC4100B872D8 /* InvitationViewModel.swift */,
 				49CB63E82768715F00224DAB /* Reset Password */,
 				49FA1C8A2766FB830088C245 /* Nofication */,
 				499B0F9A270AF03700CB1CD1 /* Calendar */,
@@ -952,6 +963,7 @@
 				4914AEE826A98416002F2634 /* CircleView.swift */,
 				499D079726E9B60E00F0056C /* StadiumShape.swift */,
 				491257C32710605A005B122F /* ViewDidLoadModifier.swift */,
+				497558C5277975D2009F0132 /* AsyncButton.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -1199,6 +1211,7 @@
 				492D0297269D4CB400F944D0 /* AppConfig.swift in Sources */,
 				49FA1C882766FB7B0088C245 /* NotificationView.swift in Sources */,
 				490C486227699300005CEBDA /* NotificationCell.swift in Sources */,
+				49918C5F27731DFF0079823F /* InvitationViewModel.swift in Sources */,
 				4914AEEE26A99217002F2634 /* UserHeader.swift in Sources */,
 				49FDFF8726B11EA2001185D3 /* TabBarView.swift in Sources */,
 				4965F29A26BA589D00C9B8E7 /* PlaceCell.swift in Sources */,
@@ -1235,6 +1248,7 @@
 				495F53EA26B156D100E6E981 /* SearchProfilePaginator.swift in Sources */,
 				4914AEF826AA6409002F2634 /* GroupPhotosView.swift in Sources */,
 				49DA1ED026A039BD001BF85B /* Bundle.swift in Sources */,
+				497558C6277975D3009F0132 /* AsyncButton.swift in Sources */,
 				49CCED2C26B14E040033469B /* SegmentedPicker.swift in Sources */,
 				496F32652761FE5B00DA705E /* DataStack.swift in Sources */,
 				492D02BC269D6AD500F944D0 /* FDLocation.swift in Sources */,
@@ -1262,6 +1276,7 @@
 				49DA1EFD26A125D0001BF85B /* Alert.swift in Sources */,
 				4965F28126B932D300C9B8E7 /* RequestListViewModel.swift in Sources */,
 				49CB63ED2768D88900224DAB /* NotificationPaginator.swift in Sources */,
+				498E539E277366F600114E28 /* InvitationView.swift in Sources */,
 				492D0303269ED30700F944D0 /* Color.swift in Sources */,
 				49B9D544270EEDE1005BD619 /* InviteCell.swift in Sources */,
 				49DFA5932768DEE200583FF2 /* NotificationViewModel.swift in Sources */,
@@ -1332,6 +1347,7 @@
 				49B9D545270EEDE1005BD619 /* InviteCell.swift in Sources */,
 				4914AEFE26AA793A002F2634 /* PlaceHeader.swift in Sources */,
 				499D079926E9B60E00F0056C /* StadiumShape.swift in Sources */,
+				494E9CAD2772D4EC00B872D8 /* InvitationView.swift in Sources */,
 				49DA1F5926A1814E001BF85B /* ASRemoteImageView.swift in Sources */,
 				498CAD7B26E765A300478403 /* FDDateTransform.swift in Sources */,
 				492D02AA269D4FF500F944D0 /* v1.swift in Sources */,
@@ -1372,6 +1388,7 @@
 				4992DA0726BBE269007576DC /* Font.swift in Sources */,
 				496F326E276202EC00DA705E /* SearchType.swift in Sources */,
 				496F327A27620A2400DA705E /* PaginationList.swift in Sources */,
+				497558C7277975D3009F0132 /* AsyncButton.swift in Sources */,
 				4965F28726B9333400C9B8E7 /* RequestPaginator.swift in Sources */,
 				499B0F9D270AF05A00CB1CD1 /* CalendarViewModel.swift in Sources */,
 				492D02D9269D7AE500F944D0 /* FDRequester.swift in Sources */,
@@ -1384,6 +1401,7 @@
 				49DE75CB26AD677D00B4D883 /* SendRequestFooter.swift in Sources */,
 				4914AEDC26A97609002F2634 /* InvitationCell.swift in Sources */,
 				495F53EB26B156D100E6E981 /* SearchProfilePaginator.swift in Sources */,
+				494E9CB02772FC4100B872D8 /* InvitationViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

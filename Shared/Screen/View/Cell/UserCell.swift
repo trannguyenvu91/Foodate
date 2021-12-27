@@ -56,7 +56,7 @@ struct UserCell: View {
                         .clipped()
                         .cornerRadius(18)
                         .onAppear {
-                            ASRemoteImageManager.shared.load(path: baseURL!)
+                            ASRemoteImageManager.shared.load(path: baseURL)
                     }
                 }
             }

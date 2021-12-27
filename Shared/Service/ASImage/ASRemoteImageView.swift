@@ -16,17 +16,20 @@ struct ASRemoteImageView: View
 
 	var content: some View
 	{
-		ZStack
-		{
-			Color(.secondarySystemBackground)
-			Image(systemName: "photo")
-			self.imageLoader.image.map
-			{ image in
-				Image(uiImage: image)
-					.resizable()
-			}.transition(AnyTransition.opacity.animation(Animation.default))
-		}
-		.compositingGroup()
+        GeometryReader { proxy in
+            ZStack
+            {
+                Color(.secondarySystemBackground)
+                ProgressView()
+                self.imageLoader.image.map
+                { image in
+                    Image(uiImage: image)
+                        .resizable()
+                        .scaledToFill()
+                }.transition(AnyTransition.opacity.animation(Animation.default))
+            }
+            .compositingGroup()
+        }
 	}
 
 	var body: some View
@@ -50,8 +53,8 @@ extension ASRemoteImageView {
 
 extension ASRemoteImageManager {
     
-    func load(path: String) {
-        if let url = URL(string: path) {
+    func load(path: String?) {
+        if let path = path, let url = URL(string: path) {
             load(url)
         }
     }

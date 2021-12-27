@@ -1,5 +1,16 @@
-import Alamofire
 import Foundation
 import SwiftUI
 
-let a: NotificationCenter
+
+struct ContentView: View {
+    
+    @EnvironmentObject var delegate: AppDelegate
+    var body: some View {
+        Text("")
+    }
+    
+}
+
+class AppDelegate {
+    var id: Int!
+}

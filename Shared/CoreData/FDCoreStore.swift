@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreStore
+import CoreData
 
 class FDCoreStore {
     
@@ -23,9 +24,18 @@ class FDCoreStore {
     }
     
     func fetchSessionUser() throws -> ObjectSnapshot<FDSessionUser>? {
-        try dataStack.fetchAll(From<FDSessionUser>())
-            .first?
+        try dataStack.fetchOne(
+            From<FDSessionUser>()
+        )?
             .asSnapshot(in: .defaultStack)
+    }
+    
+    
+    func fetchOne<O>(_ condition: Where<O>) throws -> O? where O: CoreStoreObject {
+        try dataStack.fetchOne(
+            From<O>()
+                .where(condition)
+        )
     }
     
 }

@@ -17,8 +17,12 @@ struct RequestListView: View {
     }
     
     var body: some View {
-        List(model.requesters, id: \.self) { requester in
-            RequesterCell(requester, model: model)
+        List {
+            EmptyView()
+//            PaginationList(model.paginator) {
+//                RequesterCell($0.asSnapshot(in: .defaultStack)!, model: model)
+//                    .asAnyView()
+//            }
         }
         .navigationBarTitle("Lời yêu cầu")
         .bindErrorAlert(to: $model)
@@ -26,9 +30,6 @@ struct RequestListView: View {
             if dismiss {
                 presentationMode.wrappedValue.dismiss()
             }
-        }
-        .onLoad {
-            Task { await model.refresh() }
         }
         .refreshable {
             await model.refresh()

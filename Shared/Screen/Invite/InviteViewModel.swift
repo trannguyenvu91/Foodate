@@ -14,13 +14,11 @@ class InviteViewModel: BaseViewModel, Identifiable {
     
     @Published var draft = DraftInvitation()
     var selectionCommand = PassthroughSubject<Any, Never>()
-    var createCommand = PassthroughSubject<Any?, Never>()
     var didCreateCommand = PassthroughSubject<Any?, Never>()
     
     override init() {
         super.init()
         bindSelectionCommand()
-        bindCreateCommand()
         bind([draft.objectWillChange])
     }
     
@@ -35,15 +33,9 @@ class InviteViewModel: BaseViewModel, Identifiable {
         .store(in: &cancelableSet)
     }
     
-    func bindCreateCommand() {
-        createCommand
-            .sink { [unowned self] _ in
-                asyncDo {
-                    let invitation = try await NetworkService.createInvitation(parameters: try draft.getData())
-                    didCreateCommand.send(invitation)
-                }
-            }
-            .store(in: &cancelableSet)
+    func createInvitation() async throws {
+        let invitation = try await NetworkService.createInvitation(parameters: try draft.getData())
+        didCreateCommand.send(invitation)
     }
     
 }

@@ -51,26 +51,27 @@ private actor ServiceActor {
                                encoding: method.encoding,
                                headers: headers)
                 .validate(statusCode: NetworkConfig.acceptableStatusCodes)
-                .responseJSON { (response) in
+                .responseData(completionHandler: { response in
                     switch response.result {
                     case .success(let value):
+                        guard let json = try? JSONSerialization.jsonObject(with: value, options: .fragmentsAllowed) as? JSON else {
+                            continuation.resume(throwing: NetworkError.invalidJSONFormat)
+                            return
+                        }
                         if let error = self.validateError(code: response.response?.statusCode,
-                                                          info: value) {
+                                                          info: json) {
                             continuation.resume(throwing: error)
                             return
                         }
-                        continuation.resume(returning: value as! JSON)
+                        continuation.resume(returning: json)
                     case .failure(let error):
                         continuation.resume(throwing: error)
                     }
-                }
+                })
         })
     }
     
-    func validateError(code: Int?, info: Any) -> NetworkError? {
-        guard let info = info as? JSON else {
-            return .invalidJSONFormat
-        }
+    func validateError(code: Int?, info: JSON) -> NetworkError? {
         guard let code = code,
               NetworkConfig.errorStatusCodes.contains(code) else {
                   return nil

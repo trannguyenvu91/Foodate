@@ -12,7 +12,6 @@ import CoreStore
 class EditProfileViewModel: BaseViewModel {
     
     var session: ObjectSnapshot<FDUserProfile>
-    var didUpdateProfile = PassthroughSubject<Bool, Never>()
     @Published var draft: DraftUserProfile
     
     init(_ snapshot: ObjectSnapshot<FDUserProfile>) {
@@ -21,11 +20,8 @@ class EditProfileViewModel: BaseViewModel {
         super.init()
     }
     
-    func update() {
-        asyncDo { [unowned self] in
-            let _ = try await NetworkService.updateUser(ID: self.session.$id, parameters: self.draft.json)
-            self.didUpdateProfile.send(true)
-        }
+    func update() async throws {
+        let _ = try await NetworkService.updateUser(ID: self.session.$id, parameters: self.draft.json)
     }
     
 }

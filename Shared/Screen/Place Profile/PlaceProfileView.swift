@@ -19,7 +19,7 @@ struct PlaceProfileView: View {
     var body: some View {
         GeometryReader { proxy in
             List {
-                ObjectReader(model.objectPubliser) { snapshot in
+                ObjectReader(model.objectPublisher) { snapshot in
                     PhotosPageView(snapshot.$photos)
                         .listRowInsets(EdgeInsets())
                         .frame(width: proxy.size.width, height: proxy.size.width)
@@ -27,7 +27,7 @@ struct PlaceProfileView: View {
                     placeInfoView(snapshot)
                 }
                 PaginationList(model.paginator) {
-                    InviteCell(nil, to: model.objectPubliser)
+                    InviteCell(nil, to: model.objectPublisher)
                         .asAnyView()
                 } cellBuilder: {
                     InvitationCell($0.asPublisher(in: .defaultStack), showPlace: false)
@@ -75,7 +75,7 @@ struct PlaceProfileView: View {
     }
     
     var inviteView: some View {
-        PresentButton(destination: LazyView(InviteView(nil, to: model.objectPubliser))) {
+        PresentButton(destination: LazyView(InviteView(nil, to: model.objectPublisher))) {
             HStack {
                 Image(systemName: "calendar.badge.plus")
                     .resizable()
