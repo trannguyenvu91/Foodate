@@ -26,8 +26,8 @@ struct InvitationView: View {
         }
         .listStyle(.plain)
         .bindErrorAlert(to: $model)
-        .onLoad {
-            model.asyncDo { try await model.getInvitation() }
+        .taskOnLoad(error: $model.error) {
+            try await model.getInvitation()
         }
         .refreshable {
             await model.refresh()

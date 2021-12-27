@@ -22,16 +22,6 @@ class SearchViewModel: BaseViewModel {
         tabs[selectedIndex]
     }
     
-    var users: [ObjectPublisher<FDUserProfile>] {
-        userPaginator.items.map({ $0.asPublisher(in: .defaultStack)})
-    }
-    var places: [ObjectPublisher<FDPlace>] {
-        placePaginator.items.map({ $0.asPublisher(in: .defaultStack)})
-    }
-    var invitations: [ObjectPublisher<FDInvitation>] {
-        invitationPaginator.items.map({ $0.asPublisher(in: .defaultStack)})
-    }
-    
     init(_ tabs: [SearchType] = SearchType.allCases) {
         self.tabs = tabs
         self.userPaginator = SearchProfilePaginator(nil)

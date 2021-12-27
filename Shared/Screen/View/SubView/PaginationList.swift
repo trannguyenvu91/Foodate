@@ -37,14 +37,8 @@ struct PaginationList<Model>: View where Model: Hashable & Equatable & Importabl
                 }
             }
         }
-        .onLoad {
-            Task {
-                do {
-                    try await paginator.fetchNext()
-                } catch {
-                    self.error = error
-                }
-            }
+        .taskOnLoad(error: $error) {
+            try await paginator.fetchNext()
         }
     }
     

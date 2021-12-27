@@ -35,10 +35,8 @@ struct PlaceProfileView: View {
                 }
             }
         }
-        .onLoad {
-            model.asyncDo {
-                try await model.getProfile()
-            }
+        .taskOnLoad(error: $model.error) {
+            try await model.getProfile()
         }
         .refreshable {
             await self.model.refresh()
