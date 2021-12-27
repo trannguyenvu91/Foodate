@@ -25,13 +25,13 @@ struct InvitationView: View {
             }
         }
         .listStyle(.plain)
-        .bindErrorAlert(to: $model)
         .taskOnLoad(error: $model.error) {
             try await model.getInvitation()
         }
         .refreshable {
             await model.refresh()
         }
+        .bindErrorAlert(to: $model)
         .navigationTitle("InvitationView_Title".localized())
     }
 }

@@ -25,6 +25,7 @@ protocol PaginatorProtocol {
     var hasNext: Bool { get }
     var isFetching: Bool { get }
     var items: [modelClass] { get set }
+    var error: Error? { get set }
     
     func fetchNext() async throws
     func refresh() async throws

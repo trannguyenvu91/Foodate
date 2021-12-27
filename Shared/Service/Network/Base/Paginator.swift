@@ -16,6 +16,7 @@ class Paginator <T>: PaginatorProtocol where T: Equatable & ImportableJSONObject
     @Published var items: [T] = [T]()
     fileprivate var initialPage: NetworkPage<T>
     var currentPage: NetworkPage<T>?
+    @Published var error: Error?
     
     required init(_ initial: NetworkPage<modelClass>) {
         self.initialPage = initial
@@ -35,12 +36,18 @@ class Paginator <T>: PaginatorProtocol where T: Equatable & ImportableJSONObject
         defer {
             isFetching = false
         }
-        let nextPage = try await currentPage?.fetchNext()
-        if currentPage?.nextURL == initialPage.nextURL {
-            items.removeAll()
+        do {
+            let nextPage = try await currentPage?.fetchNext()
+            if currentPage?.nextURL == initialPage.nextURL {
+                items.removeAll()
+            }
+            append(nextPage)
+            currentPage = nextPage
+            error = nil
+        } catch {
+            self.error = error
+            throw error
         }
-        append(nextPage)
-        currentPage = nextPage
     }
     
     func refresh() async throws {

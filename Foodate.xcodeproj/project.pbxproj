@@ -149,6 +149,8 @@
 		496F327D276357DD00DA705E /* EndResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496F327B276357DD00DA705E /* EndResultView.swift */; };
 		497558C6277975D3009F0132 /* AsyncButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497558C5277975D2009F0132 /* AsyncButton.swift */; };
 		497558C7277975D3009F0132 /* AsyncButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497558C5277975D2009F0132 /* AsyncButton.swift */; };
+		497558CC2779C303009F0132 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497558CB2779C302009F0132 /* ErrorView.swift */; };
+		497558CD2779C303009F0132 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497558CB2779C302009F0132 /* ErrorView.swift */; };
 		497F9480276066B3003DC213 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497F947F276066B3003DC213 /* HTTPMethod.swift */; };
 		497F9481276066B3003DC213 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497F947F276066B3003DC213 /* HTTPMethod.swift */; };
 		49889A3F2760641300485914 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49889A3E2760641300485914 /* NetworkError.swift */; };
@@ -375,6 +377,7 @@
 		496F327827620A2400DA705E /* PaginationList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationList.swift; sourceTree = "<group>"; };
 		496F327B276357DD00DA705E /* EndResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndResultView.swift; sourceTree = "<group>"; };
 		497558C5277975D2009F0132 /* AsyncButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncButton.swift; sourceTree = "<group>"; };
+		497558CB2779C302009F0132 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		497F947F276066B3003DC213 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		49889A3E2760641300485914 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		4989B65B269D43C600611D10 /* FoodateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodateApp.swift; sourceTree = "<group>"; };
@@ -491,6 +494,7 @@
 				4914AEDF26A97654002F2634 /* InvitationCellModel.swift */,
 				49B9D543270EEDE0005BD619 /* InviteCell.swift */,
 				490C486127699300005CEBDA /* NotificationCell.swift */,
+				497558CB2779C302009F0132 /* ErrorView.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1166,6 +1170,7 @@
 				4914AF0E26AA9B43002F2634 /* RequestsFooter.swift in Sources */,
 				49DA1EAB26A031A6001BF85B /* UserProfileView.swift in Sources */,
 				49CB63E32768712400224DAB /* ResetPasswordView.swift in Sources */,
+				497558CC2779C303009F0132 /* ErrorView.swift in Sources */,
 				491257C727111747005B122F /* ForEach.swift in Sources */,
 				496F3276276203F700DA705E /* InvitationAction.swift in Sources */,
 				49FDFEEB26B00412001185D3 /* NetworkService+Invitation.swift in Sources */,
@@ -1350,6 +1355,7 @@
 				494E9CAD2772D4EC00B872D8 /* InvitationView.swift in Sources */,
 				49DA1F5926A1814E001BF85B /* ASRemoteImageView.swift in Sources */,
 				498CAD7B26E765A300478403 /* FDDateTransform.swift in Sources */,
+				497558CD2779C303009F0132 /* ErrorView.swift in Sources */,
 				492D02AA269D4FF500F944D0 /* v1.swift in Sources */,
 				4992D9F826BB92BA007576DC /* InviteView.swift in Sources */,
 				49DFA5912768D99200583FF2 /* NotificationType.swift in Sources */,

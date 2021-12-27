@@ -13,7 +13,6 @@ struct PaginationList<Model>: View where Model: Hashable & Equatable & Importabl
     @ObservedObject var paginator: Paginator<Model>
     var cellBuilder: (Model) -> AnyView
     var placeholderBuilder: (() -> AnyView)?
-    @State var error: Error?
     
     init(_ paginator: Paginator<Model>,
          placeholderBuilder: (() -> AnyView)? = nil,
@@ -26,8 +25,8 @@ struct PaginationList<Model>: View where Model: Hashable & Equatable & Importabl
     
     var body: some View {
         return VStack {
-            if let error = error {
-                Text("Error happened: \(error.alertMessage)")
+            if let error = paginator.error {
+                ErrorView(error: error)
             } else if !paginator.hasNext && paginator.items.count == 0 {
                 placeholderBuilder?()
             } else {
@@ -37,7 +36,7 @@ struct PaginationList<Model>: View where Model: Hashable & Equatable & Importabl
                 }
             }
         }
-        .taskOnLoad(error: $error) {
+        .taskOnLoad(error: $paginator.error) {
             try await paginator.fetchNext()
         }
     }
