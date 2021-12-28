@@ -42,8 +42,7 @@ class InvitationViewModel: BaseViewModel {
     
     var canViewRequests: Bool {
         snapshot?.$owner?.asSnapshot(in: .defaultStack)?.isSession == true &&
-        snapshot?.$state == .pending &&
-        (snapshot?.$startAt)! > Date()
+        snapshot?.$state == .pending
     }
     
     func refresh() async {

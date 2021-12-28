@@ -15,7 +15,6 @@ struct RequestsFooter: View {
     let maxPreview = 3
     var invitationID: Int
     
-    
     init(_ requests: [ObjectPublisher<FDRequester>], requestsTotal: Int, invitationID: Int) {
         self.requests = requests
         self.requestsTotal = requestsTotal
@@ -23,7 +22,7 @@ struct RequestsFooter: View {
     }
     
     var body: some View {
-        PresentButton(destination: NavigationView{ LazyView(RequestListView(invitationID)) },
+        NavigationButton(destination: LazyView(InvitationView(model: .init(invitationID))),
                       content: {
             HStack {
                 GroupPhotosView(avatarURLs)

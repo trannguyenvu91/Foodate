@@ -36,6 +36,9 @@ struct TabBarView: View {
             }
         }
         .tabViewStyle(.automatic)
+        .task {
+            try? await AppConfig.shared.updateUserLocation()
+        }
     }
     
     var profileView: AnyView {
