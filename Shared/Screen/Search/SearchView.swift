@@ -37,7 +37,7 @@ struct SearchView: View {
                 }
             }
         }
-        .listStyle(PlainListStyle())
+        .listStyle(.plain)
         .navigationTitle("Search")
         .navigationBarHidden(true)
         .bindErrorAlert(to: $model)
@@ -52,7 +52,7 @@ struct SearchView: View {
     var searchBar: some View {
         HStack(spacing: 10) {
             TextField("SearchView_Search_PlaceHolder".localized(), text: $model.searchTerm)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .textFieldStyle(.roundedBorder)
             Button {
                 
             } label: {

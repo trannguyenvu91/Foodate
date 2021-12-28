@@ -33,7 +33,7 @@ class NetworkConfig: NSObject {
     }
     
     static var errorStatusCodes: [Int] {
-        return [400, 401, 404]
+        return [400, 401, 404, 500]
     }
     
     static var acceptableStatusCodes: [Int] {

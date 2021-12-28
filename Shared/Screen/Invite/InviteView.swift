@@ -120,7 +120,7 @@ struct InviteView: View {
                 Text(type.title).tag(type)
             }
         }
-        .pickerStyle(SegmentedPickerStyle())
+        .pickerStyle(.segmented)
     }
     
     func mapView(_ snapshot: ObjectSnapshot<FDPlace>) -> some View {
@@ -257,7 +257,7 @@ struct InviteView: View {
                    displayedComponents: [.date, .hourAndMinute]) {
                     Text("")
         }
-        .datePickerStyle(WheelDatePickerStyle())
+                   .datePickerStyle(.wheel)
         .labelsHidden()
     }
     

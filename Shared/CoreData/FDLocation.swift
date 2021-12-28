@@ -26,6 +26,11 @@ struct FDLocation: Codable {
         longtitude = elements.last!
     }
     
+    init(_ location: CLLocation) {
+        latitude = location.coordinate.latitude
+        longtitude = location.coordinate.longitude
+    }
+    
     var toString: String {
         "\(latitude),\(longtitude)"
     }

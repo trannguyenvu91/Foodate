@@ -24,7 +24,7 @@ struct PresentButton<Content, Destination>: View where Content: View, Destinatio
         }) {
             content
         }
-        .buttonStyle(PlainButtonStyle())
+        .buttonStyle(.plain)
         .sheet(isPresented: $isPressed, content: {
             destination
         })

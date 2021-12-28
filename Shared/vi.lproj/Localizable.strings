@@ -58,3 +58,11 @@
 "Notification_Tilte" = "Thông báo";
 
 "InvitationView_Title" = "Lời mời";
+
+"Location_Title" = "Định vị";
+"Location_Not_Granted" = "Bạn đã tắt cài đặt định vị, điều này sẽ ảnh hưởng tới trải nghiệm của bạn.";
+"Location_Not_Available" = "Định vị không khả dụng. Hãy thử lại sau.";
+"LocationView_Title" = "Truy cập định vị";
+"LocationView_SubTitle" = "Foodate cần vị trí của bạn để đem lại trải nghiệm tốt nhất tới bạn.";
+"LocationView_AllowButton" = "Có, cho phép";
+"LocationView_SkipButton" = "Không. Nhắc tôi sau";

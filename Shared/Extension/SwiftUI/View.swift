@@ -15,7 +15,7 @@ extension View {
     }
     
     func plainedButton() -> some View {
-        self.buttonStyle(PlainButtonStyle())
+        self.buttonStyle(.plain)
     }
     
     func paddingForBorderBackground() -> some View {
@@ -28,7 +28,7 @@ extension View {
     }
     
     func stackNavigationViewStyle() -> some View {
-        navigationViewStyle(StackNavigationViewStyle())
+        navigationViewStyle(.stack)
     }
     
     func bindErrorAlert<T: BaseViewModel>(to model: ObservedObject<T>.Wrapper) -> some View {

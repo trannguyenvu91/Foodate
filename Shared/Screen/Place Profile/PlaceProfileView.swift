@@ -43,7 +43,7 @@ struct PlaceProfileView: View {
         }
         .bindErrorAlert(to: $model)
         .ignoresSafeArea()
-        .listStyle(PlainListStyle())
+        .listStyle(.plain)
     }
     
     func placeInfoView(_ snapshot: ObjectSnapshot<FDPlace>) -> some View {

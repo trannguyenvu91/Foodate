@@ -19,7 +19,9 @@ struct FoodateApp: App {
     
     var body: some Scene {
         WindowGroup {
-            if let id = config.sessionUser?.$id,
+            if !LocationService.shared.manager.isPermissionGranted {
+                LocationView()
+            } else if let id = config.sessionUser?.$id,
                let user = try? FDUserProfile.fetchOne(id: id),
                let _ = user.asPublisher(in: .defaultStack) {
                 TabBarView()

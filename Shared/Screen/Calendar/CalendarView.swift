@@ -24,7 +24,7 @@ struct CalendarView: View {
                         .tag(type)
                 }
             }
-            .pickerStyle(SegmentedPickerStyle())
+            .pickerStyle(.segmented)
             .padding(.top, -16)
             .padding([.leading, .trailing])
             List {
@@ -37,7 +37,7 @@ struct CalendarView: View {
             }
         }
         .navigationBarHidden(true)
-        .listStyle(PlainListStyle())
+        .listStyle(.plain)
         .refreshable {
             await model.refresh()
         }

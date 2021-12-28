@@ -46,7 +46,7 @@ struct NavigationButton<Content, Destination>: View where Content: View, Destina
             }) {
                 content
             }
-            .buttonStyle(PlainButtonStyle())
+            .buttonStyle(.plain)
         }
     }
     

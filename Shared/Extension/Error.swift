@@ -16,8 +16,3 @@ extension Error {
         return self.localizedDescription
     }
 }
-
-enum AppError: Error {
-    case impossible
-    
-}

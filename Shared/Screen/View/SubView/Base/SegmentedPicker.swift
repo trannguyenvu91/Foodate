@@ -55,7 +55,7 @@ struct PickerButton: View {
         .anchorPreference(key: ButtonPreferenceKey.self, value: .bounds, transform: {
             [ButtonPreferenceData(viewIdx: index, bounds: $0)]
         })
-        .buttonStyle(PlainButtonStyle())
+        .buttonStyle(.plain)
     }
 }
 

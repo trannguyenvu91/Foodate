@@ -12,10 +12,15 @@ struct InvitationCell: View {
     
     @ObservedObject var model: InvitationCellModel
     var showPlace = true
+    var showRequestsFooter = true
     
-    init(_ invitation: ObjectPublisher<FDInvitation>, showPlace: Bool = true) {
+    
+    init(_ invitation: ObjectPublisher<FDInvitation>,
+         showPlace: Bool = true,
+         showRequestsFooter: Bool = true) {
         self.model = InvitationCellModel(invitation)
         self.showPlace = showPlace
+        self.showRequestsFooter = showRequestsFooter
     }
     
     var body: some View {
@@ -51,6 +56,10 @@ struct InvitationCell: View {
     func footer(_ snapshot: ObjectSnapshot<FDInvitation>) -> AnyView {
         switch snapshot.action {
         case .viewRequests:
+            guard showRequestsFooter else {
+                return EmptyView()
+                    .asAnyView()
+            }
             return RequestsFooter(snapshot.$requests,
                                   requestsTotal: snapshot.$requestsTotal ?? 0,
                                   invitationID: snapshot.$id)

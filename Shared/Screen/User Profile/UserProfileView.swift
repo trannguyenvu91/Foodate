@@ -45,7 +45,7 @@ struct UserProfileView: View {
         }
         .bindErrorAlert(to: $model)
         .ignoresSafeArea()
-        .listStyle(PlainListStyle())
+        .listStyle(.plain)
         .navigationBarItems(trailing: model.objectPublisher.isSession ? logOutButton.asAnyView() : EmptyView().asAnyView())
     }
     

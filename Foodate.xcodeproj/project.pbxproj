@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		490239E7277AC64F0019E7FF /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490239E6277AC64F0019E7FF /* LocationService.swift */; };
+		490239E8277AC64F0019E7FF /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490239E6277AC64F0019E7FF /* LocationService.swift */; };
+		490239EA277AFDB80019E7FF /* Error+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490239E9277AFDB80019E7FF /* Error+Extension.swift */; };
+		490239EB277AFDB90019E7FF /* Error+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490239E9277AFDB80019E7FF /* Error+Extension.swift */; };
 		490C486227699300005CEBDA /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490C486127699300005CEBDA /* NotificationCell.swift */; };
 		490C486327699300005CEBDA /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490C486127699300005CEBDA /* NotificationCell.swift */; };
 		490C486527699679005CEBDA /* notification.json in Resources */ = {isa = PBXBuildFile; fileRef = 490C486427699679005CEBDA /* notification.json */; };
@@ -211,6 +215,8 @@
 		49CB63F12768D8BC00224DAB /* FDNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CB63EF2768D8BC00224DAB /* FDNotification.swift */; };
 		49CCED2C26B14E040033469B /* SegmentedPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CCED2B26B14E040033469B /* SegmentedPicker.swift */; };
 		49CCED2D26B14E040033469B /* SegmentedPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CCED2B26B14E040033469B /* SegmentedPicker.swift */; };
+		49D2254E277B028300815018 /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D2254D277B028300815018 /* LocationView.swift */; };
+		49D2254F277B028300815018 /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D2254D277B028300815018 /* LocationView.swift */; };
 		49DA1EAB26A031A6001BF85B /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DA1EAA26A031A6001BF85B /* UserProfileView.swift */; };
 		49DA1EB126A031BA001BF85B /* UserProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DA1EB026A031BA001BF85B /* UserProfileViewModel.swift */; };
 		49DA1EC726A038E0001BF85B /* session_user.json in Resources */ = {isa = PBXBuildFile; fileRef = 49DA1EC626A038E0001BF85B /* session_user.json */; };
@@ -305,6 +311,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		490239E6277AC64F0019E7FF /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
+		490239E9277AFDB80019E7FF /* Error+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+Extension.swift"; sourceTree = "<group>"; };
 		490C486127699300005CEBDA /* NotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
 		490C486427699679005CEBDA /* notification.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = notification.json; sourceTree = "<group>"; };
 		491257C32710605A005B122F /* ViewDidLoadModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDidLoadModifier.swift; sourceTree = "<group>"; };
@@ -418,6 +426,7 @@
 		49CB63EC2768D88900224DAB /* NotificationPaginator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPaginator.swift; sourceTree = "<group>"; };
 		49CB63EF2768D8BC00224DAB /* FDNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FDNotification.swift; sourceTree = "<group>"; };
 		49CCED2B26B14E040033469B /* SegmentedPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedPicker.swift; sourceTree = "<group>"; };
+		49D2254D277B028300815018 /* LocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
 		49DA1EAA26A031A6001BF85B /* UserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
 		49DA1EB026A031BA001BF85B /* UserProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewModel.swift; sourceTree = "<group>"; };
 		49DA1EC626A038E0001BF85B /* session_user.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = session_user.json; sourceTree = "<group>"; };
@@ -484,6 +493,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		490239E5277ABE4D0019E7FF /* Invitation */ = {
+			isa = PBXGroup;
+			children = (
+				494E9CAB2772D4EC00B872D8 /* InvitationView.swift */,
+				494E9CAE2772FC4100B872D8 /* InvitationViewModel.swift */,
+			);
+			path = Invitation;
+			sourceTree = "<group>";
+		};
 		4914AEE626A97B72002F2634 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -599,8 +617,8 @@
 			isa = PBXGroup;
 			children = (
 				49FDFF8626B11EA2001185D3 /* TabBarView.swift */,
-				494E9CAB2772D4EC00B872D8 /* InvitationView.swift */,
-				494E9CAE2772FC4100B872D8 /* InvitationViewModel.swift */,
+				49D2254D277B028300815018 /* LocationView.swift */,
+				490239E5277ABE4D0019E7FF /* Invitation */,
 				49CB63E82768715F00224DAB /* Reset Password */,
 				49FA1C8A2766FB830088C245 /* Nofication */,
 				499B0F9A270AF03700CB1CD1 /* Calendar */,
@@ -685,6 +703,7 @@
 				496F3272276203DD00DA705E /* InvitationState.swift */,
 				496F3275276203F700DA705E /* InvitationAction.swift */,
 				49DFA58F2768D99200583FF2 /* NotificationType.swift */,
+				490239E9277AFDB80019E7FF /* Error+Extension.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -916,6 +935,7 @@
 			children = (
 				49DA1F5C26A18153001BF85B /* ASImage */,
 				492D0356269EEDA100F944D0 /* Network */,
+				490239E6277AC64F0019E7FF /* LocationService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -1246,8 +1266,10 @@
 				4965F29526B93AAF00C9B8E7 /* PresentButton.swift in Sources */,
 				492D031B269ED34300F944D0 /* DateFormatter.swift in Sources */,
 				4992DA0626BBE269007576DC /* Font.swift in Sources */,
+				490239EA277AFDB80019E7FF /* Error+Extension.swift in Sources */,
 				4914AEE026A97654002F2634 /* InvitationCellModel.swift in Sources */,
 				492D03BD26A01DAB00F944D0 /* OnboardingView.swift in Sources */,
+				490239E7277AC64F0019E7FF /* LocationService.swift in Sources */,
 				499D079826E9B60E00F0056C /* StadiumShape.swift in Sources */,
 				4914AEFD26AA793A002F2634 /* PlaceHeader.swift in Sources */,
 				495F53EA26B156D100E6E981 /* SearchProfilePaginator.swift in Sources */,
@@ -1275,6 +1297,7 @@
 				49FA1C852766EEE90088C245 /* EmptyResultView.swift in Sources */,
 				4965F2A426BA8CCC00C9B8E7 /* PlaceProfileViewModel.swift in Sources */,
 				492D02CA269D6EEC00F944D0 /* FDPlace.swift in Sources */,
+				49D2254E277B028300815018 /* LocationView.swift in Sources */,
 				49DFA5902768D99200583FF2 /* NotificationType.swift in Sources */,
 				49DA1F5826A1814E001BF85B /* ASRemoteImageView.swift in Sources */,
 				49DA1F5626A1814E001BF85B /* ASRemoteImageManager.swift in Sources */,
@@ -1353,6 +1376,7 @@
 				4914AEFE26AA793A002F2634 /* PlaceHeader.swift in Sources */,
 				499D079926E9B60E00F0056C /* StadiumShape.swift in Sources */,
 				494E9CAD2772D4EC00B872D8 /* InvitationView.swift in Sources */,
+				490239E8277AC64F0019E7FF /* LocationService.swift in Sources */,
 				49DA1F5926A1814E001BF85B /* ASRemoteImageView.swift in Sources */,
 				498CAD7B26E765A300478403 /* FDDateTransform.swift in Sources */,
 				497558CD2779C303009F0132 /* ErrorView.swift in Sources */,
@@ -1365,6 +1389,7 @@
 				495F53EE26B1574100E6E981 /* SearchPlacePaginator.swift in Sources */,
 				4914AEEA26A98416002F2634 /* CircleView.swift in Sources */,
 				496F3277276203F700DA705E /* InvitationAction.swift in Sources */,
+				49D2254F277B028300815018 /* LocationView.swift in Sources */,
 				49DA1EFE26A125D0001BF85B /* Alert.swift in Sources */,
 				49CB63E72768713900224DAB /* ResetPasswordViewModel.swift in Sources */,
 				4965F2A026BA8C5B00C9B8E7 /* PlaceProfileView.swift in Sources */,
@@ -1385,6 +1410,7 @@
 				492D03D826A021DA00F944D0 /* Error.swift in Sources */,
 				49FDFEEC26B00412001185D3 /* NetworkService+Invitation.swift in Sources */,
 				4992D9FD26BB93B9007576DC /* InviteViewModel.swift in Sources */,
+				490239EB277AFDB90019E7FF /* Error+Extension.swift in Sources */,
 				4989B685269D43C900611D10 /* FoodateApp.swift in Sources */,
 				49CB63E42768712400224DAB /* ResetPasswordView.swift in Sources */,
 				492D02C4269D6DF300F944D0 /* FDPhoto.swift in Sources */,

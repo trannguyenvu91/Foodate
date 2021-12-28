@@ -28,6 +28,7 @@ class OnboardingViewModel: BaseViewModel {
                                                       password: password,
                                                       email: email)
         }
+        try await AppConfig.shared.updateUserLocation()
         AppConfig.shared.sessionUser = try? FDCoreStore.shared.fetchSessionUser()
     }
     

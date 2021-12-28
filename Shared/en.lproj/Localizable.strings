@@ -57,3 +57,12 @@
 
 
 "InvitationView_Title" = "Invitation";
+
+"Location_Title" = "Location";
+"Location_Not_Granted" = "You turned off location setting, this will affect the experience.";
+"Location_Not_Available" = "Your location is not available. Please try again later.";
+"LocationView_Title" = "Allow location";
+"LocationView_SubTitle" = "We need your location to give you a better experience.";
+
+"LocationView_AllowButton" = "Yes, I allow";
+"LocationView_SkipButton" = "Skip, ask me later";

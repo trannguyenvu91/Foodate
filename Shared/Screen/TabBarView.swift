@@ -35,7 +35,7 @@ struct TabBarView: View {
                     .font(.system(size: tabFontSize))
             }
         }
-        .tabViewStyle(DefaultTabViewStyle())
+        .tabViewStyle(.automatic)
     }
     
     var profileView: AnyView {

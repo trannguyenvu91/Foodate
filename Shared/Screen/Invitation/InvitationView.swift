@@ -15,7 +15,7 @@ struct InvitationView: View {
     var body: some View {
         List {
             if let publisher = model.invitation {
-                InvitationCell(publisher)
+                InvitationCell(publisher, showRequestsFooter: false)
             }
             if model.canViewRequests {
                 PaginationList(model.paginator) {

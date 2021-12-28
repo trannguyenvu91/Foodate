@@ -12,7 +12,16 @@ import CoreStore
 class InvitationViewModel: BaseViewModel {
     
     var invitationID: Int
-    @Published var invitation: ObjectPublisher<FDInvitation>?
+    @Published var invitation: ObjectPublisher<FDInvitation>? {
+        willSet {
+            invitation?.removeObserver(self)
+        }
+        didSet {
+            invitation?.addObserver(self, { [unowned self] _ in
+                self.objectWillChange.send()
+            })
+        }
+    }
     var paginator: Paginator<FDRequester>
     
     init(_ invitationID: Int) {
@@ -36,7 +45,6 @@ class InvitationViewModel: BaseViewModel {
         snapshot?.$state == .pending &&
         (snapshot?.$startAt)! > Date()
     }
-    
     
     func refresh() async {
         do {

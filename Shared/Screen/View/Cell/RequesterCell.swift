@@ -14,8 +14,9 @@ struct RequesterCell: View {
     @ObservedObject var model: InvitationViewModel
     
     var body: some View {
-        HStack {
+        HStack(alignment: .center) {
             UserHeader(requester)
+                .height(35)
             Spacer()
             AsyncButton(task: {
                 try await model.accept(requester)
@@ -27,7 +28,9 @@ struct RequesterCell: View {
             .tint(.blue)
             .buttonStyle(.borderedProminent)
             .buttonBorderShape(.capsule)
+            .controlSize(.regular)
         }
+        .padding([.top, .bottom], 6)
     }
 }
 

@@ -22,12 +22,13 @@ class AppConfig: ObservableObject {
     func setup() {
         FDCoreStore.shared.setup()
         sessionUser = try? FDCoreStore.shared.fetchSessionUser()
-        setupUI()
+        UITableViewCell.appearance().selectionStyle = .none
     }
     
-    func setupUI() {
-        UITableView.appearance().separatorStyle = .none
-        UITableViewCell.appearance().selectionStyle = .none
+    func updateUserLocation() async throws {
+        let location = try await LocationService.shared.requestLocation()
+        try await sessionUser?.update(location: location)
+        objectWillChange.send()
     }
     
     func logOut() {

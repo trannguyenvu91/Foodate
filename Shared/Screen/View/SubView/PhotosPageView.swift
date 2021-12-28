@@ -39,7 +39,7 @@ struct PhotosPageView<T: FDBasePhoto>: View {
                     }
                 }
             }
-            .tabViewStyle(PageTabViewStyle())
+            .tabViewStyle(.page)
         }
     }
 }
