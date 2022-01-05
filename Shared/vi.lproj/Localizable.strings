@@ -66,3 +66,9 @@
 "LocationView_SubTitle" = "Foodate cần vị trí của bạn để đem lại trải nghiệm tốt nhất tới bạn.";
 "LocationView_AllowButton" = "Có, cho phép";
 "LocationView_SkipButton" = "Không. Nhắc tôi sau";
+
+
+"NotificationPermissionView_Title" = "Đừng bỏ lỡ";
+"NotificationPermissionView_SubTitle" = "Nhận thông báo để được cập nhật mới nhất về lời mời và sự kiện quanh bạn.";
+"NotificationPermissionView_AllowButton" = "Bật thông báo";
+"NotificationPermissionView_SkipButton" = "Không. Nhắc tôi sau";

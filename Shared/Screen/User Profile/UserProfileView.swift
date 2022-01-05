@@ -28,10 +28,8 @@ struct UserProfileView: View {
                     personalInfoView(snapshot)
                     PaginationList(model.paginator) {
                         InviteCell(model.objectPublisher)
-                            .asAnyView()
                     } cellBuilder: {
                         InvitationCell($0.asPublisher(in: .defaultStack))
-                            .asAnyView()
                     }
                 }
                 .navigationTitle(snapshot.name)
@@ -49,7 +47,7 @@ struct UserProfileView: View {
         .navigationBarItems(trailing: model.objectPublisher.isSession ? logOutButton.asAnyView() : EmptyView().asAnyView())
     }
     
-    func personalInfoView(_ snapshot: ObjectSnapshot<FDUserProfile>) -> AnyView {
+    func personalInfoView(_ snapshot: ObjectSnapshot<FDUserProfile>) -> some View {
         VStack(alignment: .leading) {
             HStack(alignment: .firstTextBaseline) {
                 Text(snapshot.name)
@@ -68,10 +66,9 @@ struct UserProfileView: View {
             }
         }
         .fixedSize(horizontal: false, vertical: true)
-        .asAnyView()
     }
     
-    func workView(_ snapshot: ObjectSnapshot<FDUserProfile>) -> AnyView {
+    func workView(_ snapshot: ObjectSnapshot<FDUserProfile>) -> some View {
         HStack {
             Image(systemName: "briefcase")
                 .resizable()
@@ -82,10 +79,9 @@ struct UserProfileView: View {
                 .foregroundColor(.gray)
                 .font(.subheadline)
         }
-        .asAnyView()
     }
     
-    func livingView(_ snapshot: ObjectSnapshot<FDUserProfile>) -> AnyView {
+    func livingView(_ snapshot: ObjectSnapshot<FDUserProfile>) -> some View {
         HStack {
             Image(systemName: "mappin.and.ellipse")
                 .resizable()
@@ -96,10 +92,9 @@ struct UserProfileView: View {
                 .foregroundColor(.gray)
                 .font(.subheadline)
         }
-        .asAnyView()
     }
     
-    func inviteView(_ snapshot: ObjectSnapshot<FDUserProfile>) -> AnyView {
+    func inviteView(_ snapshot: ObjectSnapshot<FDUserProfile>) -> some View {
         PresentButton(destination: LazyView(InviteView(model.objectPublisher, to: nil))) {
             HStack {
                 Image(systemName: "calendar.badge.plus")
@@ -111,7 +106,6 @@ struct UserProfileView: View {
             }
             .foregroundColor(.orange)
         }
-        .asAnyView()
     }
     
     var editView: some View {

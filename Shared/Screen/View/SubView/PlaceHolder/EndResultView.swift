@@ -11,16 +11,17 @@ struct EndResultView: View {
     var body: some View {
         HStack {
             Spacer()
-            Image(systemName: "eyeglasses")
+            Image(systemName: "checkmark.seal.fill")
                 .resizable()
                 .scaledToFit()
-                .frame(width: 30, height: 30)
+                .frame(width: 24, height: 24)
             Text("EndResultView_Title".localized())
                 .font(.callout)
                 .fontWeight(.semibold)
             Spacer()
         }
         .foregroundColor(.lightGray)
+        .padding()
     }
 }
 

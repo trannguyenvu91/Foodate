@@ -43,20 +43,16 @@ struct CalendarView: View {
     var eventsList: some View {
         PaginationList(model.eventsPaginator) {
             InviteCell()
-                .asAnyView()
         } cellBuilder: {
             InvitationCell($0.asPublisher(in: .defaultStack))
-                .asAnyView()
         }
     }
     
     var inboxList: some View {
         PaginationList(model.inboxPaginator) {
             EmptyResultView()
-                .asAnyView()
         } cellBuilder: {
             InvitationCell($0.asPublisher(in: .defaultStack))
-                .asAnyView()
         }
     }
     

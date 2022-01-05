@@ -20,34 +20,36 @@ struct NotificationCell: View {
                     invitationTitleView(snapshot)
                 }
                 .padding(.top, -8)
+                .padding(.bottom)
+                Divider()
+                    .padding(.leading, 40)
             }
         }
-        .padding(.bottom)
     }
     
     func invitationTitleView(_ noti: ObjectSnapshot<FDNotification>) -> some View {
         let invitation = noti.$invitation?.asSnapshot(in: .defaultStack)
         let inviter = invitation?.$owner?.asSnapshot(in: .defaultStack)
-        return Text("\"\(invitation?.$title ?? "")\"")
-            .font(.callout)
-            .fontWeight(.ultraLight)
-            .fixedSize(horizontal: false, vertical: true)
-            .padding(8)
-            .background(Color.groupTableViewBackground)
-            .cornerRadius(4)
-            .padding(.leading, 48)
-            .overlay(alignment: .bottomTrailing) {
-                CircleView(
-                    ASRemoteImageView(path: inviter?.imageURL)
-                        .scaledToFill()
-                        .aspectRatio(1, contentMode: .fit)
-                )
-                    .onAppear(perform: {
-                        ASRemoteImageManager.shared.load(path: inviter?.imageURL)
-                    })
-                    .frame(width: 30, height: 30)
-                    .padding([.bottom, .trailing], -16)
-            }
+        return HStack(alignment: .bottom, spacing: 4) {
+            Text("\"\(invitation?.$title ?? "")\"")
+                .font(.callout)
+                .fontWeight(.ultraLight)
+                .fixedSize(horizontal: false, vertical: true)
+                .padding(8)
+                .background(Color.groupTableViewBackground)
+                .clipShape(.rounded([.topLeft, .topRight, .bottomLeft], radius: 18))
+            CircleView(
+                ASRemoteImageView(path: inviter?.imageURL)
+                    .scaledToFill()
+                    .aspectRatio(1, contentMode: .fit)
+            )
+                .onAppear(perform: {
+                    ASRemoteImageManager.shared.load(path: inviter?.imageURL)
+                })
+                .frame(width: 30, height: 30)
+            Spacer()
+        }
+        .padding(.leading, 48)
     }
     
     func senderView(_ noti: ObjectSnapshot<FDNotification>) -> some View {
@@ -65,17 +67,15 @@ struct NotificationCell: View {
                 .overlay(alignment: .bottomTrailing) {
                     typeIconView(noti)
                 }
-            VStack(alignment: .leading) {
-                HStack {
-                    Text(sender?.name ?? "")
-                        .fontWeight(.semibold)
-                    detailText(noti)
-                }
-                Text(noti.$created?.distanceString ?? "")
-                    .foregroundColor(.lightGray)
-                    .font(.footnote)
+            HStack {
+                Text(sender?.name ?? "")
+                    .fontWeight(.semibold)
+                detailText(noti)
             }
             Spacer()
+            Text(noti.$created?.distanceString ?? "")
+                .foregroundColor(.lightGray)
+                .font(.footnote)
         }
     }
     
@@ -118,5 +118,6 @@ struct NotificationCell_Previews: PreviewProvider {
     static var previews: some View {
         let notification: FDNotification = PreviewResource.shared.loadObject(source: "notification", type: "json")
         NotificationCell(notification: notification.asPublisher(in: .defaultStack))
+            .previewDevice("iPhone 13 mini")
     }
 }

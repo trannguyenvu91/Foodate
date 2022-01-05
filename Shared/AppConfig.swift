@@ -13,10 +13,26 @@ import SwiftUI
 class AppConfig: ObservableObject {
     
     static let shared = AppConfig()
+    @Published var isPresentingScreen: Bool = false
+    @Published var isPushingScreen: Bool = false
+    @Published var presentScreen: ScreenType? {
+        didSet {
+            isPresentingScreen = presentScreen != nil
+        }
+    }
+    @Published var pushedScreen: ScreenType? {
+        didSet {
+            isPushingScreen = pushedScreen != nil
+        }
+    }
     @Published var sessionUser: ObjectSnapshot<FDSessionUser>? {
         willSet {
             NetworkConfig.token = newValue?.$token
         }
+    }
+    
+    init() {
+        setup()
     }
     
     func setup() {
@@ -28,6 +44,16 @@ class AppConfig: ObservableObject {
     func updateUserLocation() async throws {
         let location = try await LocationService.shared.requestLocation()
         try await sessionUser?.update(location: location)
+        objectWillChange.send()
+    }
+    
+    func updateNotificationsToken() async throws {
+        let status = try await NotificationService.shared.getAuthorizationStatus()
+        guard status != .denied else {
+            throw(NotificationError.notAvailable)
+        }
+        let token = try await NotificationService.shared.registerNotifications()
+        try await sessionUser?.update(notificationToken: token)
         objectWillChange.send()
     }
     

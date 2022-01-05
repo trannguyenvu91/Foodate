@@ -27,3 +27,8 @@ enum LocationError: Error {
     }
     
 }
+
+enum NotificationError: Error {
+    case notGranted
+    case notAvailable
+}

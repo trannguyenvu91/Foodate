@@ -76,29 +76,26 @@ struct SearchView: View {
     
     var invitationList: some View {
         PaginationList(model.invitationPaginator, placeholderBuilder: {
-            InviteCell().asAnyView()
+            InviteCell()
         }) {
             InvitationCell($0.asPublisher(in: .defaultStack))
-                .asAnyView()
         }
     }
     
     var userList: some View {
         PaginationList(model.userPaginator, placeholderBuilder: {
-            EmptyResultView().asAnyView()
+            EmptyResultView()
         }) {
             UserCell($0.asPublisher(in: .defaultStack), selectionCommand: selectionCommand)
-                .asAnyView()
         }
         .listRowInsets(EdgeInsets())
     }
     
     var placeList: some View {
         PaginationList(model.placePaginator, placeholderBuilder: {
-            EmptyResultView().asAnyView()
+            EmptyResultView()
         }) {
             PlaceCell($0.asPublisher(in: .defaultStack), selectionCommand: selectionCommand)
-                .asAnyView()
         }
         .listRowInsets(EdgeInsets())
     }

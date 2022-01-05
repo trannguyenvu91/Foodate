@@ -28,10 +28,8 @@ struct PlaceProfileView: View {
                 }
                 PaginationList(model.paginator) {
                     InviteCell(nil, to: model.objectPublisher)
-                        .asAnyView()
                 } cellBuilder: {
                     InvitationCell($0.asPublisher(in: .defaultStack), showPlace: false)
-                        .asAnyView()
                 }
             }
         }

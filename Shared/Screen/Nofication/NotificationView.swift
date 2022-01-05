@@ -16,10 +16,8 @@ struct NotificationView: View {
         List {
             PaginationList(model.paginator) {
                 EmptyResultView()
-                    .asAnyView()
             } cellBuilder: {
                 NotificationCell(notification: $0.asPublisher(in: .defaultStack))
-                .asAnyView()
             }
         }
         .navigationTitle("Notification_Tilte".localized())

@@ -7,27 +7,43 @@
 
 import SwiftUI
 import CoreStore
+import Contacts
 
 @main
 struct FoodateApp: App {
     
-    @ObservedObject var config = AppConfig.shared
-    
-    init() {
-        config.setup()
-    }
+    @StateObject var config = AppConfig.shared
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
     var body: some Scene {
         WindowGroup {
+            mainView
+                .environmentObject(config)
+                .sheet(isPresented: $config.isPresentingScreen) {
+                    if let view = config.presentScreen?.view {
+                        view
+                    } else {
+                        EmptyView()
+                    }
+                }
+        }
+    }
+    
+    var mainView: some View {
+        Group {
             if !LocationService.shared.manager.isPermissionGranted {
-                LocationView()
+                LocationPermissionView()
             } else if let id = config.sessionUser?.$id,
-               let user = try? FDUserProfile.fetchOne(id: id),
-               let _ = user.asPublisher(in: .defaultStack) {
-                TabBarView()
+                      let user = try? FDUserProfile.fetchOne(id: id),
+                      let _ = user.asPublisher(in: .defaultStack) {
+                NavigationView {
+                    TabBarView()
+                        .navigationBarHidden(true)
+                }
             } else {
                 OnboardingView()
             }
         }
     }
+    
 }

@@ -24,39 +24,33 @@ struct EditProfileView: View {
                     avatarView(proxy.size.width)
                     inputView(
                         TextField("EditProfile_Enter_first_name".localized(),
-                                  text: $model.draft.firstName)
-                            .asAnyView(),
+                                  text: $model.draft.firstName),
                         title: "UserProfileView_Edit_Profile_FirstName_Label".localized()
                     )
                     inputView(
                         TextField("EditProfile_Enter_last_name".localized(),
-                                  text: $model.draft.lastName)
-                            .asAnyView(),
+                                  text: $model.draft.lastName),
                         title: "UserProfileView_Edit_Profile_LastName_Label".localized()
                     )
                     inputView(
                         TextField("EditProfile_Enter_user_name".localized(),
-                                  text: $model.draft.userName)
-                            .asAnyView(),
+                                  text: $model.draft.userName),
                         title: "Username"
                     )
                     inputView(
                         TextField("EditProfile_Enter_email".localized(),
-                                  text: $model.draft.email)
-                            .asAnyView(),
+                                  text: $model.draft.email),
                         title: "Email"
                     )
-                    inputView(birthdayButton.asAnyView(), title: "Birthday")
+                    inputView(birthdayButton, title: "Birthday")
                     inputView(
                         TextField("EditProfile_Enter_bio".localized(),
-                                  text: $model.draft.bio)
-                            .asAnyView(),
+                                  text: $model.draft.bio),
                         title: "UserProfileView_Edit_Profile_Bio_Label".localized()
                     )
                     inputView(
                         TextField("EditProfile_Enter_job".localized(),
-                                  text: $model.draft.job)
-                            .asAnyView(),
+                                  text: $model.draft.job),
                         title: "UserProfileView_Edit_Profile_Job_Label".localized()
                     )
                 }
@@ -104,7 +98,7 @@ struct EditProfileView: View {
             .padding([.top, .bottom], 16)
     }
     
-    func inputView(_ field: AnyView, title: String, withDivider: Bool = true) -> some View {
+    func inputView<Content: View>(_ field: Content, title: String, withDivider: Bool = true) -> some View {
         return HStack(alignment: .top, spacing: 16) {
             HStack {
                 Text(title)

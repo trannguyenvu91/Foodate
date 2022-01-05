@@ -18,9 +18,8 @@ struct InvitationView: View {
                 InvitationCell(publisher, showRequestsFooter: false)
             }
             if model.canViewRequests {
-                PaginationList(model.paginator) {
+                PaginationList(model.paginator, placeholderBuilder: { EmptyView() }) {
                     RequesterCell(requester: $0.asSnapshot(in: .defaultStack)!, model: model)
-                        .asAnyView()
                 }
             }
         }

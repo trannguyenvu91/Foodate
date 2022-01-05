@@ -8,15 +8,15 @@
 import SwiftUI
 import Combine
 
-struct PaginationList<Model>: View where Model: Hashable & Equatable & ImportableJSONObject {
+struct PaginationList<Model, Content, PlaceHolder>: View where Model: Hashable & Equatable & ImportableJSONObject, Content: View, PlaceHolder: View {
     
     @ObservedObject var paginator: Paginator<Model>
-    var cellBuilder: (Model) -> AnyView
-    var placeholderBuilder: (() -> AnyView)?
+    @ViewBuilder var cellBuilder: (Model) -> Content
+    var placeholderBuilder: (() -> PlaceHolder)?
     
     init(_ paginator: Paginator<Model>,
-         placeholderBuilder: (() -> AnyView)? = nil,
-         cellBuilder: @escaping (Model) -> AnyView
+         placeholderBuilder: (() -> PlaceHolder)? = nil,
+         cellBuilder: @escaping (Model) -> Content
     ) {
         self.paginator = paginator
         self.cellBuilder = cellBuilder
@@ -41,28 +41,26 @@ struct PaginationList<Model>: View where Model: Hashable & Equatable & Importabl
         }
     }
     
-    var list: AnyView {
+    @ViewBuilder
+    var list: some View {
         if paginator.isFetching {
-            return HStack {
+            HStack {
                 Spacer()
                 ProgressView()
                 Spacer()
             }
-            .asAnyView()
         }
-        return ForEach(paginator.items, id: \.self) {
+        ForEach(paginator.items, id: \.self) {
             cellBuilder($0)
         }
-        .asAnyView()
     }
     
 }
 
 struct PaginationList_Previews: PreviewProvider {
     static var previews: some View {
-        PaginationList(SearchProfilePaginator(nil)) {
+        PaginationList(SearchProfilePaginator(nil), placeholderBuilder: { EmptyView() }) {
             UserCell($0.asPublisher(in: .defaultStack))
-                .asAnyView()
         }
     }
 }

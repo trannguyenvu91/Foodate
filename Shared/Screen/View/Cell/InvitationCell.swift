@@ -53,29 +53,24 @@ struct InvitationCell: View {
         .fixedSize(horizontal: false, vertical: true)
     }
     
-    func footer(_ snapshot: ObjectSnapshot<FDInvitation>) -> AnyView {
+    @ViewBuilder
+    func footer(_ snapshot: ObjectSnapshot<FDInvitation>) -> some View {
         switch snapshot.action {
         case .viewRequests:
-            guard showRequestsFooter else {
-                return EmptyView()
-                    .asAnyView()
+            if !showRequestsFooter {
+                EmptyView()
             }
-            return RequestsFooter(snapshot.$requests,
+            RequestsFooter(snapshot.$requests,
                                   requestsTotal: snapshot.$requestsTotal ?? 0,
                                   invitationID: snapshot.$id)
-                .asAnyView()
         case .request:
-            return SendRequestFooter(snapshot.isRequested, model: model)
-                .asAnyView()
+            SendRequestFooter(snapshot.isRequested, model: model)
         case .reply:
-            return ReplyFooter(model)
-                .asAnyView()
+            ReplyFooter(model)
         case .viewReply(let toUser):
-            return ReplyStateView(toUser, state: snapshot.$state ?? .pending)
-                .asAnyView()
+            ReplyStateView(toUser, state: snapshot.$state ?? .pending)
         case .invite:
-            return InviteFooter(model.inviteFriend)
-                .asAnyView()
+            InviteFooter(model.inviteFriend)
         }
     }
     

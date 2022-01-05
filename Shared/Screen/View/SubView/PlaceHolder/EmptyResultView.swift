@@ -11,13 +11,15 @@ struct EmptyResultView: View {
     var body: some View {
         HStack {
             Spacer()
-            Image(systemName: "tray")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 30, height: 30)
-            Text("EmptyResultView_Title".localized())
-                .font(.callout)
-                .fontWeight(.semibold)
+            VStack {
+                Image("no-result")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 200, height: 200)
+                Text("EmptyResultView_Title".localized())
+                    .font(.callout)
+                    .fontWeight(.semibold)
+            }
             Spacer()
         }
         .foregroundColor(.lightGray)

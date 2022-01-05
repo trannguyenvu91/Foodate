@@ -13,10 +13,10 @@ class Paginator <T>: PaginatorProtocol where T: Equatable & ImportableJSONObject
     
     typealias modelClass = T
     var isFetching: Bool = false
-    @Published var items: [T] = [T]()
+    var items: [T] = [T]()
     fileprivate var initialPage: NetworkPage<T>
     var currentPage: NetworkPage<T>?
-    @Published var error: Error?
+    var error: Error?
     
     required init(_ initial: NetworkPage<modelClass>) {
         self.initialPage = initial
@@ -35,6 +35,7 @@ class Paginator <T>: PaginatorProtocol where T: Equatable & ImportableJSONObject
         isFetching = true
         defer {
             isFetching = false
+            objectWillChange.send()
         }
         do {
             let nextPage = try await currentPage?.fetchNext()

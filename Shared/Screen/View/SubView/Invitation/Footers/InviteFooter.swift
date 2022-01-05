@@ -24,10 +24,9 @@ struct InviteFooter: View {
                     .font(.footnote)
                     .fontWeight(.medium)
             }
-            .paddingForBorderBackground()
-            .background(Color.groupTableViewBackground)
-            .clipShape(StadiumShape())
+            .padding(8)
         }
+        .background(Color.groupTableViewBackground.clipShape(.stadium))
     }
 }
 

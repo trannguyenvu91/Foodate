@@ -11,45 +11,59 @@ import CoreStore
 struct TabBarView: View {
     
     let tabFontSize: CGFloat = 22
+    @State var selectedTabItem: TabItemType = .calendar
+    @EnvironmentObject var config: AppConfig
     
     var body: some View {
-        TabView {
+        TabView(selection: $selectedTabItem) {
             calendarView.tabItem {
                 Image(systemName: "calendar")
                     .resizable()
                     .font(.system(size: tabFontSize))
             }
+            .tag(TabItemType.calendar)
             sugguestView.tabItem {
                 Image(systemName: "magnifyingglass")
                     .resizable()
                     .font(.system(size: tabFontSize))
             }
+            .tag(TabItemType.suggest)
             notificationView.tabItem {
                 Image(systemName: "bell.badge.fill")
                     .resizable()
                     .font(.system(size: tabFontSize))
             }
+            .tag(TabItemType.notifications)
             profileView.tabItem {
                 Image(systemName: "person.circle")
                     .resizable()
                     .font(.system(size: tabFontSize))
             }
+            .tag(TabItemType.profile)
         }
         .tabViewStyle(.automatic)
         .task {
             try? await AppConfig.shared.updateUserLocation()
+            let notificationAuthorization = try? await NotificationService.shared.getAuthorizationStatus()
+            if notificationAuthorization == .notDetermined {
+                AppConfig.shared.presentScreen = .notificationPermission
+            } else if notificationAuthorization != .denied {
+                try? await AppConfig.shared.updateNotificationsToken()
+            }
         }
+        .push(LazyView(config.pushedScreen?.view), activate: $config.isPushingScreen)
     }
     
-    var profileView: AnyView {
-        guard let id = AppConfig.shared.sessionUser?.$id,
-           let user = try? FDUserProfile.fetchOne(id: id) else {
-            return EmptyView().asAnyView()
+    @ViewBuilder
+    var profileView: some View {
+        if let id = AppConfig.shared.sessionUser?.$id,
+           let user = try? FDUserProfile.fetchOne(id: id) {
+            let publiser = user.asPublisher(in: .defaultStack)
+            NavigationView {
+                UserProfileView(publiser)
+            }
         }
-        let publiser = user.asPublisher(in: .defaultStack)
-        return NavigationView {
-            UserProfileView(publiser)
-        }.asAnyView()
+        EmptyView()
     }
     
     var sugguestView: some View {

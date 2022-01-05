@@ -204,11 +204,10 @@ struct InviteView: View {
                 Text("InviteView_Add_Place_Button_Title".localized())
                     .fontWeight(.semibold)
             }
-            .padding()
-            .foregroundColor(.orange)
-            .background(Color.orange.opacity(0.2))
+            .padding(14)
         }
-        .clipShape(StadiumShape())
+        .foregroundColor(.orange)
+        .background(Color.orange.opacity(0.2).clipShape(.stadium))
     }
     
     var addPersonView: some View {
