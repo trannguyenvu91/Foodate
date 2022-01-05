@@ -51,7 +51,6 @@ struct TabBarView: View {
                 try? await AppConfig.shared.updateNotificationsToken()
             }
         }
-        .push(LazyView(config.pushedScreen?.view), activate: $config.isPushingScreen)
     }
     
     @ViewBuilder

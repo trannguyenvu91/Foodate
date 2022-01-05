@@ -23,10 +23,6 @@ class CalendarViewModel: BaseViewModel, ListViewModel {
         }
     }
     
-    var invitations: [ObjectPublisher<FDInvitation>] {
-        items.map({ $0.asPublisher(in: .defaultStack) })
-    }
-    
     override init() {
         guard let userID = AppConfig.shared.sessionUser?.id else {
             fatalError("Session user must not be nil!")

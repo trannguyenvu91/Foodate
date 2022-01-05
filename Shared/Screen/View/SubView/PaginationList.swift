@@ -11,7 +11,7 @@ import Combine
 struct PaginationList<Model, Content, PlaceHolder>: View where Model: Hashable & Equatable & ImportableJSONObject, Content: View, PlaceHolder: View {
     
     @ObservedObject var paginator: Paginator<Model>
-    @ViewBuilder var cellBuilder: (Model) -> Content
+    var cellBuilder: (Model) -> Content
     var placeholderBuilder: (() -> PlaceHolder)?
     
     init(_ paginator: Paginator<Model>,
@@ -24,7 +24,7 @@ struct PaginationList<Model, Content, PlaceHolder>: View where Model: Hashable &
     }
     
     var body: some View {
-        return VStack {
+        LazyVStack {
             if let error = paginator.error {
                 ErrorView(error: error)
             } else if !paginator.hasNext && paginator.items.count == 0 {

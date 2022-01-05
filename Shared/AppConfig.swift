@@ -44,7 +44,6 @@ class AppConfig: ObservableObject {
     func updateUserLocation() async throws {
         let location = try await LocationService.shared.requestLocation()
         try await sessionUser?.update(location: location)
-        objectWillChange.send()
     }
     
     func updateNotificationsToken() async throws {
@@ -54,7 +53,6 @@ class AppConfig: ObservableObject {
         }
         let token = try await NotificationService.shared.registerNotifications()
         try await sessionUser?.update(notificationToken: token)
-        objectWillChange.send()
     }
     
     func logOut() {

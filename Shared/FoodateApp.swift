@@ -39,6 +39,7 @@ struct FoodateApp: App {
                 NavigationView {
                     TabBarView()
                         .navigationBarHidden(true)
+                        .push(LazyView(config.pushedScreen?.view), activate: $config.isPushingScreen)
                 }
             } else {
                 OnboardingView()
