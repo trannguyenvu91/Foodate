@@ -14,6 +14,9 @@ struct InvitationView: View {
     
     var body: some View {
         List {
+            if model.isArchivedInvitation {
+                ArchivedInvitationHeader()
+            }
             if let publisher = model.invitation {
                 InvitationCell(publisher, showRequestsFooter: false)
             }
@@ -21,6 +24,7 @@ struct InvitationView: View {
                 PaginationList(model.paginator, placeholderBuilder: { EmptyView() }) {
                     RequesterCell(requester: $0.asSnapshot(in: .defaultStack)!, model: model)
                 }
+                .disabled(model.isArchivedInvitation)
             }
         }
         .listStyle(.plain)

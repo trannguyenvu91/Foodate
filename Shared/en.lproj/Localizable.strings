@@ -72,3 +72,6 @@
 "NotificationPermissionView_SubTitle" = "Recieve notifications about latest updates on invitations and events nearby.";
 "NotificationPermissionView_AllowButton" = "Yes, enable notifications";
 "NotificationPermissionView_SkipButton" = "Skip, ask me later";
+
+"ArchivedInvitationHeader_Title" = "Already archived";
+"ArchivedInvitationHeader_SubTitle" = "This is an archived invitation, you can only view this.";

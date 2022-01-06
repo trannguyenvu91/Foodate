@@ -32,7 +32,12 @@
                     "food"
                 ]
             },
-            "to_user": null,
+            "to_user": {
+                "id": 4,
+                "first_name": "Uyên",
+                "last_name": "Trần",
+                "avatar_url": "https://user-images.githubusercontent.com/10230049/136374588-9e809f84-7c48-4e8d-bb2d-e07c35ace350.jpg"
+            },
             "requests_total": 1,
             "requests": [
                 {

@@ -24,7 +24,10 @@ class InvitationCellModel: ObjectBaseViewModel<FDInvitation> {
     
     func reply(_ state: InvitationState) async throws {
         let id = self.objectPublisher.id!
-        let _ = try await NetworkService.replyInvitation(ID: id, state: state)
+        let invitation = try await NetworkService.replyInvitation(ID: id, state: state)
+        if let snapshot = invitation.asSnapshot(in: .defaultStack), snapshot.$state == .matched {
+            AppConfig.shared.presentScreen = .matched(snapshot)
+        }
     }
     
     func bindInviteCommand() {

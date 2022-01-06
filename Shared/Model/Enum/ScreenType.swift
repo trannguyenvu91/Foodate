@@ -7,10 +7,12 @@
 
 import Foundation
 import SwiftUI
+import CoreStore
 
 enum ScreenType {
     case notificationPermission
     case invitation(Int)
+    case matched(ObjectSnapshot<FDInvitation>)
     
     var view: some View {
         Group {
@@ -19,9 +21,10 @@ enum ScreenType {
                 NotificationPermissionView()
             case .invitation(let invitationID):
                 InvitationView(model: .init(invitationID))
+            case .matched(let invitation):
+                MatchedView(invitation: invitation)
             }
         }
     }
-    
     
 }

@@ -36,11 +36,7 @@ struct FoodateApp: App {
             } else if let id = config.sessionUser?.$id,
                       let user = try? FDUserProfile.fetchOne(id: id),
                       let _ = user.asPublisher(in: .defaultStack) {
-                NavigationView {
-                    TabBarView()
-                        .navigationBarHidden(true)
-                        .push(LazyView(config.pushedScreen?.view), activate: $config.isPushingScreen)
-                }
+                TabBarView()
             } else {
                 OnboardingView()
             }

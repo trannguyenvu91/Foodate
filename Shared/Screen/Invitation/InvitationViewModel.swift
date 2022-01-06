@@ -31,9 +31,12 @@ class InvitationViewModel: BaseViewModel {
     }
     
     func accept(_ requester: ObjectSnapshot<FDRequester>) async throws {
-        let _ = try await NetworkService.acceptRequest(for: invitationID,
+        let invitation = try await NetworkService.acceptRequest(for: invitationID,
                                                           requestID: requester.$requestID)
         viewDismissalModePublisher.send(true)
+        if let snapshot = invitation.asSnapshot(in: .defaultStack) {
+            AppConfig.shared.presentScreen = .matched(snapshot)
+        }
     }
     
     var snapshot: ObjectSnapshot<FDInvitation>? {
@@ -43,6 +46,13 @@ class InvitationViewModel: BaseViewModel {
     var canViewRequests: Bool {
         snapshot?.$owner?.asSnapshot(in: .defaultStack)?.isSession == true &&
         snapshot?.$state == .pending
+    }
+    
+    var isArchivedInvitation: Bool {
+        if let endAt = snapshot?.$endAt, endAt < Date.now {
+            return true
+        }
+        return false
     }
     
     func refresh() async {

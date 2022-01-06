@@ -206,6 +206,8 @@
 		49BB722D26B2A63F00329341 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BB722B26B2A63F00329341 /* UserCell.swift */; };
 		49C3F736278696F000B86F2E /* MatchedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C3F735278696F000B86F2E /* MatchedView.swift */; };
 		49C3F737278696F000B86F2E /* MatchedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C3F735278696F000B86F2E /* MatchedView.swift */; };
+		49C3F7392786AE0C00B86F2E /* ArchivedInvitationHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C3F7382786AE0C00B86F2E /* ArchivedInvitationHeader.swift */; };
+		49C3F73A2786AE0C00B86F2E /* ArchivedInvitationHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C3F7382786AE0C00B86F2E /* ArchivedInvitationHeader.swift */; };
 		49C4E2C62711344F00C95EDC /* String+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C4E2C52711344F00C95EDC /* String+Localized.swift */; };
 		49C4E2C72711344F00C95EDC /* String+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C4E2C52711344F00C95EDC /* String+Localized.swift */; };
 		49CA79FD26C67020005B79D9 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CA79FB26C67020005B79D9 /* EditProfileView.swift */; };
@@ -429,6 +431,7 @@
 		49B9D55C270EF92E005BD619 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
 		49BB722B26B2A63F00329341 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		49C3F735278696F000B86F2E /* MatchedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchedView.swift; sourceTree = "<group>"; };
+		49C3F7382786AE0C00B86F2E /* ArchivedInvitationHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivedInvitationHeader.swift; sourceTree = "<group>"; };
 		49C4E2C52711344F00C95EDC /* String+Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localized.swift"; sourceTree = "<group>"; };
 		49CA79FB26C67020005B79D9 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 		49CA7A0526C67061005B79D9 /* EditProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewModel.swift; sourceTree = "<group>"; };
@@ -532,8 +535,9 @@
 		4914AEE726A97FD7002F2634 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				4914AF0826AA86B9002F2634 /* SubView */,
+				49FDFEDD26AEB7FC001185D3 /* Base */,
 				4914AEE626A97B72002F2634 /* Cell */,
+				4914AF0826AA86B9002F2634 /* SubView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -542,12 +546,12 @@
 			isa = PBXGroup;
 			children = (
 				49C4E2C42711225200C95EDC /* PlaceHolder */,
-				49FDFEDD26AEB7FC001185D3 /* Base */,
 				49CA79F826C61FA2005B79D9 /* User */,
 				49CA79F226C61F84005B79D9 /* Place */,
 				49BB722E26B2B10900329341 /* Invitation */,
 				49DA1F3226A135B9001BF85B /* PhotosPageView.swift */,
 				496F327827620A2400DA705E /* PaginationList.swift */,
+				49C3F7382786AE0C00B86F2E /* ArchivedInvitationHeader.swift */,
 			);
 			path = SubView;
 			sourceTree = "<group>";
@@ -1318,6 +1322,7 @@
 				49FA1C852766EEE90088C245 /* EmptyResultView.swift in Sources */,
 				4965F2A426BA8CCC00C9B8E7 /* PlaceProfileViewModel.swift in Sources */,
 				492D02CA269D6EEC00F944D0 /* FDPlace.swift in Sources */,
+				49C3F7392786AE0C00B86F2E /* ArchivedInvitationHeader.swift in Sources */,
 				49D2254E277B028300815018 /* LocationPermissionView.swift in Sources */,
 				49DFA5902768D99200583FF2 /* NotificationType.swift in Sources */,
 				49DA1F5826A1814E001BF85B /* ASRemoteImageView.swift in Sources */,
@@ -1444,6 +1449,7 @@
 				496F327A27620A2400DA705E /* PaginationList.swift in Sources */,
 				497558C7277975D3009F0132 /* AsyncButton.swift in Sources */,
 				4965F28726B9333400C9B8E7 /* RequestPaginator.swift in Sources */,
+				49C3F73A2786AE0C00B86F2E /* ArchivedInvitationHeader.swift in Sources */,
 				49C3F737278696F000B86F2E /* MatchedView.swift in Sources */,
 				499B0F9D270AF05A00CB1CD1 /* CalendarViewModel.swift in Sources */,
 				492D02D9269D7AE500F944D0 /* FDRequester.swift in Sources */,

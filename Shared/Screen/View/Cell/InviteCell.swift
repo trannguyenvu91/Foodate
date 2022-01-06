@@ -18,9 +18,10 @@ struct InviteCell: View {
             Image("pizza-coffee")
                 .resizable()
                 .scaledToFit()
-                .frame(height: 160)
+                .frame(height: 100)
+                .padding(20)
             Text("Invite_Holder_Title".localized())
-                .font(.title)
+                .font(.title2)
             
             if let user = user {
                 Text("Invite_Holder_Subtitle_People".localized(with: [user.name]))

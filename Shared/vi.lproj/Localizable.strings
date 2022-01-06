@@ -72,3 +72,6 @@
 "NotificationPermissionView_SubTitle" = "Nhận thông báo để được cập nhật mới nhất về lời mời và sự kiện quanh bạn.";
 "NotificationPermissionView_AllowButton" = "Bật thông báo";
 "NotificationPermissionView_SkipButton" = "Không. Nhắc tôi sau";
+
+"ArchivedInvitationHeader_Title" = "Đã diễn ra";
+"ArchivedInvitationHeader_SubTitle" = "Lời mời đã diễn ra, bạn chỉ có thể xem lại lời mời này.";
