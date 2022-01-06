@@ -44,12 +44,7 @@ struct TabBarView: View {
         .tabViewStyle(.automatic)
         .task {
             try? await AppConfig.shared.updateUserLocation()
-            let notificationAuthorization = try? await NotificationService.shared.getAuthorizationStatus()
-            if notificationAuthorization == .notDetermined {
-                AppConfig.shared.presentScreen = .notificationPermission
-            } else if notificationAuthorization != .denied {
-                try? await AppConfig.shared.updateNotificationsToken()
-            }
+            try? await AppConfig.shared.updateNotificationsToken()
         }
     }
     
@@ -71,10 +66,14 @@ struct TabBarView: View {
         }
     }
     
+    @ViewBuilder
     var calendarView: some View {
-        NavigationView {
-            CalendarView()
+        if config.sessionUser != nil {
+            NavigationView {
+                CalendarView()
+            }
         }
+        EmptyView()
     }
     
     var notificationView: some View {

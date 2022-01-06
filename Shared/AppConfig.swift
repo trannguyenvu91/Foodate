@@ -48,6 +48,10 @@ class AppConfig: ObservableObject {
     
     func updateNotificationsToken() async throws {
         let status = try await NotificationService.shared.getAuthorizationStatus()
+        guard status != .notDetermined else {
+            presentScreen = .notificationPermission
+            return
+        }
         guard status != .denied else {
             throw(NotificationError.notAvailable)
         }

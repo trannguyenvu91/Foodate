@@ -28,7 +28,7 @@ struct ViewDidLoadModifier: ViewModifier {
     
 }
 
-struct ViewDidLoadTaskModifier: ViewModifier {
+struct TaskOnViewDidLoadModifier: ViewModifier {
     
     @State private var didLoad = false
     private var task: () async throws -> Void
@@ -62,7 +62,20 @@ extension View {
     
     func taskOnLoad(error: Binding<Error?>,
                     _ task: @escaping () async throws -> Void) -> some View {
-        modifier(ViewDidLoadTaskModifier(perform: task, error: error))
+        modifier(TaskOnViewDidLoadModifier(perform: task, error: error))
+    }
+    
+    func taskOnAppear(error: Binding<Error?>,
+                    _ task: @escaping () async throws -> Void) -> some View {
+        onAppear {
+            Task {
+                do {
+                    try await task()
+                } catch let taskError {
+                    error.wrappedValue = taskError
+                }
+            }
+        }
     }
     
 }

@@ -204,6 +204,8 @@
 		49B9D55B270EF8B0005BD619 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FDFF8626B11EA2001185D3 /* TabBarView.swift */; };
 		49BB722C26B2A63F00329341 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BB722B26B2A63F00329341 /* UserCell.swift */; };
 		49BB722D26B2A63F00329341 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BB722B26B2A63F00329341 /* UserCell.swift */; };
+		49C3F736278696F000B86F2E /* MatchedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C3F735278696F000B86F2E /* MatchedView.swift */; };
+		49C3F737278696F000B86F2E /* MatchedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C3F735278696F000B86F2E /* MatchedView.swift */; };
 		49C4E2C62711344F00C95EDC /* String+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C4E2C52711344F00C95EDC /* String+Localized.swift */; };
 		49C4E2C72711344F00C95EDC /* String+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C4E2C52711344F00C95EDC /* String+Localized.swift */; };
 		49CA79FD26C67020005B79D9 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CA79FB26C67020005B79D9 /* EditProfileView.swift */; };
@@ -426,6 +428,7 @@
 		49B9D556270EF806005BD619 /* en */ = {isa = PBXFileReference; explicitFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		49B9D55C270EF92E005BD619 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
 		49BB722B26B2A63F00329341 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
+		49C3F735278696F000B86F2E /* MatchedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchedView.swift; sourceTree = "<group>"; };
 		49C4E2C52711344F00C95EDC /* String+Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localized.swift"; sourceTree = "<group>"; };
 		49CA79FB26C67020005B79D9 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 		49CA7A0526C67061005B79D9 /* EditProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewModel.swift; sourceTree = "<group>"; };
@@ -616,8 +619,6 @@
 				492D0342269EED9000F944D0 /* NetworkResource.swift */,
 				492D0344269EED9100F944D0 /* NetworkService.swift */,
 				492D0345269EED9100F944D0 /* NetworkPage.swift */,
-				492D0377269FD5D100F944D0 /* PaginatorProtocol.swift */,
-				492D0343269EED9000F944D0 /* Paginator.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -626,6 +627,7 @@
 			isa = PBXGroup;
 			children = (
 				49FDFF8626B11EA2001185D3 /* TabBarView.swift */,
+				49C3F735278696F000B86F2E /* MatchedView.swift */,
 				49B29EDB277EB2A9009104D3 /* Permission */,
 				490239E5277ABE4D0019E7FF /* Invitation */,
 				49CB63E82768715F00224DAB /* Reset Password */,
@@ -645,6 +647,8 @@
 		495F53E526B1545600E6E981 /* Paginators */ = {
 			isa = PBXGroup;
 			children = (
+				492D0377269FD5D100F944D0 /* PaginatorProtocol.swift */,
+				492D0343269EED9000F944D0 /* Paginator.swift */,
 				495F53E626B154A600E6E981 /* ListViewModel.swift */,
 				495F53E226B1545200E6E981 /* SearchInvitationPaginator.swift */,
 				495F53E926B156D100E6E981 /* SearchProfilePaginator.swift */,
@@ -1259,6 +1263,7 @@
 				4965F2B126BA987400C9B8E7 /* InvitationPaginator.swift in Sources */,
 				49DA1F4726A137B5001BF85B /* ObjectBaseViewModel.swift in Sources */,
 				49C4E2C62711344F00C95EDC /* String+Localized.swift in Sources */,
+				49C3F736278696F000B86F2E /* MatchedView.swift in Sources */,
 				49DA1F5426A1814E001BF85B /* ASCache.swift in Sources */,
 				4989B6B0269D462C00611D10 /* FDCoreStore.swift in Sources */,
 				494893BB277C2066006C5101 /* NotificationPermissionView.swift in Sources */,
@@ -1439,6 +1444,7 @@
 				496F327A27620A2400DA705E /* PaginationList.swift in Sources */,
 				497558C7277975D3009F0132 /* AsyncButton.swift in Sources */,
 				4965F28726B9333400C9B8E7 /* RequestPaginator.swift in Sources */,
+				49C3F737278696F000B86F2E /* MatchedView.swift in Sources */,
 				499B0F9D270AF05A00CB1CD1 /* CalendarViewModel.swift in Sources */,
 				492D02D9269D7AE500F944D0 /* FDRequester.swift in Sources */,
 				49CB63F12768D8BC00224DAB /* FDNotification.swift in Sources */,

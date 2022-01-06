@@ -21,8 +21,6 @@ struct NotificationCell: View {
                 }
                 .padding(.top, -8)
                 .padding(.bottom)
-                Divider()
-                    .padding(.leading, 40)
             }
         }
     }

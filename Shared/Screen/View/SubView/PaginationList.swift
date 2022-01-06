@@ -23,35 +23,42 @@ struct PaginationList<Model, Content, PlaceHolder>: View where Model: Hashable &
         self.placeholderBuilder = placeholderBuilder
     }
     
+    @ViewBuilder
     var body: some View {
-        LazyVStack {
-            if let error = paginator.error {
-                ErrorView(error: error)
-            } else if !paginator.hasNext && paginator.items.count == 0 {
-                placeholderBuilder?()
-            } else {
-                list
-                if !paginator.hasNext {
-                    EndResultView()
+        if let error = paginator.error {
+            ErrorView(error: error)
+        } else if !paginator.hasNext && paginator.items.count == 0 {
+            placeholderBuilder?()
+        } else {
+            list
+                .taskOnLoad(error: $paginator.error) {
+                    try await paginator.fetchNext()
                 }
-            }
-        }
-        .taskOnLoad(error: $paginator.error) {
-            try await paginator.fetchNext()
         }
     }
     
     @ViewBuilder
     var list: some View {
         if paginator.isFetching {
-            HStack {
-                Spacer()
-                ProgressView()
-                Spacer()
-            }
+            loadingCell
         }
         ForEach(paginator.items, id: \.self) {
             cellBuilder($0)
+        }
+        if paginator.hasNext {
+            loadingCell.taskOnAppear(error: $paginator.error) {
+                try await paginator.fetchNext()
+            }
+        } else {
+            EndResultView()
+        }
+    }
+    
+    var loadingCell: some View {
+        HStack {
+            Spacer()
+            ProgressView()
+            Spacer()
         }
     }
     
