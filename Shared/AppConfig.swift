@@ -46,6 +46,7 @@ class AppConfig: ObservableObject {
         try await sessionUser?.update(location: location)
     }
     
+    @MainActor
     func updateNotificationsToken() async throws {
         let status = try await NotificationService.shared.getAuthorizationStatus()
         guard status != .notDetermined else {
@@ -70,5 +71,4 @@ class AppConfig: ObservableObject {
         }
     }
 
-    
 }

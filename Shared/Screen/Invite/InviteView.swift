@@ -205,8 +205,8 @@ struct InviteView: View {
                     .fontWeight(.semibold)
             }
             .padding(14)
+            .foregroundColor(.orange)
         }
-        .foregroundColor(.orange)
         .background(Color.orange.opacity(0.2).clipShape(.stadium))
     }
     

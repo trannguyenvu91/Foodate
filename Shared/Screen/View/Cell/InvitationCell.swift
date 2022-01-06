@@ -39,11 +39,13 @@ struct InvitationCell: View {
     
     func contentView(_ snapshot: ObjectSnapshot<FDInvitation>) -> some View {
         VStack(alignment: .leading) {
-            UserHeader(snapshot.$owner!.asSnapshot(in: .defaultStack)!)
-                .height(40)
+            if let owner = snapshot.$owner?.asSnapshot(in: .defaultStack) {
+                UserHeader(owner)
+                    .height(40)
+            }
             Text(snapshot.$title ?? "")
-            if showPlace {
-                PlaceHeader(snapshot.$place!)
+            if let place = snapshot.$place, showPlace {
+                PlaceHeader(place)
             }
             footer(snapshot)
                 .height(50)
