@@ -10,12 +10,8 @@ import CoreStore
 
 struct EditProfileView: View {
     
-    @ObservedObject var model: EditProfileViewModel
+    @StateObject var model: EditProfileViewModel
     @Environment(\.presentationMode) var presentationMode
-    
-    init(_ snapshot: ObjectSnapshot<FDUserProfile>) {
-        self.model = EditProfileViewModel(snapshot)
-    }
     
     var body: some View {
         NavigationView {
@@ -118,6 +114,6 @@ struct EditProfileView: View {
 struct EditProfileView_Previews: PreviewProvider {
     static var previews: some View {
         let user: ObjectPublisher<FDUserProfile> = PreviewResource.shared.loadUser()
-        EditProfileView(user.asSnapshot(in: .defaultStack)!)
+        EditProfileView(model: .init(user.asSnapshot(in: .defaultStack)!))
     }
 }

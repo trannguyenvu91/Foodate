@@ -10,11 +10,7 @@ import CoreStore
 
 struct PlaceProfileView: View {
     
-    @ObservedObject var model: PlaceProfileViewModel
-    
-    init(_ publisher: ObjectPublisher<FDPlace>) {
-        model = PlaceProfileViewModel(publisher)
-    }
+    @StateObject var model: PlaceProfileViewModel
     
     var body: some View {
         GeometryReader { proxy in
@@ -29,7 +25,7 @@ struct PlaceProfileView: View {
                 PaginationList(model.paginator) {
                     InviteCell(nil, to: model.objectPublisher)
                 } cellBuilder: {
-                    InvitationCell($0.asPublisher(in: .defaultStack), showPlace: false)
+                    InvitationCell(model: .init($0.asPublisher(in: .defaultStack)), showPlace: false)
                 }
             }
         }
@@ -88,6 +84,6 @@ struct PlaceProfileView: View {
 
 struct PlaceProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        PlaceProfileView(PreviewResource.shared.loadPlace())
+        PlaceProfileView(model: .init(PreviewResource.shared.loadPlace()))
     }
 }

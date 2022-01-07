@@ -10,18 +10,9 @@ import CoreStore
 
 struct InvitationCell: View {
     
-    @ObservedObject var model: InvitationCellModel
+    @StateObject var model: InvitationCellModel
     var showPlace = true
     var showRequestsFooter = true
-    
-    
-    init(_ invitation: ObjectPublisher<FDInvitation>,
-         showPlace: Bool = true,
-         showRequestsFooter: Bool = true) {
-        self.model = InvitationCellModel(invitation)
-        self.showPlace = showPlace
-        self.showRequestsFooter = showRequestsFooter
-    }
     
     var body: some View {
         ObjectReader(model.objectPublisher) { snapshot in
@@ -81,6 +72,6 @@ struct InvitationCell: View {
 struct InvitationCell_Previews: PreviewProvider {
     static var previews: some View {
         let invitation = PreviewResource.shared.loadInvitation()
-        InvitationCell(invitation)
+        InvitationCell(model: .init(invitation))
     }
 }

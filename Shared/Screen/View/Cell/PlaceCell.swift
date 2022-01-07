@@ -35,7 +35,7 @@ struct PlaceCell: View {
                 }
                 .plainedButton()
             }
-            NavigationButton(destination: LazyView(PlaceProfileView(place))) {
+            NavigationButton(destination: LazyView(PlaceProfileView(model: .init(place)))) {
                 ObjectReader(place) { snapshot in
                     VStack {
                         HStack {

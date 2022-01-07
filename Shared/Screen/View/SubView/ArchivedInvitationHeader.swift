@@ -16,12 +16,13 @@ struct ArchivedInvitationHeader: View {
                 Text("ArchivedInvitationHeader_SubTitle".localized())
                     .font(.footnote)
             }
+            .foregroundColor(.gray)
             PresentButton(destination: LazyView(InviteView())) {
                 Text("Copy")
                     .font(.body)
                     .fontWeight(.semibold)
+                    .foregroundColor(.white)
             }
-            .foregroundColor(.white)
             .padding([.leading, .trailing])
             .padding([.top, .bottom], 8)
             .background(Color.blue.clipShape(.stadium))

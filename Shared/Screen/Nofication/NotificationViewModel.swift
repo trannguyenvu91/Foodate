@@ -13,7 +13,7 @@ class NotificationViewModel: BaseViewModel, ListViewModel {
     var paginator: Paginator<FDNotification> = NotificationPaginator()
     
     func refresh() async {
-        asyncDo {
+        asyncDo { [unowned self] in
             try await self.paginator.refresh()
         }
     }

@@ -10,7 +10,7 @@ import Combine
 
 struct CalendarView: View {
     
-    @ObservedObject var model = CalendarViewModel()
+    @StateObject var model = CalendarViewModel()
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -44,7 +44,7 @@ struct CalendarView: View {
         PaginationList(model.eventsPaginator) {
             InviteCell()
         } cellBuilder: {
-            InvitationCell($0.asPublisher(in: .defaultStack))
+            InvitationCell(model: .init($0.asPublisher(in: .defaultStack)))
         }
     }
     
@@ -52,7 +52,7 @@ struct CalendarView: View {
         PaginationList(model.inboxPaginator) {
             EmptyResultView()
         } cellBuilder: {
-            InvitationCell($0.asPublisher(in: .defaultStack))
+            InvitationCell(model: .init($0.asPublisher(in: .defaultStack)))
         }
     }
     

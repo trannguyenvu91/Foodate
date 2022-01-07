@@ -14,7 +14,7 @@ struct InviteFooter: View {
         self.inviteFriend = inviteFriend
     }
     var body: some View {
-        PresentButton(destination: LazyView(SearchView([.account], selectionCommand: inviteFriend))) {
+        PresentButton(destination: LazyView(SearchView(model: .init([.account]), selectionCommand: inviteFriend))) {
             HStack {
                 Image(systemName: "person.badge.plus")
                     .resizable()

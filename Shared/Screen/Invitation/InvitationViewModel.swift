@@ -73,4 +73,8 @@ class InvitationViewModel: BaseViewModel {
         invitation = try await NetworkService.getInvitation(ID: invitationID).asPublisher(in: .defaultStack)
     }
     
+    deinit {
+        invitation?.removeObserver(self)
+    }
+    
 }

@@ -18,7 +18,7 @@ struct PlaceHeader: View {
     }
     
     var body: some View {
-        NavigationButton(destination: LazyView(PlaceProfileView(place))) {
+        NavigationButton(destination: LazyView(PlaceProfileView(model: .init(place)))) {
             ObjectReader(place) { snapshot in
                 HStack {
                     infoView(snapshot)

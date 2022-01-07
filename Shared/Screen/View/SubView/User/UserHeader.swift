@@ -23,7 +23,7 @@ struct UserHeader: View {
     
     var body: some View {
         GeometryReader { proxy in
-            NavigationButton(destination: LazyView(UserProfileView(user.userProfile))) {
+            NavigationButton(destination: LazyView(UserProfileView(model: .init(user.userProfile)))) {
                 HStack {
                     CircleView(
                         ASRemoteImageView(path: self.user.imageURL)

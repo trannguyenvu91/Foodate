@@ -10,15 +10,9 @@ import Combine
 
 struct SearchView: View {
 
-    @ObservedObject var model: SearchViewModel
+    @StateObject var model: SearchViewModel
     var selectionCommand: PassthroughSubject<Any, Never>?
     @Environment(\.presentationMode) var presentationMode
-    
-    init(_ tabs: [SearchType] = SearchType.allCases,
-         selectionCommand: PassthroughSubject<Any, Never>? = nil) {
-        self.selectionCommand = selectionCommand
-        self.model = SearchViewModel(tabs)
-    }
     
     var body: some View {
         VStack {
@@ -78,7 +72,7 @@ struct SearchView: View {
         PaginationList(model.invitationPaginator, placeholderBuilder: {
             InviteCell()
         }) {
-            InvitationCell($0.asPublisher(in: .defaultStack))
+            InvitationCell(model: .init($0.asPublisher(in: .defaultStack)))
         }
     }
     
@@ -104,6 +98,6 @@ struct SearchView: View {
 
 struct SearchView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchView()
+        SearchView(model: .init())
     }
 }

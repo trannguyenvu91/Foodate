@@ -10,13 +10,9 @@ import CoreStore
 
 struct UserProfileView: View {
     
-    @ObservedObject var model: UserProfileViewModel
+    @StateObject var model: UserProfileViewModel
     @State var presentSheet = false
     @State var pushEditProfile = false
-    
-    init(_ publisher: ObjectPublisher<FDUserProfile>) {
-        model = UserProfileViewModel(publisher)
-    }
     
     var body: some View {
         GeometryReader { proxy in
@@ -29,7 +25,7 @@ struct UserProfileView: View {
                     PaginationList(model.paginator) {
                         InviteCell(model.objectPublisher)
                     } cellBuilder: {
-                        InvitationCell($0.asPublisher(in: .defaultStack))
+                        InvitationCell(model: .init($0.asPublisher(in: .defaultStack)))
                     }
                 }
                 .navigationTitle(snapshot.name)
@@ -110,7 +106,7 @@ struct UserProfileView: View {
     
     var editView: some View {
         let session = model.objectPublisher.asSnapshot(in: .defaultStack)
-        return PresentButton(destination: LazyView(EditProfileView(session!))) {
+        return PresentButton(destination: LazyView(EditProfileView(model: .init(session!)))) {
             HStack {
                 Image(systemName: "gear")
                     .resizable()
@@ -143,6 +139,6 @@ struct UserProfileView_Previews: PreviewProvider {
     static var previews: some View {
         let user: ObjectPublisher<FDUserProfile> = PreviewResource.shared
             .loadUser()
-        UserProfileView(user)
+        UserProfileView(model: .init(user))
     }
 }

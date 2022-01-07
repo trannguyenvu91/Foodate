@@ -10,7 +10,7 @@ import CoreStore
 
 struct NotificationView: View {
     
-    @ObservedObject var model = NotificationViewModel()
+    @StateObject var model = NotificationViewModel()
     
     var body: some View {
         List {

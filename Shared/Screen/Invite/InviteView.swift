@@ -12,7 +12,7 @@ import CoreStore
 struct InviteView: View {
     
     @Environment(\.presentationMode) var presentationMode
-    @ObservedObject var model = InviteViewModel()
+    @StateObject var model = InviteViewModel()
     @State var isEditingStart = false
     
     var body: some View {
@@ -194,7 +194,7 @@ struct InviteView: View {
     
     var addPlaceView: some View {
         PresentButton(destination: LazyView(
-                        SearchView([.place], selectionCommand: model.selectionCommand)
+            SearchView(model: .init([.place]), selectionCommand: model.selectionCommand)
         )) {
             HStack {
                 Image(systemName: "pin")
@@ -212,7 +212,7 @@ struct InviteView: View {
     
     var addPersonView: some View {
         PresentButton(destination: LazyView(
-                        SearchView([.account], selectionCommand: model.selectionCommand)
+                        SearchView(model: .init([.account]), selectionCommand: model.selectionCommand)
         )) {
             CircleView(Image(systemName: "person.badge.plus")
                         .resizable()

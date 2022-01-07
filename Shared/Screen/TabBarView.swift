@@ -54,15 +54,14 @@ struct TabBarView: View {
            let user = try? FDUserProfile.fetchOne(id: id) {
             let publiser = user.asPublisher(in: .defaultStack)
             NavigationView {
-                UserProfileView(publiser)
+                UserProfileView(model: .init(publiser))
             }
         }
-        EmptyView()
     }
     
     var sugguestView: some View {
         NavigationView {
-            SearchView()
+            SearchView(model: .init())
         }
     }
     
@@ -73,7 +72,6 @@ struct TabBarView: View {
                 CalendarView()
             }
         }
-        EmptyView()
     }
     
     var notificationView: some View {

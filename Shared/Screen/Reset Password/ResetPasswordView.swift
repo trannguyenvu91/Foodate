@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ResetPasswordView: View {
     
-    @ObservedObject var model = ResetPasswordViewModel()
+    @StateObject var model = ResetPasswordViewModel()
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct OnboardingView: View {
     
-    @ObservedObject var model = OnboardingViewModel()
+    @StateObject var model = OnboardingViewModel()
     
     var body: some View {
         GeometryReader { proxy in

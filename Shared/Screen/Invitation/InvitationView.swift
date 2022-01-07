@@ -10,7 +10,7 @@ import CoreStore
 
 struct InvitationView: View {
     
-    @ObservedObject var model: InvitationViewModel
+    @StateObject var model: InvitationViewModel
     
     var body: some View {
         List {
@@ -18,7 +18,7 @@ struct InvitationView: View {
                 ArchivedInvitationHeader()
             }
             if let publisher = model.invitation {
-                InvitationCell(publisher, showRequestsFooter: false)
+                InvitationCell(model: .init(publisher), showRequestsFooter: false)
             }
             if model.canViewRequests {
                 PaginationList(model.paginator, placeholderBuilder: { EmptyView() }) {

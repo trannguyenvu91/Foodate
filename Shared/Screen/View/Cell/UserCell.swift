@@ -33,7 +33,7 @@ struct UserCell: View {
                 }
                 .plainedButton()
             }
-            NavigationButton(destination: LazyView(UserProfileView(user))) {
+            NavigationButton(destination: LazyView(UserProfileView(model: .init(user)))) {
                 ObjectReader(user) { snapshot in
                     VStack(alignment: .leading) {
                         photosView(snapshot)
