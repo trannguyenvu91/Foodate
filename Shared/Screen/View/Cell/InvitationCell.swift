@@ -50,12 +50,11 @@ struct InvitationCell: View {
     func footer(_ snapshot: ObjectSnapshot<FDInvitation>) -> some View {
         switch snapshot.action {
         case .viewRequests:
-            if !showRequestsFooter {
-                EmptyView()
+            if showRequestsFooter {
+                RequestsFooter(snapshot.$requests,
+                                      requestsTotal: snapshot.$requestsTotal ?? 0,
+                                      invitationID: snapshot.$id)
             }
-            RequestsFooter(snapshot.$requests,
-                                  requestsTotal: snapshot.$requestsTotal ?? 0,
-                                  invitationID: snapshot.$id)
         case .request:
             SendRequestFooter(snapshot.isRequested, model: model)
         case .reply:

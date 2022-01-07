@@ -48,17 +48,6 @@ struct MatchedView: View {
         }
     }
     
-    @ViewBuilder
-    var page: some View {
-        Text("Matched")
-        ForEach(0..<1000) { index in
-            Text("\(index)")
-                .onAppear {
-                    print(index)
-                }
-        }
-    }
-    
     func userView(_ user: ObjectSnapshot<FDUser>) -> some View {
         CircleView(
             CircleView(
