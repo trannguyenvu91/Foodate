@@ -73,7 +73,7 @@ struct SegmentedPicker: View {
     }
 
     private func appropriateView(stackProxy: GeometryProxy) -> some View {
-        return AnyView(regularView(stackProxy: stackProxy))
+        regularView(stackProxy: stackProxy)
     }
 
     private func regularView(stackProxy: GeometryProxy) -> some View {
@@ -94,19 +94,20 @@ struct SegmentedPicker: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
     }
     
+    @ViewBuilder
     private func showSelectionIndicator(containerGeometry: GeometryProxy, preferences: [ButtonPreferenceData]) -> some View {
         if let preference = preferences.first(where: { $0.viewIdx == self.selectedSegment }) {
             let anchorBounds = preference.bounds
             let bounds = containerGeometry[anchorBounds]
-            return AnyView(RoundedRectangle(cornerRadius: markerHeight / 2)
-                            .fill()
-                            .foregroundColor(Color.black)
-                            .frame(width: bounds.width, height: markerHeight)
-                            .fixedSize()
-                            .offset(x: bounds.minX, y: bounds.maxY)
-                            .animation(.easeInOut(duration: 0.33), value: 1))
+            RoundedRectangle(cornerRadius: markerHeight / 2)
+                .fill()
+                .foregroundColor(Color.black)
+                .frame(width: bounds.width, height: markerHeight)
+                .fixedSize()
+                .offset(x: bounds.minX, y: bounds.maxY)
+                .animation(.easeInOut(duration: 0.33), value: 1)
         } else {
-            return AnyView(EmptyView())
+            EmptyView()
         }
     }
 

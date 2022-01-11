@@ -41,9 +41,11 @@ class AppConfig: ObservableObject {
         UITableViewCell.appearance().selectionStyle = .none
     }
     
+    @MainActor
     func updateUserLocation() async throws {
         let location = try await LocationService.shared.requestLocation()
         try await sessionUser?.update(location: location)
+        objectWillChange.send()
     }
     
     @MainActor

@@ -10,10 +10,11 @@ import CoreStore
 
 class PreviewResource: NSObject {
     static let shared = PreviewResource()
+    static let test = PreviewResource(.test)
     
-    override init() {
-        super.init()
-        FDCoreStore.shared.setup()
+    convenience init(_ store: SQLiteStore = .preview) {
+        self.init()
+        FDCoreStore.shared.setup(store)
     }
     
     func loadObject<T: ImportableJSONObject>(source: String, type: String) -> T {

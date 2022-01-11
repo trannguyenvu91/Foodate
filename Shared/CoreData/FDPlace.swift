@@ -64,12 +64,8 @@ extension ObjectSnapshot where O: FDPlace {
         self.$location?.distanceFromCurrent ?? "--"
     }
     
-    var categories: [PlaceType] {
-        self.$types.compactMap({ PlaceType(rawValue: $0) })
-    }
-    
     var categoryText: String {
-        categories.first?.descriptionText ?? "Others"
+        self.$types.first?.descriptionText ?? "Others"
     }
     
     var avatarURL: String {

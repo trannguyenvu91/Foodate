@@ -10,7 +10,7 @@ import MapKit
 
 extension CLLocation {
     var distanceFromCurrent: String? {
-        guard let current = SessionUser.session?.location  else { return nil }
+        guard let current = AppConfig.shared.sessionUser?.$location?.clLocation  else { return nil }
         let distance = self.distance(from: current)
         if distance > 1000 {
             return String(format: "%.1f km", distance / 1000.0)
@@ -19,6 +19,6 @@ extension CLLocation {
     }
     
     convenience init(_ location: FDLocation) {
-        init()
+        self.init()
     }
 }

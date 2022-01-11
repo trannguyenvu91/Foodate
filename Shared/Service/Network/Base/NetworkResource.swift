@@ -20,7 +20,15 @@ extension JSON: ImportableJSONObject {
     }
 }
 
-struct NetworkResource<Result> where Result: ImportableJSONObject {
+protocol ResourceProtocol {
+    associatedtype Response: ImportableJSONObject
+    init(method: HTTPMethod,
+         params: JSON?,
+         api: String)
+    func request() async throws -> Response
+}
+
+struct NetworkResource<Result>: ResourceProtocol where Result: ImportableJSONObject {
     
     let method: HTTPMethod
     let params: JSON?
@@ -38,4 +46,3 @@ struct NetworkResource<Result> where Result: ImportableJSONObject {
     }
     
 }
-
