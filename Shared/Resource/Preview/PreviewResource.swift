@@ -14,11 +14,11 @@ class PreviewResource: NSObject {
     
     convenience init(_ store: SQLiteStore = .preview) {
         self.init()
-        FDCoreStore.shared.setup(store)
+        try? FDCoreStore.shared.setup(store)
     }
     
-    func loadObject<T: ImportableJSONObject>(source: String, type: String) -> T {
-        let json = Bundle.main.json(forResource: source, ofType: type)
+    func loadObject<T: ImportableJSONObject>(source: String, type: String, in bundle: Bundle = .main) -> T {
+        let json = bundle.json(forResource: source, ofType: type)
         return try! T.importObject(from: json!)
     }
     

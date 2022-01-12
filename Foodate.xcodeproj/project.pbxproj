@@ -105,8 +105,8 @@
 		4948F78626D5D0E1003232DE /* DraftInvitation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4948F78426D5D0E1003232DE /* DraftInvitation.swift */; };
 		494E9CAD2772D4EC00B872D8 /* InvitationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494E9CAB2772D4EC00B872D8 /* InvitationView.swift */; };
 		494E9CB02772FC4100B872D8 /* InvitationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494E9CAE2772FC4100B872D8 /* InvitationViewModel.swift */; };
-		494EF900278C351000743D89 /* MockResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494EF8FE278C350600743D89 /* MockResources.swift */; };
-		494EF901278C351100743D89 /* MockResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494EF8FE278C350600743D89 /* MockResources.swift */; };
+		494EF900278C351000743D89 /* NetworkService+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494EF8FE278C350600743D89 /* NetworkService+Mock.swift */; };
+		494EF901278C351100743D89 /* NetworkService+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494EF8FE278C350600743D89 /* NetworkService+Mock.swift */; };
 		494EF903278D2D8F00743D89 /* NetworkResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D0342269EED9000F944D0 /* NetworkResource.swift */; };
 		494EF904278D2D8F00743D89 /* NetworkResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D0342269EED9000F944D0 /* NetworkResource.swift */; };
 		494EF905278D2DC100743D89 /* PaginatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D0377269FD5D100F944D0 /* PaginatorProtocol.swift */; };
@@ -328,6 +328,18 @@
 		494EFA08278D464900743D89 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 494EFA07278D464900743D89 /* Alamofire */; };
 		494EFA0A278D464D00743D89 /* ObjectMapper in Frameworks */ = {isa = PBXBuildFile; productRef = 494EFA09278D464D00743D89 /* ObjectMapper */; };
 		494EFA0B278D754900743D89 /* FieldStorableTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D02DE269D83F000F944D0 /* FieldStorableTypes.swift */; };
+		494EFA0D278ED5D100743D89 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494EFA0C278ED5D100743D89 /* JSON.swift */; };
+		494EFA0E278ED5D100743D89 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494EFA0C278ED5D100743D89 /* JSON.swift */; };
+		494EFA0F278ED5D100743D89 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494EFA0C278ED5D100743D89 /* JSON.swift */; };
+		494EFA10278ED5D100743D89 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494EFA0C278ED5D100743D89 /* JSON.swift */; };
+		494EFA12278EE6C800743D89 /* Tests_Paginator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494EFA11278EE6C800743D89 /* Tests_Paginator.swift */; };
+		494EFA13278EE6C800743D89 /* Tests_Paginator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494EFA11278EE6C800743D89 /* Tests_Paginator.swift */; };
+		494EFA16278EE8F700743D89 /* BaseTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494EFA15278EE8F700743D89 /* BaseTestCase.swift */; };
+		494EFA17278EE8F700743D89 /* BaseTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494EFA15278EE8F700743D89 /* BaseTestCase.swift */; };
+		494EFA19278EEA5700743D89 /* notification_page.json in Resources */ = {isa = PBXBuildFile; fileRef = 494EFA18278EEA5700743D89 /* notification_page.json */; };
+		494EFA1A278EEA5700743D89 /* notification_page.json in Resources */ = {isa = PBXBuildFile; fileRef = 494EFA18278EEA5700743D89 /* notification_page.json */; };
+		494EFA1B278EED2100743D89 /* notification_page.json in Resources */ = {isa = PBXBuildFile; fileRef = 494EFA18278EEA5700743D89 /* notification_page.json */; };
+		494EFA1C278EED2200743D89 /* notification_page.json in Resources */ = {isa = PBXBuildFile; fileRef = 494EFA18278EEA5700743D89 /* notification_page.json */; };
 		495A9F0426E25726003F65B3 /* DraftUserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495A9F0326E25726003F65B3 /* DraftUserProfile.swift */; };
 		495A9F0526E25726003F65B3 /* DraftUserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495A9F0326E25726003F65B3 /* DraftUserProfile.swift */; };
 		495F53E326B1545200E6E981 /* SearchInvitationPaginator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495F53E226B1545200E6E981 /* SearchInvitationPaginator.swift */; };
@@ -589,7 +601,11 @@
 		4948F78426D5D0E1003232DE /* DraftInvitation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraftInvitation.swift; sourceTree = "<group>"; };
 		494E9CAB2772D4EC00B872D8 /* InvitationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationView.swift; sourceTree = "<group>"; };
 		494E9CAE2772FC4100B872D8 /* InvitationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationViewModel.swift; sourceTree = "<group>"; };
-		494EF8FE278C350600743D89 /* MockResources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockResources.swift; sourceTree = "<group>"; };
+		494EF8FE278C350600743D89 /* NetworkService+Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkService+Mock.swift"; sourceTree = "<group>"; };
+		494EFA0C278ED5D100743D89 /* JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
+		494EFA11278EE6C800743D89 /* Tests_Paginator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_Paginator.swift; sourceTree = "<group>"; };
+		494EFA15278EE8F700743D89 /* BaseTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTestCase.swift; sourceTree = "<group>"; };
+		494EFA18278EEA5700743D89 /* notification_page.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = notification_page.json; sourceTree = "<group>"; };
 		495A9F0326E25726003F65B3 /* DraftUserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraftUserProfile.swift; sourceTree = "<group>"; };
 		495F53E226B1545200E6E981 /* SearchInvitationPaginator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchInvitationPaginator.swift; sourceTree = "<group>"; };
 		495F53E626B154A600E6E981 /* ListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
@@ -792,6 +808,7 @@
 			isa = PBXGroup;
 			children = (
 				492D02F8269ED30700F944D0 /* CLLocation.swift */,
+				494EFA0C278ED5D100743D89 /* JSON.swift */,
 				492D02F7269ED30700F944D0 /* Combine.swift */,
 				492D02F6269ED30700F944D0 /* Date.swift */,
 				492D031A269ED34300F944D0 /* DateFormatter.swift */,
@@ -871,9 +888,19 @@
 		494EF902278D2CA200743D89 /* SharedTests */ = {
 			isa = PBXGroup;
 			children = (
-				494EF8FE278C350600743D89 /* MockResources.swift */,
+				494EFA14278EE6D000743D89 /* Mock */,
+				494EFA11278EE6C800743D89 /* Tests_Paginator.swift */,
 			);
 			path = SharedTests;
+			sourceTree = "<group>";
+		};
+		494EFA14278EE6D000743D89 /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				494EF8FE278C350600743D89 /* NetworkService+Mock.swift */,
+				494EFA15278EE8F700743D89 /* BaseTestCase.swift */,
+			);
+			path = Mock;
 			sourceTree = "<group>";
 		};
 		495F53E526B1545600E6E981 /* Paginators */ = {
@@ -1173,6 +1200,7 @@
 				4914AF1726AA9E92002F2634 /* invitation.json */,
 				4965F28F26B936F000C9B8E7 /* requester.json */,
 				490C486427699679005CEBDA /* notification.json */,
+				494EFA18278EEA5700743D89 /* notification_page.json */,
 				49DA1ED626A03B87001BF85B /* PreviewResource.swift */,
 			);
 			path = Preview;
@@ -1397,6 +1425,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4914AF1826AA9E92002F2634 /* invitation.json in Resources */,
+				494EFA1B278EED2100743D89 /* notification_page.json in Resources */,
 				490C486527699679005CEBDA /* notification.json in Resources */,
 				49B9D554270EF806005BD619 /* Localizable.strings in Resources */,
 				4989B688269D43C900611D10 /* Assets.xcassets in Resources */,
@@ -1411,6 +1440,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				494EF95D278D32F200743D89 /* notification.json in Resources */,
+				494EFA1C278EED2200743D89 /* notification_page.json in Resources */,
 				494EF95F278D32F200743D89 /* place.json in Resources */,
 				494EF95E278D32F200743D89 /* invitation.json in Resources */,
 				494EF95C278D32F200743D89 /* session_user.json in Resources */,
@@ -1428,6 +1458,7 @@
 				494EF953278D32EF00743D89 /* invitation.json in Resources */,
 				494EF951278D32EF00743D89 /* session_user.json in Resources */,
 				494EF955278D32EF00743D89 /* requester.json in Resources */,
+				494EFA19278EEA5700743D89 /* notification_page.json in Resources */,
 				494EF954278D32EF00743D89 /* place.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1440,6 +1471,7 @@
 				494EF958278D32F000743D89 /* invitation.json in Resources */,
 				494EF956278D32F000743D89 /* session_user.json in Resources */,
 				494EF95A278D32F000743D89 /* requester.json in Resources */,
+				494EFA1A278EEA5700743D89 /* notification_page.json in Resources */,
 				494EF959278D32F000743D89 /* place.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1482,6 +1514,7 @@
 				492D02A2269D4FCF00F944D0 /* CoreStore+Schema.swift in Sources */,
 				498CAD7A26E765A300478403 /* FDDateTransform.swift in Sources */,
 				49CB63EA276880A800224DAB /* IconInputView.swift in Sources */,
+				494EFA0D278ED5D100743D89 /* JSON.swift in Sources */,
 				495A9F0426E25726003F65B3 /* DraftUserProfile.swift in Sources */,
 				49DA1EB126A031BA001BF85B /* UserProfileViewModel.swift in Sources */,
 				492D030D269ED30700F944D0 /* NSCoder.swift in Sources */,
@@ -1642,6 +1675,7 @@
 				4989B6B1269D462C00611D10 /* FDCoreStore.swift in Sources */,
 				492D034C269EED9100F944D0 /* NetworkService.swift in Sources */,
 				492D02B1269D68AF00F944D0 /* FDUser.swift in Sources */,
+				494EFA0E278ED5D100743D89 /* JSON.swift in Sources */,
 				4914AF0F26AA9B43002F2634 /* RequestsFooter.swift in Sources */,
 				49B9D545270EEDE1005BD619 /* InviteCell.swift in Sources */,
 				4914AEFE26AA793A002F2634 /* PlaceHeader.swift in Sources */,
@@ -1728,8 +1762,9 @@
 				494EF9E1278D347E00743D89 /* ReplyStateView.swift in Sources */,
 				494EF998278D33D500743D89 /* ResetPasswordViewModel.swift in Sources */,
 				494EFA0B278D754900743D89 /* FieldStorableTypes.swift in Sources */,
+				494EFA0F278ED5D100743D89 /* JSON.swift in Sources */,
 				494EF9AF278D344D00743D89 /* OnboardingView.swift in Sources */,
-				494EF900278C351000743D89 /* MockResources.swift in Sources */,
+				494EF900278C351000743D89 /* NetworkService+Mock.swift in Sources */,
 				494EF9A6278D340000743D89 /* PlaceProfileViewModel.swift in Sources */,
 				494EF973278D339900743D89 /* String.swift in Sources */,
 				494EF990278D33C200743D89 /* AppConfig.swift in Sources */,
@@ -1803,6 +1838,7 @@
 				494EF928278D2E3E00743D89 /* NotificationService.swift in Sources */,
 				494EF903278D2D8F00743D89 /* NetworkResource.swift in Sources */,
 				4989B677269D43C900611D10 /* Tests_iOS.swift in Sources */,
+				494EFA16278EE8F700743D89 /* BaseTestCase.swift in Sources */,
 				494EF9D9278D346C00743D89 /* EmptyResultView.swift in Sources */,
 				494EF9B0278D344D00743D89 /* OnboardingViewModel.swift in Sources */,
 				494EF9E5278D348100743D89 /* PaginationList.swift in Sources */,
@@ -1819,6 +1855,7 @@
 				494EF918278D2E2C00743D89 /* SearchInvitationPaginator.swift in Sources */,
 				494EF9F8278D35FB00743D89 /* SearchType.swift in Sources */,
 				494EF9F9278D35FB00743D89 /* ScreenType.swift in Sources */,
+				494EFA12278EE6C800743D89 /* Tests_Paginator.swift in Sources */,
 				494EF97B278D339900743D89 /* Date.swift in Sources */,
 				494EF9C7278D346000743D89 /* CircleView.swift in Sources */,
 				494EF986278D33A000743D89 /* Font.swift in Sources */,
@@ -1864,12 +1901,13 @@
 				494EF97F278D339A00743D89 /* Error.swift in Sources */,
 				494EF9B1278D344D00743D89 /* OnboardingView.swift in Sources */,
 				494EFA02278D35FC00743D89 /* ScreenType.swift in Sources */,
-				494EF901278C351100743D89 /* MockResources.swift in Sources */,
+				494EF901278C351100743D89 /* NetworkService+Mock.swift in Sources */,
 				494EF9EF278D35E700743D89 /* PropertyWrapper.swift in Sources */,
 				494EF97C278D339A00743D89 /* String.swift in Sources */,
 				494EF946278D2E9900743D89 /* FDRequester.swift in Sources */,
 				494EF98D278D33A100743D89 /* Alert.swift in Sources */,
 				494EF9FB278D35FC00743D89 /* TabItemType.swift in Sources */,
+				494EFA13278EE6C800743D89 /* Tests_Paginator.swift in Sources */,
 				494EF970278D339100743D89 /* ASRemoteImageManager.swift in Sources */,
 				494EF966278D337D00743D89 /* CoreStore+Schema.swift in Sources */,
 				494EF908278D2E0100743D89 /* NetworkConfig.swift in Sources */,
@@ -1921,12 +1959,14 @@
 				494EF914278D2E2300743D89 /* NetworkService+User.swift in Sources */,
 				494EF980278D339A00743D89 /* NSCoder.swift in Sources */,
 				494EF950278D32EA00743D89 /* PreviewResource.swift in Sources */,
+				494EFA17278EE8F700743D89 /* BaseTestCase.swift in Sources */,
 				494EF9B2278D344D00743D89 /* OnboardingViewModel.swift in Sources */,
 				494EF925278D2E3800743D89 /* NetworkService+Invitation.swift in Sources */,
 				494EF94A278D2E9900743D89 /* FDUser.swift in Sources */,
 				494EF91F278D2E2C00743D89 /* RequestPaginator.swift in Sources */,
 				494EF948278D2E9900743D89 /* FDPhoto.swift in Sources */,
 				494EF9F1278D35F200743D89 /* ObjectBaseViewModel.swift in Sources */,
+				494EFA10278ED5D100743D89 /* JSON.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

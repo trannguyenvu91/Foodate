@@ -16,9 +16,9 @@ class FDCoreStore {
         CoreStoreDefaults.dataStack
     }
     
-    func setup(_ store: SQLiteStore = .production) {
+    func setup(_ store: SQLiteStore = .production) throws {
         CoreStoreDefaults.dataStack = DataStack(CoreStoreSchema.v1)
-        try! dataStack.addStorageAndWait(store)
+        try dataStack.addStorageAndWait(store)
     }
     
     func fetchSessionUser() throws -> ObjectSnapshot<FDSessionUser>? {

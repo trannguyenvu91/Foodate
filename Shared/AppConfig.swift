@@ -36,7 +36,7 @@ class AppConfig: ObservableObject {
     }
     
     func setup() {
-        FDCoreStore.shared.setup()
+        try? FDCoreStore.shared.setup()
         sessionUser = try? FDCoreStore.shared.fetchSessionUser()
         UITableViewCell.appearance().selectionStyle = .none
     }

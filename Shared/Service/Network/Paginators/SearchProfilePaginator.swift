@@ -11,7 +11,7 @@ class SearchProfilePaginator: Paginator<FDUserProfile> {
     
     convenience init(_ params: JSON?) {
         let url = NetworkConfig.baseURL + "/api/v1/users/search/"
-        let page = NetworkPage<FDUserProfile>(nextURL: url, results: nil)
+        let page = NetworkPage<FDUserProfile>(nextURL: url)
         self.init(page)
     }
     

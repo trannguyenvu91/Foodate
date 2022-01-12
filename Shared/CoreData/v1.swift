@@ -199,7 +199,7 @@ extension v1 {
         @Field.Stored("business_status")
         var businessStatus: FDBusinessStatus!
         @Field.Stored("types")
-        var types: [PlaceType] = []
+        var types: String = ""
         @Field.Relationship("photos")
         var photos: Array<FDPlacePhoto>
         //private

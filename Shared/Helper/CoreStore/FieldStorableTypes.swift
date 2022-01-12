@@ -60,21 +60,3 @@ extension InvitationState: FieldStorableType {
     
     typealias FieldStoredNativeType = String
 }
-
-typealias PlaceTypes = Array<PlaceType>
-extension PlaceTypes: FieldStorableType {
-    public static var cs_rawAttributeType: NSAttributeType {
-        .stringAttributeType
-    }
-    
-    public typealias FieldStoredNativeType = String
-    public static func cs_fromFieldStoredNativeType(_ value: String) -> Array<Element> {
-        value
-            .split(separator: ",")
-            .map({ String($0) })
-            .compactMap({ PlaceType(rawValue: $0) })
-    }
-    public func cs_toFieldStoredNativeType() -> Any? {
-        map(\.rawValue).joined(separator:",")
-    }
-}

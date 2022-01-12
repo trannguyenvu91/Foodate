@@ -11,28 +11,41 @@ import Alamofire
 
 class NetworkService: NSObject {
     
-    private var actor: ServiceActor
-    var session: Session
-    static let shared = NetworkService()
-    
-    override init() {
-        let config = URLSessionConfiguration.af.default
-        config.timeoutIntervalForRequest = NetworkConfig.timeout
-        session = Session(configuration: config)
-        actor = ServiceActor(session)
+    @MainActor
+    static var shared: NetworkService {
+        get {
+            if let sharedInstance = sharedInstance {
+                return sharedInstance
+            }
+            let instance = NetworkService()
+            sharedInstance = instance
+            return instance
+        }
+        set {
+            sharedInstance = newValue
+        }
     }
     
+    private static var sharedInstance: NetworkService?
+    private lazy var actor: NetworkActor = NetworkActor(session)
+    private lazy var session: Session = Session(configuration: self.config)
+    private let config: URLSessionConfiguration = {
+        let config = URLSessionConfiguration.af.default
+        config.timeoutIntervalForRequest = NetworkConfig.timeout
+        return config
+    }()
+    
     @MainActor
-    class func request(url: String,
+    func request(url: String,
                        method: HTTPMethod,
                        parameters: JSON?,
                        headers: HTTPHeaders = NetworkConfig.headers) async throws -> JSON {
-        return try await Self.shared.actor.request(url: url, method: method, parameters: parameters, headers: headers)
+        return try await actor.request(url: url, method: method, parameters: parameters, headers: headers)
     }
     
 }
 
-private actor ServiceActor {
+private actor NetworkActor {
     
     var session: Session
     

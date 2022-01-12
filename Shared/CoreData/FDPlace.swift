@@ -65,7 +65,11 @@ extension ObjectSnapshot where O: FDPlace {
     }
     
     var categoryText: String {
-        self.$types.first?.descriptionText ?? "Others"
+        self.$types
+            .split(separator: ",")
+            .compactMap({ PlaceType(rawValue: String($0)) })
+            .first?
+            .descriptionText ?? "Others"
     }
     
     var avatarURL: String {

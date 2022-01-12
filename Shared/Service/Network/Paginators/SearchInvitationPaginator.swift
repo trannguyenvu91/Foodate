@@ -11,7 +11,7 @@ class SearchInvitationPaginator: Paginator<FDInvitation> {
     
     convenience init(_ params: JSON?) {
         let url = NetworkConfig.baseURL + "/api/v1/invitations/"
-        let page = NetworkPage<FDInvitation>(nextURL: url, results: nil)
+        let page = NetworkPage<FDInvitation>(nextURL: url)
         self.init(page)
     }
     

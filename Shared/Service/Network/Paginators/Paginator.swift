@@ -41,6 +41,7 @@ class Paginator <T>: PaginatorProtocol where T: Equatable & ImportableJSONObject
             let nextPage = try await currentPage?.fetchNext()
             if currentPage?.nextURL == initialPage.nextURL {
                 items.removeAll()
+                append(results: initialPage.results)
             }
             append(nextPage)
             currentPage = nextPage
