@@ -340,6 +340,16 @@
 		494EFA1A278EEA5700743D89 /* notification_page.json in Resources */ = {isa = PBXBuildFile; fileRef = 494EFA18278EEA5700743D89 /* notification_page.json */; };
 		494EFA1B278EED2100743D89 /* notification_page.json in Resources */ = {isa = PBXBuildFile; fileRef = 494EFA18278EEA5700743D89 /* notification_page.json */; };
 		494EFA1C278EED2200743D89 /* notification_page.json in Resources */ = {isa = PBXBuildFile; fileRef = 494EFA18278EEA5700743D89 /* notification_page.json */; };
+		494EFA1E278FD4EB00743D89 /* LocationManager+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494EFA1D278FD4EB00743D89 /* LocationManager+Mock.swift */; };
+		494EFA1F278FD4EC00743D89 /* LocationManager+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494EFA1D278FD4EB00743D89 /* LocationManager+Mock.swift */; };
+		494EFA21278FDB6900743D89 /* Tests_LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494EFA20278FDB6900743D89 /* Tests_LocationService.swift */; };
+		494EFA22278FDB6900743D89 /* Tests_LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494EFA20278FDB6900743D89 /* Tests_LocationService.swift */; };
+		494EFA24278FE1A800743D89 /* UIApplication+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494EFA23278FE1A800743D89 /* UIApplication+Mock.swift */; };
+		494EFA25278FE1A800743D89 /* UIApplication+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494EFA23278FE1A800743D89 /* UIApplication+Mock.swift */; };
+		494EFA27278FE27E00743D89 /* UNUserNotificationCenter+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494EFA26278FE27E00743D89 /* UNUserNotificationCenter+Mock.swift */; };
+		494EFA28278FE27E00743D89 /* UNUserNotificationCenter+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494EFA26278FE27E00743D89 /* UNUserNotificationCenter+Mock.swift */; };
+		494EFA2A278FE2EB00743D89 /* Tests_NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494EFA29278FE2EB00743D89 /* Tests_NotificationService.swift */; };
+		494EFA2B278FE2EB00743D89 /* Tests_NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494EFA29278FE2EB00743D89 /* Tests_NotificationService.swift */; };
 		495A9F0426E25726003F65B3 /* DraftUserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495A9F0326E25726003F65B3 /* DraftUserProfile.swift */; };
 		495A9F0526E25726003F65B3 /* DraftUserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495A9F0326E25726003F65B3 /* DraftUserProfile.swift */; };
 		495F53E326B1545200E6E981 /* SearchInvitationPaginator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495F53E226B1545200E6E981 /* SearchInvitationPaginator.swift */; };
@@ -606,6 +616,11 @@
 		494EFA11278EE6C800743D89 /* Tests_Paginator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_Paginator.swift; sourceTree = "<group>"; };
 		494EFA15278EE8F700743D89 /* BaseTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTestCase.swift; sourceTree = "<group>"; };
 		494EFA18278EEA5700743D89 /* notification_page.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = notification_page.json; sourceTree = "<group>"; };
+		494EFA1D278FD4EB00743D89 /* LocationManager+Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocationManager+Mock.swift"; sourceTree = "<group>"; };
+		494EFA20278FDB6900743D89 /* Tests_LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_LocationService.swift; sourceTree = "<group>"; };
+		494EFA23278FE1A800743D89 /* UIApplication+Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Mock.swift"; sourceTree = "<group>"; };
+		494EFA26278FE27E00743D89 /* UNUserNotificationCenter+Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UNUserNotificationCenter+Mock.swift"; sourceTree = "<group>"; };
+		494EFA29278FE2EB00743D89 /* Tests_NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_NotificationService.swift; sourceTree = "<group>"; };
 		495A9F0326E25726003F65B3 /* DraftUserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraftUserProfile.swift; sourceTree = "<group>"; };
 		495F53E226B1545200E6E981 /* SearchInvitationPaginator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchInvitationPaginator.swift; sourceTree = "<group>"; };
 		495F53E626B154A600E6E981 /* ListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
@@ -859,7 +874,6 @@
 				49889A3E2760641300485914 /* NetworkError.swift */,
 				492D0342269EED9000F944D0 /* NetworkResource.swift */,
 				492D0344269EED9100F944D0 /* NetworkService.swift */,
-				492D0345269EED9100F944D0 /* NetworkPage.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -888,25 +902,31 @@
 		494EF902278D2CA200743D89 /* SharedTests */ = {
 			isa = PBXGroup;
 			children = (
-				494EFA14278EE6D000743D89 /* Mock */,
+				494EFA14278EE6D000743D89 /* Base */,
 				494EFA11278EE6C800743D89 /* Tests_Paginator.swift */,
+				494EFA20278FDB6900743D89 /* Tests_LocationService.swift */,
+				494EFA29278FE2EB00743D89 /* Tests_NotificationService.swift */,
 			);
 			path = SharedTests;
 			sourceTree = "<group>";
 		};
-		494EFA14278EE6D000743D89 /* Mock */ = {
+		494EFA14278EE6D000743D89 /* Base */ = {
 			isa = PBXGroup;
 			children = (
 				494EF8FE278C350600743D89 /* NetworkService+Mock.swift */,
+				494EFA1D278FD4EB00743D89 /* LocationManager+Mock.swift */,
+				494EFA23278FE1A800743D89 /* UIApplication+Mock.swift */,
+				494EFA26278FE27E00743D89 /* UNUserNotificationCenter+Mock.swift */,
 				494EFA15278EE8F700743D89 /* BaseTestCase.swift */,
 			);
-			path = Mock;
+			path = Base;
 			sourceTree = "<group>";
 		};
 		495F53E526B1545600E6E981 /* Paginators */ = {
 			isa = PBXGroup;
 			children = (
 				492D0377269FD5D100F944D0 /* PaginatorProtocol.swift */,
+				492D0345269EED9100F944D0 /* NetworkPage.swift */,
 				492D0343269EED9000F944D0 /* Paginator.swift */,
 				495F53E626B154A600E6E981 /* ListViewModel.swift */,
 				495F53E226B1545200E6E981 /* SearchInvitationPaginator.swift */,
@@ -1769,6 +1789,7 @@
 				494EF973278D339900743D89 /* String.swift in Sources */,
 				494EF990278D33C200743D89 /* AppConfig.swift in Sources */,
 				494EF93E278D2E9800743D89 /* FDRequester.swift in Sources */,
+				494EFA24278FE1A800743D89 /* UIApplication+Mock.swift in Sources */,
 				494EF9D3278D346800743D89 /* RequesterCell.swift in Sources */,
 				494EF997278D33D000743D89 /* InvitationView.swift in Sources */,
 				494EF988278D33A000743D89 /* Alert.swift in Sources */,
@@ -1812,6 +1833,7 @@
 				494EF9D1278D346800743D89 /* NotificationCell.swift in Sources */,
 				494EF967278D338000743D89 /* DataStack+SQLiteStore.swift in Sources */,
 				494EF961278D336900743D89 /* HTTPMethod.swift in Sources */,
+				494EFA2A278FE2EB00743D89 /* Tests_NotificationService.swift in Sources */,
 				494EF96F278D339100743D89 /* ASCache.swift in Sources */,
 				494EF9A3278D33EC00743D89 /* UserProfileViewModel.swift in Sources */,
 				494EF94D278D2E9D00743D89 /* FDCoreStore.swift in Sources */,
@@ -1842,6 +1864,7 @@
 				494EF9D9278D346C00743D89 /* EmptyResultView.swift in Sources */,
 				494EF9B0278D344D00743D89 /* OnboardingViewModel.swift in Sources */,
 				494EF9E5278D348100743D89 /* PaginationList.swift in Sources */,
+				494EFA21278FDB6900743D89 /* Tests_LocationService.swift in Sources */,
 				494EF943278D2E9800743D89 /* FDPlace.swift in Sources */,
 				494EF99C278D33DD00743D89 /* CalendarView.swift in Sources */,
 				494EF9A0278D33E600743D89 /* InviteViewModel.swift in Sources */,
@@ -1865,12 +1888,14 @@
 				494EF992278D33C800743D89 /* MatchedView.swift in Sources */,
 				494EF921278D2E3800743D89 /* NetworkService+Place.swift in Sources */,
 				494EF90B278D2E0A00743D89 /* NetworkService.swift in Sources */,
+				494EFA1E278FD4EB00743D89 /* LocationManager+Mock.swift in Sources */,
 				494EF9E7278D348100743D89 /* ArchivedInvitationHeader.swift in Sources */,
 				494EF913278D2E2200743D89 /* NetworkService+User.swift in Sources */,
 				494EF9EA278D35D900743D89 /* DraftUserProfile.swift in Sources */,
 				494EF977278D339900743D89 /* NSCoder.swift in Sources */,
 				494EF94F278D32EA00743D89 /* PreviewResource.swift in Sources */,
 				494EF922278D2E3800743D89 /* NetworkService+Invitation.swift in Sources */,
+				494EFA27278FE27E00743D89 /* UNUserNotificationCenter+Mock.swift in Sources */,
 				494EF9DD278D347200743D89 /* RateHeader.swift in Sources */,
 				494EF9EC278D35E300743D89 /* DraftInvitation.swift in Sources */,
 				494EF942278D2E9800743D89 /* FDUser.swift in Sources */,
@@ -1893,6 +1918,7 @@
 			files = (
 				494EF98A278D33A100743D89 /* View.swift in Sources */,
 				494EF912278D2E1A00743D89 /* ListViewModel.swift in Sources */,
+				494EFA25278FE1A800743D89 /* UIApplication+Mock.swift in Sources */,
 				494EF9FC278D35FC00743D89 /* OnboardingMode.swift in Sources */,
 				494EF981278D339A00743D89 /* Bundle.swift in Sources */,
 				494EF97D278D339A00743D89 /* Combine.swift in Sources */,
@@ -1919,6 +1945,7 @@
 				494EF910278D2E1500743D89 /* Paginator.swift in Sources */,
 				494EF98C278D33A100743D89 /* Color.swift in Sources */,
 				494EF96C278D338700743D89 /* LocationTransform.swift in Sources */,
+				494EFA22278FDB6900743D89 /* Tests_LocationService.swift in Sources */,
 				494EF9FE278D35FC00743D89 /* Error+Extension.swift in Sources */,
 				494EF91D278D2E2C00743D89 /* InvitationPaginator.swift in Sources */,
 				494EF982278D339A00743D89 /* CLLocation.swift in Sources */,
@@ -1926,6 +1953,7 @@
 				494EF9EB278D35DF00743D89 /* DraftUserProfile.swift in Sources */,
 				494EF92C278D2E5500743D89 /* v1.swift in Sources */,
 				494EF949278D2E9900743D89 /* FDLocation.swift in Sources */,
+				494EFA28278FE27E00743D89 /* UNUserNotificationCenter+Mock.swift in Sources */,
 				494EF920278D2E2C00743D89 /* NotificationPaginator.swift in Sources */,
 				494EF968278D338000743D89 /* DataStack+SQLiteStore.swift in Sources */,
 				494EF9FF278D35FC00743D89 /* InvitationState.swift in Sources */,
@@ -1947,6 +1975,7 @@
 				494EF945278D2E9900743D89 /* FDNotification.swift in Sources */,
 				494EF9AA278D340600743D89 /* SearchViewModel.swift in Sources */,
 				494EF9FD278D35FC00743D89 /* NotificationType.swift in Sources */,
+				494EFA1F278FD4EC00743D89 /* LocationManager+Mock.swift in Sources */,
 				494EF91E278D2E2C00743D89 /* SearchInvitationPaginator.swift in Sources */,
 				494EF984278D339A00743D89 /* Date.swift in Sources */,
 				494EF98B278D33A100743D89 /* Font.swift in Sources */,
@@ -1961,6 +1990,7 @@
 				494EF950278D32EA00743D89 /* PreviewResource.swift in Sources */,
 				494EFA17278EE8F700743D89 /* BaseTestCase.swift in Sources */,
 				494EF9B2278D344D00743D89 /* OnboardingViewModel.swift in Sources */,
+				494EFA2B278FE2EB00743D89 /* Tests_NotificationService.swift in Sources */,
 				494EF925278D2E3800743D89 /* NetworkService+Invitation.swift in Sources */,
 				494EF94A278D2E9900743D89 /* FDUser.swift in Sources */,
 				494EF91F278D2E2C00743D89 /* RequestPaginator.swift in Sources */,

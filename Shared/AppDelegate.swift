@@ -13,7 +13,7 @@ class AppDelegate: NSObject {}
 extension AppDelegate: UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-        UNUserNotificationCenter.current().delegate = self
+        NotificationService.shared.center.delegate = NotificationService.shared
         return true
     }
     
@@ -29,14 +29,3 @@ extension AppDelegate: UIApplicationDelegate {
     
 }
 
-extension AppDelegate: UNUserNotificationCenterDelegate {
-    
-    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification) async -> UNNotificationPresentationOptions {
-        return [.badge, .sound, .banner, .list]
-    }
-    
-    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse) async {
-        await NotificationService.shared.didReceive(notification: response.notification)
-    }
-    
-}

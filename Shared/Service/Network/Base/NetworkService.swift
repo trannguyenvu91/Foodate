@@ -11,20 +11,7 @@ import Alamofire
 
 class NetworkService: NSObject {
     
-    @MainActor
-    static var shared: NetworkService {
-        get {
-            if let sharedInstance = sharedInstance {
-                return sharedInstance
-            }
-            let instance = NetworkService()
-            sharedInstance = instance
-            return instance
-        }
-        set {
-            sharedInstance = newValue
-        }
-    }
+    static var shared: NetworkService = NetworkService()
     
     private static var sharedInstance: NetworkService?
     private lazy var actor: NetworkActor = NetworkActor(session)

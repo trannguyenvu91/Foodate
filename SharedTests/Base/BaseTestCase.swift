@@ -12,7 +12,6 @@ class BaseTestCase: XCTestCase {
     
     var cancelableSet = [AnyCancellable]()
     
-    @MainActor
     override func setUpWithError() throws {
         try super.setUpWithError()
         try FDCoreStore.shared.setup(.test)

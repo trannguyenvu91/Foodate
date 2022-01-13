@@ -33,12 +33,22 @@ class LocationService: NSObject, CLLocationManagerDelegate {
             queueCallbacks.append(newBlock)
             if let lastLocation = lastLocation {
                 didReceive(lastLocation, error: nil)
-            }else if manager.isPermissionGranted {
+            } else if manager.isPermissionGranted {
                 manager.startUpdatingLocation()
             } else {
                 manager.requestWhenInUseAuthorization()
             }
         }
+    }
+    
+    private func didReceive(_ location: CLLocation?, error: Error?) {
+        if let location = location {
+            lastLocation = location
+        }
+        for callback in queueCallbacks {
+            callback(location, error)
+        }
+        queueCallbacks.removeAll()
     }
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
@@ -56,16 +66,6 @@ class LocationService: NSObject, CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         didReceive(nil, error: error)
-    }
-    
-    private func didReceive(_ location: CLLocation?, error: Error?) {
-        if let location = location {
-            lastLocation = location
-        }
-        for callback in queueCallbacks {
-            callback(location, error)
-        }
-        queueCallbacks.removeAll()
     }
     
 }

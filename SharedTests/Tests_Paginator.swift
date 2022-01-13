@@ -15,7 +15,6 @@ class Tests_Paginator: BaseTestCase {
                     in: .init(for: type(of: self)))
     lazy var paginator = Paginator<FDNotification>(firstPage)
     
-    @MainActor
     override func setUpWithError() throws {
         try super.setUpWithError()
     }
@@ -60,13 +59,26 @@ class Tests_Paginator: BaseTestCase {
     }
     
     func testRefreshSuccess() async throws {
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+        MockNetworkService.responseCase = .notificationPage
+        let expect = XCTestExpectation()
+        paginator.objectWillChange.sink {
+            expect.fulfill()
         }
+        .store(in: &cancelableSet)
+        try await paginator.refresh()
+        XCTAssertFalse(paginator.isFetching)
+        XCTAssertNil(paginator.error)
+        wait(for: [expect], timeout: 5)
+    }
+    
+    func testRemove() {
+        guard let (first, last) = (paginator.items.first, paginator.items.last) as? (FDNotification, FDNotification) else {
+            return
+        }
+        paginator.remove(item: first)
+        XCTAssertFalse(paginator.items.contains(first))
+        paginator.remove(item: last)
+        XCTAssertFalse(paginator.items.contains(last))
     }
 
 }
