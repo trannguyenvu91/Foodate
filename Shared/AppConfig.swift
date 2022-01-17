@@ -70,15 +70,11 @@ class AppConfig: ObservableObject {
         try await sessionUser?.update(notificationToken: token)
     }
     
-    func logOut() {
+    func logOut() throws {
         withAnimation {
             _sessionUserpublisher = nil
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            let _ = try? FDCoreStore.shared.dataStack.perform { transaction in
-                try? transaction.deleteAll(From<FDSessionUser>())
-            }
-        }
+        try FDCoreStore.shared.deleteAll(Where<FDSessionUser>(true))
     }
 
 }

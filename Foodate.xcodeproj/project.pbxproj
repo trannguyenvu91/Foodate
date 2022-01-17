@@ -401,6 +401,10 @@
 		49789EB1277DB9A700234A4F /* ScreenType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49789EAF277DB9A700234A4F /* ScreenType.swift */; };
 		497F9480276066B3003DC213 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497F947F276066B3003DC213 /* HTTPMethod.swift */; };
 		497F9481276066B3003DC213 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497F947F276066B3003DC213 /* HTTPMethod.swift */; };
+		49874C19279519A9000EC5B0 /* Tests_AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49874C18279519A9000EC5B0 /* Tests_AppConfig.swift */; };
+		49874C1A279519A9000EC5B0 /* Tests_AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49874C18279519A9000EC5B0 /* Tests_AppConfig.swift */; };
+		49874C1C27952BE1000EC5B0 /* Tests_OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49874C1B27952BE1000EC5B0 /* Tests_OnboardingViewModel.swift */; };
+		49874C1D27952BE1000EC5B0 /* Tests_OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49874C1B27952BE1000EC5B0 /* Tests_OnboardingViewModel.swift */; };
 		49889A3F2760641300485914 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49889A3E2760641300485914 /* NetworkError.swift */; };
 		49889A402760641300485914 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49889A3E2760641300485914 /* NetworkError.swift */; };
 		4989B677269D43C900611D10 /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4989B676269D43C900611D10 /* Tests_iOS.swift */; };
@@ -647,6 +651,8 @@
 		497558CB2779C302009F0132 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		49789EAF277DB9A700234A4F /* ScreenType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenType.swift; sourceTree = "<group>"; };
 		497F947F276066B3003DC213 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		49874C18279519A9000EC5B0 /* Tests_AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_AppConfig.swift; sourceTree = "<group>"; };
+		49874C1B27952BE1000EC5B0 /* Tests_OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_OnboardingViewModel.swift; sourceTree = "<group>"; };
 		49889A3E2760641300485914 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		4989B65B269D43C600611D10 /* FoodateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodateApp.swift; sourceTree = "<group>"; };
 		4989B65D269D43C900611D10 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -906,6 +912,8 @@
 				494EFA11278EE6C800743D89 /* Tests_Paginator.swift */,
 				494EFA20278FDB6900743D89 /* Tests_LocationService.swift */,
 				494EFA29278FE2EB00743D89 /* Tests_NotificationService.swift */,
+				49874C18279519A9000EC5B0 /* Tests_AppConfig.swift */,
+				49874C1B27952BE1000EC5B0 /* Tests_OnboardingViewModel.swift */,
 			);
 			path = SharedTests;
 			sourceTree = "<group>";
@@ -1858,6 +1866,7 @@
 				494EF9D8278D346800743D89 /* InvitationCellModel.swift in Sources */,
 				494EF909278D2E0400743D89 /* NetworkError.swift in Sources */,
 				494EF928278D2E3E00743D89 /* NotificationService.swift in Sources */,
+				49874C19279519A9000EC5B0 /* Tests_AppConfig.swift in Sources */,
 				494EF903278D2D8F00743D89 /* NetworkResource.swift in Sources */,
 				4989B677269D43C900611D10 /* Tests_iOS.swift in Sources */,
 				494EFA16278EE8F700743D89 /* BaseTestCase.swift in Sources */,
@@ -1877,6 +1886,7 @@
 				494EF9D5278D346800743D89 /* InvitationCell.swift in Sources */,
 				494EF918278D2E2C00743D89 /* SearchInvitationPaginator.swift in Sources */,
 				494EF9F8278D35FB00743D89 /* SearchType.swift in Sources */,
+				49874C1C27952BE1000EC5B0 /* Tests_OnboardingViewModel.swift in Sources */,
 				494EF9F9278D35FB00743D89 /* ScreenType.swift in Sources */,
 				494EFA12278EE6C800743D89 /* Tests_Paginator.swift in Sources */,
 				494EF97B278D339900743D89 /* Date.swift in Sources */,
@@ -1919,6 +1929,7 @@
 				494EF98A278D33A100743D89 /* View.swift in Sources */,
 				494EF912278D2E1A00743D89 /* ListViewModel.swift in Sources */,
 				494EFA25278FE1A800743D89 /* UIApplication+Mock.swift in Sources */,
+				49874C1A279519A9000EC5B0 /* Tests_AppConfig.swift in Sources */,
 				494EF9FC278D35FC00743D89 /* OnboardingMode.swift in Sources */,
 				494EF981278D339A00743D89 /* Bundle.swift in Sources */,
 				494EF97D278D339A00743D89 /* Combine.swift in Sources */,
@@ -1934,6 +1945,7 @@
 				494EF98D278D33A100743D89 /* Alert.swift in Sources */,
 				494EF9FB278D35FC00743D89 /* TabItemType.swift in Sources */,
 				494EFA13278EE6C800743D89 /* Tests_Paginator.swift in Sources */,
+				49874C1D27952BE1000EC5B0 /* Tests_OnboardingViewModel.swift in Sources */,
 				494EF970278D339100743D89 /* ASRemoteImageManager.swift in Sources */,
 				494EF966278D337D00743D89 /* CoreStore+Schema.swift in Sources */,
 				494EF908278D2E0100743D89 /* NetworkConfig.swift in Sources */,

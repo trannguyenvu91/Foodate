@@ -20,22 +20,48 @@ class MockNetworkService: NetworkService {
     
 }
 
-enum MockResponse: String {
-    case inivitation = "invitation"
-    case requester = "requester"
-    case notification = "notification"
-    case place = "place"
-    case sessionUser = "session_user"
-    case notificationPage = "notification_page"
-    case error = "error"
+enum MockResponse {
+    case inivitation
+    case requester
+    case notification
+    case place
+    case sessionUser
+    case notificationPage
+    case error
+    case custom(JSON)
     
     var jsonValue: JSON {
         get throws {
-            if self == .error {
+            switch self {
+            case .custom(let json):
+                return json
+            case .error:
                 throw NetworkError.invalidJSONFormat
+            default:
+                return try Bundle(for: MockNetworkService.self)
+                    .json(forResource: jsonFilename, ofType: "json")
             }
-            return Bundle(for: MockNetworkService.self)
-                .json(forResource: rawValue, ofType: "json") ?? [:]
+        }
+    }
+    
+    var jsonFilename: String {
+        get throws {
+            switch self {
+            case .inivitation:
+                return "invitation"
+            case .requester:
+                return "requester"
+            case .notification:
+                return "notification"
+            case .place:
+                return "place"
+            case .sessionUser:
+                return "session_user"
+            case .notificationPage:
+                return "notification_page"
+            case .error, .custom(_):
+                throw AppError.fileNotFound
+            }
         }
     }
     

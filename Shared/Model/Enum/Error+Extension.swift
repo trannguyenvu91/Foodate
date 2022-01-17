@@ -10,7 +10,8 @@ import Foundation
 
 enum AppError: Error {
     case unknown
-    
+    case fileNotFound
+    case invalidJsonFormatted
 }
 
 enum LocationError: Error {

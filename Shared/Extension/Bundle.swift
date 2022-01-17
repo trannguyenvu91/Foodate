@@ -9,17 +9,16 @@ import Foundation
 
 extension Bundle {
     
-    func json(forResource: String, ofType: String) -> JSON? {
+    func json(forResource: String, ofType: String) throws -> JSON {
         guard let path = path(forResource: forResource, ofType: ofType) else {
-            return nil
+            throw AppError.fileNotFound
         }
         let url = URL(fileURLWithPath: path)
-        do {
             let data = try Data(contentsOf: url)
-            return try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? JSON
-        } catch {
-            return nil
+        guard let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? JSON else {
+            throw AppError.invalidJsonFormatted
         }
+        return json
     }
     
 }

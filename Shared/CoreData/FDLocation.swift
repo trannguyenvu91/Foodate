@@ -49,7 +49,7 @@ struct FDLocation: Codable {
     
 }
 
-extension FDLocation {
+extension FDLocation: Equatable {
     
     var clLocation: CLLocation {
         CLLocation(latitude: latitude, longitude: longtitude)

@@ -121,7 +121,7 @@ struct UserProfileView: View {
     
     var logOutButton: some View {
         Button {
-            AppConfig.shared.logOut()
+            try? AppConfig.shared.logOut()
         } label: {
             Image(systemName: "square.and.arrow.up")
                 .resizable()

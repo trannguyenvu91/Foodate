@@ -28,12 +28,18 @@ class FDCoreStore {
             .asPublisher(in: .defaultStack)
     }
     
-    
     func fetchOne<O>(_ condition: Where<O>) throws -> O? where O: CoreStoreObject {
         try dataStack.fetchOne(
             From<O>()
                 .where(condition)
         )
+    }
+    
+    @discardableResult
+    func deleteAll<O>(_ condition: Where<O>) throws -> Int where O: CoreStoreObject {
+        try dataStack.perform(synchronous: { transaction in
+            try transaction.deleteAll(From<O>(), condition)
+        })
     }
     
 }

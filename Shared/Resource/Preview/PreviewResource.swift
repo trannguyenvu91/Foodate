@@ -18,8 +18,8 @@ class PreviewResource: NSObject {
     }
     
     func loadObject<T: ImportableJSONObject>(source: String, type: String, in bundle: Bundle = .main) -> T {
-        let json = bundle.json(forResource: source, ofType: type)
-        return try! T.importObject(from: json!)
+        let json = try! bundle.json(forResource: source, ofType: type)
+        return try! T.importObject(from: json)
     }
     
     func loadObjectPublisher<T: ImportableJSONObject & CoreStoreObject>(source: String, type: String) -> ObjectPublisher<T> {
