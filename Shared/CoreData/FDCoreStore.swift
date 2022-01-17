@@ -21,11 +21,11 @@ class FDCoreStore {
         try dataStack.addStorageAndWait(store)
     }
     
-    func fetchSessionUser() throws -> ObjectSnapshot<FDSessionUser>? {
+    func fetchSessionUser() throws -> ObjectPublisher<FDSessionUser>? {
         try dataStack.fetchOne(
             From<FDSessionUser>()
         )?
-            .asSnapshot(in: .defaultStack)
+            .asPublisher(in: .defaultStack)
     }
     
     

@@ -29,7 +29,7 @@ class OnboardingViewModel: BaseViewModel {
                                                       email: email)
         }
         try await AppConfig.shared.updateUserLocation()
-        AppConfig.shared.sessionUser = try? FDCoreStore.shared.fetchSessionUser()
+        try AppConfig.shared.loadSessionUser()
     }
     
     func switchType() {

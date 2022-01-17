@@ -68,7 +68,7 @@ class InvitationViewModel: BaseViewModel {
     
     func getInvitation() async throws {
         invitation = try FDCoreStore.shared.fetchOne(
-            Where<FDInvitation>("\(#keyPath(FDBaseInvitation.id)) == \(invitationID)")
+            Where<FDInvitation>("id == \(invitationID)")
         )?.asPublisher(in: .defaultStack)
         invitation = try await NetworkService.getInvitation(ID: invitationID).asPublisher(in: .defaultStack)
     }

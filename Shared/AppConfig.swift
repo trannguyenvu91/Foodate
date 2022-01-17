@@ -15,30 +15,38 @@ class AppConfig: ObservableObject {
     static let shared = AppConfig()
     @Published var isPresentingScreen: Bool = false
     @Published var isPushingScreen: Bool = false
-    @Published var presentScreen: ScreenType? {
+    var presentScreen: ScreenType? {
         didSet {
             isPresentingScreen = presentScreen != nil
         }
     }
-    @Published var pushedScreen: ScreenType? {
+    var pushedScreen: ScreenType? {
         didSet {
             isPushingScreen = pushedScreen != nil
         }
     }
-    @Published var sessionUser: ObjectSnapshot<FDSessionUser>? {
-        willSet {
-            NetworkConfig.token = newValue?.$token
+    @Published private var _sessionUserpublisher: ObjectPublisher<FDSessionUser>? {
+        didSet {
+            NetworkConfig.token = sessionUser?.$token
         }
     }
     
     init() {
         setup()
     }
-    
+
+    var sessionUser: ObjectSnapshot<FDSessionUser>? {
+        _sessionUserpublisher?.asSnapshot(in: .defaultStack)
+    }
+
     func setup() {
         try? FDCoreStore.shared.setup()
-        sessionUser = try? FDCoreStore.shared.fetchSessionUser()
+        try? loadSessionUser()
         UITableViewCell.appearance().selectionStyle = .none
+    }
+    
+    func loadSessionUser() throws {
+        _sessionUserpublisher = try FDCoreStore.shared.fetchSessionUser()
     }
     
     @MainActor
@@ -64,7 +72,7 @@ class AppConfig: ObservableObject {
     
     func logOut() {
         withAnimation {
-            sessionUser = nil
+            _sessionUserpublisher = nil
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             let _ = try? FDCoreStore.shared.dataStack.perform { transaction in

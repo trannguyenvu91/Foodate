@@ -12,7 +12,7 @@ struct RequestsFooter: View {
     
     var requests: [ObjectPublisher<FDRequester>]
     var requestsTotal: Int
-    let maxPreview = 3
+    let maxPreview = 2
     var invitationID: Int
     
     init(_ requests: [ObjectPublisher<FDRequester>], requestsTotal: Int, invitationID: Int) {

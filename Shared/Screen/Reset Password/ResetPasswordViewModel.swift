@@ -15,7 +15,7 @@ class ResetPasswordViewModel: BaseViewModel {
     
     func resetPassword() async throws {
         let _ = try await NetworkService.reset(username: username, password: password)
-        AppConfig.shared.sessionUser = try? FDCoreStore.shared.fetchSessionUser()
+        try? AppConfig.shared.loadSessionUser()
     }
     
 }
