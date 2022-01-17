@@ -9,22 +9,15 @@ import Foundation
 import Combine
 import CoreStore
 
-class UserProfileViewModel: ObjectBaseViewModel<FDUserProfile>, ListViewModel {
+class UserProfileViewModel: BaseObjectViewModel<FDUserProfile>, ListViewModel {
     
-    var paginator: Paginator<FDInvitation>
-    
-    override init(_ user: ObjectPublisher<FDUserProfile>) {
-        self.paginator = InvitationPaginator.paginator(userID: user.id!, type: .events)
-        super.init(user)
-    }
-    
-    var invitations: [ObjectPublisher<FDInvitation>] {
-        paginator.items.compactMap({ $0.asPublisher(in: .defaultStack) })
-    }
+    lazy var paginator: Paginator<FDInvitation> = {
+        InvitationPaginator(userID: objectID, type: .events)
+    }()
     
     func refresh() async {
         do {
-            try await getProfile()
+            try await loadObject()
             try await paginator.refresh()
             self.objectWillChange.send()
         } catch {
@@ -32,11 +25,23 @@ class UserProfileViewModel: ObjectBaseViewModel<FDUserProfile>, ListViewModel {
         }
     }
     
-    func getProfile() async throws {
-        guard let id = objectPublisher.id else {
-            return
+    override func fetchLocalObject() throws -> ObjectPublisher<FDUserProfile>? {
+        if let local = try super.fetchLocalObject() {
+            return local
         }
-        let _ = try await NetworkService.getUser(ID: id)
-        self.objectWillChange.send()
+        if let user = try FDCoreStore.shared.fetchOne(
+            Where<FDUser>(FDUser.uniqueIDKeyPath, isEqualTo: objectID)
+        )?
+            .asSnapshot(in: .defaultStack) {
+            return try user.userProfile.asPublisher(in: .defaultStack)
+        }
+        if let user = try FDCoreStore.shared.fetchOne(
+            Where<FDBaseUser>(FDUser.uniqueIDKeyPath, isEqualTo: objectID)
+        )?
+            .asSnapshot(in: .defaultStack) {
+            return try user.userProfile.asPublisher(in: .defaultStack)
+        }
+        return nil
     }
+    
 }

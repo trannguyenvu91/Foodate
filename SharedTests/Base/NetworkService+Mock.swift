@@ -12,7 +12,7 @@ import Alamofire
 
 class MockNetworkService: NetworkService {
     
-    static var responseCase: MockResponse = .inivitation
+    static var responseCase: MockResponse = .invitation
     
     override func request(url: String, method: HTTPMethod, parameters: JSON?, headers: HTTPHeaders = NetworkConfig.headers) async throws -> JSON {
         try Self.responseCase.jsonValue
@@ -21,7 +21,7 @@ class MockNetworkService: NetworkService {
 }
 
 enum MockResponse {
-    case inivitation
+    case invitation
     case requester
     case notification
     case place
@@ -47,7 +47,7 @@ enum MockResponse {
     var jsonFilename: String {
         get throws {
             switch self {
-            case .inivitation:
+            case .invitation:
                 return "invitation"
             case .requester:
                 return "requester"

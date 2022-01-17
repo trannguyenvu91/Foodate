@@ -86,7 +86,7 @@ extension ObjectSnapshot where O: FDPlace {
     
 }
 
-extension FDPlace: ImportableUniqueObject, ImportableJSONObject {
+extension FDPlace: RemoteObject, ImportableJSONObject {
     
     static func importObject(from source: JSON) throws -> Self {
         try DataStack.defaultStack.perform { transaction in
@@ -118,6 +118,9 @@ extension FDPlace: ImportableUniqueObject, ImportableJSONObject {
     
     typealias UniqueIDType = String
     typealias ImportSource = JSON
-    
+
+    static func fetchRemoteObject(id: String) async throws -> Self {
+        try await NetworkService.getPlace(ID: id) as! Self
+    }
     
 }

@@ -8,20 +8,18 @@
 import UIKit
 
 class InvitationPaginator: Paginator<FDInvitation> {
-    
-    convenience init(_ api: String, params: JSON? = nil) {
-        let url = NetworkConfig.baseURL + api
-        let page = NetworkPage<FDInvitation>(nextURL: url, params: params)
-        self.init(page)
-    }
-    
 }
 
 extension InvitationPaginator {
-    class func paginator(placeID: String) -> InvitationPaginator {
-        InvitationPaginator("/api/v1/places/\(placeID)/invitations/")
+    convenience init(placeID: String) {
+        let url = NetworkConfig.baseURL + "/api/v1/places/\(placeID)/invitations/"
+        let page = NetworkPage<FDInvitation>(nextURL: url)
+        self.init(page)
     }
-    class func paginator(userID: Int, type: CalendarType) -> InvitationPaginator {
-        InvitationPaginator("/api/v1/users/\(userID)/invitations/", params: ["type": type.rawValue])
+    
+    convenience init(userID: Int, type: CalendarType) {
+        let url = NetworkConfig.baseURL + "/api/v1/users/\(userID)/invitations/"
+        let page = NetworkPage<FDInvitation>(nextURL: url, params: ["type": type.rawValue])
+        self.init(page)
     }
 }

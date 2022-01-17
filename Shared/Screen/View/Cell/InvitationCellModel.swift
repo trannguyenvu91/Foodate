@@ -9,7 +9,7 @@ import Foundation
 import CoreStore
 import Combine
 
-class InvitationCellModel: ObjectBaseViewModel<FDInvitation> {
+class InvitationCellModel: BaseObjectViewModel<FDInvitation> {
     let inviteFriend = PassthroughSubject<Any, Never>()
     
     override init(_ invitation: ObjectPublisher<FDInvitation>) {
@@ -18,13 +18,11 @@ class InvitationCellModel: ObjectBaseViewModel<FDInvitation> {
     }
     
     func sendRequest(_ isSending: Bool) async throws {
-        let id = self.objectPublisher.id!
-        let _ = isSending ? try await NetworkService.createRequest(for: id) : try await NetworkService.deleteRequest(for: id)
+        let _ = isSending ? try await NetworkService.createRequest(for: objectID) : try await NetworkService.deleteRequest(for: objectID)
     }
     
     func reply(_ state: InvitationState) async throws {
-        let id = self.objectPublisher.id!
-        let invitation = try await NetworkService.replyInvitation(ID: id, state: state)
+        let invitation = try await NetworkService.replyInvitation(ID: objectID, state: state)
         if let snapshot = invitation.asSnapshot(in: .defaultStack), snapshot.$state == .matched {
             AppConfig.shared.presentScreen = .matched(snapshot)
         }
@@ -37,7 +35,7 @@ class InvitationCellModel: ObjectBaseViewModel<FDInvitation> {
             }
             let updates = ["to_user": ["id": user.$id]]
             asyncDo {
-                let _ = try await NetworkService.updateInvitation(ID: objectSnapshot.$id,
+                let _ = try await NetworkService.updateInvitation(ID: objectID,
                                                           parameters: updates)
             }
         }

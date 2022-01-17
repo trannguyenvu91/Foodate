@@ -15,7 +15,7 @@ struct PlaceProfileView: View {
     var body: some View {
         GeometryReader { proxy in
             List {
-                ObjectReader(model.objectPublisher) { snapshot in
+                ObjectReader(model.publisher) { snapshot in
                     PhotosPageView(snapshot.$photos)
                         .listRowInsets(EdgeInsets())
                         .frame(width: proxy.size.width, height: proxy.size.width)
@@ -23,14 +23,14 @@ struct PlaceProfileView: View {
                     placeInfoView(snapshot)
                 }
                 PaginationList(model.paginator) {
-                    InviteCell(nil, to: model.objectPublisher)
+                    InviteCell(nil, to: model.publisher)
                 } cellBuilder: {
                     InvitationCell(model: .init($0.asPublisher(in: .defaultStack)), showPlace: false)
                 }
             }
         }
         .taskOnLoad(error: $model.error) {
-            try await model.getProfile()
+            try await model.loadObject()
         }
         .refreshable {
             await self.model.refresh()
@@ -67,7 +67,7 @@ struct PlaceProfileView: View {
     }
     
     var inviteView: some View {
-        PresentButton(destination: LazyView(InviteView(nil, to: model.objectPublisher))) {
+        PresentButton(destination: LazyView(InviteView(nil, to: model.publisher))) {
             HStack {
                 Image(systemName: "calendar.badge.plus")
                     .resizable()

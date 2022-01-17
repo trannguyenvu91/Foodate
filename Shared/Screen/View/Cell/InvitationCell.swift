@@ -15,7 +15,7 @@ struct InvitationCell: View {
     var showRequestsFooter = true
     
     var body: some View {
-        ObjectReader(model.objectPublisher) { snapshot in
+        ObjectReader(model.publisher) { snapshot in
             VStack(spacing: 0) {
                 TimeHeader(snapshot)
                 contentView(snapshot)

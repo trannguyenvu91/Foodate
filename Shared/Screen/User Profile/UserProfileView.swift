@@ -16,14 +16,14 @@ struct UserProfileView: View {
     
     var body: some View {
         GeometryReader { proxy in
-            ObjectReader(model.objectPublisher) { snapshot in
+            ObjectReader(model.publisher) { snapshot in
                 List {
                     PhotosPageView(snapshot.$photos)
                         .listRowInsets(EdgeInsets())
                         .frame(width: proxy.size.width, height: proxy.size.width)
                     personalInfoView(snapshot)
                     PaginationList(model.paginator) {
-                        InviteCell(model.objectPublisher)
+                        InviteCell(model.publisher)
                     } cellBuilder: {
                         InvitationCell(model: .init($0.asPublisher(in: .defaultStack)))
                     }
@@ -32,7 +32,7 @@ struct UserProfileView: View {
             }
         }
         .taskOnLoad(error: $model.error) {
-            try await model.getProfile()
+            try await model.loadObject()
         }
         .refreshable {
             await model.refresh()
@@ -40,7 +40,7 @@ struct UserProfileView: View {
         .bindErrorAlert(to: $model)
         .ignoresSafeArea()
         .listStyle(.plain)
-        .navigationBarItems(trailing: model.objectPublisher.isSession ? logOutButton.asAnyView() : EmptyView().asAnyView())
+        .navigationBarItems(trailing: model.publisher?.isSession == true ? logOutButton.asAnyView() : EmptyView().asAnyView())
     }
     
     func personalInfoView(_ snapshot: ObjectSnapshot<FDUserProfile>) -> some View {
@@ -91,7 +91,7 @@ struct UserProfileView: View {
     }
     
     func inviteView(_ snapshot: ObjectSnapshot<FDUserProfile>) -> some View {
-        PresentButton(destination: LazyView(InviteView(model.objectPublisher, to: nil))) {
+        PresentButton(destination: LazyView(InviteView(model.publisher, to: nil))) {
             HStack {
                 Image(systemName: "calendar.badge.plus")
                     .resizable()
@@ -105,7 +105,7 @@ struct UserProfileView: View {
     }
     
     var editView: some View {
-        let session = model.objectPublisher.asSnapshot(in: .defaultStack)
+        let session = model.snapshot
         return PresentButton(destination: LazyView(EditProfileView(model: .init(session!)))) {
             HStack {
                 Image(systemName: "gear")
@@ -139,6 +139,6 @@ struct UserProfileView_Previews: PreviewProvider {
     static var previews: some View {
         let user: ObjectPublisher<FDUserProfile> = PreviewResource.shared
             .loadUser()
-        UserProfileView(model: .init(user))
+        UserProfileView(model: .init(user.id!))
     }
 }

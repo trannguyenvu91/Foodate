@@ -44,7 +44,8 @@ extension ObjectSnapshot where O: FDUserProfile {
     
 }
 
-extension FDUserProfile {
+extension FDUserProfile: RemoteObject {
+    
     class func fetchOne(id: Int) throws -> FDUserProfile? {
         let user: FDUserProfile? = try DataStack.defaultStack.fetchOne(
             From<FDUserProfile>(),
@@ -52,6 +53,11 @@ extension FDUserProfile {
         )
         return user
     }
+
+    static func fetchRemoteObject(id: Int) async throws -> Self {
+        try await NetworkService.getUser(ID: id) as! Self
+    }
+    
 }
 
 extension FDUser: ImportableUniqueObject, ImportableJSONObject {

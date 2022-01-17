@@ -50,11 +50,9 @@ struct TabBarView: View {
     
     @ViewBuilder
     var profileView: some View {
-        if let id = AppConfig.shared.sessionUser?.$id,
-           let user = try? FDUserProfile.fetchOne(id: id) {
-            let publiser = user.asPublisher(in: .defaultStack)
+        if let id = AppConfig.shared.sessionUser?.$id {
             NavigationView {
-                UserProfileView(model: .init(publiser))
+                UserProfileView(model: .init(id))
             }
         }
     }

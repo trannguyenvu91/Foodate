@@ -15,7 +15,11 @@ struct NotificationCell: View {
     var body: some View {
         ObjectReader(notification) { snapshot in
             VStack(alignment: .leading) {
-                NavigationButton(destination: LazyView(UserProfileView(model: .init(snapshot.$sender!.asSnapshot(in: .defaultStack)!.userProfile)))) {
+                NavigationButton(
+                    destination: LazyView(
+                        UserProfileView(model: .init(snapshot.$sender!.id!))
+                    )
+                ) {
                     senderView(snapshot)
                 }
                 NavigationButton(destination: LazyView(InvitationView(model: .init(snapshot.$invitation?.$id ?? 0)))) {

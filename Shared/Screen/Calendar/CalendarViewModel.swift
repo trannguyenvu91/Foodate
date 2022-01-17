@@ -11,9 +11,10 @@ import Combine
 
 class CalendarViewModel: BaseViewModel, ListViewModel {
     
-    @Published var eventsPaginator: Paginator<FDInvitation>
-    @Published var inboxPaginator: Paginator<FDInvitation>
+    @Published var eventsPaginator = InvitationPaginator(userID: try! sessionUserID, type: .events)
+    @Published var inboxPaginator = InvitationPaginator(userID: try! sessionUserID, type: .inbox)
     @Published var selectedTab = CalendarType.events
+    
     var paginator: Paginator<FDInvitation> {
         switch selectedTab {
         case .events:
@@ -23,12 +24,13 @@ class CalendarViewModel: BaseViewModel, ListViewModel {
         }
     }
     
-    override init() {
-        guard let userID = AppConfig.shared.sessionUser?.id else {
-            fatalError("Session user must not be nil!")
+    static var sessionUserID: Int {
+        get throws {
+            guard let userID = AppConfig.shared.sessionUser?.id else {
+                throw AppError.invalidSession
+            }
+            return userID
         }
-        eventsPaginator = InvitationPaginator.paginator(userID: userID, type: .events)
-        inboxPaginator = InvitationPaginator.paginator(userID: userID, type: .inbox)
     }
     
 }

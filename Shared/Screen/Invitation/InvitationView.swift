@@ -17,7 +17,7 @@ struct InvitationView: View {
             if model.isArchivedInvitation {
                 ArchivedInvitationHeader()
             }
-            if let publisher = model.invitation {
+            if let publisher = model.publisher {
                 InvitationCell(model: .init(publisher), showRequestsFooter: false)
             }
             if model.canViewRequests {
@@ -29,7 +29,7 @@ struct InvitationView: View {
         }
         .listStyle(.plain)
         .taskOnLoad(error: $model.error) {
-            try await model.getInvitation()
+            try await model.loadObject()
         }
         .refreshable {
             await model.refresh()

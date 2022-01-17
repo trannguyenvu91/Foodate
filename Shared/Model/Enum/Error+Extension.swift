@@ -12,6 +12,7 @@ enum AppError: Error {
     case unknown
     case fileNotFound
     case invalidJsonFormatted
+    case invalidSession
 }
 
 enum LocationError: Error {
