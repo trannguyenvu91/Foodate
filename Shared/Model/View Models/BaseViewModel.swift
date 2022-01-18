@@ -19,6 +19,11 @@ class BaseViewModel: NSObject, ObservableObject {
         }
     }
     
+    override init() {
+        super.init()
+        initialSetup()
+    }
+    
     func asyncDo(_ action: @escaping () async throws -> Void) {
         Task {
             do {
@@ -37,5 +42,7 @@ class BaseViewModel: NSObject, ObservableObject {
         }
         .store(in: &cancelableSet)
     }
+    
+    func initialSetup() {}
     
 }

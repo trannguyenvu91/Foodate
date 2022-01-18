@@ -66,7 +66,7 @@ class NotificationService: NSObject {
     @MainActor
     func didReceive(notification: UNNotification) async {
         //TODO:
-        AppConfig.shared.pushedScreen = .invitation(71)
+        AppSession.shared.pushedScreen = .invitation(71)
     }
     
 }

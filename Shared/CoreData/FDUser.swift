@@ -18,7 +18,7 @@ extension ObjectSnapshot: UserProtocol where O: FDBaseUser {
     }
     
     var isSession: Bool {
-        self.$id == AppConfig.shared.sessionUser?.$id
+        self.$id == AppSession.shared.sessionUser?.$id
     }
     
     var id: Int {
@@ -29,7 +29,7 @@ extension ObjectSnapshot: UserProtocol where O: FDBaseUser {
 
 extension ObjectPublisher where O: FDBaseUser {
     var isSession: Bool {
-        self.$id == AppConfig.shared.sessionUser?.$id
+        self.$id == AppSession.shared.sessionUser?.$id
     }
 }
 

@@ -28,8 +28,8 @@ class OnboardingViewModel: BaseViewModel {
                                                       password: password,
                                                       email: email)
         }
-        try await AppConfig.shared.updateUserLocation()
-        try AppConfig.shared.loadSessionUser()
+        try await AppSession.shared.updateUserLocation()
+        try AppSession.shared.loadSessionUser()
     }
     
     func switchType() {

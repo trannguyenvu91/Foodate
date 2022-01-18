@@ -73,8 +73,7 @@ struct NotificationCell: View {
                 }
             HStack {
                 Text(sender?.name ?? "")
-                    .fontWeight(.semibold)
-                detailText(noti)
+                    .fontWeight(.semibold) + detailText(noti)
             }
             Spacer()
             Text(noti.$created?.distanceString ?? "")
@@ -83,9 +82,9 @@ struct NotificationCell: View {
         }
     }
     
-    func detailText(_ noti: ObjectSnapshot<FDNotification>) -> some View {
+    func detailText(_ noti: ObjectSnapshot<FDNotification>) -> Text {
         let (detail, _, _) = detail(noti)
-        return Text(detail)
+        return Text(" " + detail)
     }
     
     func typeIconView(_ noti: ObjectSnapshot<FDNotification>) -> some View {
@@ -120,7 +119,7 @@ struct NotificationCell: View {
 
 struct NotificationCell_Previews: PreviewProvider {
     static var previews: some View {
-        let notification: FDNotification = PreviewResource.shared.loadObject(source: "notification", type: "json")
+        let notification: FDNotification = PreviewResource.shared.loadObject(source: "notification", ofType: "json")
         NotificationCell(notification: notification.asPublisher(in: .defaultStack))
             .previewDevice("iPhone 13 mini")
     }

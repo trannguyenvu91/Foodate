@@ -47,7 +47,7 @@ struct RequestsFooter: View {
         let others = names.count == requestsTotal ? "" : " và \(requestsTotal - names.count) người khác"
         return HStack(spacing: 4) {
             Text(names.joined(separator: ", "))
-                .fontWeight(.semibold)
+                .fontWeight(.semibold) +
             Text(others + " đã gửi yêu cầu")
                 .fontWeight(.medium)
                 .foregroundColor(.gray)

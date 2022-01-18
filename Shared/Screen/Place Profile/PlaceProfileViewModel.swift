@@ -14,6 +14,11 @@ class PlaceProfileViewModel: BaseObjectViewModel<FDPlace>, ListViewModel {
         InvitationPaginator(placeID: objectID)
     }()
     
+    override func initialSetup() {
+        super.initialSetup()
+        observeNewInvitation()
+    }
+    
     func refresh() async {
         do {
             try await loadObject()
@@ -22,6 +27,25 @@ class PlaceProfileViewModel: BaseObjectViewModel<FDPlace>, ListViewModel {
         } catch {
             self.error = error
         }
+    }
+    
+}
+
+extension PlaceProfileViewModel: InvitationObservable {
+    var observedPaginator: Paginator<FDInvitation> {
+        get {
+            paginator
+        }
+        set {
+            paginator = newValue
+        }
+    }
+    
+    func shouldInsert(_ invitation: FDInvitation) -> Bool {
+        guard let snapshot = invitation.asSnapshot(in: .defaultStack) else {
+            return false
+        }
+        return snapshot.$place?.asSnapshot(in: .defaultStack)?.$id == objectID
     }
     
 }

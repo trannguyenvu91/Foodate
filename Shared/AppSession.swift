@@ -1,5 +1,5 @@
 //
-//  AppConfig.swift
+//  AppSession.swift
 //  Foodate
 //
 //  Created by Vu Tran on 13/07/2021.
@@ -10,11 +10,13 @@ import Combine
 import CoreStore
 import SwiftUI
 
-class AppConfig: ObservableObject {
+class AppSession: ObservableObject {
     
-    static let shared = AppConfig()
+    static let shared = AppSession()
     @Published var isPresentingScreen: Bool = false
     @Published var isPushingScreen: Bool = false
+    var newInvitation = PassthroughSubject<FDInvitation, Never>()
+    
     var presentScreen: ScreenType? {
         didSet {
             isPresentingScreen = presentScreen != nil

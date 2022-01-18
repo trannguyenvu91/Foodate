@@ -19,7 +19,7 @@ class InvitationViewModel: BaseObjectViewModel<FDInvitation> {
                                                           requestID: requester.$requestID)
         viewDismissalModePublisher.send(true)
         if let snapshot = invitation.asSnapshot(in: .defaultStack) {
-            AppConfig.shared.presentScreen = .matched(snapshot)
+            AppSession.shared.presentScreen = .matched(snapshot)
         }
     }
     

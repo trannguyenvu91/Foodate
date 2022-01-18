@@ -24,7 +24,7 @@ class InvitationCellModel: BaseObjectViewModel<FDInvitation> {
     func reply(_ state: InvitationState) async throws {
         let invitation = try await NetworkService.replyInvitation(ID: objectID, state: state)
         if let snapshot = invitation.asSnapshot(in: .defaultStack), snapshot.$state == .matched {
-            AppConfig.shared.presentScreen = .matched(snapshot)
+            AppSession.shared.presentScreen = .matched(snapshot)
         }
     }
     

@@ -27,6 +27,8 @@ enum MockResponse {
     case place
     case sessionUser
     case notificationPage
+    case notificationPageShorten
+    case notificationPageShorten2
     case error
     case custom(JSON)
     
@@ -59,6 +61,10 @@ enum MockResponse {
                 return "session_user"
             case .notificationPage:
                 return "notification_page"
+            case .notificationPageShorten:
+                return "notification_page_shorten"
+            case .notificationPageShorten2:
+                return "notification_page_shorten_2"
             case .error, .custom(_):
                 throw AppError.fileNotFound
             }

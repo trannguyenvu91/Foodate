@@ -25,17 +25,20 @@ class BaseObjectViewModel<Object>: BaseViewModel where Object: CoreStoreObject &
         publisher = object.asPublisher(in: .defaultStack)
         objectID = object.uniqueIDValue
         super.init()
+        initialSetup()
     }
     
     init(_ publiser: ObjectPublisher<Object>) {
         publisher = publiser
         objectID = publiser.uniqueIDValue!
         super.init()
+        initialSetup()
     }
     
     init(_ id: Object.UniqueIDType) {
         objectID = id
         super.init()
+        initialSetup()
     }
     
     @MainActor

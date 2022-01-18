@@ -12,7 +12,7 @@ import Contacts
 @main
 struct FoodateApp: App {
     
-    @StateObject var config = AppConfig.shared
+    @StateObject var config = AppSession.shared
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
     var body: some Scene {

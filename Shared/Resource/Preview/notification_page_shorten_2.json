@@ -1,0 +1,27 @@
+{
+    "next": "http://127.0.0.1:8000/api/v1/notifications/?cursor=cD0yMDIyLTAxLTA2KzA5JTNBMzclM0EzMiUyQjAwJTNBMDA%3D",
+    "previous": null,
+    "results": [
+        {
+            "id": 94,
+            "sender": {
+                "id": 2,
+                "first_name": "Vũ",
+                "last_name": "Trần",
+                "avatar_url": "https://user-images.githubusercontent.com/10230049/130745448-f60d8215-5855-49d3-84d3-6b32bf39c6a4.jpg"
+            },
+            "created": "2022-01-07T08:33:45Z",
+            "invitation": {
+                "id": 60,
+                "owner": {
+                    "id": 3,
+                    "first_name": "Uyên",
+                    "last_name": "Trần",
+                    "avatar_url": "https://user-images.githubusercontent.com/10230049/136374588-9e809f84-7c48-4e8d-bb2d-e07c35ace350.jpg"
+                },
+                "title": "Beto nhe"
+            },
+            "type": "NEW_REQUEST"
+        }
+    ]
+}

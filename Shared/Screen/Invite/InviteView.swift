@@ -31,7 +31,7 @@ struct InviteView: View {
             .overlay(createButton(geometry.size.width), alignment: .bottom)
             .overlay(cancelButton, alignment: .topLeading)
         })
-        .onReceive(model.didCreateCommand) { _ in
+            .onReceive(AppSession.shared.newInvitation) { _ in
             self.presentationMode.wrappedValue.dismiss()
         }
         .bindErrorAlert(to: $model)

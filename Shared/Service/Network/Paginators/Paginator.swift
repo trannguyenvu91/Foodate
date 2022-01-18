@@ -9,15 +9,15 @@
 import Foundation
 import Combine
 
-class Paginator <T>: PaginatorProtocol where T: Equatable & ImportableJSONObject {
+class Paginator<Item>: PaginatorProtocol where Item: Equatable & ImportableJSONObject {
     
-    typealias modelClass = T
+    typealias modelClass = Item
     var isFetching: Bool = false
-    var items: [T] = [T]()
-    fileprivate var initialPage: NetworkPage<T>
-    var currentPage: NetworkPage<T>?
+    var items: [Item] = [Item]()
+    var currentPage: NetworkPage<Item>?
     var error: Error?
-    private var isRefreshing = false
+    private(set) var initialPage: NetworkPage<Item>
+    var isRefreshing = false
     
     required init(_ initial: NetworkPage<modelClass>) {
         self.initialPage = initial
@@ -61,7 +61,7 @@ class Paginator <T>: PaginatorProtocol where T: Equatable & ImportableJSONObject
         try await fetchNext()
     }
     
-    func remove(item: T) {
+    func remove(item: Item) {
         items.removeAll(where: { $0 == item })
     }
     
@@ -71,7 +71,7 @@ extension Paginator: ObservableObject {}
 
 internal extension Paginator {
     
-    func append(results: [T]?) {
+    func append(results: [Item]?) {
         guard let results = results else { return }
         items.append(contentsOf: results)
     }

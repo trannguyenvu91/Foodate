@@ -14,9 +14,9 @@ class SearchViewModel: BaseViewModel {
     @Published var selectedIndex = 0
     var tabs: [SearchType]
     
-    var userPaginator: Paginator<FDUserProfile>
-    var invitationPaginator: Paginator<FDInvitation>
-    var placePaginator: Paginator<FDPlace>
+    var userPaginator: Paginator<FDUserProfile> = SearchProfilePaginator(nil)
+    var invitationPaginator: Paginator<FDInvitation> = SearchInvitationPaginator(nil)
+    var placePaginator: Paginator<FDPlace> = SearchPlacePaginator(nil)
     
     var type: SearchType {
         tabs[selectedIndex]
@@ -24,10 +24,12 @@ class SearchViewModel: BaseViewModel {
     
     init(_ tabs: [SearchType] = SearchType.allCases) {
         self.tabs = tabs
-        self.userPaginator = SearchProfilePaginator(nil)
-        self.placePaginator = SearchPlacePaginator(nil)
-        self.invitationPaginator = SearchInvitationPaginator(nil)
         super.init()
+    }
+    
+    override func initialSetup() {
+        super.initialSetup()
+        observeNewInvitation()
     }
     
     func refresh() async {
@@ -44,6 +46,28 @@ class SearchViewModel: BaseViewModel {
         } catch {
             self.error = error
         }
+    }
+    
+}
+
+extension SearchViewModel: InvitationObservable {
+    var observedPaginator: Paginator<FDInvitation> {
+        get {
+            invitationPaginator
+        }
+        set {
+            invitationPaginator = newValue
+        }
+    }
+    
+    func shouldInsert(_ invitation: FDInvitation) -> Bool {
+        guard let snapshot = invitation.asSnapshot(in: .defaultStack) else {
+            return false
+        }
+        if snapshot.$owner?.isSession == true {
+            return true
+        }
+        return false
     }
     
 }

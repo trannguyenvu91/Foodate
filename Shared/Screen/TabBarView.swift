@@ -12,7 +12,7 @@ struct TabBarView: View {
     
     let tabFontSize: CGFloat = 22
     @State var selectedTabItem: TabItemType = .calendar
-    @EnvironmentObject var config: AppConfig
+    @EnvironmentObject var config: AppSession
     
     var body: some View {
         TabView(selection: $selectedTabItem) {
@@ -43,14 +43,14 @@ struct TabBarView: View {
         }
         .tabViewStyle(.automatic)
         .task {
-            try? await AppConfig.shared.updateUserLocation()
-            try? await AppConfig.shared.updateNotificationsToken()
+            try? await AppSession.shared.updateUserLocation()
+            try? await AppSession.shared.updateNotificationsToken()
         }
     }
     
     @ViewBuilder
     var profileView: some View {
-        if let id = AppConfig.shared.sessionUser?.$id {
+        if let id = AppSession.shared.sessionUser?.$id {
             NavigationView {
                 UserProfileView(model: .init(id))
             }

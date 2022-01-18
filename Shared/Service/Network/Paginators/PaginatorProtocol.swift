@@ -31,3 +31,17 @@ protocol PaginatorProtocol {
     func refresh() async throws
     func remove(item: modelClass)
 }
+
+extension PaginatorProtocol {
+    
+    mutating func insert(_ item: modelClass, at index: Int = 0) {
+        items.insert(item, at: index)
+    }
+    
+}
+
+protocol SearchablePaginatorProtocol {
+    var filter: JSON? { get }
+    func search(_ term: String) async throws
+    func clearSearch() async throws
+}

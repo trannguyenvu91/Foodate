@@ -14,7 +14,6 @@ class InviteViewModel: BaseViewModel, Identifiable {
     
     @Published var draft = DraftInvitation()
     var selectionCommand = PassthroughSubject<Any, Never>()
-    var didCreateCommand = PassthroughSubject<Any?, Never>()
     
     override init() {
         super.init()
@@ -35,7 +34,7 @@ class InviteViewModel: BaseViewModel, Identifiable {
     
     func createInvitation() async throws {
         let invitation = try await NetworkService.createInvitation(parameters: try draft.getData())
-        didCreateCommand.send(invitation)
+        AppSession.shared.newInvitation.send(invitation)
     }
     
 }

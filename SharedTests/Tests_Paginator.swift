@@ -11,8 +11,7 @@ class Tests_Paginator: BaseTestCase {
     
     lazy var firstPage: NetworkPage<FDNotification> = PreviewResource.shared
         .loadObject(source: "notification_page",
-                    type: "json",
-                    in: .init(for: type(of: self)))
+                    ofType: "json")
     lazy var paginator = Paginator<FDNotification>(firstPage)
     
     override func setUpWithError() throws {

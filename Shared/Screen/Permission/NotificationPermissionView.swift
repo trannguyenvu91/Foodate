@@ -33,7 +33,7 @@ struct NotificationPermissionView: View {
                 .padding(.top, 2)
                 .foregroundColor(.gray)
             AsyncButton(task: {
-                try await AppConfig.shared.updateNotificationsToken()
+                try await AppSession.shared.updateNotificationsToken()
                 presentationMode.wrappedValue.dismiss()
             }, error: $error) {
                 Text("NotificationPermissionView_AllowButton".localized())

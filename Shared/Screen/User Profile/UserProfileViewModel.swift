@@ -15,6 +15,11 @@ class UserProfileViewModel: BaseObjectViewModel<FDUserProfile>, ListViewModel {
         InvitationPaginator(userID: objectID, type: .events)
     }()
     
+    override func initialSetup() {
+        super.initialSetup()
+        observeNewInvitation()
+    }
+    
     func refresh() async {
         do {
             try await loadObject()
@@ -42,6 +47,30 @@ class UserProfileViewModel: BaseObjectViewModel<FDUserProfile>, ListViewModel {
             return try user.userProfile.asPublisher(in: .defaultStack)
         }
         return nil
+    }
+    
+}
+
+extension UserProfileViewModel: InvitationObservable {
+    var observedPaginator: Paginator<FDInvitation> {
+        get {
+            paginator
+        }
+        set {
+            paginator = newValue
+        }
+    }
+    
+    func shouldInsert(_ invitation: FDInvitation) -> Bool {
+        guard let snapshot = invitation.asSnapshot(in: .defaultStack) else {
+            return false
+        }
+        if snapshot.$owner?.isSession == true, AppSession.shared.sessionUser?.$id == objectID {
+            return true
+        } else if snapshot.$toUser?.$id == objectID {
+            return true
+        }
+        return false
     }
     
 }

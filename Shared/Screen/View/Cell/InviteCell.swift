@@ -34,9 +34,9 @@ struct InviteCell: View {
                 Text("Invite_Button_Title".localized())
                     .bold()
                     .padding()
+                    .foregroundColor(.blue)
             }
             .fixedSize(horizontal: true, vertical: false)
-            .foregroundColor(.blue)
         }
         .foregroundColor(.gray.opacity(0.3))
     }

@@ -32,7 +32,7 @@ struct CalendarView: View {
             }
         }
         .navigationTitle(
-            "Hello_User_Title".localized(with: [AppConfig.shared.sessionUser?.name ?? ""])
+            "Hello_User_Title".localized(with: [AppSession.shared.sessionUser?.name ?? ""])
         )
         .listStyle(.plain)
         .refreshable {

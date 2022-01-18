@@ -32,7 +32,7 @@ struct LocationPermissionView: View {
                 .padding(.top, 2)
                 .foregroundColor(.gray)
             AsyncButton(task: {
-                try await AppConfig.shared.updateUserLocation()
+                try await AppSession.shared.updateUserLocation()
             }, error: $error) {
                 Text("LocationView_AllowButton".localized())
                     .fontWeight(.semibold)
