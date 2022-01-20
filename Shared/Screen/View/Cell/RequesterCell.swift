@@ -21,7 +21,7 @@ struct RequesterCell: View {
             AsyncButton(task: {
                 try await model.accept(requester)
             }, error: $model.error) {
-                Text("Đồng ý")
+                Text("RequesterCell_Accept_Button_Title".localized())
                     .font(.footnote)
                     .fontWeight(.medium)
             }

@@ -13,7 +13,7 @@ struct NetworkError: Error {
     
     init(code: Int, message: String?) {
         self.code = code
-        self.message = message ?? "The operation couldn't be completed. Please try again."
+        self.message = message ?? "NetworkError_Operation_Error_Alert".localized()
     }
     
 }
@@ -21,7 +21,7 @@ struct NetworkError: Error {
 extension NetworkError {
     
     static var invalidJSONFormat: NetworkError {
-        NetworkError(code: 400, message: "The response is not JSON")
+        NetworkError(code: 400, message: "NetworkError_JSON_Error_Alert".localized())
     }
     
 }

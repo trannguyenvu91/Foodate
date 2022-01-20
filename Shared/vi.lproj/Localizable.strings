@@ -27,6 +27,8 @@
 "InviteView_ShareBill" = "Cách thức trả tiền";
 "InviteView_Add_Place_Button_Title" = "Thêm nhà hàng, quán ăn";
 "InviteView_Send_Invitation_Button_Title" = "Gửi lời mời";
+"InviteView_BillType" = "Tính hoá đơn";
+"InviteView_Duration_Prefix" = "trong";
 
 "ShareBill_Fifty_Title" = "50-50";
 "ShareBill_Seventy_Title" = "Bạn trả 70%";
@@ -39,17 +41,21 @@
 "OnboardingView_SignUp_Title" = "ĐĂNG KÍ";
 "OnboardingView_SignUp_Switch_Label" = "Đã có tài khoản?";
 "OnboardingView_SignUp_Switch_Button" = "Đăng nhập";
+"OnboardingView_Password_Title" = "Mật khẩu";
+"OnboardingView_Forgot_Password_Title" = "Quên mật khẩu?";
 
 "UserProfileView_Edit_Profile_Button_Title" = "Sửa trang cá nhân";
 "UserProfileView_Edit_Profile_FirstName_Label" = "Tên";
 "UserProfileView_Edit_Profile_LastName_Label" = "Họ";
 "UserProfileView_Edit_Profile_Job_Label" = "Công việc";
 "UserProfileView_Edit_Profile_Bio_Label" = "Tiểu sử";
+"UserProfileView_Age_Suffix" = "t";
 
 "SearchView_Search_PlaceHolder" = "Tìm kiếm bạn bè, địa điểm, lời mời...";
 "SearchView_Invitation_Tab_Label" = "Lời mời";
 "SearchView_Account_Tab_Label" = "Tài khoản";
 "SearchView_Place_Tab_Label" = "Địa điểm";
+"SearchView_Search_Navigation_Title" = "Tìm kiếm";
 
 "EndResultView_Title" = "Không còn dữ liệu";
 "EmptyResultView_Title" = "Dữ liệu trống";
@@ -75,3 +81,54 @@
 
 "ArchivedInvitationHeader_Title" = "Đã diễn ra";
 "ArchivedInvitationHeader_SubTitle" = "Lời mời đã diễn ra, bạn chỉ có thể xem lại lời mời này.";
+
+"ResetPasswordView_Title" = "Nhập username\n để cài lại mật khẩu";
+"ResetPasswordView_NewPassword" = "Mật khẩu mới";
+"ResetPasswordView_ResetPassword" = "Đặt lại mật khẩu";
+
+"PlaceProfileView_Invite_Button_Title" = "Mời bạn bè!";
+
+"RequesterCell_Accept_Button_Title" = "Đồng ý";
+
+"NotificationType_NewRequest_Title" = "đã gửi cho bạn một yêu cầu tham gia";
+"NotificationType_NewInvitation_Title" = "đã gửi cho bạn một lời mời";
+"NotificationType_NewEvent_Title" = "có một sự kiện cùng bạn";
+"NotificationType_RejectedInvitation_Title" = "đã từ chối lời mời";
+"NotificationType_CanceledInvitation_Title" = "đã huỷ lời mời";
+"NotificationType_UpdatedInvitation_Title" = "đã cập nhật lời mời";
+
+"SendRequestFooter_Request_Button_Title" = "Tham gia";
+"SendRequestFooter_Cancel_Request_Button_Title" = "Huỷ yêu cầu";
+
+"RequestsFooter_Name_Joiner" = "và";
+"RequestsFooter_Name_Others" = "người khác";
+"RequestsFooter_Requested" = " đã gửi yêu cầu";
+
+"ReplyFooter_Accept_Button_Title" = "Đồng ý";
+"ReplyFooter_Reject_Button_Title" = "Từ chối";
+
+"InviteFooter_InviteFriend" = "Mời bạn bè";
+
+"PlaceType_Cafe" = "Quán cà phê";
+"PlaceType_Food" = "Đồ ăn";
+"PlaceType_Bakery" = "Tiệm bánh";
+"PlaceType_Bar" = "Quán bar, pub";
+"PlaceType_LiquorStore" = "Quán rượu";
+"PlaceType_Restaurant" = "Nhà hàng";
+"PlaceType_Others" = "Khác";
+
+"InvitationState_Pending" = "Đã gửi";
+"InvitationState_Matched" = "Tham gia";
+"InvitationState_Archived" = "Đã xoá";
+"InvitationState_Canceled" = "Đã huỷ";
+"InvitationState_Rejected" = "Đã từ chối";
+
+"DraftInvitation_Empty_Place_Alert" = "Bạn phải chọn địa điểm";
+"DraftInvitation_Invalid_Time_Alert" = "Thời gian bắt đầu và kết thúc không hợp lệ";
+"DraftInvitation_Empty_Title_Alert" = "Hãy điền nội dung lời mời";
+"DraftInvitation_Recipient_Alert" = "Bạn không thể mời chính bạn";
+
+"NetworkError_Operation_Error_Alert" = "Đã xảy ra lỗi trong thao tác. Xin hãy thử lại";
+"NetworkError_JSON_Error_Alert" = "Phản hồi bị lỗi định dạng JSON";
+
+"Alert_Error_Title" = "Xảy ra lỗi";

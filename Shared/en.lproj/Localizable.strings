@@ -26,6 +26,8 @@
 "InviteView_ShareBill" = "Split Bill";
 "InviteView_Add_Place_Button_Title" = "Add restaurant, place,...";
 "InviteView_Send_Invitation_Button_Title" = "Invite";
+"InviteView_BillType" = "Bill type";
+"InviteView_Duration_Prefix" = "for";
 
 "ShareBill_Fifty_Title" = "50-50";
 "ShareBill_Seventy_Title" = "You pay 70%";
@@ -38,17 +40,21 @@
 "OnboardingView_SignUp_Title" = "CREATE AN ACCOUNT";
 "OnboardingView_SignUp_Switch_Label" = "Already have an account?";
 "OnboardingView_SignUp_Switch_Button" = "Login";
+"OnboardingView_Password_Title" = "Password";
+"OnboardingView_Forgot_Password_Title" = "Forgot password?";
 
 "UserProfileView_Edit_Profile_Button_Title" = "Edit Profile";
 "UserProfileView_Edit_Profile_FirstName_Label" = "First Name";
 "UserProfileView_Edit_Profile_LastName_Label" = "Last Name";
 "UserProfileView_Edit_Profile_Job_Label" = "Job";
 "UserProfileView_Edit_Profile_Bio_Label" = "Bio";
+"UserProfileView_Age_Suffix" = "y";
 
 "SearchView_Search_PlaceHolder" = "Search for people, places, invitations...";
 "SearchView_Invitation_Tab_Label" = "Invitation";
 "SearchView_Account_Tab_Label" = "Account";
 "SearchView_Place_Tab_Label" = "Place";
+"SearchView_Search_Navigation_Title" = "Search";
 
 "EndResultView_Title" = "No more data";
 "EmptyResultView_Title" = "Empty data";
@@ -75,3 +81,54 @@
 
 "ArchivedInvitationHeader_Title" = "Already archived";
 "ArchivedInvitationHeader_SubTitle" = "This is an archived invitation, you can only view this.";
+
+"ResetPasswordView_Title" = "Enter your username\n to reset password";
+"ResetPasswordView_NewPassword" = "New password";
+"ResetPasswordView_ResetPassword" = "Reset password";
+
+"PlaceProfileView_Invite_Button_Title" = "Invite Friends!";
+
+"RequesterCell_Accept_Button_Title" = "Accept";
+
+"NotificationType_NewRequest_Title" = "sent you a join request";
+"NotificationType_NewInvitation_Title" = "sent you an invitation";
+"NotificationType_NewEvent_Title" = "have an event with you";
+"NotificationType_RejectedInvitation_Title" = "rejected an invitation";
+"NotificationType_CanceledInvitation_Title" = "canceled an invitation";
+"NotificationType_UpdatedInvitation_Title" = "updated an invitation";
+
+"SendRequestFooter_Request_Button_Title" = "Request join";
+"SendRequestFooter_Cancel_Request_Button_Title" = "Cancel request";
+
+"RequestsFooter_Name_Joiner" = "and";
+"RequestsFooter_Name_Others" = "others";
+"RequestsFooter_Requested" = " requested";
+
+"ReplyFooter_Accept_Button_Title" = "Accept";
+"ReplyFooter_Reject_Button_Title" = "Reject";
+
+"InviteFooter_InviteFriend" = "Invite friend";
+
+"PlaceType_Cafe" = "Coffee shop";
+"PlaceType_Food" = "Food";
+"PlaceType_Bakery" = "Bakery";
+"PlaceType_Bar" = "Bar, pub";
+"PlaceType_LiquorStore" = "Liquor Store";
+"PlaceType_Restaurant" = "Restaurant";
+"PlaceType_Others" = "Others";
+
+"InvitationState_Pending" = "Sent";
+"InvitationState_Matched" = "Join";
+"InvitationState_Archived" = "Archived";
+"InvitationState_Canceled" = "Canceled";
+"InvitationState_Rejected" = "Rejected";
+
+"DraftInvitation_Empty_Place_Alert" = "You must choose place";
+"DraftInvitation_Invalid_Time_Alert" = "Invalid time";
+"DraftInvitation_Empty_Title_Alert" = "Please input title";
+"DraftInvitation_Recipient_Alert" = "Invalid recipient";
+
+"NetworkError_Operation_Error_Alert" = "The operation couldn't be completed. Please try again";
+"NetworkError_JSON_Error_Alert" = "The response is not JSON";
+
+"Alert_Error_Title" = "Error";

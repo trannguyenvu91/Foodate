@@ -83,12 +83,12 @@ struct NotificationCell: View {
     }
     
     func detailText(_ noti: ObjectSnapshot<FDNotification>) -> Text {
-        let (detail, _, _) = detail(noti)
+        let (detail, _, _) = (noti.$type ?? .updatedInvitation).detail
         return Text(" " + detail)
     }
     
     func typeIconView(_ noti: ObjectSnapshot<FDNotification>) -> some View {
-        let (_, imageName, color) = detail(noti)
+        let (_, imageName, color) = (noti.$type ?? .updatedInvitation).detail
         return Image(systemName: imageName)
             .resizable()
             .scaledToFit()
@@ -96,23 +96,6 @@ struct NotificationCell: View {
             .background(Color.white)
             .foregroundColor(color)
             .clipShape(Circle())
-    }
-    
-    func detail(_ noti: ObjectSnapshot<FDNotification>) -> (String, String, Color) {
-        switch noti.$type {
-        case .newRequest:
-            return ("sent you a join request.", "plus.circle.fill", .sentRequest)
-        case .newInvitation:
-            return ("sent you an invitation", "arrowshape.turn.up.forward.circle.fill", .directInvitation)
-        case .newEvent:
-            return ("have an event with you", "person.2.circle.fill", .matched)
-        case .rejectedInvitation:
-            return ("rejected an invitation", "minus.circle.fill", .rejected)
-        case .canceledInvitation:
-            return ("canceled an invitation", "multiply.circle.fill", .canceled)
-        default:
-            return ("update an invitation", "shuffle.circle.fill", .blue)
-        }
     }
     
 }

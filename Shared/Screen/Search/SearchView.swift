@@ -32,7 +32,7 @@ struct SearchView: View {
             }
         }
         .listStyle(.plain)
-        .navigationTitle("Search")
+        .navigationTitle("SearchView_Search_Navigation_Title".localized())
         .navigationBarHidden(true)
         .bindErrorAlert(to: $model)
         .onReceive(selectionCommand ?? PassthroughSubject<Any, Never>()) { _ in

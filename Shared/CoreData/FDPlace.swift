@@ -36,19 +36,19 @@ enum PlaceType: String {
     var descriptionText: String {
         switch self {
         case .cafe:
-            return "Quán cà phê"
+            return "PlaceType_Cafe".localized()
         case .food:
-            return "Đồ ăn"
+            return "PlaceType_Food".localized()
         case .bakery:
-            return "Tiệm bánh"
+            return "PlaceType_Bakery".localized()
         case .bar:
-            return "Quán bar, pub"
+            return "PlaceType_Bar".localized()
         case .liquorStore:
-            return "Quán rượu"
+            return "PlaceType_LiquorStore".localized()
         case .restaurant:
-            return "Nhà hàng"
-        default:
-            return "Others"
+            return "PlaceType_Restaurant".localized()
+        case .others:
+            return "PlaceType_Others".localized()
         }
     }
     
@@ -69,7 +69,7 @@ extension ObjectSnapshot where O: FDPlace {
             .split(separator: ",")
             .compactMap({ PlaceType(rawValue: String($0)) })
             .first?
-            .descriptionText ?? "Others"
+            .descriptionText ?? PlaceType.others.descriptionText
     }
     
     var avatarURL: String {

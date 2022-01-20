@@ -44,11 +44,11 @@ struct RequestsFooter: View {
     var nameView: some View {
         let names = requests.compactMap({ $0.asSnapshot(in: .defaultStack)?.name })
             .prefix(maxPreview)
-        let others = names.count == requestsTotal ? "" : " và \(requestsTotal - names.count) người khác"
+        let others = names.count == requestsTotal ? "" : " \("RequestsFooter_Name_Joiner".localized()) \(requestsTotal - names.count) \("RequestsFooter_Name_Others".localized())"
         return HStack(spacing: 4) {
             Text(names.joined(separator: ", "))
                 .fontWeight(.semibold) +
-            Text(others + " đã gửi yêu cầu")
+            Text(others + "RequestsFooter_Requested".localized())
                 .fontWeight(.medium)
                 .foregroundColor(.gray)
         }

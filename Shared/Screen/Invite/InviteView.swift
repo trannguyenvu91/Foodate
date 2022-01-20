@@ -115,7 +115,7 @@ struct InviteView: View {
     }
     
     var billPicker: some View {
-        Picker("Bill Type", selection: $model.draft.shareBill) {
+        Picker("InviteView_BillType".localized(), selection: $model.draft.shareBill) {
             ForEach(FDShareBill.allCases, id: \.self) { type in
                 Text(type.title).tag(type)
             }
@@ -140,7 +140,7 @@ struct InviteView: View {
                     .fontWeight(.semibold)
                     .height(30)
             }
-            Text("trong")
+            Text("InviteView_Duration_Prefix".localized())
                 .foregroundColor(.gray)
             Button(action: {
                 

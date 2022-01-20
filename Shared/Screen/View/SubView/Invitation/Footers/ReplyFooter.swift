@@ -20,7 +20,7 @@ struct ReplyFooter: View {
             AsyncButton(task: {
                 try await model.reply(.matched)
             }, error: $model.error) {
-                Text("Đồng ý")
+                Text("ReplyFooter_Accept_Button_Title".localized())
                     .font(.footnote)
                     .fontWeight(.medium)
             }
@@ -30,7 +30,7 @@ struct ReplyFooter: View {
             AsyncButton(task: {
                 try await model.reply(.rejected)
             }, error: $model.error) {
-                Text("Từ chối")
+                Text("ReplyFooter_Reject_Button_Title".localized())
                     .font(.footnote)
                     .fontWeight(.medium)
                     .foregroundColor(.secondary)

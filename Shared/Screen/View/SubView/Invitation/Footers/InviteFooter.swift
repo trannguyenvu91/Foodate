@@ -20,7 +20,7 @@ struct InviteFooter: View {
                     .resizable()
                     .aspectRatio(1, contentMode: .fit)
                     .height(16)
-                Text("Rủ bạn bè")
+                Text("InviteFooter_InviteFriend".localized())
                     .font(.footnote)
                     .fontWeight(.medium)
             }

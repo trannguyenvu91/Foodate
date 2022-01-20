@@ -15,7 +15,7 @@ struct ResetPasswordView: View {
     var body: some View {
         GeometryReader { proxy in
             VStack {
-                Text("Enter your username\n to reset password")
+                Text("ResetPasswordView_Title".localized())
                     .font(.title)
                     .fontWeight(.medium)
                     .foregroundColor(.white)
@@ -28,7 +28,7 @@ struct ResetPasswordView: View {
                         .padding(.top)
                     IconInputView(
                         Image(systemName: "lock"),
-                        build: SecureField("New password", text: $model.password)
+                        build: SecureField("ResetPasswordView_NewPassword".localized(), text: $model.password)
                     )
                     Spacer()
                 }
@@ -40,7 +40,7 @@ struct ResetPasswordView: View {
             .background(Color.orange)
             .fixedSize(horizontal: false, vertical: true)
         }
-        .navigationTitle("Reset password")
+        .navigationTitle("ResetPasswordView_ResetPassword".localized())
         .overlay(alignment: .bottom) {
             resetButton
         }
@@ -69,7 +69,7 @@ struct ResetPasswordView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 25)
-                Text("Reset Password")
+                Text("ResetPasswordView_ResetPassword".localized())
                     .font(.title2)
                     .fontWeight(.semibold)
             }

@@ -19,7 +19,7 @@ struct PlaceProfileView: View {
                     PhotosPageView(snapshot.$photos)
                         .listRowInsets(EdgeInsets())
                         .frame(width: proxy.size.width, height: proxy.size.width)
-                        .navigationTitle(snapshot.$name ?? "Địa điểm")
+                        .navigationTitle(snapshot.$name ?? "--")
                     placeInfoView(snapshot)
                 }
                 PaginationList(model.paginator) {
@@ -73,7 +73,7 @@ struct PlaceProfileView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(maxWidth: 30, maxHeight: 30)
-                Text("Mời bạn bè!")
+                Text("PlaceProfileView_Invite_Button_Title".localized())
                     .fontWeight(.medium)
             }
             .foregroundColor(.orange)

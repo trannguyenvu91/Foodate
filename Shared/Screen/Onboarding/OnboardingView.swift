@@ -34,7 +34,7 @@ struct OnboardingView: View {
                     build: TextField("Username", text: self.$model.username)
                 )
                 IconInputView(
-                    Image(systemName: "lock"), build: SecureField("Password", text: self.$model.password)
+                    Image(systemName: "lock"), build: SecureField("OnboardingView_Password_Title".localized(), text: self.$model.password)
                 )
                 HStack {
                     Spacer()
@@ -79,7 +79,7 @@ struct OnboardingView: View {
             switch model.mode {
             case .login:
                 PresentButton(destination: LazyView(ResetPasswordView())) {
-                    Text("Forgot password?")
+                    Text("OnboardingView_Forgot_Password_Title".localized())
                         .font(.callout)
                         .fontWeight(.semibold)
                         .foregroundColor(.blue)

@@ -39,16 +39,16 @@ class DraftInvitation: ObservableObject {
     
     func validate() throws {
         if place == nil {
-            throw NetworkError(code: 400, message: "Bạn phải chọn địa điểm.")
+            throw NetworkError(code: 400, message: "DraftInvitation_Empty_Place_Alert".localized())
         }
         if startAt < endAt, startAt < Date() {
-            throw NetworkError(code: 400, message: "Thời gian bắt đầu và kết thúc không hợp lệ.")
+            throw NetworkError(code: 400, message: "DraftInvitation_Invalid_Time_Alert".localized())
         }
         if toUser?.isSession == true {
-            throw NetworkError(code: 400, message: "Bạn không thể mời chính bạn.")
+            throw NetworkError(code: 400, message: "DraftInvitation_Recipient_Alert".localized())
         }
         if title.isEmpty {
-            throw NetworkError(code: 400, message: "Hãy điền nội dung lời mời.")
+            throw NetworkError(code: 400, message: "DraftInvitation_Empty_Title_Alert".localized())
         }
     }
     

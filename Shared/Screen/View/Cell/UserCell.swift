@@ -69,7 +69,7 @@ struct UserCell: View {
             HStack {
                 Text(snapshot.name)
                     .fontWeight(.medium)
-                Text("\(snapshot.age ?? 0)t")
+                Text("\(snapshot.age ?? 0)" + "UserProfileView_Age_Suffix".localized())
                 Text(" \(String.dotText) \(snapshot.$location?.distanceFromCurrent ?? "--")")
                     .foregroundColor(.gray)
                     .font(.subheadline)

@@ -17,15 +17,15 @@ enum InvitationState: String {
     var description: String {
         switch self {
         case .pending:
-            return "Đã gửi"
+            return "InvitationState_Pending".localized()
         case .matched:
-            return "Sẽ tham gia"
+            return "InvitationState_Matched".localized()
         case .archived:
-            return "Đã xoá"
+            return "InvitationState_Archived".localized()
         case .canceled:
-            return "Đã huỷ"
+            return "InvitationState_Canceled".localized()
         case .rejected:
-            return "Đã từ chối"
+            return "InvitationState_Rejected".localized()
         }
     }
 }

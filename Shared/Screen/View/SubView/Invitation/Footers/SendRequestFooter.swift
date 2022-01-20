@@ -26,7 +26,7 @@ struct SendRequestFooter: View {
                     .resizable()
                     .aspectRatio(1, contentMode: .fit)
                     .height(16)
-                Text(requestSent ? "Huỷ yêu cầu" : "Tham gia")
+                Text(requestSent ? "SendRequestFooter_Cancel_Request_Button_Title".localized() : "SendRequestFooter_Request_Button_Title".localized())
                     .font(.footnote)
                     .fontWeight(.medium)
             }

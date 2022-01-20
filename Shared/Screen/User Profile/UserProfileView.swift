@@ -49,7 +49,7 @@ struct UserProfileView: View {
                 Text(snapshot.name)
                     .font(.title)
                     .fontWeight(.medium)
-                Text("\(snapshot.age ?? 0)t")
+                Text("\(snapshot.age ?? 0)" + "UserProfileView_Age_Suffix".localized())
                     .font(.title)
             }
             workView(snapshot)
