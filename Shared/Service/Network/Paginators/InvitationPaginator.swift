@@ -5,7 +5,7 @@
 //  Created by Vu Tran on 04/08/2021.
 //
 
-import UIKit
+import Foundation
 
 class InvitationPaginator: Paginator<FDInvitation> {
 }

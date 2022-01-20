@@ -5,7 +5,7 @@
 //  Created by Vu Tran on 12/14/21.
 //
 
-import UIKit
+import Foundation
 import CoreStore
 import ObjectMapper
 

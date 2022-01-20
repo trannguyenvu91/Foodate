@@ -5,8 +5,8 @@
 //  Created by Vu Tran on 12/14/21.
 //
 
-import UIKit
-import  Combine
+import Foundation
+import Combine
 
 class NotificationViewModel: BaseViewModel, ListViewModel {
     

@@ -5,7 +5,7 @@
 //  Created by Vu Tran on 1/18/22.
 //
 
-import UIKit
+import Foundation
 
 class SearchablePaginator<Item>: Paginator<Item> where Item: Equatable & ImportableJSONObject {
     internal var placeholderPage: NetworkPage<Item>?

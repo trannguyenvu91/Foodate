@@ -6,7 +6,7 @@
 //  Copyright © 2020 Vu Tran. All rights reserved.
 //
 
-import UIKit
+import Foundation
 import Combine
 import CoreStore
 

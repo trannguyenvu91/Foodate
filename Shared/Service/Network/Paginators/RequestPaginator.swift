@@ -5,7 +5,7 @@
 //  Created by Vu Tran on 03/08/2021.
 //
 
-import UIKit
+import Foundation
 
 class RequestPaginator: Paginator<FDRequester> {
     

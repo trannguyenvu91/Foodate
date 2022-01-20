@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 import CoreStore
+import Photos
 
 class InvitationViewModel: BaseObjectViewModel<FDInvitation> {
     lazy var paginator: Paginator<FDRequester> = {

@@ -5,7 +5,7 @@
 //  Created by Vu Tran on 04/10/2021.
 //
 
-import UIKit
+import Foundation
 import CoreStore
 import Combine
 

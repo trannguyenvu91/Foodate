@@ -846,6 +846,7 @@
 				49DA1F3226A135B9001BF85B /* PhotosPageView.swift */,
 				496F327827620A2400DA705E /* PaginationList.swift */,
 				49C3F7382786AE0C00B86F2E /* ArchivedInvitationHeader.swift */,
+				49C3F735278696F000B86F2E /* MatchedView.swift */,
 			);
 			path = SubView;
 			sourceTree = "<group>";
@@ -926,7 +927,6 @@
 			isa = PBXGroup;
 			children = (
 				49FDFF8626B11EA2001185D3 /* TabBarView.swift */,
-				49C3F735278696F000B86F2E /* MatchedView.swift */,
 				49B29EDB277EB2A9009104D3 /* Permission */,
 				490239E5277ABE4D0019E7FF /* Invitation */,
 				49CB63E82768715F00224DAB /* Reset Password */,
