@@ -30,7 +30,7 @@ struct InviteCell: View {
             } else {
                 Text("Invite_Holder_Subtitle_Create".localized())
             }
-            PresentButton(destination: LazyView(InviteView(user, to: place))) {
+            PresentButton(destination: LazyView(InviteView(model: .init(user, to: place)))) {
                 Text("Invite_Button_Title".localized())
                     .bold()
                     .padding()

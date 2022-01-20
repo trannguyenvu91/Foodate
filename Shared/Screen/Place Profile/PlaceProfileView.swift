@@ -67,7 +67,7 @@ struct PlaceProfileView: View {
     }
     
     var inviteView: some View {
-        PresentButton(destination: LazyView(InviteView(nil, to: model.publisher))) {
+        PresentButton(destination: LazyView(InviteView(model: .init(to: model.publisher)))) {
             HStack {
                 Image(systemName: "calendar.badge.plus")
                     .resizable()

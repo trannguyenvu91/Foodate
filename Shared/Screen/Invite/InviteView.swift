@@ -12,7 +12,7 @@ import CoreStore
 struct InviteView: View {
     
     @Environment(\.presentationMode) var presentationMode
-    @StateObject var model = InviteViewModel()
+    @StateObject var model: InviteViewModel
     @State var isEditingStart = false
     
     var body: some View {
@@ -262,21 +262,6 @@ struct InviteView: View {
     
 }
 
-extension InviteView {
-    
-    init(_ person: ObjectPublisher<FDUserProfile>? = nil, to place: ObjectPublisher<FDPlace>? = nil) {
-        self.init()
-        self.model.draft.toUser = person?.asSnapshot(in: .defaultStack)
-        self.model.draft.place = place?.asSnapshot(in: .defaultStack)
-    }
-    
-    init(_ person: ObjectSnapshot<FDUserProfile>? = nil, to place: ObjectSnapshot<FDPlace>? = nil) {
-        self.init()
-        self.model.draft.toUser = person
-        self.model.draft.place = place
-    }
-}
-
 extension FDShareBill {
     var title: String {
         switch self {
@@ -292,6 +277,6 @@ extension FDShareBill {
 
 struct InviteView_Previews: PreviewProvider {
     static var previews: some View {
-        InviteView()
+        InviteView(model: .init())
     }
 }

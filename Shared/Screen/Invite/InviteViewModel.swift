@@ -38,3 +38,18 @@ class InviteViewModel: BaseViewModel, Identifiable {
     }
     
 }
+
+extension InviteViewModel {
+    
+    convenience init(_ recipient: ObjectPublisher<FDUserProfile>? = nil, to place: ObjectPublisher<FDPlace>? = nil) {
+        self.init()
+        draft.toUser = recipient?.asSnapshot(in: .defaultStack)
+        draft.place = place?.asSnapshot(in: .defaultStack)
+    }
+    
+    convenience init(_ recipient: ObjectSnapshot<FDUserProfile>? = nil, to place: ObjectSnapshot<FDPlace>? = nil) {
+        self.init()
+        draft.toUser = recipient
+        draft.place = place
+    }
+}

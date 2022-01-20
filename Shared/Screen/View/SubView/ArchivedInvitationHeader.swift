@@ -17,7 +17,7 @@ struct ArchivedInvitationHeader: View {
                     .font(.footnote)
             }
             .foregroundColor(.gray)
-            PresentButton(destination: LazyView(InviteView())) {
+            PresentButton(destination: LazyView(InviteView(model: .init()))) {
                 Text("Copy")
                     .font(.body)
                     .fontWeight(.semibold)

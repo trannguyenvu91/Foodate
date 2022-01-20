@@ -91,7 +91,7 @@ struct UserProfileView: View {
     }
     
     func inviteView(_ snapshot: ObjectSnapshot<FDUserProfile>) -> some View {
-        PresentButton(destination: LazyView(InviteView(model.publisher, to: nil))) {
+        PresentButton(destination: LazyView(InviteView(model: .init(model.publisher)))) {
             HStack {
                 Image(systemName: "calendar.badge.plus")
                     .resizable()
