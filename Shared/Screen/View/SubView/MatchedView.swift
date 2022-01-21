@@ -11,6 +11,10 @@ import CoreStore
 struct MatchedView: View {
     
     var invitation: ObjectSnapshot<FDInvitation>
+    @State var showAnimation = false
+    var animation: Animation {
+        Animation.spring(dampingFraction: 0.3).speed(0.5)
+    }
     
     var body: some View {
         VStack {
@@ -21,17 +25,23 @@ struct MatchedView: View {
                         .font(.title)
                     Spacer()
                 }
+                .opacity(showAnimation ? 1 : 0)
+                .animation(animation.delay(1), value: 0.25)
             }
             HStack {
                 messageView(invitation.$title, rounded: [.topRight, .bottomLeft, .bottomRight])
                 Spacer()
             }
+            .opacity(showAnimation ? 1 : 0)
+            .animation(animation.delay(2), value: 0.25)
             HStack {
                 Spacer()
             Text("🎉🎉🎉")
                 .font(.largeTitle)
                 .padding([.trailing], 60)
             }
+            .opacity(showAnimation ? 1 : 0)
+            .animation(animation.delay(3), value: 0.25)
             if let recipient = invitation.$toUser?.asSnapshot(in: .defaultStack) {
                 HStack {
                     Spacer()
@@ -39,12 +49,19 @@ struct MatchedView: View {
                         .font(.title)
                     userView(recipient)
                 }
+                .opacity(showAnimation ? 1 : 0)
+                .animation(animation.delay(4), value: 0.25)
             }
         }
         .padding([.leading, .trailing], 16)
         .onAppear {
             UIImpactFeedbackGenerator(style: .medium)
                 .impactOccurred()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                withAnimation {
+                    showAnimation.toggle()
+                }
+            }
         }
     }
     

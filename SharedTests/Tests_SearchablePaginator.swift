@@ -24,23 +24,23 @@ class Tests_SearchablePaginator: BaseTestCase {
     override func tearDownWithError() throws {}
 
     func testSearch() async throws {
-        try await paginator.search("a")
+        try await paginator.search(["name": "a"])
         XCTAssertEqual(paginator.items.asSnapshots().map(\.$id), searchPage.results?.asSnapshots().map(\.$id))
         XCTAssertEqual(paginator.placeholderPage?.results?.asSnapshots().map(\.$id), initialPage.results?.asSnapshots().map(\.$id))
-        XCTAssertEqual(paginator.filter?["search"] as? String, "a")
+        XCTAssertEqual(paginator.filter?["name"] as? String, "a")
         XCTAssertFalse(paginator.isFetching)
         XCTAssertFalse(paginator.isRefreshing)
         //search 2
         MockNetworkService.responseCase = .notificationPageShorten2
-        try await paginator.search("b")
+        try await paginator.search(["name": "b"])
         XCTAssertEqual(paginator.items.asSnapshots().map(\.$id), searchPage2.results?.asSnapshots().map(\.$id))
         XCTAssertEqual(paginator.placeholderPage?.results?.asSnapshots().map(\.$id), initialPage.results?.asSnapshots().map(\.$id))
-        XCTAssertEqual(paginator.filter?["search"] as? String, "b")
+        XCTAssertEqual(paginator.filter?["name"] as? String, "b")
         XCTAssertFalse(paginator.isFetching)
         XCTAssertFalse(paginator.isRefreshing)
         //clear search
         paginator.clearSearch()
-        XCTAssertNil(paginator.filter?["search"])
+        XCTAssertNil(paginator.filter?["name"])
         XCTAssertEqual(paginator.items.asSnapshots().map(\.$id), initialPage.results?.asSnapshots().map(\.$id))
         XCTAssertFalse(paginator.isFetching)
         XCTAssertFalse(paginator.isRefreshing)

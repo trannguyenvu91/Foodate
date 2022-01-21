@@ -10,13 +10,13 @@ import Combine
 import CoreStore
 
 class SearchViewModel: BaseViewModel {
-    var searchTerm: String = ""
+    @Published var searchTerm: String = ""
     @Published var selectedIndex = 0
     var tabs: [SearchType]
     
-    var userPaginator: Paginator<FDUserProfile> = SearchProfilePaginator(nil)
-    var invitationPaginator: Paginator<FDInvitation> = SearchInvitationPaginator(nil)
-    var placePaginator: Paginator<FDPlace> = SearchPlacePaginator(nil)
+    var userPaginator: SearchablePaginator<FDUserProfile> = SearchProfilePaginator(nil)
+    var invitationPaginator: SearchablePaginator<FDInvitation> = SearchInvitationPaginator(nil)
+    var placePaginator: SearchablePaginator<FDPlace> = SearchPlacePaginator(nil)
     
     var type: SearchType {
         tabs[selectedIndex]
@@ -30,9 +30,14 @@ class SearchViewModel: BaseViewModel {
     override func initialSetup() {
         super.initialSetup()
         observeNewInvitation()
+        bindSearchText()
     }
     
     func refresh() async {
+        guard searchTerm.isEmpty else {
+            await search(searchTerm)
+            return
+        }
         do {
             switch type {
             case .invitation:
@@ -48,6 +53,46 @@ class SearchViewModel: BaseViewModel {
         }
     }
     
+    func bindSearchText() {
+        $searchTerm.debounce(for: .seconds(1), scheduler: RunLoop.main)
+            .sink { [unowned self] text in
+                guard !text.isEmpty else {
+                    self.clearSearch()
+                    return
+                }
+                Task {
+                    await self.search(text)
+                }
+            }
+            .store(in: &cancelableSet)
+    }
+    
+    func search(_ text: String) async {
+        do {
+            switch type {
+            case .invitation:
+                try await invitationPaginator.search(["title__unaccent__icontains": text])
+            case .account:
+                try await userPaginator.search(["username__unaccent__icontains": text])
+            case .place:
+                try await placePaginator.search(["name__unaccent__icontains": text])
+            }
+        } catch {
+            self.error = error
+        }
+    }
+    
+    func clearSearch() {
+        switch type {
+        case .invitation:
+            invitationPaginator.clearSearch()
+        case .account:
+            userPaginator.clearSearch()
+        case .place:
+            placePaginator.clearSearch()
+        }
+    }
+    
 }
 
 extension SearchViewModel: InvitationObservable {
@@ -56,7 +101,7 @@ extension SearchViewModel: InvitationObservable {
             invitationPaginator
         }
         set {
-            invitationPaginator = newValue
+            invitationPaginator = newValue as! SearchablePaginator<FDInvitation>
         }
     }
     

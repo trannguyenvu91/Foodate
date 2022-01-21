@@ -92,6 +92,9 @@ struct EditProfileView: View {
             .shadow(radius: 8)
             .padding([.leading, .trailing], padding)
             .padding([.top, .bottom], 16)
+            .onAppear {
+                ASRemoteImageManager.shared.load(path: model.session.$avatarURL)
+            }
     }
     
     func inputView<Content: View>(_ field: Content, title: String, withDivider: Bool = true) -> some View {

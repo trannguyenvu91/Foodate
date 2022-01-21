@@ -14,31 +14,36 @@ struct InviteCell: View {
     var place: ObjectSnapshot<FDPlace>?
     
     var body: some View {
-        VStack {
-            Image("pizza-coffee")
-                .resizable()
-                .scaledToFit()
-                .frame(height: 100)
-                .padding(20)
-            Text("Invite_Holder_Title".localized())
-                .font(.title2)
-            
-            if let user = user {
-                Text("Invite_Holder_Subtitle_People".localized(with: [user.name]))
-            } else if let place = place {
-                Text("Invite_Holder_Subtitle_Place".localized(with: [place.$name ?? "this place"]))
-            } else {
-                Text("Invite_Holder_Subtitle_Create".localized())
+        HStack {
+            Spacer()
+            VStack {
+                Image("pizza-coffee")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 100)
+                    .padding(20)
+                Text("Invite_Holder_Title".localized())
+                    .font(.title2)
+                
+                if let user = user {
+                    Text("Invite_Holder_Subtitle_People".localized(with: [user.name]))
+                } else if let place = place {
+                    Text("Invite_Holder_Subtitle_Place".localized(with: [place.$name ?? "this place"]))
+                } else {
+                    Text("Invite_Holder_Subtitle_Create".localized())
+                }
+                PresentButton(destination: LazyView(InviteView(model: .init(user, to: place)))) {
+                    Text("Invite_Button_Title".localized())
+                        .bold()
+                        .padding()
+                        .foregroundColor(.blue)
+                }
+                .fixedSize(horizontal: true, vertical: false)
+                .foregroundColor(nil)
             }
-            PresentButton(destination: LazyView(InviteView(model: .init(user, to: place)))) {
-                Text("Invite_Button_Title".localized())
-                    .bold()
-                    .padding()
-                    .foregroundColor(.blue)
-            }
-            .fixedSize(horizontal: true, vertical: false)
+            .foregroundColor(.gray.opacity(0.3))
+            Spacer()
         }
-        .foregroundColor(.gray.opacity(0.3))
     }
 }
 

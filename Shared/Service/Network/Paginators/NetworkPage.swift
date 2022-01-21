@@ -13,7 +13,7 @@ struct NetworkPage<Item> where Item: ImportableJSONObject {
     
     let nextURL: String?
     let results: [Item]?
-    let params: JSON?
+    var params: JSON?
     
     enum CodingKeys: String, CodingKey {
         case nextURL = "next", results
@@ -32,7 +32,9 @@ struct NetworkPage<Item> where Item: ImportableJSONObject {
         let response = try await NetworkService.shared.request(url: nextUrl,
                                                         method: .get,
                                                         parameters: params)
-        return try NetworkPage<Item>.importObject(from: response)
+        var nextPage = try NetworkPage<Item>.importObject(from: response)
+        nextPage.params = params
+        return nextPage
     }
     
 }

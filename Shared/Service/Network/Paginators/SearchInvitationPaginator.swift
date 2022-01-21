@@ -7,11 +7,11 @@
 
 import Foundation
 
-class SearchInvitationPaginator: Paginator<FDInvitation> {
+class SearchInvitationPaginator: SearchablePaginator<FDInvitation> {
     
     convenience init(_ params: JSON?) {
         let url = NetworkConfig.baseURL + "/api/v1/invitations/"
-        let page = NetworkPage<FDInvitation>(nextURL: url)
+        let page = NetworkPage<FDInvitation>(nextURL: url, params: params)
         self.init(page)
     }
     

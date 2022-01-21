@@ -50,6 +50,7 @@
 "UserProfileView_Edit_Profile_Job_Label" = "Công việc";
 "UserProfileView_Edit_Profile_Bio_Label" = "Tiểu sử";
 "UserProfileView_Age_Suffix" = "t";
+"UserProfileView_Creat_Button_Title" = "Tạo lời mời";
 
 "SearchView_Search_PlaceHolder" = "Tìm kiếm bạn bè, địa điểm, lời mời...";
 "SearchView_Invitation_Tab_Label" = "Lời mời";
@@ -132,3 +133,13 @@
 "NetworkError_JSON_Error_Alert" = "Phản hồi bị lỗi định dạng JSON";
 
 "Alert_Error_Title" = "Xảy ra lỗi";
+
+"SettingView_Navigation_Title" = "Cài đặt";
+"SettingView_Edit_Profile" = "Sửa hồ sơ";
+"SettingView_Logout" = "Đăng xuất";
+"SettingView_Navigation_Language" = "Ngôn ngữ";
+"SettingView_Set_Language_Title" = "Cập nhật ngôn ngữ phần mềm?";
+"SettingView_Set_Language_SubTitle" = "Chạy lại phần mềm có thể cần thiết để áp dụng thay đổi này";
+"SettingView_Set_Language_English" = "Tiếng Anh";
+"SettingView_Set_Language_Vietnamese" = "Tiếng Việt";
+"SettingView_Set_Language_Cancel" = "Huỷ";

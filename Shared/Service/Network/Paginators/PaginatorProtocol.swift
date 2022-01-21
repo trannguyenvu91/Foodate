@@ -42,6 +42,6 @@ extension PaginatorProtocol {
 
 protocol SearchablePaginatorProtocol {
     var filter: JSON? { get }
-    func search(_ term: String) async throws
+    func search(_ term: JSON) async throws
     func clearSearch() async throws
 }

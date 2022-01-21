@@ -24,7 +24,7 @@ class Tests_BaseObjectViewModel: BaseTestCase {
     override func tearDownWithError() throws {}
 
     func testLoadObjectSuccess() async throws {
-        var local = try model.fetchLocalObject()
+        var local = try await model.fetchLocalObject()
         XCTAssertNil(local)
         XCTAssertNil(model.publisher)
         XCTAssertNil(model.snapshot)
@@ -33,13 +33,13 @@ class Tests_BaseObjectViewModel: BaseTestCase {
         XCTAssertNotNil(model.publisher)
         XCTAssertNotNil(model.snapshot)
         
-        local = try model.fetchLocalObject()
+        local = try await model.fetchLocalObject()
         XCTAssertNotNil(local)
     }
     
     func testLoadObjectFailed() async throws {
         MockNetworkService.responseCase = .error
-        var local = try model.fetchLocalObject()
+        var local = try await model.fetchLocalObject()
         XCTAssertNil(local)
         XCTAssertNil(model.publisher)
         XCTAssertNil(model.snapshot)
@@ -52,7 +52,7 @@ class Tests_BaseObjectViewModel: BaseTestCase {
         XCTAssertNil(model.publisher)
         XCTAssertNil(model.snapshot)
         
-        local = try model.fetchLocalObject()
+        local = try await model.fetchLocalObject()
         XCTAssertNil(local)
     }
     
@@ -61,7 +61,7 @@ class Tests_BaseObjectViewModel: BaseTestCase {
         MockNetworkService.responseCase = .invitation
         let _ = try await FDInvitation.fetchRemoteObject(id: objectID)
         MockNetworkService.responseCase = .error
-        let local = try model.fetchLocalObject()
+        let local = try await model.fetchLocalObject()
         
         //fetch local success but failed at remote
         XCTAssertNotNil(local)
@@ -72,13 +72,6 @@ class Tests_BaseObjectViewModel: BaseTestCase {
             XCTAssertNotNil(error)
         }
         XCTAssertNotNil(model.publisher)
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
     }
 
 }

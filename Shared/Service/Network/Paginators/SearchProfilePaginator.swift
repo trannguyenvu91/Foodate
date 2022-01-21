@@ -7,11 +7,11 @@
 
 import Foundation
 
-class SearchProfilePaginator: Paginator<FDUserProfile> {
+class SearchProfilePaginator: SearchablePaginator<FDUserProfile> {
     
     convenience init(_ params: JSON?) {
-        let url = NetworkConfig.baseURL + "/api/v1/users/search/"
-        let page = NetworkPage<FDUserProfile>(nextURL: url)
+        let url = NetworkConfig.baseURL + "/api/v1/users/"
+        let page = NetworkPage<FDUserProfile>(nextURL: url, params: params)
         self.init(page)
     }
     

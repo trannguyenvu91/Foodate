@@ -10,7 +10,7 @@ import XCTest
 class Tests_OnboardingViewModel: BaseTestCase {
     
     let model = OnboardingViewModel()
-    let config = AppConfig.shared
+    let config = AppSession.shared
 
     override func setUpWithError() throws {
         try super.setUpWithError()

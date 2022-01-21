@@ -55,11 +55,7 @@ struct UserProfileView: View {
             workView(snapshot)
             livingView(snapshot)
             Text(snapshot.$bio ?? "--")
-            if snapshot.isSession {
-                editView
-            } else {
-                inviteView(snapshot)
-            }
+            inviteView(snapshot)
         }
         .fixedSize(horizontal: false, vertical: true)
     }
@@ -91,28 +87,15 @@ struct UserProfileView: View {
     }
     
     func inviteView(_ snapshot: ObjectSnapshot<FDUserProfile>) -> some View {
-        PresentButton(destination: LazyView(InviteView(model: .init(model.publisher)))) {
+        let recipient = snapshot.isSession ? nil : snapshot
+        let buttonTitle = snapshot.isSession ? "UserProfileView_Creat_Button_Title".localized() : "Invite_Button_Title".localized() + " " + (snapshot.$firstName ?? "")
+        return PresentButton(destination: LazyView(InviteView(model: .init(recipient)))) {
             HStack {
                 Image(systemName: "calendar.badge.plus")
                     .resizable()
                     .scaledToFit()
                     .frame(maxWidth: 30, maxHeight: 30)
-                Text("Invite_Button_Title".localized() + " " + (snapshot.$firstName ?? ""))
-                    .fontWeight(.medium)
-            }
-            .foregroundColor(.orange)
-        }
-    }
-    
-    var editView: some View {
-        let session = model.snapshot
-        return PresentButton(destination: LazyView(EditProfileView(model: .init(session!)))) {
-            HStack {
-                Image(systemName: "gear")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(maxWidth: 20, maxHeight: 20)
-                Text("UserProfileView_Edit_Profile_Button_Title".localized())
+                Text(buttonTitle)
                     .fontWeight(.medium)
             }
             .foregroundColor(.orange)
@@ -120,16 +103,13 @@ struct UserProfileView: View {
     }
     
     var logOutButton: some View {
-        Button {
-            try? AppSession.shared.logOut()
-        } label: {
-            Image(systemName: "square.and.arrow.up")
+        NavigationButton(destination: LazyView(SettingView())) {
+            Image(systemName: "gear")
                 .resizable()
                 .scaledToFit()
                 .frame(maxWidth: 30, maxHeight: 30)
-                .rotationEffect(Angle(degrees: 90))
+                .foregroundColor(.blue)
         }
-
     }
     
     

@@ -6,11 +6,13 @@
 //
 
 import Foundation
+import UIKit
 
 extension String {
-
+    
     public func localized() -> String {
-        let path = Bundle.main.path(forResource: "en", ofType: "lproj")
+        let language = UserDefaults.standard.string(forKey: "language") ?? "en"
+        let path = Bundle.main.path(forResource: language, ofType: "lproj")
         let bundle = Bundle(path: path!)
         return (bundle?.localizedString(forKey: self, value: nil, table: nil))!
     }

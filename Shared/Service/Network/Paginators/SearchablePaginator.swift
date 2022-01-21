@@ -9,20 +9,18 @@ import Foundation
 
 class SearchablePaginator<Item>: Paginator<Item> where Item: Equatable & ImportableJSONObject {
     internal var placeholderPage: NetworkPage<Item>?
-    internal var searchTerm: String?
+    internal var searchTerm: JSON?
     
 }
 
 extension SearchablePaginator: SearchablePaginatorProtocol {
     var filter: JSON? {
         var json = initialPage.params ?? [:]
-        if let searchTerm = searchTerm {
-            json["search"] = searchTerm
-        }
+        json.merge(searchTerm ?? [:], uniquingKeysWith: { $1 })
         return json
     }
     
-    func search(_ term: String) async throws {
+    func search(_ term: JSON) async throws {
         if searchTerm == nil {
             placeholderPage = NetworkPage<Item>(nextURL: currentPage?.nextURL, results: items, params: filter)
         }
@@ -35,6 +33,9 @@ extension SearchablePaginator: SearchablePaginatorProtocol {
     }
 
     func clearSearch() {
+        guard searchTerm != nil else {
+            return
+        }
         defer {
             objectWillChange.send()
         }

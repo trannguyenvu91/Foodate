@@ -41,6 +41,7 @@ struct FoodateApp: App {
                 OnboardingView()
             }
         }
+        .animation(.easeInOut, value: 1)
     }
     
 }

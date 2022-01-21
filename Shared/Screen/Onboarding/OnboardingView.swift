@@ -65,7 +65,9 @@ struct OnboardingView: View {
         HStack {
             Text(model.mode.switchLabel)
             Button(action: {
-                self.model.switchType()
+                withAnimation {
+                    self.model.switchType()
+                }
             }) {
                 Text(self.model.mode.switchButton)
                     .font(.headline)

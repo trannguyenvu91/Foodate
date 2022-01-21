@@ -1,5 +1,5 @@
 //
-//  Tests_AppConfig.swift
+//  Tests_AppSession.swift
 //  Foodate
 //
 //  Created by Vu Tran on 1/17/22.
@@ -8,13 +8,13 @@
 import XCTest
 import CoreStore
 
-class Tests_AppConfig: BaseTestCase {
+class Tests_AppSession: BaseTestCase {
     
     lazy var sessionJson: JSON = {
         try! Bundle(for: type(of: self))
-            .json(forResource: "", ofType: "json")
+            .json(forResource: "session_user", ofType: "json")
     }()
-    let config = AppConfig()
+    let config = AppSession()
     
     override func setUpWithError() throws {
         try super.setUpWithError()

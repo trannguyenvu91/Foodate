@@ -50,6 +50,7 @@ class BaseObjectViewModel<Object>: BaseViewModel where Object: CoreStoreObject &
         publisher = remote
     }
     
+    @MainActor
     func fetchLocalObject() throws -> ObjectPublisher<Object>? {
         try FDCoreStore.shared
             .fetchOne(

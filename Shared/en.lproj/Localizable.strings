@@ -48,7 +48,8 @@
 "UserProfileView_Edit_Profile_LastName_Label" = "Last Name";
 "UserProfileView_Edit_Profile_Job_Label" = "Job";
 "UserProfileView_Edit_Profile_Bio_Label" = "Bio";
-"UserProfileView_Age_Suffix" = "y";
+"UserProfileView_Age_Suffix" = "yo";
+"UserProfileView_Creat_Button_Title" = "Create an invitation";
 
 "SearchView_Search_PlaceHolder" = "Search for people, places, invitations...";
 "SearchView_Invitation_Tab_Label" = "Invitation";
@@ -132,3 +133,15 @@
 "NetworkError_JSON_Error_Alert" = "The response is not JSON";
 
 "Alert_Error_Title" = "Error";
+
+"SettingView_Navigation_Title" = "Setting";
+"SettingView_Edit_Profile" = "Edit Profile";
+"SettingView_Logout" = "Log Out";
+"SettingView_Navigation_Language" = "Language";
+"SettingView_Set_Language_Title" = "Update app language?";
+"SettingView_Set_Language_SubTitle" = "Relaunch might be need to apply this setting";
+"SettingView_Set_Language_English" = "English";
+"SettingView_Set_Language_Vietnamese" = "Vietnamese";
+"SettingView_Set_Language_Cancel" = "Cancel";
+
+

@@ -30,6 +30,7 @@ class UserProfileViewModel: BaseObjectViewModel<FDUserProfile>, ListViewModel {
         }
     }
     
+    @MainActor
     override func fetchLocalObject() throws -> ObjectPublisher<FDUserProfile>? {
         if let local = try super.fetchLocalObject() {
             return local
