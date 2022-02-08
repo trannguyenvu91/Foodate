@@ -11,6 +11,7 @@ import CoreStore
 struct NotificationCell: View {
     
     var notification: ObjectPublisher<FDNotification>!
+    @ClockService var updatedTime
     
     var body: some View {
         ObjectReader(notification) { snapshot in

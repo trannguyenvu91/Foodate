@@ -484,6 +484,10 @@
 		499B0F9D270AF05A00CB1CD1 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499B0F9B270AF05A00CB1CD1 /* CalendarViewModel.swift */; };
 		499D079826E9B60E00F0056C /* ViewShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499D079726E9B60E00F0056C /* ViewShape.swift */; };
 		499D079926E9B60E00F0056C /* ViewShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499D079726E9B60E00F0056C /* ViewShape.swift */; };
+		49A44BA927B2581B00766CDE /* ClockService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A44BA827B2581B00766CDE /* ClockService.swift */; };
+		49A44BAA27B2581B00766CDE /* ClockService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A44BA827B2581B00766CDE /* ClockService.swift */; };
+		49A44BAB27B2581B00766CDE /* ClockService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A44BA827B2581B00766CDE /* ClockService.swift */; };
+		49A44BAC27B2581B00766CDE /* ClockService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A44BA827B2581B00766CDE /* ClockService.swift */; };
 		49B29EDD277EE43D009104D3 /* TabItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B29EDC277EE43D009104D3 /* TabItemType.swift */; };
 		49B29EDE277EE43D009104D3 /* TabItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B29EDC277EE43D009104D3 /* TabItemType.swift */; };
 		49B9D544270EEDE1005BD619 /* InviteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B9D543270EEDE0005BD619 /* InviteCell.swift */; };
@@ -739,6 +743,7 @@
 		499B0F9B270AF05A00CB1CD1 /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
 		499C85DB2701841C0073224D /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		499D079726E9B60E00F0056C /* ViewShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewShape.swift; sourceTree = "<group>"; };
+		49A44BA827B2581B00766CDE /* ClockService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockService.swift; sourceTree = "<group>"; };
 		49B29EDC277EE43D009104D3 /* TabItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItemType.swift; sourceTree = "<group>"; };
 		49B9D543270EEDE0005BD619 /* InviteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteCell.swift; sourceTree = "<group>"; };
 		49B9D556270EF806005BD619 /* en */ = {isa = PBXFileReference; explicitFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -972,6 +977,7 @@
 			isa = PBXGroup;
 			children = (
 				490239E6277AC64F0019E7FF /* LocationService.swift */,
+				49A44BA827B2581B00766CDE /* ClockService.swift */,
 				494893BD277C20AC006C5101 /* NotificationService.swift */,
 			);
 			path = Device;
@@ -1677,6 +1683,7 @@
 				499109E1279A6EFA0094C803 /* SettingViewModel.swift in Sources */,
 				49DA1F5426A1814E001BF85B /* ASCache.swift in Sources */,
 				4989B6B0269D462C00611D10 /* FDCoreStore.swift in Sources */,
+				49A44BA927B2581B00766CDE /* ClockService.swift in Sources */,
 				494893BB277C2066006C5101 /* NotificationPermissionView.swift in Sources */,
 				491257C42710605A005B122F /* ViewDidLoadModifier.swift in Sources */,
 				49FDFF8F26B1224C001185D3 /* SearchViewModel.swift in Sources */,
@@ -1762,6 +1769,7 @@
 				492D02D2269D757C00F944D0 /* FDInvitation.swift in Sources */,
 				492D03C626A01DD000F944D0 /* OnboardingViewModel.swift in Sources */,
 				492D03DF26A0221200F944D0 /* View.swift in Sources */,
+				49A44BAA27B2581B00766CDE /* ClockService.swift in Sources */,
 				494893BF277C20AC006C5101 /* NotificationService.swift in Sources */,
 				492D0350269EED9100F944D0 /* NetworkConfig.swift in Sources */,
 				4914AEF426AA5D6C002F2634 /* TimeHeader.swift in Sources */,
@@ -1921,6 +1929,7 @@
 				494EF9C4278D346000743D89 /* ViewDidLoadModifier.swift in Sources */,
 				4945156F279E50AE0066B693 /* UserDefaults+Key.swift in Sources */,
 				494EF96D278D339100743D89 /* ASRemoteImageManager.swift in Sources */,
+				49A44BAB27B2581B00766CDE /* ClockService.swift in Sources */,
 				494EF965278D337D00743D89 /* CoreStore+Schema.swift in Sources */,
 				494EF907278D2E0000743D89 /* NetworkConfig.swift in Sources */,
 				494EF96E278D339100743D89 /* ASRemoteImageView.swift in Sources */,
@@ -2092,6 +2101,7 @@
 				494EF9FE278D35FC00743D89 /* Error+Extension.swift in Sources */,
 				494EF91D278D2E2C00743D89 /* InvitationPaginator.swift in Sources */,
 				494EF982278D339A00743D89 /* CLLocation.swift in Sources */,
+				49A44BAC27B2581B00766CDE /* ClockService.swift in Sources */,
 				494EF929278D2E3F00743D89 /* LocationService.swift in Sources */,
 				494EF9EB278D35DF00743D89 /* DraftUserProfile.swift in Sources */,
 				494EF92C278D2E5500743D89 /* v1.swift in Sources */,

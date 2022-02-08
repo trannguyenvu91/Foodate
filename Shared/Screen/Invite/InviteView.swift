@@ -14,6 +14,7 @@ struct InviteView: View {
     @Environment(\.presentationMode) var presentationMode
     @StateObject var model: InviteViewModel
     @State var isEditingStart = false
+    @ClockService var updatedTime
     
     var body: some View {
         GeometryReader(content: { geometry in

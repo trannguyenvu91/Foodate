@@ -11,6 +11,7 @@ import CoreStore
 struct TimeHeader: View {
     
     var invitation: ObjectSnapshot<FDInvitation>
+    @ClockService var updatedTime
     
     init(_ invitation: ObjectSnapshot<FDInvitation>) {
         self.invitation = invitation
