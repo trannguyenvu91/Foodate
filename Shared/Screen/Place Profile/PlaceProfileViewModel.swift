@@ -33,12 +33,7 @@ class PlaceProfileViewModel: BaseObjectViewModel<FDPlace>, ListViewModel {
 
 extension PlaceProfileViewModel: InvitationObservable {
     var observedPaginator: Paginator<FDInvitation> {
-        get {
-            paginator
-        }
-        set {
-            paginator = newValue
-        }
+        paginator
     }
     
     func shouldInsert(_ invitation: FDInvitation) -> Bool {

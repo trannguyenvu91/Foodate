@@ -85,12 +85,7 @@ class SearchViewModel: BaseViewModel {
 
 extension SearchViewModel: InvitationObservable {
     var observedPaginator: Paginator<FDInvitation> {
-        get {
-            invitationPaginator
-        }
-        set {
-            invitationPaginator = newValue as! SearchInvitationPaginator
-        }
+        invitationPaginator
     }
     
     func shouldInsert(_ invitation: FDInvitation) -> Bool {

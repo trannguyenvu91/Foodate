@@ -36,12 +36,6 @@ struct InvitationView: View {
         }
         .bindErrorAlert(to: $model)
         .navigationTitle("InvitationView_Title".localized())
-        .onAppear {
-            //TODO
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                AppSession.shared.presentScreen = .matched(model.snapshot!)
-            }
-        }
     }
 }
 

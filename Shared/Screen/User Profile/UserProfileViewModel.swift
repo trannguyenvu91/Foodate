@@ -54,12 +54,7 @@ class UserProfileViewModel: BaseObjectViewModel<FDUserProfile>, ListViewModel {
 
 extension UserProfileViewModel: InvitationObservable {
     var observedPaginator: Paginator<FDInvitation> {
-        get {
-            paginator
-        }
-        set {
-            paginator = newValue
-        }
+        paginator
     }
     
     func shouldInsert(_ invitation: FDInvitation) -> Bool {

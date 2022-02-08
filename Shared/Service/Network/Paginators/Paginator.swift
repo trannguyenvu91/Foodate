@@ -9,7 +9,7 @@
 import Foundation
 import Combine
 
-class Paginator<Item>: PaginatorProtocol where Item: Equatable & ImportableJSONObject {
+class Paginator<Item>: NSObject, PaginatorProtocol where Item: Equatable & ImportableJSONObject {
     
     typealias modelClass = Item
     var isFetching: Bool = false
@@ -22,6 +22,7 @@ class Paginator<Item>: PaginatorProtocol where Item: Equatable & ImportableJSONO
     required init(_ initial: NetworkPage<modelClass>) {
         self.initialPage = initial
         self.currentPage = initial
+        super.init()
         append(results: initial.results)
     }
     

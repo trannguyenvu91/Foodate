@@ -22,16 +22,16 @@ protocol Pagable {
     func refresh() async throws
 }
 
-protocol PaginatorProtocol: Pagable {
+protocol PaginatorProtocol: NSObjectProtocol, Pagable {
     associatedtype modelClass: ImportableJSONObject
     init(_ initial: NetworkPage<modelClass>)
     var items: [modelClass] { get set }
     func remove(item: modelClass)
 }
 
-extension PaginatorProtocol {
+extension PaginatorProtocol where Self: NSObject {
     
-    mutating func insert(_ item: modelClass, at index: Int = 0) {
+    func insert(_ item: modelClass, at index: Int = 0) {
         items.insert(item, at: index)
     }
     

@@ -9,7 +9,7 @@ import Foundation
 import CoreStore
 
 protocol InvitationObservable {
-    var observedPaginator: Paginator<FDInvitation> { get set }
+    var observedPaginator: Paginator<FDInvitation> { get }
     func shouldInsert(_ invitation: FDInvitation) -> Bool
 }
 

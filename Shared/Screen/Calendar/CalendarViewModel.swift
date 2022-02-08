@@ -42,12 +42,7 @@ class CalendarViewModel: BaseViewModel, ListViewModel {
 
 extension CalendarViewModel: InvitationObservable {
     var observedPaginator: Paginator<FDInvitation> {
-        get {
-            eventsPaginator
-        }
-        set {
-            eventsPaginator = newValue
-        }
+        eventsPaginator
     }
     
     func shouldInsert(_ invitation: FDInvitation) -> Bool {
