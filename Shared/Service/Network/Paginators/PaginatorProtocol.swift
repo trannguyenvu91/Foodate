@@ -8,27 +8,24 @@
 import Foundation
 import SwiftUI
 
-protocol ImportableJSONObject {
-    static func importObject(from source: JSON) throws -> Self
+protocol Searchable {
+    var filter: JSON? { get }
+    func search(_ term: JSON) async throws
+    func clearSearch()
 }
 
-extension ImportableJSONObject {
-    
-    static func importObjects(from sourceArry: [JSON]) throws -> [Self] {
-        try sourceArry.map({ try importObject(from: $0) })
-    }
-}
-
-protocol PaginatorProtocol {
-    associatedtype modelClass: ImportableJSONObject
-    init(_ initial: NetworkPage<modelClass>)
+protocol Pagable {
     var hasNext: Bool { get }
     var isFetching: Bool { get }
-    var items: [modelClass] { get set }
     var error: Error? { get set }
-    
     func fetchNext() async throws
     func refresh() async throws
+}
+
+protocol PaginatorProtocol: Pagable {
+    associatedtype modelClass: ImportableJSONObject
+    init(_ initial: NetworkPage<modelClass>)
+    var items: [modelClass] { get set }
     func remove(item: modelClass)
 }
 
@@ -38,10 +35,4 @@ extension PaginatorProtocol {
         items.insert(item, at: index)
     }
     
-}
-
-protocol SearchablePaginatorProtocol {
-    var filter: JSON? { get }
-    func search(_ term: JSON) async throws
-    func clearSearch() async throws
 }

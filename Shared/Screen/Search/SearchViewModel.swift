@@ -14,17 +14,28 @@ class SearchViewModel: BaseViewModel {
     @Published var selectedIndex = 0
     var tabs: [SearchType]
     
-    var userPaginator: SearchablePaginator<FDUserProfile> = SearchProfilePaginator(nil)
-    var invitationPaginator: SearchablePaginator<FDInvitation> = SearchInvitationPaginator(nil)
-    var placePaginator: SearchablePaginator<FDPlace> = SearchPlacePaginator(nil)
+    @Published var userPaginator = SearchProfilePaginator(nil)
+    @Published var invitationPaginator = SearchInvitationPaginator(nil)
+    @Published var placePaginator = SearchPlacePaginator(nil)
+    
+    init(_ tabs: [SearchType] = SearchType.allCases) {
+        self.tabs = tabs
+        super.init()
+    }
     
     var type: SearchType {
         tabs[selectedIndex]
     }
     
-    init(_ tabs: [SearchType] = SearchType.allCases) {
-        self.tabs = tabs
-        super.init()
+    var currentPaginator: Searchable & Pagable {
+        switch type {
+        case .invitation:
+            return invitationPaginator
+        case .account:
+            return userPaginator
+        case .place:
+            return placePaginator
+        }
     }
     
     override func initialSetup() {
@@ -34,62 +45,39 @@ class SearchViewModel: BaseViewModel {
     }
     
     func refresh() async {
-        guard searchTerm.isEmpty else {
-            await search(searchTerm)
-            return
-        }
         do {
-            switch type {
-            case .invitation:
-                try await invitationPaginator.refresh()
-            case .account:
-                try await userPaginator.refresh()
-            case .place:
-                try await placePaginator.refresh()
-            }
-            objectWillChange.send()
+            try await currentPaginator.refresh()
         } catch {
             self.error = error
         }
     }
     
     func bindSearchText() {
-        $searchTerm.debounce(for: .seconds(1), scheduler: RunLoop.main)
+        $searchTerm.debounce(for: .seconds(0.5), scheduler: RunLoop.main)
             .sink { [unowned self] text in
-                guard !text.isEmpty else {
-                    self.clearSearch()
+                self.search(text)
+            }
+            .store(in: &cancelableSet)
+        $selectedIndex
+            .receive(on: RunLoop.main)
+            .sink { [weak self] _ in
+                if let self = self,
+                    let search = self.currentPaginator.filter?[self.type.searchJSONKey] as? String,
+                    search == self.searchTerm {
                     return
                 }
-                Task {
-                    await self.search(text)
-                }
+                self?.search(self!.searchTerm)
             }
             .store(in: &cancelableSet)
     }
     
-    func search(_ text: String) async {
-        do {
-            switch type {
-            case .invitation:
-                try await invitationPaginator.search(["title__unaccent__icontains": text])
-            case .account:
-                try await userPaginator.search(["username__unaccent__icontains": text])
-            case .place:
-                try await placePaginator.search(["name__unaccent__icontains": text])
-            }
-        } catch {
-            self.error = error
+    func search(_ text: String) {
+        guard !text.isEmpty else {
+            currentPaginator.clearSearch()
+            return
         }
-    }
-    
-    func clearSearch() {
-        switch type {
-        case .invitation:
-            invitationPaginator.clearSearch()
-        case .account:
-            userPaginator.clearSearch()
-        case .place:
-            placePaginator.clearSearch()
+        asyncDo { [weak self] in
+            try await self?.currentPaginator.search([self!.type.searchJSONKey: text])
         }
     }
     
@@ -101,7 +89,7 @@ extension SearchViewModel: InvitationObservable {
             invitationPaginator
         }
         set {
-            invitationPaginator = newValue as! SearchablePaginator<FDInvitation>
+            invitationPaginator = newValue as! SearchInvitationPaginator
         }
     }
     
@@ -115,4 +103,17 @@ extension SearchViewModel: InvitationObservable {
         return false
     }
     
+}
+
+internal extension SearchType {
+    var searchJSONKey: String {
+        switch self {
+        case .invitation:
+            return "title__unaccent__icontains"
+        case .account:
+            return "username__unaccent__icontains"
+        case .place:
+            return "name__unaccent__icontains"
+        }
+    }
 }

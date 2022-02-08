@@ -16,6 +16,7 @@ class AppSession: ObservableObject {
     @Published var isPresentingScreen: Bool = false
     @Published var isPushingScreen: Bool = false
     var newInvitation = PassthroughSubject<FDInvitation, Never>()
+    @AppStorage(UserDefaultsKey.skipNotificationSetting) var skipNotificationSetting = false
     
     var presentScreen: ScreenType? {
         didSet {
@@ -60,6 +61,9 @@ class AppSession: ObservableObject {
     
     @MainActor
     func updateNotificationsToken() async throws {
+        guard skipNotificationSetting == false else {
+            return
+        }
         let status = await NotificationService.shared.getAuthorizationStatus()
         guard status != .notDetermined else {
             presentScreen = .notificationPermission

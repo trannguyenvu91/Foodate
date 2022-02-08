@@ -10,7 +10,8 @@ import CoreStore
 
 struct SettingView: View {
     @StateObject var model = SettingViewModel()
-    @AppStorage("language") var language: String = "en"
+    @AppStorage(UserDefaultsKey.language) var language = "en"
+    @AppStorage(UserDefaultsKey.skipNotificationSetting) var skipNotificationSetting = false
     @State var showLanguageSheet = false
     @ObjectState var sessionUser: ObjectSnapshot<FDSessionUser>?
     
@@ -27,6 +28,7 @@ struct SettingView: View {
             }
             profileCell
             languageCell
+            notificationCell
             Section {
                 Button {
                     try? AppSession.shared.logOut()
@@ -76,28 +78,29 @@ struct SettingView: View {
     
     var profileCell: some View {
         PresentButton(destination: LazyView(EditProfileView(model: .init(model.userProfile)))) {
-            HStack {
-                Text("SettingView_Edit_Profile".localized())
-                Spacer()
-                Text(AppSession.shared.sessionUser?.name ?? "Anonymous")
-                    .foregroundColor(.gray)
-                Image(systemName: "chevron.right")
-                    .foregroundColor(.gray)
-            }
+            cell(title: "SettingView_Edit_Profile".localized(), subtitle: AppSession.shared.sessionUser?.name ?? "Anonymous")
         }
     }
     
     var languageCell: some View {
+        cell(title: "SettingView_Navigation_Language".localized(), subtitle: language)
+        .onTapGesture {
+            showLanguageSheet.toggle()
+        }
+    }
+    
+    var notificationCell: some View {
+        return cell(title: "Notification_Tilte".localized(), subtitle: model.notificationStatus)
+    }
+    
+    func cell(title: String, subtitle: String) -> some View {
         HStack {
-            Text("SettingView_Navigation_Language".localized())
+            Text(title)
             Spacer()
-            Text(language)
+            Text(subtitle)
                 .foregroundColor(.gray)
             Image(systemName: "chevron.right")
                 .foregroundColor(.gray)
-        }
-        .onTapGesture {
-            showLanguageSheet.toggle()
         }
     }
     

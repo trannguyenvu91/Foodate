@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct NotificationPermissionView: View {
+    @AppStorage(UserDefaultsKey.skipNotificationSetting) var skip = false
     @State var error: Error? {
         willSet {
             isPresentingError = newValue != nil
@@ -33,6 +34,7 @@ struct NotificationPermissionView: View {
                 .padding(.top, 2)
                 .foregroundColor(.gray)
             AsyncButton(task: {
+                skip = false
                 try await AppSession.shared.updateNotificationsToken()
                 presentationMode.wrappedValue.dismiss()
             }, error: $error) {
@@ -47,6 +49,7 @@ struct NotificationPermissionView: View {
             .padding(.top, 40)
             .foregroundColor(.white)
             Button {
+                skip = true
                 presentationMode.wrappedValue.dismiss()
             } label: {
                 Text("NotificationPermissionView_SkipButton".localized())

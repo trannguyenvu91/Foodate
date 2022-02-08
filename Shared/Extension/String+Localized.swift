@@ -11,7 +11,7 @@ import UIKit
 extension String {
     
     public func localized() -> String {
-        let language = UserDefaults.standard.string(forKey: "language") ?? "en"
+        let language = UserDefaults.standard.string(forKey: UserDefaultsKey.language) ?? "en"
         let path = Bundle.main.path(forResource: language, ofType: "lproj")
         let bundle = Bundle(path: path!)
         return (bundle?.localizedString(forKey: self, value: nil, table: nil))!

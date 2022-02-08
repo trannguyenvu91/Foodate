@@ -13,7 +13,6 @@ protocol InvitationObservable {
     func shouldInsert(_ invitation: FDInvitation) -> Bool
 }
 
-
 extension InvitationObservable where Self: BaseViewModel {
     
     func observeNewInvitation() {

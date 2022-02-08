@@ -37,7 +37,13 @@ class NotificationService: NSObject {
     }
     
     func getAuthorizationStatus() async -> UNAuthorizationStatus {
-        await center.notificationSettings().authorizationStatus
+        await notificationSettings.authorizationStatus
+    }
+    
+    var notificationSettings: UNNotificationSettings {
+        get async {
+            await center.notificationSettings()
+        }
     }
     
     func registerNotifications() async throws -> String {

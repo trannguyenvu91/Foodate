@@ -11,9 +11,16 @@ class SearchablePaginator<Item>: Paginator<Item> where Item: Equatable & Importa
     internal var placeholderPage: NetworkPage<Item>?
     internal var searchTerm: JSON?
     
+    override func refresh() async throws {
+        if let searchTerm = searchTerm {
+            try await search(searchTerm)
+            return
+        }
+        try await super.refresh()
+    }
 }
 
-extension SearchablePaginator: SearchablePaginatorProtocol {
+extension SearchablePaginator: Searchable {
     var filter: JSON? {
         var json = initialPage.params ?? [:]
         json.merge(searchTerm ?? [:], uniquingKeysWith: { $1 })
