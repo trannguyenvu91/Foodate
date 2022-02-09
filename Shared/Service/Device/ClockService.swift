@@ -11,37 +11,46 @@ import SwiftUI
 @propertyWrapper
 struct ClockService: DynamicProperty {
     
-    @ObservedObject private var refresher = Refresher.shared
+    @ObservedObject private var refresher: Refresher
     
     var wrappedValue: TimeInterval {
         refresher.lastUpdatedAt
     }
     
-    private class Refresher: ObservableObject {
-        static let shared = Refresher()
-        @Published var lastUpdatedAt: TimeInterval = 0
-        let interval: TimeInterval = 60
-        lazy var timer: Timer = {
-            Timer.scheduledTimer(timeInterval: interval,
-                                 target: self,
-                                 selector: #selector(refreshing),
-                                 userInfo: nil,
-                                 repeats: true)
-        }()
-        
-        init() {
-            timer.fire()
+    init(_ interval: TimeInterval? = nil) {
+        if let interval = interval {
+            self.refresher = Refresher(interval: interval)
+        } else {
+            self.refresher = .shared
         }
-        
-        @objc func refreshing() {
-            lastUpdatedAt = Date.now.timeIntervalSince1970
-            objectWillChange.send()
-        }
-        
-        deinit {
-            timer.invalidate()
-        }
-        
+    }
+    
+}
+
+internal class Refresher: ObservableObject {
+    static let shared = Refresher()
+    @Published var lastUpdatedAt: TimeInterval = 0
+    private(set) var interval: TimeInterval
+    lazy var timer: Timer = {
+        Timer.scheduledTimer(timeInterval: interval,
+                             target: self,
+                             selector: #selector(refreshing),
+                             userInfo: nil,
+                             repeats: true)
+    }()
+    
+    init(interval: TimeInterval = 60) {
+        self.interval = interval
+        timer.fire()
+    }
+    
+    @objc func refreshing() {
+        lastUpdatedAt = Date.now.timeIntervalSince1970
+        objectWillChange.send()
+    }
+    
+    deinit {
+        timer.invalidate()
     }
     
 }
