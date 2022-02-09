@@ -15,7 +15,7 @@ class Tests_OnboardingViewModel: BaseTestCase {
     override func setUpWithError() throws {
         try super.setUpWithError()
         try config.logOut()
-        locationManager._authorizationStatus = .authorizedWhenInUse
+        locationManager.authorizationStatus = .authorizedWhenInUse
         locationManager._updatingLocationResult = .success(.init())
     }
 

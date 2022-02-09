@@ -9,6 +9,7 @@ import Foundation
 import Combine
 import CoreStore
 import SwiftUI
+import CoreLocation
 
 class AppSession: ObservableObject {
     
@@ -43,6 +44,9 @@ class AppSession: ObservableObject {
     }
 
     func setup() {
+        let manager = CLLocationManager()
+        manager.allowsBackgroundLocationUpdates = false
+        LocationService.shared = LocationService(manager)
         try? FDCoreStore.shared.setup()
         try? loadSessionUser()
         UITableViewCell.appearance().selectionStyle = .none

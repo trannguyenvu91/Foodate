@@ -12,30 +12,27 @@ enum UpdatingLocationResult {
     case error(Error)
 }
 
-class MockLocationManager: CLLocationManager {
-    var _authorizationStatus: CLAuthorizationStatus = .notDetermined
+class MockLocationManager: LocationManager {
+    
+    var delegate: CLLocationManagerDelegate?
+    var authorizationStatus: CLAuthorizationStatus = .notDetermined
     var _updatingLocationResult: UpdatingLocationResult = .error(LocationError.notAvailable)
     var _willChangeAuthorizationStatus: CLAuthorizationStatus? = nil
     
-    
-    override var authorizationStatus: CLAuthorizationStatus {
-        _authorizationStatus
-    }
-    
-    override func startUpdatingLocation() {
+    func startUpdatingLocation() {
         switch _updatingLocationResult {
         case .success(let cLLocation):
-            delegate?.locationManager?(self, didUpdateLocations: [cLLocation])
+            delegate?.locationManager?(CLLocationManager(), didUpdateLocations: [cLLocation])
         case .error(let error):
-            delegate?.locationManager?(self, didFailWithError: error)
+            delegate?.locationManager?(CLLocationManager(), didFailWithError: error)
         }
     }
     
-    override func requestWhenInUseAuthorization() {
+    func requestWhenInUseAuthorization() {
         if let _willChangeAuthorizationStatus = _willChangeAuthorizationStatus {
-            _authorizationStatus = _willChangeAuthorizationStatus
+            authorizationStatus = _willChangeAuthorizationStatus
         }
-        delegate?.locationManagerDidChangeAuthorization?(self)
+        delegate?.locationManagerDidChangeAuthorization?(CLLocationManager())
     }
     
 }

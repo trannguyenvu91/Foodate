@@ -488,6 +488,8 @@
 		49A44BAA27B2581B00766CDE /* ClockService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A44BA827B2581B00766CDE /* ClockService.swift */; };
 		49A44BAB27B2581B00766CDE /* ClockService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A44BA827B2581B00766CDE /* ClockService.swift */; };
 		49A44BAC27B2581B00766CDE /* ClockService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A44BA827B2581B00766CDE /* ClockService.swift */; };
+		49ACE0F627B36F0A007A2532 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 49B9D557270EF806005BD619 /* Localizable.strings */; };
+		49ACE0F727B36F0A007A2532 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 49B9D557270EF806005BD619 /* Localizable.strings */; };
 		49B29EDD277EE43D009104D3 /* TabItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B29EDC277EE43D009104D3 /* TabItemType.swift */; };
 		49B29EDE277EE43D009104D3 /* TabItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B29EDC277EE43D009104D3 /* TabItemType.swift */; };
 		49B9D544270EEDE1005BD619 /* InviteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B9D543270EEDE0005BD619 /* InviteCell.swift */; };
@@ -1584,6 +1586,7 @@
 				494EF953278D32EF00743D89 /* invitation.json in Resources */,
 				494EF951278D32EF00743D89 /* session_user.json in Resources */,
 				494EF955278D32EF00743D89 /* requester.json in Resources */,
+				49ACE0F627B36F0A007A2532 /* Localizable.strings in Resources */,
 				499109CA2796A5D70094C803 /* notification_page_shorten_2.json in Resources */,
 				499109C7279686D50094C803 /* notification_page_shorten.json in Resources */,
 				494EFA19278EEA5700743D89 /* notification_page.json in Resources */,
@@ -1599,6 +1602,7 @@
 				494EF958278D32F000743D89 /* invitation.json in Resources */,
 				494EF956278D32F000743D89 /* session_user.json in Resources */,
 				494EF95A278D32F000743D89 /* requester.json in Resources */,
+				49ACE0F727B36F0A007A2532 /* Localizable.strings in Resources */,
 				499109CB2796A5D70094C803 /* notification_page_shorten_2.json in Resources */,
 				499109C8279686D50094C803 /* notification_page_shorten.json in Resources */,
 				494EFA1A278EEA5700743D89 /* notification_page.json in Resources */,

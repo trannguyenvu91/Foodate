@@ -12,9 +12,11 @@ extension String {
     
     public func localized() -> String {
         let language = UserDefaults.standard.string(forKey: UserDefaultsKey.language) ?? "en"
-        let path = Bundle.main.path(forResource: language, ofType: "lproj")
-        let bundle = Bundle(path: path!)
-        return (bundle?.localizedString(forKey: self, value: nil, table: nil))!
+        guard let path = Bundle(for: type(of: AppSession.shared)).path(forResource: language, ofType: "lproj"),
+                let bundle = Bundle(path: path) else {
+            fatalError()
+        }
+        return bundle.localizedString(forKey: self, value: nil, table: nil)
     }
 
     public func localized(with arguments: [CVarArg]) -> String {

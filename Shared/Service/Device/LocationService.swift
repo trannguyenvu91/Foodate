@@ -8,17 +8,35 @@
 import Foundation
 import CoreLocation
 
+protocol LocationManager {
+    func startUpdatingLocation()
+    func requestWhenInUseAuthorization()
+    var delegate: CLLocationManagerDelegate? { get set }
+    var authorizationStatus: CLAuthorizationStatus { get }
+}
+
+extension LocationManager {
+    var isPermissionGranted: Bool {
+        authorizationStatus == .authorizedAlways ||
+        authorizationStatus == .authorizedWhenInUse
+    }
+}
+
+extension CLLocationManager: LocationManager {}
+
+
 class LocationService: NSObject, CLLocationManagerDelegate {
-    typealias LocationCallback = (CLLocation?, Error?) -> Void
-    static let shared = LocationService()
-    lazy var manager: CLLocationManager = {
-        let manager = CLLocationManager()
-        manager.allowsBackgroundLocationUpdates = false
-        manager.delegate = self
-        return manager
-    }()
+    static var shared: LocationService!
+    var manager: LocationManager
     private var queueCallbacks = [LocationCallback]()
     private var lastLocation: CLLocation?
+    typealias LocationCallback = (CLLocation?, Error?) -> Void
+
+    init(_ manager: LocationManager) {
+        self.manager = manager
+        super.init()
+        self.manager.delegate = self
+    }
     
     @MainActor
     func requestLocation() async throws -> CLLocation  {
@@ -51,7 +69,7 @@ class LocationService: NSObject, CLLocationManagerDelegate {
         queueCallbacks.removeAll()
     }
     
-    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+    func locationManagerDidChangeAuthorization(_ aManager: CLLocationManager) {
         guard manager.isPermissionGranted else {
             didReceive(nil, error: LocationError.notGranted)
             return
@@ -59,20 +77,13 @@ class LocationService: NSObject, CLLocationManagerDelegate {
         manager.startUpdatingLocation()
     }
     
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    func locationManager(_ aManager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let lastLocation = locations.last
         didReceive(lastLocation, error: nil)
     }
     
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+    func locationManager(_ aManager: CLLocationManager, didFailWithError error: Error) {
         didReceive(nil, error: error)
     }
     
-}
-
-extension CLLocationManager {
-    var isPermissionGranted: Bool {
-        authorizationStatus == .authorizedAlways ||
-        authorizationStatus == .authorizedWhenInUse
-    }
 }
