@@ -36,14 +36,14 @@ class Tests_OnboardingViewModel: BaseTestCase {
     
     func testAuthenticateUserSuccess() async throws {
         XCTAssertNil(config.sessionUser)
-        MockNetworkService.responseCase = .sessionUser
+        MockNetworkActor.responseCase = .sessionUser
         try await model.authenticateUser()
         XCTAssertNotNil(config.sessionUser)
     }
     
     func testAuthenticateUserFailed() async throws {
         XCTAssertNil(config.sessionUser)
-        MockNetworkService.responseCase = .error
+        MockNetworkActor.responseCase = .error
         try? await model.authenticateUser()
         XCTAssertNil(config.sessionUser)
     }

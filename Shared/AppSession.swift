@@ -44,9 +44,8 @@ class AppSession: ObservableObject {
     }
 
     func setup() {
-        let manager = CLLocationManager()
-        manager.allowsBackgroundLocationUpdates = false
-        LocationService.shared = LocationService(manager)
+        LocationService.shared = LocationService(.standard)
+        NetworkService.shared = NetworkService(.standard)
         try? FDCoreStore.shared.setup()
         try? loadSessionUser()
         UITableViewCell.appearance().selectionStyle = .none

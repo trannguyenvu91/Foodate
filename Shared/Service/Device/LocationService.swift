@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreLocation
+import CoreStore
 
 protocol LocationManager {
     func startUpdatingLocation()
@@ -20,6 +21,17 @@ extension LocationManager {
         authorizationStatus == .authorizedAlways ||
         authorizationStatus == .authorizedWhenInUse
     }
+    
+}
+
+extension LocationManager where Self == CLLocationManager {
+    
+    static var standard: LocationManager {
+        let manager = CLLocationManager()
+        manager.allowsBackgroundLocationUpdates = false
+        return manager
+    }
+    
 }
 
 extension CLLocationManager: LocationManager {}
@@ -27,7 +39,7 @@ extension CLLocationManager: LocationManager {}
 
 class LocationService: NSObject, CLLocationManagerDelegate {
     static var shared: LocationService!
-    var manager: LocationManager
+    private(set) var manager: LocationManager
     private var queueCallbacks = [LocationCallback]()
     private var lastLocation: CLLocation?
     typealias LocationCallback = (CLLocation?, Error?) -> Void

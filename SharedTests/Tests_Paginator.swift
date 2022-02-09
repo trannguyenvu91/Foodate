@@ -31,7 +31,7 @@ class Tests_Paginator: BaseTestCase {
             expect.fulfill()
         }
         .store(in: &cancelableSet)
-        MockNetworkService.responseCase = .notificationPage
+        MockNetworkActor.responseCase = .notificationPage
         try await paginator.fetchNext()
         XCTAssertFalse(paginator.isFetching)
         XCTAssertNil(paginator.error)
@@ -40,7 +40,7 @@ class Tests_Paginator: BaseTestCase {
     }
     
     func testFetchNextFailure() async throws {
-        MockNetworkService.responseCase = .error
+        MockNetworkActor.responseCase = .error
         let expect = XCTestExpectation()
         paginator.objectWillChange.sink {
             expect.fulfill()
@@ -58,7 +58,7 @@ class Tests_Paginator: BaseTestCase {
     }
     
     func testRefreshSuccess() async throws {
-        MockNetworkService.responseCase = .notificationPage
+        MockNetworkActor.responseCase = .notificationPage
         let expect = XCTestExpectation()
         paginator.objectWillChange.sink {
             expect.fulfill()

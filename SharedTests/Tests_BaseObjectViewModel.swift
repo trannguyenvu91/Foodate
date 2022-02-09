@@ -17,7 +17,7 @@ class Tests_BaseObjectViewModel: BaseTestCase {
 
     override func setUpWithError() throws {
         try super.setUpWithError()
-        MockNetworkService.responseCase = .invitation
+        MockNetworkActor.responseCase = .invitation
         try FDCoreStore.shared.deleteAll(Where<FDInvitation>(true))
     }
 
@@ -38,7 +38,7 @@ class Tests_BaseObjectViewModel: BaseTestCase {
     }
     
     func testLoadObjectFailed() async throws {
-        MockNetworkService.responseCase = .error
+        MockNetworkActor.responseCase = .error
         var local = try await model.fetchLocalObject()
         XCTAssertNil(local)
         XCTAssertNil(model.publisher)
@@ -58,9 +58,9 @@ class Tests_BaseObjectViewModel: BaseTestCase {
     
     func testFetchLocalObject() async throws {
         //import local object
-        MockNetworkService.responseCase = .invitation
+        MockNetworkActor.responseCase = .invitation
         let _ = try await FDInvitation.fetchRemoteObject(id: objectID)
-        MockNetworkService.responseCase = .error
+        MockNetworkActor.responseCase = .error
         let local = try await model.fetchLocalObject()
         
         //fetch local success but failed at remote

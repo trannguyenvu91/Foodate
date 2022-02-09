@@ -11,14 +11,14 @@ import Combine
 class BaseTestCase: XCTestCase {
     
     var cancelableSet = [AnyCancellable]()
-    let networkService = MockNetworkService()
+    let mockActor = MockNetworkActor()
     let locationManager = MockLocationManager()
     
     override func setUpWithError() throws {
         try super.setUpWithError()
         LocationService.shared = LocationService(locationManager)
         try FDCoreStore.shared.setup(.test)
-        NetworkService.shared = networkService
+        NetworkService.shared = NetworkService(mockActor)
     }
 
     override func tearDownWithError() throws {

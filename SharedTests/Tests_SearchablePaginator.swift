@@ -18,7 +18,7 @@ class Tests_SearchablePaginator: BaseTestCase {
 
     override func setUpWithError() throws {
         try super.setUpWithError()
-        MockNetworkService.responseCase = .notificationPageShorten
+        MockNetworkActor.responseCase = .notificationPageShorten
     }
 
     override func tearDownWithError() throws {}
@@ -31,7 +31,7 @@ class Tests_SearchablePaginator: BaseTestCase {
         XCTAssertFalse(paginator.isFetching)
         XCTAssertFalse(paginator.isRefreshing)
         //search 2
-        MockNetworkService.responseCase = .notificationPageShorten2
+        MockNetworkActor.responseCase = .notificationPageShorten2
         try await paginator.search(["name": "b"])
         XCTAssertEqual(paginator.items.asSnapshots().map(\.$id), searchPage2.results?.asSnapshots().map(\.$id))
         XCTAssertEqual(paginator.placeholderPage?.results?.asSnapshots().map(\.$id), initialPage.results?.asSnapshots().map(\.$id))

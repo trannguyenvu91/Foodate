@@ -26,8 +26,8 @@ extension UIApplication: ApplicationProtocol {}
 class NotificationService: NSObject {
     
     static var shared: NotificationService!
-    var center: UserNotificationCenterProtocol
-    var application: ApplicationProtocol
+    private(set) var center: UserNotificationCenterProtocol
+    private(set) var application: ApplicationProtocol
     
     private var token: String? = nil
     private var registerCallback: ((String?, Error?) -> Void)?

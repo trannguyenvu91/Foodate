@@ -9,18 +9,21 @@
 import Foundation
 import Alamofire
 
+protocol ServiceActor {
+    func request(url: String,
+                       method: HTTPMethod,
+                       parameters: JSON?,
+                       headers: HTTPHeaders) async throws -> JSON
+}
+
 class NetworkService: NSObject {
     
-    static var shared: NetworkService = NetworkService()
+    static var shared: NetworkService!
+    private(set) var actor: ServiceActor
     
-    private static var sharedInstance: NetworkService?
-    private lazy var actor: NetworkActor = NetworkActor(session)
-    private lazy var session: Session = Session(configuration: self.config)
-    private let config: URLSessionConfiguration = {
-        let config = URLSessionConfiguration.af.default
-        config.timeoutIntervalForRequest = NetworkConfig.timeout
-        return config
-    }()
+    init(_ actor: ServiceActor) {
+        self.actor = actor
+    }
     
     @MainActor
     func request(url: String,
@@ -32,9 +35,15 @@ class NetworkService: NSObject {
     
 }
 
-private actor NetworkActor {
+extension ServiceActor where Self == NetworkActor {
+    static var standard: Self {
+        NetworkActor(.standard)
+    }
+}
+
+actor NetworkActor: ServiceActor {
     
-    var session: Session
+    private(set) var session: Session
     
     init(_ session: Session) {
         self.session = session

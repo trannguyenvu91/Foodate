@@ -6,6 +6,7 @@
 //
 
 import Alamofire
+import Foundation
 
 extension HTTPMethod {
     
@@ -16,4 +17,12 @@ extension HTTPMethod {
         return JSONEncoding.default
     }
     
+}
+
+extension Session {
+    static var standard: Session = {
+        let config = URLSessionConfiguration.af.default
+        config.timeoutIntervalForRequest = NetworkConfig.timeout
+        return Session(configuration: config)
+    }()
 }

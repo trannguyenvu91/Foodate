@@ -10,11 +10,11 @@ import Foundation
 import Foodate
 import Alamofire
 
-class MockNetworkService: NetworkService {
+class MockNetworkActor: ServiceActor {
     
     static var responseCase: MockResponse = .invitation
     
-    override func request(url: String, method: HTTPMethod, parameters: JSON?, headers: HTTPHeaders = NetworkConfig.headers) async throws -> JSON {
+    func request(url: String, method: HTTPMethod, parameters: JSON?, headers: HTTPHeaders = NetworkConfig.headers) async throws -> JSON {
         try Self.responseCase.jsonValue
     }
     
@@ -40,7 +40,7 @@ enum MockResponse {
             case .error:
                 throw NetworkError.invalidJSONFormat
             default:
-                return try Bundle(for: MockNetworkService.self)
+                return try Bundle(for: MockNetworkActor.self)
                     .json(forResource: jsonFilename, ofType: "json")
             }
         }
