@@ -20,15 +20,11 @@ protocol ApplicationProtocol {
     var delegate: UIApplicationDelegate? { get set }
 }
 
-extension UNUserNotificationCenter: UserNotificationCenterProtocol {}
-extension UIApplication: ApplicationProtocol {}
-
 class NotificationService: NSObject {
     
     static var shared: NotificationService!
     private(set) var center: UserNotificationCenterProtocol
     private(set) var application: ApplicationProtocol
-    
     private var token: String? = nil
     private var registerCallback: ((String?, Error?) -> Void)?
     
@@ -78,12 +74,11 @@ class NotificationService: NSObject {
     
     @MainActor
     func didReceive(notification: UNNotification) async {
-        //TODO:
+        //TODO: Popup banner for in app noti
         AppSession.shared.pushedScreen = .invitation(71)
     }
     
 }
-
 
 extension NotificationService: UNUserNotificationCenterDelegate {
     
@@ -95,4 +90,13 @@ extension NotificationService: UNUserNotificationCenterDelegate {
         await NotificationService.shared.didReceive(notification: response.notification)
     }
     
+}
+
+extension UNUserNotificationCenter: UserNotificationCenterProtocol {}
+extension UIApplication: ApplicationProtocol {}
+
+extension UserNotificationCenterProtocol where Self == UNUserNotificationCenter {
+    static var current: Self {
+        UNUserNotificationCenter.current()
+    }
 }
