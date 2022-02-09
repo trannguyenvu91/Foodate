@@ -25,12 +25,19 @@ extension UIApplication: ApplicationProtocol {}
 
 class NotificationService: NSObject {
     
-    static var shared: NotificationService = NotificationService()
-    lazy var center: UserNotificationCenterProtocol = UNUserNotificationCenter.current()
-    lazy var application: ApplicationProtocol = UIApplication.shared
+    static var shared: NotificationService!
+    var center: UserNotificationCenterProtocol
+    var application: ApplicationProtocol
     
     private var token: String? = nil
     private var registerCallback: ((String?, Error?) -> Void)?
+    
+    init(center: UserNotificationCenterProtocol, application: ApplicationProtocol) {
+        self.center = center
+        self.application = application
+        super.init()
+        self.center.delegate = self
+    }
     
     func requestAuthorization() async throws -> Bool {
         try await center.requestAuthorization(options: [.badge, .sound, .alert])

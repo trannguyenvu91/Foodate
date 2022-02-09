@@ -15,10 +15,7 @@ class Tests_NotificationService: BaseTestCase {
     let center = MockUserNotificationCenter()
     
     lazy var service: NotificationService = {
-        let instance = NotificationService()
-        instance.application = application
-        instance.center = center
-        return instance
+        NotificationService(center: center, application: application)
     }()
 
     override func setUpWithError() throws {

@@ -13,7 +13,7 @@ class AppDelegate: NSObject {}
 extension AppDelegate: UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-        NotificationService.shared.center.delegate = NotificationService.shared
+        NotificationService.shared = NotificationService(center: UNUserNotificationCenter.current(), application: application)
         return true
     }
     
