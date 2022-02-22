@@ -33,6 +33,14 @@ class NetworkService: NSObject {
         return try await actor.request(url: url, method: method, parameters: parameters, headers: headers)
     }
     
+    func request<Result: ImportableJSONObject>(api: String,
+                       method: HTTPMethod,
+                       parameters: JSON?,
+                         headers: HTTPHeaders = NetworkConfig.headers) async throws -> Result {
+        let json = try await request(url: NetworkConfig.baseURL + api, method: method, parameters: parameters)
+        return try Result.importObject(from: json)
+    }
+    
 }
 
 extension ServiceActor where Self == NetworkActor {

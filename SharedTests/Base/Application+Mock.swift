@@ -12,7 +12,8 @@ enum NotificationRegisterResult {
     case error(Error)
 }
 
-class MockUIApplication: ApplicationProtocol {
+class MockApplication: Application {
+    
     var delegate: UIApplicationDelegate?
     var _notificationRegisterResult: NotificationRegisterResult = .error(NotificationError.notAvailable)
     
@@ -22,7 +23,9 @@ class MockUIApplication: ApplicationProtocol {
             delegate?.application?(.shared,
                                    didRegisterForRemoteNotificationsWithDeviceToken: try! token.hexadecimal)
         case .error(let error):
-            delegate?.application?(.shared, didFailToRegisterForRemoteNotificationsWithError: error)
+            delegate?.application?(.shared,
+                                   didFailToRegisterForRemoteNotificationsWithError: error)
         }
     }
+    
 }

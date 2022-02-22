@@ -14,7 +14,7 @@ class ResetPasswordViewModel: BaseViewModel {
     @Published var username = ""
     
     func resetPassword() async throws {
-        let _ = try await NetworkService.reset(username: username, password: password)
+        let _ = try await LibraryAPI.shared.reset(username: username, password: password)
         try? AppSession.shared.loadSessionUser()
     }
     

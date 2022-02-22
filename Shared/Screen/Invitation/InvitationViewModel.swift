@@ -16,7 +16,7 @@ class InvitationViewModel: BaseObjectViewModel<FDInvitation> {
     }()
     
     func accept(_ requester: ObjectSnapshot<FDRequester>) async throws {
-        let invitation = try await NetworkService.acceptRequest(for: objectID,
+        let invitation = try await LibraryAPI.shared.acceptRequest(for: objectID,
                                                           requestID: requester.$requestID)
         viewDismissalModePublisher.send(true)
         if let snapshot = invitation.asSnapshot(in: .defaultStack) {

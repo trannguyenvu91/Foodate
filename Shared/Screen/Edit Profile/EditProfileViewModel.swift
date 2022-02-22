@@ -21,7 +21,7 @@ class EditProfileViewModel: BaseViewModel {
     }
     
     func update() async throws {
-        let _ = try await NetworkService.updateUser(ID: self.session.$id, parameters: self.draft.json)
+        let _ = try await LibraryAPI.shared.updateUser(ID: self.session.$id, parameters: self.draft.json)
     }
     
 }

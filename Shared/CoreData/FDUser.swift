@@ -55,7 +55,7 @@ extension FDUserProfile: RemoteObject {
     }
 
     static func fetchRemoteObject(id: Int) async throws -> Self {
-        try await NetworkService.getUser(ID: id) as! Self
+        try await LibraryAPI.shared.getUser(ID: id) as! Self
     }
     
 }

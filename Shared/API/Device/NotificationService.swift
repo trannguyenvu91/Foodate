@@ -7,28 +7,38 @@
 
 import Foundation
 import UserNotifications
+import Combine
 import UIKit
 
-protocol UserNotificationCenterProtocol {
+protocol NotificationCenter {
     func requestAuthorization(options: UNAuthorizationOptions) async throws -> Bool
     func notificationSettings() async -> UNNotificationSettings
     var delegate: UNUserNotificationCenterDelegate? { get set }
 }
 
-protocol ApplicationProtocol {
+protocol Application {
     func registerForRemoteNotifications()
     var delegate: UIApplicationDelegate? { get set }
+}
+
+extension UNUserNotificationCenter: NotificationCenter {}
+extension UIApplication: Application {}
+
+extension NotificationCenter where Self == UNUserNotificationCenter {
+    static var current: Self {
+        UNUserNotificationCenter.current()
+    }
 }
 
 class NotificationService: NSObject {
     
     static var shared: NotificationService!
-    private(set) var center: UserNotificationCenterProtocol
-    private(set) var application: ApplicationProtocol
+    private(set) var center: NotificationCenter
+    private(set) var application: Application
     private var token: String? = nil
     private var registerCallback: ((String?, Error?) -> Void)?
     
-    init(center: UserNotificationCenterProtocol, application: ApplicationProtocol) {
+    init(center: NotificationCenter, application: Application) {
         self.center = center
         self.application = application
         super.init()
@@ -90,13 +100,4 @@ extension NotificationService: UNUserNotificationCenterDelegate {
         await NotificationService.shared.didReceive(notification: response.notification)
     }
     
-}
-
-extension UNUserNotificationCenter: UserNotificationCenterProtocol {}
-extension UIApplication: ApplicationProtocol {}
-
-extension UserNotificationCenterProtocol where Self == UNUserNotificationCenter {
-    static var current: Self {
-        UNUserNotificationCenter.current()
-    }
 }

@@ -22,9 +22,9 @@ class OnboardingViewModel: BaseViewModel {
     func authenticateUser() async throws {
         switch mode {
         case .login:
-            let _ = try await NetworkService.login(username: username, password: password)
+            let _ = try await LibraryAPI.shared.login(username: username, password: password)
         case .signUp:
-            let _ = try await NetworkService.register(username: username,
+            let _ = try await LibraryAPI.shared.register(username: username,
                                                       password: password,
                                                       email: email)
         }

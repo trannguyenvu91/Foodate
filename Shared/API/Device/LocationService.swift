@@ -7,7 +7,6 @@
 
 import Foundation
 import CoreLocation
-import CoreStore
 
 protocol LocationManager {
     func startUpdatingLocation()
@@ -24,6 +23,7 @@ extension LocationManager {
     
 }
 
+extension CLLocationManager: LocationManager {}
 extension LocationManager where Self == CLLocationManager {
     
     static var standard: LocationManager {
@@ -34,12 +34,9 @@ extension LocationManager where Self == CLLocationManager {
     
 }
 
-extension CLLocationManager: LocationManager {}
-
-
-class LocationService: NSObject, CLLocationManagerDelegate {
+class LocationService: NSObject {
     static var shared: LocationService!
-    private(set) var manager: LocationManager
+    private var manager: LocationManager
     private var queueCallbacks = [LocationCallback]()
     private var lastLocation: CLLocation?
     typealias LocationCallback = (CLLocation?, Error?) -> Void
@@ -71,7 +68,15 @@ class LocationService: NSObject, CLLocationManagerDelegate {
         }
     }
     
-    private func didReceive(_ location: CLLocation?, error: Error?) {
+    var isPermissionGranted: Bool {
+        manager.isPermissionGranted
+    }
+    
+}
+
+internal extension LocationService {
+    
+    func didReceive(_ location: CLLocation?, error: Error?) {
         if let location = location {
             lastLocation = location
         }
@@ -80,6 +85,10 @@ class LocationService: NSObject, CLLocationManagerDelegate {
         }
         queueCallbacks.removeAll()
     }
+    
+}
+
+extension LocationService: CLLocationManagerDelegate {
     
     func locationManagerDidChangeAuthorization(_ aManager: CLLocationManager) {
         guard manager.isPermissionGranted else {

@@ -120,7 +120,7 @@ extension FDPlace: RemoteObject, ImportableJSONObject {
     typealias ImportSource = JSON
 
     static func fetchRemoteObject(id: String) async throws -> Self {
-        try await NetworkService.getPlace(ID: id) as! Self
+        try await LibraryAPI.shared.getPlace(ID: id) as! Self
     }
     
 }

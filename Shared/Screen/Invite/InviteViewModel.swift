@@ -33,7 +33,7 @@ class InviteViewModel: BaseViewModel, Identifiable {
     }
     
     func createInvitation() async throws {
-        let invitation = try await NetworkService.createInvitation(parameters: try draft.getData())
+        let invitation = try await LibraryAPI.shared.createInvitation(parameters: try draft.getData())
         AppSession.shared.newInvitation.send(invitation)
     }
     

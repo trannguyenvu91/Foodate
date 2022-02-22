@@ -10,9 +10,9 @@ import UserNotifications
 
 class Tests_NotificationService: BaseTestCase {
     
-    let application = MockUIApplication()
+    let application = MockApplication()
     let appDelegate = AppDelegate()
-    let center = MockUserNotificationCenter()
+    let center = MockNotificationCenter()
     
     lazy var service: NotificationService = {
         NotificationService(center: center, application: application)

@@ -31,7 +31,7 @@ struct FoodateApp: App {
     
     var mainView: some View {
         Group {
-            if !LocationService.shared.manager.isPermissionGranted {
+            if !LocationService.shared.isPermissionGranted {
                 LocationPermissionView()
             } else if let id = config.sessionUser?.$id,
                       let user = try? FDUserProfile.fetchOne(id: id),

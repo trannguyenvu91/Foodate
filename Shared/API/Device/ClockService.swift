@@ -29,7 +29,7 @@ struct ClockService: DynamicProperty {
 
 internal class Refresher: ObservableObject {
     static let shared = Refresher()
-    @Published var lastUpdatedAt: TimeInterval = 0
+    var lastUpdatedAt: TimeInterval = 0
     private(set) var interval: TimeInterval
     lazy var timer: Timer = {
         Timer.scheduledTimer(timeInterval: interval,

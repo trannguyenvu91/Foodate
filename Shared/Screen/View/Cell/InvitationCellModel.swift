@@ -18,11 +18,11 @@ class InvitationCellModel: BaseObjectViewModel<FDInvitation> {
     }
     
     func sendRequest(_ isSending: Bool) async throws {
-        let _ = isSending ? try await NetworkService.createRequest(for: objectID) : try await NetworkService.deleteRequest(for: objectID)
+        let _ = isSending ? try await LibraryAPI.shared.createRequest(for: objectID) : try await LibraryAPI.shared.deleteRequest(for: objectID)
     }
     
     func reply(_ state: InvitationState) async throws {
-        let invitation = try await NetworkService.replyInvitation(ID: objectID, state: state)
+        let invitation = try await LibraryAPI.shared.replyInvitation(ID: objectID, state: state)
         if let snapshot = invitation.asSnapshot(in: .defaultStack), snapshot.$state == .matched {
             AppSession.shared.presentScreen = .matched(snapshot)
         }
@@ -35,7 +35,7 @@ class InvitationCellModel: BaseObjectViewModel<FDInvitation> {
             }
             let updates = ["to_user": ["id": user.$id]]
             asyncDo {
-                let _ = try await NetworkService.updateInvitation(ID: objectID,
+                let _ = try await LibraryAPI.shared.updateInvitation(ID: objectID,
                                                           parameters: updates)
             }
         }
