@@ -23,3 +23,11 @@ enum NotificationError: Error {
     case notGranted
     case notAvailable
 }
+
+enum DraftInvitationError: Error {
+    case emptyPlace
+    case invalidTime
+    case invalidRecipient
+    case emptyTitle
+}
+

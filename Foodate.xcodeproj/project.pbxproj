@@ -84,8 +84,8 @@
 		492D03BE26A01DAB00F944D0 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D03BC26A01DAB00F944D0 /* OnboardingView.swift */; };
 		492D03C526A01DD000F944D0 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D03C426A01DD000F944D0 /* OnboardingViewModel.swift */; };
 		492D03C626A01DD000F944D0 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D03C426A01DD000F944D0 /* OnboardingViewModel.swift */; };
-		492D03D326A021DA00F944D0 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D02F2269ED30700F944D0 /* Error.swift */; };
-		492D03D826A021DA00F944D0 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D02F2269ED30700F944D0 /* Error.swift */; };
+		492D03D326A021DA00F944D0 /* Error+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D02F2269ED30700F944D0 /* Error+Helper.swift */; };
+		492D03D826A021DA00F944D0 /* Error+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D02F2269ED30700F944D0 /* Error+Helper.swift */; };
 		492D03DE26A0221200F944D0 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D03DD26A0221200F944D0 /* View.swift */; };
 		492D03DF26A0221200F944D0 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D03DD26A0221200F944D0 /* View.swift */; };
 		49315C8226D8963200D09430 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CA79FB26C67020005B79D9 /* EditProfileView.swift */; };
@@ -189,7 +189,7 @@
 		494EF973278D339900743D89 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D02F0269ED30700F944D0 /* String.swift */; };
 		494EF974278D339900743D89 /* Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D02F7269ED30700F944D0 /* Combine.swift */; };
 		494EF975278D339900743D89 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D031A269ED34300F944D0 /* DateFormatter.swift */; };
-		494EF976278D339900743D89 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D02F2269ED30700F944D0 /* Error.swift */; };
+		494EF976278D339900743D89 /* Error+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D02F2269ED30700F944D0 /* Error+Helper.swift */; };
 		494EF977278D339900743D89 /* NSCoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D02F9269ED30700F944D0 /* NSCoder.swift */; };
 		494EF978278D339900743D89 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DA1ECF26A039BD001BF85B /* Bundle.swift */; };
 		494EF979278D339900743D89 /* CLLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D02F8269ED30700F944D0 /* CLLocation.swift */; };
@@ -198,7 +198,7 @@
 		494EF97C278D339A00743D89 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D02F0269ED30700F944D0 /* String.swift */; };
 		494EF97D278D339A00743D89 /* Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D02F7269ED30700F944D0 /* Combine.swift */; };
 		494EF97E278D339A00743D89 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D031A269ED34300F944D0 /* DateFormatter.swift */; };
-		494EF97F278D339A00743D89 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D02F2269ED30700F944D0 /* Error.swift */; };
+		494EF97F278D339A00743D89 /* Error+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D02F2269ED30700F944D0 /* Error+Helper.swift */; };
 		494EF980278D339A00743D89 /* NSCoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D02F9269ED30700F944D0 /* NSCoder.swift */; };
 		494EF981278D339A00743D89 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DA1ECF26A039BD001BF85B /* Bundle.swift */; };
 		494EF982278D339A00743D89 /* CLLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D02F8269ED30700F944D0 /* CLLocation.swift */; };
@@ -683,7 +683,7 @@
 		492D02D7269D7AE500F944D0 /* FDRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FDRequester.swift; sourceTree = "<group>"; };
 		492D02DE269D83F000F944D0 /* FieldStorableTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldStorableTypes.swift; sourceTree = "<group>"; };
 		492D02F0269ED30700F944D0 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
-		492D02F2269ED30700F944D0 /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
+		492D02F2269ED30700F944D0 /* Error+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Error+Helper.swift"; sourceTree = "<group>"; };
 		492D02F4269ED30700F944D0 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		492D02F6269ED30700F944D0 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		492D02F7269ED30700F944D0 /* Combine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Combine.swift; sourceTree = "<group>"; };
@@ -930,7 +930,7 @@
 				492D02F7269ED30700F944D0 /* Combine.swift */,
 				492D02F6269ED30700F944D0 /* Date.swift */,
 				492D031A269ED34300F944D0 /* DateFormatter.swift */,
-				492D02F2269ED30700F944D0 /* Error.swift */,
+				492D02F2269ED30700F944D0 /* Error+Helper.swift */,
 				492D02F9269ED30700F944D0 /* NSCoder.swift */,
 				492D02F0269ED30700F944D0 /* String.swift */,
 				49C4E2C52711344F00C95EDC /* String+Localized.swift */,
@@ -1633,7 +1633,7 @@
 				496F32652761FE5B00DA705E /* DataStack+SQLiteStore.swift in Sources */,
 				492D02BC269D6AD500F944D0 /* FDLocation.swift in Sources */,
 				495F53E726B154A600E6E981 /* ListViewModel.swift in Sources */,
-				492D03D326A021DA00F944D0 /* Error.swift in Sources */,
+				492D03D326A021DA00F944D0 /* Error+Helper.swift in Sources */,
 				4989B684269D43C900611D10 /* FoodateApp.swift in Sources */,
 				495F53E326B1545200E6E981 /* SearchInvitationPaginator.swift in Sources */,
 				49789EB0277DB9A700234A4F /* ScreenType.swift in Sources */,
@@ -1767,7 +1767,7 @@
 				492D02BD269D6AD500F944D0 /* FDLocation.swift in Sources */,
 				494EF9A4278D33F400743D89 /* UserProfileView.swift in Sources */,
 				491257C52710605A005B122F /* ViewDidLoadModifier.swift in Sources */,
-				492D03D826A021DA00F944D0 /* Error.swift in Sources */,
+				492D03D826A021DA00F944D0 /* Error+Helper.swift in Sources */,
 				4992D9FD26BB93B9007576DC /* InviteViewModel.swift in Sources */,
 				490239EB277AFDB90019E7FF /* Error.swift in Sources */,
 				4989B685269D43C900611D10 /* FoodateApp.swift in Sources */,
@@ -1813,7 +1813,7 @@
 				494EF99F278D33E200743D89 /* EditProfileView.swift in Sources */,
 				494EF974278D339900743D89 /* Combine.swift in Sources */,
 				494EF9F6278D35FB00743D89 /* InvitationState.swift in Sources */,
-				494EF976278D339900743D89 /* Error.swift in Sources */,
+				494EF976278D339900743D89 /* Error+Helper.swift in Sources */,
 				49C6E73927C49DC300FB0CC4 /* RequestsFooter.swift in Sources */,
 				494EF9E1278D347E00743D89 /* ReplyStateView.swift in Sources */,
 				494EF998278D33D500743D89 /* ResetPasswordViewModel.swift in Sources */,
@@ -1976,7 +1976,7 @@
 				494EF97D278D339A00743D89 /* Combine.swift in Sources */,
 				494EFA00278D35FC00743D89 /* InvitationAction.swift in Sources */,
 				494EF9ED278D35E300743D89 /* DraftInvitation.swift in Sources */,
-				494EF97F278D339A00743D89 /* Error.swift in Sources */,
+				494EF97F278D339A00743D89 /* Error+Helper.swift in Sources */,
 				494EF9B1278D344D00743D89 /* OnboardingView.swift in Sources */,
 				49C6E72827C49D7B00FB0CC4 /* UserCell.swift in Sources */,
 				49C6E71227C49C9500FB0CC4 /* ResetPasswordViewModel.swift in Sources */,

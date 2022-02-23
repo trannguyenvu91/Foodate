@@ -9,11 +9,7 @@ import Foundation
 import Combine
 import CoreStore
 
-protocol RemoteObject: ImportableUniqueObject {
-    static func fetchRemoteObject(id: Self.UniqueIDType, success: SuccessCallback<Self>) async throws
-}
-
-class BaseObjectViewModel<Object>: BaseViewModel where Object: CoreStoreObject & RemoteObject {
+class BaseObjectViewModel<Object>: BaseViewModel where Object: CoreStoreObject & ImportableUniqueObject {
     
     @Published var publisher: ObjectPublisher<Object>?
     var snapshot: ObjectSnapshot<Object>? {
@@ -39,9 +35,31 @@ class BaseObjectViewModel<Object>: BaseViewModel where Object: CoreStoreObject &
     }
     
     func loadObject() async throws {
-        try await Object.fetchRemoteObject(id: objectID) { [weak self] object in
+        fatalError("Must be implemented on specific Object")
+    }
+    
+}
+
+extension BaseObjectViewModel where Object == FDUserProfile {
+    func loadObject() async throws {
+        try await LibraryAPI.shared.getUser(ID: objectID) { [weak self] object in
             self?.publisher = object.asPublisher(in: .defaultStack)
         }
     }
-    
+}
+
+extension BaseObjectViewModel where Object == FDInvitation {
+    func loadObject() async throws {
+        try await LibraryAPI.shared.getInvitation(ID: objectID) { [weak self] object in
+            self?.publisher = object.asPublisher(in: .defaultStack)
+        }
+    }
+}
+
+extension BaseObjectViewModel where Object == FDPlace {
+    func loadObject() async throws {
+        try await LibraryAPI.shared.getPlace(ID: objectID) { [weak self] object in
+            self?.publisher = object.asPublisher(in: .defaultStack)
+        }
+    }
 }

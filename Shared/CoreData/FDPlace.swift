@@ -86,7 +86,7 @@ extension ObjectSnapshot where O: FDPlace {
     
 }
 
-extension FDPlace: RemoteObject, ImportableJSONObject {
+extension FDPlace: ImportableUniqueObject, ImportableJSONObject {
     
     static var uniqueIDKeyPath: String {
         "place_id"
@@ -112,9 +112,5 @@ extension FDPlace: RemoteObject, ImportableJSONObject {
     
     typealias UniqueIDType = String
     typealias ImportSource = JSON
-
-    static func fetchRemoteObject(id: String, success: SuccessCallback<FDPlace>) async throws {
-        try await LibraryAPI.shared.getPlace(ID: id, success: success)
-    }
     
 }

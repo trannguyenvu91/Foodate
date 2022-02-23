@@ -16,7 +16,6 @@ class AppFlow: ObservableObject {
     static let shared = AppFlow()
     @Published var isPresentingScreen: Bool = false
     @Published var isPushingScreen: Bool = false
-    var newInvitation = PassthroughSubject<FDInvitation, Never>()
     @AppStorage(UserDefaultsKey.skipNotificationSetting) var skipNotificationSetting = false
     
     var presentScreen: ScreenType? {

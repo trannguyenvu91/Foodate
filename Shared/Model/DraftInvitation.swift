@@ -39,16 +39,16 @@ class DraftInvitation: ObservableObject {
     
     func validate() throws {
         if place == nil {
-            throw NetworkError(code: 400, message: "DraftInvitation_Empty_Place_Alert".localized())
+            throw DraftInvitationError.emptyPlace
         }
         if startAt < endAt, startAt < Date() {
-            throw NetworkError(code: 400, message: "DraftInvitation_Invalid_Time_Alert".localized())
+            throw DraftInvitationError.invalidTime
         }
         if toUser?.isSession == true {
-            throw NetworkError(code: 400, message: "DraftInvitation_Recipient_Alert".localized())
+            throw DraftInvitationError.invalidRecipient
         }
         if title.isEmpty {
-            throw NetworkError(code: 400, message: "DraftInvitation_Empty_Title_Alert".localized())
+            throw DraftInvitationError.emptyTitle
         }
     }
     

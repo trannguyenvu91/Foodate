@@ -10,6 +10,7 @@ import CoreStore
 import CoreLocation
 import UserNotifications
 import Alamofire
+import Combine
 
 typealias SuccessCallback<T> = (T) -> Void
 
@@ -17,6 +18,7 @@ class LibraryAPI {
     
     static var shared: LibraryAPI!
     var userSnapshot: ObjectSnapshot<FDSessionUser>?
+    var newInvitation = PassthroughSubject<FDInvitation, Never>()
     
     private let database = try! PersistanceService()
     private let networkService = NetworkService(.standard)
@@ -210,8 +212,7 @@ extension LibraryAPI {
     }
     
     func getUser(ID: Int, success: SuccessCallback<FDUserProfile>) async throws {
-        if let local = try? fetchOne(FDUserProfile.self,
-                                     condition: Where<FDUserProfile>(FDUserProfile.uniqueIDKeyPath, ID)) {
+        if let local = try? fetchOne(FDUserProfile.self, id: ID) {
             success(local)
         }
         let remote: FDUserProfile = try await request(api: "/api/v1/users/\(ID)/",
@@ -222,8 +223,7 @@ extension LibraryAPI {
     
     //MARK: Invitation
     func getInvitation(ID: Int, success: SuccessCallback<FDInvitation>) async throws {
-        if let local = try? fetchOne(FDInvitation.self,
-                                     condition: Where<FDInvitation>(FDInvitation.uniqueIDKeyPath, ID)) {
+        if let local = try? fetchOne(FDInvitation.self, id: ID) {
             success(local)
         }
         let remote: FDInvitation = try await request(api: "/api/v1/invitations/\(ID)/")
@@ -271,8 +271,7 @@ extension LibraryAPI {
     
     //MARK: Place
     func getPlace(ID: String, success: SuccessCallback<FDPlace>) async throws {
-        if let local = try? fetchOne(FDPlace.self,
-                                     condition: Where<FDPlace>(FDPlace.uniqueIDKeyPath, ID)) {
+        if let local = try? fetchOne(FDPlace.self, id: ID) {
             success(local)
         }
         let remote: FDPlace = try await request(api: "/api/v1/places/\(ID)/")

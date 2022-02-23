@@ -34,7 +34,7 @@ class InviteViewModel: BaseViewModel, Identifiable {
     
     func createInvitation() async throws {
         let invitation = try await LibraryAPI.shared.createInvitation(parameters: try draft.getData())
-        AppFlow.shared.newInvitation.send(invitation)
+        LibraryAPI.shared.newInvitation.send(invitation)
     }
     
 }

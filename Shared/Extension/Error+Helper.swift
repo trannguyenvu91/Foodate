@@ -8,22 +8,37 @@
 
 import Foundation
 
-extension Error where Self == NetworkError {
-    var localizedDescription: String {
+protocol MessageError {
+    var message: String { get }
+}
+
+extension Error {
+    var alertMessage: String {
+        if let error = self as? MessageError {
+            return error.message
+        }
+        return localizedDescription
+    }
+}
+
+extension NetworkError: MessageError {
+    
+    var message: String {
         switch self {
         case .invalidAPI(let api):
             return "AppError_InvalidAPI".localized() + (api ?? "--")
         case .invalidStatusCode(let code, let message):
-            return message + "\(code)"
+            return message + " code: \(code)"
         case .invalidJSONFormat:
             return "AppError_InvalidJSONFormat".localized()
         }
     }
+    
 }
 
-extension Error where Self == LocationError {
+extension LocationError: MessageError {
     
-    var localizeDescription: String {
+    var message: String {
         switch self {
         case .notGranted:
             return "Location_Not_Granted".localized()
@@ -34,9 +49,9 @@ extension Error where Self == LocationError {
     
 }
 
-extension Error where Self == NotificationError {
+extension NotificationError: MessageError {
     
-    var localizeDescription: String {
+    var message: String {
         switch self {
         case .notGranted:
             return "Notification_Not_Granted".localized()
@@ -47,8 +62,8 @@ extension Error where Self == NotificationError {
     
 }
 
-extension Error where Self == AppError {
-    var localizedDescription: String {
+extension AppError: MessageError {
+    var message: String {
         switch self {
         case .unknown:
             return "AppError_Unknown".localized()
@@ -58,6 +73,21 @@ extension Error where Self == AppError {
             return "AppError_InvalidJSONFormat".localized()
         case .invalidSession:
             return "AppError_InvalidSession".localized()
+        }
+    }
+}
+
+extension DraftInvitationError: MessageError {
+    var message: String {
+        switch self {
+        case .emptyPlace:
+            return "DraftInvitation_Empty_Place_Alert".localized()
+        case .invalidTime:
+            return "DraftInvitation_Invalid_Time_Alert".localized()
+        case .invalidRecipient:
+            return "DraftInvitation_Recipient_Alert".localized()
+        case .emptyTitle:
+            return "DraftInvitation_Empty_Title_Alert".localized()
         }
     }
 }

@@ -44,13 +44,6 @@ extension ObjectSnapshot where O: FDUserProfile {
     
 }
 
-extension FDUserProfile: RemoteObject {
-    static func fetchRemoteObject(id: Int, success: SuccessCallback<FDUserProfile>) async throws {
-        try await LibraryAPI.shared.getUser(ID: id, success: success)
-    }
-    
-}
-
 extension FDUser: ImportableUniqueObject, ImportableJSONObject {
     
     static var uniqueIDKeyPath: String {

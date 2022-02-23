@@ -49,11 +49,3 @@ extension FDBaseInvitation: ImportableUniqueObject, ImportableJSONObject {
     }
     
 }
-
-extension FDInvitation: RemoteObject {
-    
-    static func fetchRemoteObject(id: Int, success: SuccessCallback<FDInvitation>) async throws {
-        try await LibraryAPI.shared.getInvitation(ID: id, success: success)
-    }
-    
-}

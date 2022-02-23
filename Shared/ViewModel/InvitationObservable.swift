@@ -16,7 +16,7 @@ protocol InvitationObservable {
 extension InvitationObservable where Self: BaseViewModel {
     
     func observeNewInvitation() {
-        AppFlow.shared.newInvitation
+        LibraryAPI.shared.newInvitation
             .receive(on: RunLoop.main)
             .sink { [weak self] invitation in
                 guard self?.shouldInsert(invitation) == true,
