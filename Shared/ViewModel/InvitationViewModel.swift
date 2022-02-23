@@ -35,6 +35,7 @@ class InvitationViewModel: BaseObjectViewModel<FDInvitation> {
         return false
     }
     
+    @MainActor
     func refresh() async {
         do {
             try await loadObject()

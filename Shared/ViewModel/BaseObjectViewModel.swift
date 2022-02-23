@@ -11,7 +11,7 @@ import CoreStore
 
 class BaseObjectViewModel<Object>: BaseViewModel where Object: CoreStoreObject & ImportableUniqueObject {
     
-    var publisher: ObjectPublisher<Object>?
+    @Published var publisher: ObjectPublisher<Object>?
     var snapshot: ObjectSnapshot<Object>? {
         publisher?.asSnapshot(in: .defaultStack)
     }
@@ -42,33 +42,21 @@ class BaseObjectViewModel<Object>: BaseViewModel where Object: CoreStoreObject &
 
 extension BaseObjectViewModel where Object == FDUserProfile {
     func loadObject() async throws {
-        try await LibraryAPI.shared.getUser(ID: objectID) { object in
-            DispatchQueue.main.async {  [weak self] in
-                guard self?.publisher == nil else { return }
-                self?.publisher = object.asPublisher(in: .defaultStack)
-            }
-        }
+        try await LibraryAPI.shared.getUser(ID: objectID,
+                                            success: setter(object: self, keyPath: \.publisher))
     }
 }
 
 extension BaseObjectViewModel where Object == FDInvitation {
     func loadObject() async throws {
-        try await LibraryAPI.shared.getInvitation(ID: objectID) { object in
-            DispatchQueue.main.async {  [weak self] in
-                guard self?.publisher == nil else { return }
-                self?.publisher = object.asPublisher(in: .defaultStack)
-            }
-        }
+        try await LibraryAPI.shared.getInvitation(ID: objectID,
+                                                  success: setter(object: self, keyPath: \.publisher))
     }
 }
 
 extension BaseObjectViewModel where Object == FDPlace {
     func loadObject() async throws {
-        try await LibraryAPI.shared.getPlace(ID: objectID) { object in
-            DispatchQueue.main.async {  [weak self] in
-                guard self?.publisher == nil else { return }
-                self?.publisher = object.asPublisher(in: .defaultStack)
-            }
-        }
+        try await LibraryAPI.shared.getPlace(ID: objectID,
+                                             success: setter(object: self, keyPath: \.publisher))
     }
 }

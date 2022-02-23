@@ -23,6 +23,7 @@ extension ListViewModel where Self: BaseViewModel  {
         paginator.items
     }
     
+    @MainActor
     func refresh() async {
         do {
             try await paginator.refresh()

@@ -20,6 +20,7 @@ class UserProfileViewModel: BaseObjectViewModel<FDUserProfile>, ListViewModel {
         observeNewInvitation()
     }
     
+    @MainActor
     func refresh() async {
         do {
             try await loadObject()

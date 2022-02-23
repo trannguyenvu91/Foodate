@@ -19,6 +19,7 @@ class PlaceProfileViewModel: BaseObjectViewModel<FDPlace>, ListViewModel {
         observeNewInvitation()
     }
     
+    @MainActor
     func refresh() async {
         do {
             try await loadObject()

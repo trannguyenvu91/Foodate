@@ -211,23 +211,25 @@ extension LibraryAPI {
                           parameters: parameters)
     }
     
-    func getUser(ID: Int, success: SuccessCallback<FDUserProfile>) async throws {
-        if let local = try? fetchOne(FDUserProfile.self, id: ID) {
-            success(local)
+    func getUser(ID: Int, success: SuccessCallback<ObjectPublisher<FDUserProfile>?>) async throws {
+        let local = try? fetchOne(FDUserProfile.self, id: ID)?
+            .asPublisher(in: .defaultStack)
+        success(local)
+        let remote: FDUserProfile = try await request(api: "/api/v1/users/\(ID)/")
+        if local == nil {
+            success(remote.asPublisher(in: .defaultStack))
         }
-        let remote: FDUserProfile = try await request(api: "/api/v1/users/\(ID)/",
-                          method: .get,
-                          parameters: nil)
-        success(remote)
     }
     
     //MARK: Invitation
-    func getInvitation(ID: Int, success: SuccessCallback<FDInvitation>) async throws {
-        if let local = try? fetchOne(FDInvitation.self, id: ID) {
-            success(local)
-        }
+    func getInvitation(ID: Int, success: SuccessCallback<ObjectPublisher<FDInvitation>?>) async throws {
+        let local = try? fetchOne(FDInvitation.self, id: ID)?
+            .asPublisher(in: .defaultStack)
+        success(local)
         let remote: FDInvitation = try await request(api: "/api/v1/invitations/\(ID)/")
-        success(remote)
+        if local == nil {
+            success(remote.asPublisher(in: .defaultStack))
+        }
     }
     
     func deleteInvitation(ID: Int) async throws -> FDInvitation {
@@ -270,12 +272,13 @@ extension LibraryAPI {
     }
     
     //MARK: Place
-    func getPlace(ID: String, success: SuccessCallback<FDPlace>) async throws {
-        if let local = try? fetchOne(FDPlace.self, id: ID) {
-            success(local)
-        }
+    func getPlace(ID: String, success: SuccessCallback<ObjectPublisher<FDPlace>?>) async throws {
+        let local = try? fetchOne(FDPlace.self, id: ID)?.asPublisher(in: .defaultStack)
+        success(local)
         let remote: FDPlace = try await request(api: "/api/v1/places/\(ID)/")
-        success(remote)
+        if local == nil {
+            success(remote.asPublisher(in: .defaultStack))
+        }
     }
     
 }

@@ -563,6 +563,10 @@
 		49CB63F12768D8BC00224DAB /* FDNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CB63EF2768D8BC00224DAB /* FDNotification.swift */; };
 		49CCED2C26B14E040033469B /* SegmentedPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CCED2B26B14E040033469B /* SegmentedPicker.swift */; };
 		49CCED2D26B14E040033469B /* SegmentedPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CCED2B26B14E040033469B /* SegmentedPicker.swift */; };
+		49CD463627C61344003F098F /* KeyPath+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CD463527C61344003F098F /* KeyPath+Helper.swift */; };
+		49CD463727C61344003F098F /* KeyPath+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CD463527C61344003F098F /* KeyPath+Helper.swift */; };
+		49CD463827C61344003F098F /* KeyPath+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CD463527C61344003F098F /* KeyPath+Helper.swift */; };
+		49CD463927C61344003F098F /* KeyPath+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CD463527C61344003F098F /* KeyPath+Helper.swift */; };
 		49D2254E277B028300815018 /* LocationPermissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D2254D277B028300815018 /* LocationPermissionView.swift */; };
 		49D2254F277B028300815018 /* LocationPermissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D2254D277B028300815018 /* LocationPermissionView.swift */; };
 		49DA1EAB26A031A6001BF85B /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DA1EAA26A031A6001BF85B /* UserProfileView.swift */; };
@@ -799,6 +803,7 @@
 		49CB63EC2768D88900224DAB /* NotificationPaginator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPaginator.swift; sourceTree = "<group>"; };
 		49CB63EF2768D8BC00224DAB /* FDNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FDNotification.swift; sourceTree = "<group>"; };
 		49CCED2B26B14E040033469B /* SegmentedPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedPicker.swift; sourceTree = "<group>"; };
+		49CD463527C61344003F098F /* KeyPath+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KeyPath+Helper.swift"; sourceTree = "<group>"; };
 		49D2254D277B028300815018 /* LocationPermissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPermissionView.swift; sourceTree = "<group>"; };
 		49DA1EAA26A031A6001BF85B /* UserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
 		49DA1EB026A031BA001BF85B /* UserProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewModel.swift; sourceTree = "<group>"; };
@@ -924,6 +929,7 @@
 			isa = PBXGroup;
 			children = (
 				49C6E74227C4B65300FB0CC4 /* ImportableJSONObject+CoreStore.swift */,
+				49CD463527C61344003F098F /* KeyPath+Helper.swift */,
 				4945156C279E50AE0066B693 /* UserDefaults+Key.swift */,
 				492D02F8269ED30700F944D0 /* CLLocation.swift */,
 				494EFA0C278ED5D100743D89 /* JSON.swift */,
@@ -1564,6 +1570,7 @@
 				494EFA0D278ED5D100743D89 /* JSON.swift in Sources */,
 				495A9F0426E25726003F65B3 /* DraftUserProfile.swift in Sources */,
 				49DA1EB126A031BA001BF85B /* UserProfileViewModel.swift in Sources */,
+				49CD463627C61344003F098F /* KeyPath+Helper.swift in Sources */,
 				492D030D269ED30700F944D0 /* NSCoder.swift in Sources */,
 				49CB63F02768D8BC00224DAB /* FDNotification.swift in Sources */,
 				492D0309269ED30700F944D0 /* Combine.swift in Sources */,
@@ -1728,6 +1735,7 @@
 				492D034C269EED9100F944D0 /* NetworkService.swift in Sources */,
 				492D02B1269D68AF00F944D0 /* FDUser.swift in Sources */,
 				494EFA0E278ED5D100743D89 /* JSON.swift in Sources */,
+				49CD463727C61344003F098F /* KeyPath+Helper.swift in Sources */,
 				4914AF0F26AA9B43002F2634 /* RequestsFooter.swift in Sources */,
 				49B9D545270EEDE1005BD619 /* InviteCell.swift in Sources */,
 				4914AEFE26AA793A002F2634 /* PlaceHeader.swift in Sources */,
@@ -1938,6 +1946,7 @@
 				494EF9EA278D35D900743D89 /* DraftUserProfile.swift in Sources */,
 				49874C1F27955EFC000EC5B0 /* Tests_BaseObjectViewModel.swift in Sources */,
 				49ACE0FB27B4D7A4007A2532 /* SocketMonitor.swift in Sources */,
+				49CD463827C61344003F098F /* KeyPath+Helper.swift in Sources */,
 				494EF977278D339900743D89 /* NSCoder.swift in Sources */,
 				494EF94F278D32EA00743D89 /* PreviewResource.swift in Sources */,
 				494EFA27278FE27E00743D89 /* NotificationCenter+Mock.swift in Sources */,
@@ -2050,6 +2059,7 @@
 				494EF906278D2DC100743D89 /* PaginatorProtocol.swift in Sources */,
 				49C6E73F27C49DD700FB0CC4 /* PaginationList.swift in Sources */,
 				494EF90E278D2E0E00743D89 /* NetworkPage.swift in Sources */,
+				49CD463927C61344003F098F /* KeyPath+Helper.swift in Sources */,
 				494EF96B278D338700743D89 /* FDDateTransform.swift in Sources */,
 				49C6E71C27C49CB800FB0CC4 /* UserProfileViewModel.swift in Sources */,
 				494EF92A278D2E3F00743D89 /* NotificationService.swift in Sources */,
