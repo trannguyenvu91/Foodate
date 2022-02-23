@@ -19,6 +19,7 @@ class OnboardingViewModel: BaseViewModel {
         mode == .signUp
     }
     
+    @MainActor
     func authenticateUser() async throws {
         switch mode {
         case .login:
@@ -30,7 +31,7 @@ class OnboardingViewModel: BaseViewModel {
         }
         try await LibraryAPI.shared.updateUserLocation()
         try LibraryAPI.shared.resetSessionUser()
-        //TODO: Update Appflow
+        AppFlow.shared.refresh.toggle()
     }
     
     func switchType() {

@@ -32,6 +32,7 @@ struct SettingView: View {
             Section {
                 Button {
                     try? LibraryAPI.shared.logOut()
+                    AppFlow.shared.refresh.toggle()
                 } label: {
                     HStack {
                         Spacer()
@@ -115,12 +116,14 @@ struct SettingView: View {
                             Text("SettingView_Set_Language_Vietnamese".localized()),
                             action: {
                                 language = "vi"
+                                AppFlow.shared.refresh.toggle()
                             }
                         ),
                         .default(
                             Text("SettingView_Set_Language_English".localized()),
                             action: {
                                 language = "en"
+                                AppFlow.shared.refresh.toggle()
                             }
                         )
                     ]
