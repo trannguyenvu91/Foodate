@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		490239E7277AC64F0019E7FF /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490239E6277AC64F0019E7FF /* LocationService.swift */; };
 		490239E8277AC64F0019E7FF /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490239E6277AC64F0019E7FF /* LocationService.swift */; };
-		490239EA277AFDB80019E7FF /* Error+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490239E9277AFDB80019E7FF /* Error+Extension.swift */; };
-		490239EB277AFDB90019E7FF /* Error+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490239E9277AFDB80019E7FF /* Error+Extension.swift */; };
+		490239EA277AFDB80019E7FF /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490239E9277AFDB80019E7FF /* Error.swift */; };
+		490239EB277AFDB90019E7FF /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490239E9277AFDB80019E7FF /* Error.swift */; };
 		4902DDBF277C280F004E88CD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4902DDBE277C280F004E88CD /* AppDelegate.swift */; };
 		4902DDC0277C280F004E88CD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4902DDBE277C280F004E88CD /* AppDelegate.swift */; };
 		490C486227699300005CEBDA /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490C486127699300005CEBDA /* NotificationCell.swift */; };
@@ -109,8 +109,6 @@
 		494EF901278C351100743D89 /* NetworkService+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494EF8FE278C350600743D89 /* NetworkService+Mock.swift */; };
 		494EF905278D2DC100743D89 /* PaginatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D0377269FD5D100F944D0 /* PaginatorProtocol.swift */; };
 		494EF906278D2DC100743D89 /* PaginatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D0377269FD5D100F944D0 /* PaginatorProtocol.swift */; };
-		494EF909278D2E0400743D89 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49889A3E2760641300485914 /* NetworkError.swift */; };
-		494EF90A278D2E0500743D89 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49889A3E2760641300485914 /* NetworkError.swift */; };
 		494EF90B278D2E0A00743D89 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D0344269EED9100F944D0 /* NetworkService.swift */; };
 		494EF90C278D2E0B00743D89 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D0344269EED9100F944D0 /* NetworkService.swift */; };
 		494EF90D278D2E0E00743D89 /* NetworkPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D0345269EED9100F944D0 /* NetworkPage.swift */; };
@@ -294,7 +292,7 @@
 		494EF9F2278D35FB00743D89 /* TabItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B29EDC277EE43D009104D3 /* TabItemType.swift */; };
 		494EF9F3278D35FB00743D89 /* OnboardingMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496F326F2762030600DA705E /* OnboardingMode.swift */; };
 		494EF9F4278D35FB00743D89 /* NotificationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DFA58F2768D99200583FF2 /* NotificationType.swift */; };
-		494EF9F5278D35FB00743D89 /* Error+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490239E9277AFDB80019E7FF /* Error+Extension.swift */; };
+		494EF9F5278D35FB00743D89 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490239E9277AFDB80019E7FF /* Error.swift */; };
 		494EF9F6278D35FB00743D89 /* InvitationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496F3272276203DD00DA705E /* InvitationState.swift */; };
 		494EF9F7278D35FB00743D89 /* InvitationAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496F3275276203F700DA705E /* InvitationAction.swift */; };
 		494EF9F8278D35FB00743D89 /* SearchType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496F326C276202EC00DA705E /* SearchType.swift */; };
@@ -303,7 +301,7 @@
 		494EF9FB278D35FC00743D89 /* TabItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B29EDC277EE43D009104D3 /* TabItemType.swift */; };
 		494EF9FC278D35FC00743D89 /* OnboardingMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496F326F2762030600DA705E /* OnboardingMode.swift */; };
 		494EF9FD278D35FC00743D89 /* NotificationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DFA58F2768D99200583FF2 /* NotificationType.swift */; };
-		494EF9FE278D35FC00743D89 /* Error+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490239E9277AFDB80019E7FF /* Error+Extension.swift */; };
+		494EF9FE278D35FC00743D89 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490239E9277AFDB80019E7FF /* Error.swift */; };
 		494EF9FF278D35FC00743D89 /* InvitationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496F3272276203DD00DA705E /* InvitationState.swift */; };
 		494EFA00278D35FC00743D89 /* InvitationAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496F3275276203F700DA705E /* InvitationAction.swift */; };
 		494EFA01278D35FC00743D89 /* SearchType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496F326C276202EC00DA705E /* SearchType.swift */; };
@@ -396,8 +394,6 @@
 		49874C262795A1CA000EC5B0 /* UserProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49874C242795A1CA000EC5B0 /* UserProtocol.swift */; };
 		49874C272795A1CA000EC5B0 /* UserProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49874C242795A1CA000EC5B0 /* UserProtocol.swift */; };
 		49874C282795A1CA000EC5B0 /* UserProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49874C242795A1CA000EC5B0 /* UserProtocol.swift */; };
-		49889A3F2760641300485914 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49889A3E2760641300485914 /* NetworkError.swift */; };
-		49889A402760641300485914 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49889A3E2760641300485914 /* NetworkError.swift */; };
 		4989B677269D43C900611D10 /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4989B676269D43C900611D10 /* Tests_iOS.swift */; };
 		4989B682269D43C900611D10 /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4989B681269D43C900611D10 /* Tests_macOS.swift */; };
 		4989B684269D43C900611D10 /* FoodateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4989B65B269D43C600611D10 /* FoodateApp.swift */; };
@@ -552,10 +548,6 @@
 		49C6E74927C51A8C00FB0CC4 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C6E74727C51A8C00FB0CC4 /* Constant.swift */; };
 		49C6E74A27C51A8C00FB0CC4 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C6E74727C51A8C00FB0CC4 /* Constant.swift */; };
 		49C6E74B27C51A8C00FB0CC4 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C6E74727C51A8C00FB0CC4 /* Constant.swift */; };
-		49C6E74D27C51F0300FB0CC4 /* NetworkActor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C6E74C27C51F0300FB0CC4 /* NetworkActor.swift */; };
-		49C6E74E27C51F0300FB0CC4 /* NetworkActor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C6E74C27C51F0300FB0CC4 /* NetworkActor.swift */; };
-		49C6E74F27C51F0300FB0CC4 /* NetworkActor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C6E74C27C51F0300FB0CC4 /* NetworkActor.swift */; };
-		49C6E75027C51F0300FB0CC4 /* NetworkActor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C6E74C27C51F0300FB0CC4 /* NetworkActor.swift */; };
 		49CA79FD26C67020005B79D9 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CA79FB26C67020005B79D9 /* EditProfileView.swift */; };
 		49CA7A0626C67061005B79D9 /* EditProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CA7A0526C67061005B79D9 /* EditProfileViewModel.swift */; };
 		49CA7A0726C67061005B79D9 /* EditProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CA7A0526C67061005B79D9 /* EditProfileViewModel.swift */; };
@@ -663,7 +655,7 @@
 
 /* Begin PBXFileReference section */
 		490239E6277AC64F0019E7FF /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
-		490239E9277AFDB80019E7FF /* Error+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+Extension.swift"; sourceTree = "<group>"; };
+		490239E9277AFDB80019E7FF /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		4902DDBE277C280F004E88CD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		490C486127699300005CEBDA /* NotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
 		490C486427699679005CEBDA /* notification.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = notification.json; sourceTree = "<group>"; };
@@ -753,7 +745,6 @@
 		49874C1E27955EFC000EC5B0 /* Tests_BaseObjectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_BaseObjectViewModel.swift; sourceTree = "<group>"; };
 		49874C2127955F12000EC5B0 /* Tests_BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_BaseViewModel.swift; sourceTree = "<group>"; };
 		49874C242795A1CA000EC5B0 /* UserProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProtocol.swift; sourceTree = "<group>"; };
-		49889A3E2760641300485914 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		4989B65B269D43C600611D10 /* FoodateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodateApp.swift; sourceTree = "<group>"; };
 		4989B65D269D43C900611D10 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4989B662269D43C900611D10 /* Foodate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Foodate.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -800,7 +791,6 @@
 		49C4E2C52711344F00C95EDC /* String+Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localized.swift"; sourceTree = "<group>"; };
 		49C6E74227C4B65300FB0CC4 /* ImportableJSONObject+CoreStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImportableJSONObject+CoreStore.swift"; sourceTree = "<group>"; };
 		49C6E74727C51A8C00FB0CC4 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
-		49C6E74C27C51F0300FB0CC4 /* NetworkActor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkActor.swift; sourceTree = "<group>"; };
 		49CA79FB26C67020005B79D9 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 		49CA7A0526C67061005B79D9 /* EditProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewModel.swift; sourceTree = "<group>"; };
 		49CB63E22768712400224DAB /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
@@ -920,11 +910,12 @@
 		492D02B6269D6AC200F944D0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				495F53E526B1545600E6E981 /* Paginators */,
 				496F3268276202AB00DA705E /* Enum */,
-				49C6E74C27C51F0300FB0CC4 /* NetworkActor.swift */,
 				495A9F0326E25726003F65B3 /* DraftUserProfile.swift */,
 				4948F78426D5D0E1003232DE /* DraftInvitation.swift */,
 				49904CDE26E26D9A006CE74F /* PropertyWrapper.swift */,
+				49ACE0F827B4D7A4007A2532 /* SocketMonitor.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -968,24 +959,6 @@
 				49874C242795A1CA000EC5B0 /* UserProtocol.swift */,
 			);
 			path = CoreData;
-			sourceTree = "<group>";
-		};
-		492D0356269EEDA100F944D0 /* Network */ = {
-			isa = PBXGroup;
-			children = (
-				492D0386269FF10E00F944D0 /* Base */,
-				495F53E526B1545600E6E981 /* Paginators */,
-			);
-			path = Network;
-			sourceTree = "<group>";
-		};
-		492D0386269FF10E00F944D0 /* Base */ = {
-			isa = PBXGroup;
-			children = (
-				49889A3E2760641300485914 /* NetworkError.swift */,
-				49ACE0F827B4D7A4007A2532 /* SocketMonitor.swift */,
-			);
-			path = Base;
 			sourceTree = "<group>";
 		};
 		492D03C326A01DB800F944D0 /* Screen */ = {
@@ -1106,7 +1079,7 @@
 				496F3272276203DD00DA705E /* InvitationState.swift */,
 				496F3275276203F700DA705E /* InvitationAction.swift */,
 				49DFA58F2768D99200583FF2 /* NotificationType.swift */,
-				490239E9277AFDB80019E7FF /* Error+Extension.swift */,
+				490239E9277AFDB80019E7FF /* Error.swift */,
 				49789EAF277DB9A700234A4F /* ScreenType.swift */,
 				49B29EDC277EE43D009104D3 /* TabItemType.swift */,
 			);
@@ -1304,7 +1277,6 @@
 				499B8D9B27BA3D750038492B /* LibraryAPI.swift */,
 				4945156B279E4FDA0066B693 /* Service */,
 				49DA1F5C26A18153001BF85B /* ASImage */,
-				492D0356269EEDA100F944D0 /* Network */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -1593,7 +1565,6 @@
 				495A9F0426E25726003F65B3 /* DraftUserProfile.swift in Sources */,
 				49DA1EB126A031BA001BF85B /* UserProfileViewModel.swift in Sources */,
 				492D030D269ED30700F944D0 /* NSCoder.swift in Sources */,
-				49C6E74D27C51F0300FB0CC4 /* NetworkActor.swift in Sources */,
 				49CB63F02768D8BC00224DAB /* FDNotification.swift in Sources */,
 				492D0309269ED30700F944D0 /* Combine.swift in Sources */,
 				499B0F9C270AF05A00CB1CD1 /* CalendarViewModel.swift in Sources */,
@@ -1607,7 +1578,6 @@
 				496F327C276357DD00DA705E /* EndResultView.swift in Sources */,
 				4902DDBF277C280F004E88CD /* AppDelegate.swift in Sources */,
 				496F327927620A2400DA705E /* PaginationList.swift in Sources */,
-				49889A3F2760641300485914 /* NetworkError.swift in Sources */,
 				492D0297269D4CB400F944D0 /* AppFlow.swift in Sources */,
 				49FA1C882766FB7B0088C245 /* NotificationView.swift in Sources */,
 				490C486227699300005CEBDA /* NotificationCell.swift in Sources */,
@@ -1648,7 +1618,7 @@
 				4965F29526B93AAF00C9B8E7 /* PresentButton.swift in Sources */,
 				492D031B269ED34300F944D0 /* DateFormatter.swift in Sources */,
 				4992DA0626BBE269007576DC /* Font.swift in Sources */,
-				490239EA277AFDB80019E7FF /* Error+Extension.swift in Sources */,
+				490239EA277AFDB80019E7FF /* Error.swift in Sources */,
 				4914AEE026A97654002F2634 /* InvitationCellModel.swift in Sources */,
 				492D03BD26A01DAB00F944D0 /* OnboardingView.swift in Sources */,
 				490239E7277AC64F0019E7FF /* LocationService.swift in Sources */,
@@ -1751,7 +1721,6 @@
 				4902DDC0277C280F004E88CD /* AppDelegate.swift in Sources */,
 				492D0298269D4CB400F944D0 /* AppFlow.swift in Sources */,
 				49C6E74427C4B65300FB0CC4 /* ImportableJSONObject+CoreStore.swift in Sources */,
-				49889A402760641300485914 /* NetworkError.swift in Sources */,
 				4914AF0326AA7AD2002F2634 /* RateHeader.swift in Sources */,
 				49DA1F3426A135B9001BF85B /* PhotosPageView.swift in Sources */,
 				492D02FC269ED30700F944D0 /* String.swift in Sources */,
@@ -1800,9 +1769,8 @@
 				491257C52710605A005B122F /* ViewDidLoadModifier.swift in Sources */,
 				492D03D826A021DA00F944D0 /* Error.swift in Sources */,
 				4992D9FD26BB93B9007576DC /* InviteViewModel.swift in Sources */,
-				490239EB277AFDB90019E7FF /* Error+Extension.swift in Sources */,
+				490239EB277AFDB90019E7FF /* Error.swift in Sources */,
 				4989B685269D43C900611D10 /* FoodateApp.swift in Sources */,
-				49C6E74E27C51F0300FB0CC4 /* NetworkActor.swift in Sources */,
 				49CB63E42768712400224DAB /* ResetPasswordView.swift in Sources */,
 				492D02C4269D6DF300F944D0 /* FDPhoto.swift in Sources */,
 				49FA1C862766EEE90088C245 /* EmptyResultView.swift in Sources */,
@@ -1848,7 +1816,6 @@
 				494EF976278D339900743D89 /* Error.swift in Sources */,
 				49C6E73927C49DC300FB0CC4 /* RequestsFooter.swift in Sources */,
 				494EF9E1278D347E00743D89 /* ReplyStateView.swift in Sources */,
-				49C6E74F27C51F0300FB0CC4 /* NetworkActor.swift in Sources */,
 				494EF998278D33D500743D89 /* ResetPasswordViewModel.swift in Sources */,
 				494EFA0B278D754900743D89 /* FieldStorableTypes.swift in Sources */,
 				494EFA0F278ED5D100743D89 /* JSON.swift in Sources */,
@@ -1898,7 +1865,7 @@
 				494EF92B278D2E5400743D89 /* v1.swift in Sources */,
 				494EF941278D2E9800743D89 /* FDLocation.swift in Sources */,
 				494EF9C5278D346000743D89 /* IconInputView.swift in Sources */,
-				494EF9F5278D35FB00743D89 /* Error+Extension.swift in Sources */,
+				494EF9F5278D35FB00743D89 /* Error.swift in Sources */,
 				494EF9BF278D346000743D89 /* AsyncButton.swift in Sources */,
 				494EF9D2278D346800743D89 /* InviteCell.swift in Sources */,
 				494EF9A7278D340000743D89 /* PlaceProfileView.swift in Sources */,
@@ -1932,7 +1899,6 @@
 				494EF98F278D33BE00743D89 /* FoodateApp.swift in Sources */,
 				494EF9DA278D346C00743D89 /* EndResultView.swift in Sources */,
 				494EF9D8278D346800743D89 /* InvitationCellModel.swift in Sources */,
-				494EF909278D2E0400743D89 /* NetworkError.swift in Sources */,
 				494EF928278D2E3E00743D89 /* NotificationService.swift in Sources */,
 				49874C19279519A9000EC5B0 /* Tests_AppSession.swift in Sources */,
 				4989B677269D43C900611D10 /* Tests_iOS.swift in Sources */,
@@ -2051,7 +2017,7 @@
 				494EF98C278D33A100743D89 /* Color.swift in Sources */,
 				494EF96C278D338700743D89 /* LocationTransform.swift in Sources */,
 				494EFA22278FDB6900743D89 /* Tests_LocationService.swift in Sources */,
-				494EF9FE278D35FC00743D89 /* Error+Extension.swift in Sources */,
+				494EF9FE278D35FC00743D89 /* Error.swift in Sources */,
 				494EF91D278D2E2C00743D89 /* InvitationPaginator.swift in Sources */,
 				494EF982278D339A00743D89 /* CLLocation.swift in Sources */,
 				49A44BAC27B2581B00766CDE /* ClockService.swift in Sources */,
@@ -2066,7 +2032,6 @@
 				494EFA28278FE27E00743D89 /* NotificationCenter+Mock.swift in Sources */,
 				49C6E72027C49D5700FB0CC4 /* SegmentedPicker.swift in Sources */,
 				499109D52796AFB40094C803 /* InvitationObservable.swift in Sources */,
-				49C6E75027C51F0300FB0CC4 /* NetworkActor.swift in Sources */,
 				494EF920278D2E2C00743D89 /* NotificationPaginator.swift in Sources */,
 				49C6E72127C49D5B00FB0CC4 /* LazyView.swift in Sources */,
 				494EF968278D338000743D89 /* DataStack+SQLiteStore.swift in Sources */,
@@ -2086,7 +2051,6 @@
 				49C6E73F27C49DD700FB0CC4 /* PaginationList.swift in Sources */,
 				494EF90E278D2E0E00743D89 /* NetworkPage.swift in Sources */,
 				494EF96B278D338700743D89 /* FDDateTransform.swift in Sources */,
-				494EF90A278D2E0500743D89 /* NetworkError.swift in Sources */,
 				49C6E71C27C49CB800FB0CC4 /* UserProfileViewModel.swift in Sources */,
 				494EF92A278D2E3F00743D89 /* NotificationService.swift in Sources */,
 				4989B682269D43C900611D10 /* Tests_macOS.swift in Sources */,

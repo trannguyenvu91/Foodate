@@ -14,7 +14,7 @@ class MockNetworkActor: ServiceActor {
     
     static var responseCase: MockResponse = .invitation
     
-    func request(url: String, method: HTTPMethod, parameters: JSON?, headers: HTTPHeaders = NetworkConfig.headers) async throws -> JSON {
+    func request(url: String, method: HTTPMethod, parameters: JSON?, headers: HTTPHeaders? = nil) async throws -> JSON {
         try Self.responseCase.jsonValue
     }
     
@@ -66,7 +66,7 @@ enum MockResponse {
             case .notificationPageShorten2:
                 return "notification_page_shorten_2"
             case .error, .custom(_):
-                throw AppError.fileNotFound
+                throw NetworkError.invalidJSONFormat
             }
         }
     }

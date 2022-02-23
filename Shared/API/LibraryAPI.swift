@@ -155,7 +155,7 @@ extension LibraryAPI {
                                                method: HTTPMethod = .get,
                                                parameters: JSON? = nil) async throws -> Result {
         guard let url = url else {
-            throw NetworkError(code: 999, message: "There is not a next page")
+            throw NetworkError.invalidAPI(url)
         }
         return try await networkService.request(url: url,
                                          method: method,
@@ -167,7 +167,7 @@ extension LibraryAPI {
                                                method: HTTPMethod = .get,
                                                parameters: JSON? = nil) async throws -> Result {
         guard let api = api else {
-            throw NetworkError(code: 999, message: "There is not a next page")
+            throw NetworkError.invalidAPI(api)
         }
         return try await networkService.request(url: serverBaseURL + api,
                                          method: method,

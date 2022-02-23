@@ -79,6 +79,8 @@
 "NotificationPermissionView_SubTitle" = "Recieve notifications about latest updates on invitations and events nearby.";
 "NotificationPermissionView_AllowButton" = "Yes, enable notifications";
 "NotificationPermissionView_SkipButton" = "Skip, ask me later";
+"Notification_Not_Granted" = "You turned off notification setting, this will affect the experience.";
+"Notification_Not_Available" = "Your notification is not available. Please try again later.";
 
 "ArchivedInvitationHeader_Title" = "Already archived";
 "ArchivedInvitationHeader_SubTitle" = "This is an archived invitation, you can only view this.";
@@ -145,3 +147,8 @@
 "SettingView_Set_Language_Cancel" = "Cancel";
 
 
+"AppError_InvalidAPI" = "API error happened: ";
+"AppError_InvalidJSONFormat" = "Error JSON formatted";
+"AppError_FileNotFound" = "File not found";
+"AppError_InvalidSession" = "Invalid session";
+"AppError_Unknown" = "Error happened";

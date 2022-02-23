@@ -8,11 +8,56 @@
 
 import Foundation
 
-extension Error {
-    var alertMessage: String {
-        if let error = self as? NetworkError {
-            return error.message + " (code: \(error.code))"
+extension Error where Self == NetworkError {
+    var localizedDescription: String {
+        switch self {
+        case .invalidAPI(let api):
+            return "AppError_InvalidAPI".localized() + (api ?? "--")
+        case .invalidStatusCode(let code, let message):
+            return message + "\(code)"
+        case .invalidJSONFormat:
+            return "AppError_InvalidJSONFormat".localized()
         }
-        return self.localizedDescription
+    }
+}
+
+extension Error where Self == LocationError {
+    
+    var localizeDescription: String {
+        switch self {
+        case .notGranted:
+            return "Location_Not_Granted".localized()
+        case .notAvailable:
+            return "Location_Not_Available".localized()
+        }
+    }
+    
+}
+
+extension Error where Self == NotificationError {
+    
+    var localizeDescription: String {
+        switch self {
+        case .notGranted:
+            return "Notification_Not_Granted".localized()
+        case .notAvailable:
+            return "Notification_Not_Available".localized()
+        }
+    }
+    
+}
+
+extension Error where Self == AppError {
+    var localizedDescription: String {
+        switch self {
+        case .unknown:
+            return "AppError_Unknown".localized()
+        case .fileNotFound:
+            return "AppError_FileNotFound".localized()
+        case .invalidJsonFormatted:
+            return "AppError_InvalidJSONFormat".localized()
+        case .invalidSession:
+            return "AppError_InvalidSession".localized()
+        }
     }
 }

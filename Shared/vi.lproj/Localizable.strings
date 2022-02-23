@@ -79,6 +79,8 @@
 "NotificationPermissionView_SubTitle" = "Nhận thông báo để được cập nhật mới nhất về lời mời và sự kiện quanh bạn.";
 "NotificationPermissionView_AllowButton" = "Bật thông báo";
 "NotificationPermissionView_SkipButton" = "Không. Nhắc tôi sau";
+"Notification_Not_Granted" = "Bạn đã tắt dịch vụ thông báo, bạn có thể bật lại trong cài đặt.";
+"Notification_Not_Available" = "Dịch vụ thông báo không khả dụng. Xin vui lòng thử lại sau.";
 
 "ArchivedInvitationHeader_Title" = "Đã diễn ra";
 "ArchivedInvitationHeader_SubTitle" = "Lời mời đã diễn ra, bạn chỉ có thể xem lại lời mời này.";
@@ -143,3 +145,10 @@
 "SettingView_Set_Language_English" = "Tiếng Anh";
 "SettingView_Set_Language_Vietnamese" = "Tiếng Việt";
 "SettingView_Set_Language_Cancel" = "Huỷ";
+
+
+"AppError_InvalidAPI" = "Lỗi API: ";
+"AppError_InvalidJSONFormat" = "Lỗi định dạng JSON";
+"AppError_FileNotFound" = "Không thể tìm thấy file";
+"AppError_InvalidSession" = "Phiên làm việc lỗi";
+"AppError_Unknown" = "Đã có lỗi xảy ra";

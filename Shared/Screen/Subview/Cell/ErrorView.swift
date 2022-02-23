@@ -19,7 +19,7 @@ struct ErrorView: View {
                     .resizable()
                     .scaledToFit()
                     .width(40)
-                Text(error.alertMessage)
+                Text(error.localizedDescription)
                     .font(.callout)
                     .multilineTextAlignment(.center)
                     .frame(width: 250)

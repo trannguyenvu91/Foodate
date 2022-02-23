@@ -10,7 +10,7 @@ import SwiftUI
 extension Alert {
     
     init(error: Error?) {
-        let message = error?.alertMessage ?? ""
+        let message = error?.localizedDescription ?? ""
         self.init(title: Text("Alert_Error_Title".localized()),
                   message: Text(message),
                   dismissButton: .cancel(Text("Ok")))

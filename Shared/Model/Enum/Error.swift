@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 enum AppError: Error {
     case unknown
     case fileNotFound
@@ -18,16 +17,6 @@ enum AppError: Error {
 enum LocationError: Error {
     case notGranted
     case notAvailable
-    
-    var alertMessage: String {
-        switch self {
-        case .notGranted:
-            return "Location_Not_Granted".localized()
-        case .notAvailable:
-            return "Location_Not_Available".localized()
-        }
-    }
-    
 }
 
 enum NotificationError: Error {
