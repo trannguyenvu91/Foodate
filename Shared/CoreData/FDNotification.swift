@@ -11,13 +11,6 @@ import ObjectMapper
 
 extension FDNotification: ImportableUniqueObject, ImportableJSONObject {
     
-    //TODO: Reduce duplication
-    static func importObject(from source: JSON) throws -> Self {
-        try DataStack.defaultStack.perform { transaction in
-            try transaction.importUniqueObject(Into<Self>(), source: source)!
-        }
-    }
-    
     static var uniqueIDKeyPath: String {
         "id"
     }

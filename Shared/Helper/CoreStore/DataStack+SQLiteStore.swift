@@ -9,7 +9,7 @@ import CoreStore
 
 extension DataStack {
     class var defaultStack: DataStack {
-        return FDCoreStore.shared.dataStack
+        LibraryAPI.shared.dataStack
     }
 }
 

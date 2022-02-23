@@ -16,7 +16,7 @@ func listenSocket() {
             guard let invitationID = notification.asSnapshot(in: .defaultStack)?.$invitation?.asSnapshot(in: .defaultStack)?.$id else {
                 return
             }
-            AppSession.shared.presentScreen = .invitation(invitationID)
+            AppFlow.shared.presentScreen = .invitation(invitationID)
         } catch {
             print(error.localizedDescription)
         }

@@ -88,12 +88,6 @@ extension ObjectSnapshot where O: FDPlace {
 
 extension FDPlace: RemoteObject, ImportableJSONObject {
     
-    static func importObject(from source: JSON) throws -> Self {
-        try DataStack.defaultStack.perform { transaction in
-            try transaction.importUniqueObject(Into<Self>(), source: source)!
-        }
-    }
-    
     static var uniqueIDKeyPath: String {
         "place_id"
     }
@@ -119,8 +113,8 @@ extension FDPlace: RemoteObject, ImportableJSONObject {
     typealias UniqueIDType = String
     typealias ImportSource = JSON
 
-    static func fetchRemoteObject(id: String) async throws -> Self {
-        try await LibraryAPI.shared.getPlace(ID: id) as! Self
+    static func fetchRemoteObject(id: String, success: SuccessCallback<FDPlace>) async throws {
+        try await LibraryAPI.shared.getPlace(ID: id, success: success)
     }
     
 }

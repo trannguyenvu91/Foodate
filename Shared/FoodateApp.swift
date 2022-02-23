@@ -12,7 +12,7 @@ import Contacts
 @main
 struct FoodateApp: App {
     
-    @StateObject var config = AppSession.shared
+    @StateObject var config = AppFlow.shared
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
     var body: some Scene {
@@ -31,10 +31,10 @@ struct FoodateApp: App {
     
     var mainView: some View {
         Group {
-            if !LocationService.shared.isPermissionGranted {
+            if !LibraryAPI.shared.isLocationPermissionGranted {
                 LocationPermissionView()
-            } else if let id = config.sessionUser?.$id,
-                      let user = try? FDUserProfile.fetchOne(id: id),
+            } else if let id = LibraryAPI.shared.userSnapshot?.$id,
+                      let user = try? LibraryAPI.shared.fetchOne(FDUserProfile.self, id: id),
                       let _ = user.asPublisher(in: .defaultStack) {
                 TabBarView()
             } else {

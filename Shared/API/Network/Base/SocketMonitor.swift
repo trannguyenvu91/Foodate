@@ -38,16 +38,8 @@ class SocketMonitor: NSObject {
         socket.resume()
     }
     
-    func send(_ message: URLSessionWebSocketTask.Message) async throws -> Bool {
-        try await withUnsafeThrowingContinuation { continuation in
-            socket.send(message) { error in
-                guard let error = error else {
-                    continuation.resume(with: .success(true))
-                    return
-                }
-                continuation.resume(with: .failure(error))
-            }
-        }
+    func send(_ message: URLSessionWebSocketTask.Message) async throws {
+        try await socket.send(message)
     }
     
     func stop() {

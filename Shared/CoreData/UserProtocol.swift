@@ -16,7 +16,7 @@ protocol UserProtocol {
 extension UserProtocol {
     var userProfile: FDUserProfile {
         get throws {
-            if let profile = try FDUserProfile.fetchOne(id: id) {
+            if let profile = try LibraryAPI.shared.fetchOne(FDUserProfile.self, id: id) {
                 return profile
             }
             let profile = try DataStack.defaultStack.perform { transaction -> FDUserProfile in

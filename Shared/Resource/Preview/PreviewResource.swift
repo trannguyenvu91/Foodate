@@ -14,7 +14,6 @@ class PreviewResource: NSObject {
     
     convenience init(_ store: SQLiteStore = .preview) {
         self.init()
-        try? FDCoreStore.shared.setup(store)
     }
     
     func loadObject<T: ImportableJSONObject>(source: String, ofType: String) -> T {

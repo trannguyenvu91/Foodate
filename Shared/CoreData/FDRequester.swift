@@ -21,11 +21,5 @@ extension FDRequester: ImportableUniqueObject, ImportableJSONObject {
     typealias UniqueIDType = Int
     typealias ImportSource = JSON
     
-    static func importObject(from source: JSON) throws -> Self {
-        try DataStack.defaultStack.perform { transaction in
-            try transaction.importUniqueObject(Into<Self>(), source: source)!
-        }
-    }
-    
 }
 

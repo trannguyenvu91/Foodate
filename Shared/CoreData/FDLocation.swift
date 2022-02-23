@@ -64,7 +64,7 @@ extension FDLocation: Equatable {
     }
     
     var distanceFromCurrent: String? {
-        guard let current = AppSession.shared.sessionUser?.asSnapshot(in: .defaultStack)?.$location else { return nil }
+        guard let current = LibraryAPI.shared.userSnapshot?.$location else { return nil }
         let distance = self.distance(from: current)
         if distance > 1000 {
             return String(format: "%.1f km", distance / 1000.0)

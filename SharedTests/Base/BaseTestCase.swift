@@ -17,7 +17,7 @@ class BaseTestCase: XCTestCase {
     override func setUpWithError() throws {
         try super.setUpWithError()
         LocationService.shared = LocationService(locationManager)
-        try FDCoreStore.shared.setup(.test)
+        try PersistanceService.shared.setup(.test)
         NetworkService.shared = NetworkService(mockActor)
     }
 

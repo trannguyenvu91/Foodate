@@ -18,7 +18,7 @@ extension ObjectSnapshot: UserProtocol where O: FDBaseUser {
     }
     
     var isSession: Bool {
-        self.$id == AppSession.shared.sessionUser?.$id
+        self.$id == LibraryAPI.shared.userSnapshot?.$id
     }
     
     var id: Int {
@@ -29,7 +29,7 @@ extension ObjectSnapshot: UserProtocol where O: FDBaseUser {
 
 extension ObjectPublisher where O: FDBaseUser {
     var isSession: Bool {
-        self.$id == AppSession.shared.sessionUser?.$id
+        self.$id == LibraryAPI.shared.userSnapshot?.$id
     }
 }
 
@@ -45,17 +45,8 @@ extension ObjectSnapshot where O: FDUserProfile {
 }
 
 extension FDUserProfile: RemoteObject {
-    
-    class func fetchOne(id: Int) throws -> FDUserProfile? {
-        let user: FDUserProfile? = try DataStack.defaultStack.fetchOne(
-            From<FDUserProfile>(),
-            Where(\FDUser.$id == id)
-        )
-        return user
-    }
-
-    static func fetchRemoteObject(id: Int) async throws -> Self {
-        try await LibraryAPI.shared.getUser(ID: id) as! Self
+    static func fetchRemoteObject(id: Int, success: SuccessCallback<FDUserProfile>) async throws {
+        try await LibraryAPI.shared.getUser(ID: id, success: success)
     }
     
 }
@@ -73,10 +64,4 @@ extension FDUser: ImportableUniqueObject, ImportableJSONObject {
     typealias UniqueIDType = Int
     typealias ImportSource = JSON
     
-    
-    static func importObject(from source: JSON) throws -> Self {
-        try DataStack.defaultStack.perform { transaction in
-            try transaction.importUniqueObject(Into<Self>(), source: source)!
-        }
-    }
 }

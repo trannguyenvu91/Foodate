@@ -26,13 +26,7 @@ struct NetworkPage<Item> where Item: ImportableJSONObject {
     }
     
     func fetchNext() async throws -> NetworkPage<Item> {
-        guard let nextUrl = nextURL else {
-            throw NetworkError(code: 999, message: "There is not a next page")
-        }
-        let response = try await NetworkService.shared.request(url: nextUrl,
-                                                        method: .get,
-                                                        parameters: params)
-        var nextPage = try NetworkPage<Item>.importObject(from: response)
+        var nextPage = try await LibraryAPI.shared.requestNext(of: self)
         nextPage.params = params
         return nextPage
     }
@@ -40,6 +34,7 @@ struct NetworkPage<Item> where Item: ImportableJSONObject {
 }
 
 extension NetworkPage: ImportableJSONObject {
+    
     static func importObject(from source: JSON) throws -> NetworkPage<Item> {
         NetworkPage<Item>(
             nextURL: source["next"] as? String,

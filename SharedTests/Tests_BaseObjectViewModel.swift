@@ -18,7 +18,7 @@ class Tests_BaseObjectViewModel: BaseTestCase {
     override func setUpWithError() throws {
         try super.setUpWithError()
         MockNetworkActor.responseCase = .invitation
-        try FDCoreStore.shared.deleteAll(Where<FDInvitation>(true))
+        try PersistanceService.shared.deleteAll(Where<FDInvitation>(true))
     }
 
     override func tearDownWithError() throws {}

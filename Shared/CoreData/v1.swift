@@ -181,7 +181,7 @@ extension v1 {
 //MARK: Place
 extension v1 {
     
-    class FDPlace: CoreStoreObject {
+    final class FDPlace: CoreStoreObject {
         @Field.Stored("place_id")
         @objc var id: String = ""
         @Field.Stored("name")
@@ -230,15 +230,9 @@ extension v1 {
             owner = try transaction.importUniqueObject(Into<FDUser>(), source: (source["owner"] as? JSON)!)
         }
         
-        static func importObject(from source: JSON) throws -> Self {
-            try DataStack.defaultStack.perform { transaction in
-                try transaction.importUniqueObject(Into<Self>(), source: source)!
-            }
-        }
-        
     }
     
-    class FDInvitation: FDBaseInvitation {
+    final class FDInvitation: FDBaseInvitation {
         @Field.Stored("start_at")
         var startAt: Date!
         @Field.Stored("end_at")

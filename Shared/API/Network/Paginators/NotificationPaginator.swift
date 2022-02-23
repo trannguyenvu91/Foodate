@@ -9,7 +9,7 @@ import Foundation
 
 class NotificationPaginator: Paginator<FDNotification> {
     convenience init() {
-        let url = NetworkConfig.baseURL + "/api/v1/notifications/"
+        let url = serverBaseURL + "/api/v1/notifications/"
         let page = NetworkPage<FDNotification>(nextURL: url)
         self.init(page)
     }

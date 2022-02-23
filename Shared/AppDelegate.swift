@@ -12,19 +12,21 @@ class AppDelegate: NSObject {}
 
 extension AppDelegate: UIApplicationDelegate {
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-        NotificationService.shared = NotificationService(center: .current, application: application)
+    func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions
+                     launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        LibraryAPI.shared = LibraryAPI(application)
         return true
     }
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         let tokenParts = deviceToken.map { data in String(format: "%02.2hhx", data) }
         let token = tokenParts.joined()
-        NotificationService.shared.didReceive(token: token, error: nil)
+        LibraryAPI.shared.didReceiveNotification(token: token, error: nil)
     }
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
-        NotificationService.shared.didReceive(token: nil, error: error)
+        LibraryAPI.shared.didReceiveNotification(token: nil, error: error)
     }
     
 }

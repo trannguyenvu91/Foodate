@@ -22,7 +22,7 @@ extension HTTPMethod {
 extension Session {
     static var standard: Session = {
         let config = URLSessionConfiguration.af.default
-        config.timeoutIntervalForRequest = NetworkConfig.timeout
+        config.timeoutIntervalForRequest = requestTimeout
         return Session(configuration: config)
     }()
 }
