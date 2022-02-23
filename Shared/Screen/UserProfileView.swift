@@ -11,8 +11,6 @@ import CoreStore
 struct UserProfileView: View {
     
     @StateObject var model: UserProfileViewModel
-    @State var presentSheet = false
-    @State var pushEditProfile = false
     
     var body: some View {
         GeometryReader { proxy in

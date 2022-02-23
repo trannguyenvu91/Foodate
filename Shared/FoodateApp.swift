@@ -12,15 +12,15 @@ import Contacts
 @main
 struct FoodateApp: App {
     
-    @StateObject var config = AppFlow.shared
+    @StateObject var flow = AppFlow.shared
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
     var body: some Scene {
         WindowGroup {
             mainView
-                .environmentObject(config)
-                .sheet(isPresented: $config.isPresentingScreen) {
-                    if let view = config.presentScreen?.view {
+                .environmentObject(flow)
+                .sheet(isPresented: $flow.isPresentingScreen) {
+                    if let view = flow.presentScreen?.view {
                         view
                     } else {
                         EmptyView()

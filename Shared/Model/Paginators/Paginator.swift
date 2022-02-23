@@ -34,12 +34,14 @@ class Paginator<Item>: NSObject, PaginatorProtocol where Item: Equatable & Impor
         guard !isFetching, hasNext else {
             return
         }
-        isFetching = true
         defer {
             isFetching = false
             isRefreshing = false
-            objectWillChange.send()
+            DispatchQueue.main.async { [weak self] in
+                self?.objectWillChange.send()
+            }
         }
+        isFetching = true
         do {
             let nextPage = try await currentPage?.fetchNext()
             if isRefreshing {

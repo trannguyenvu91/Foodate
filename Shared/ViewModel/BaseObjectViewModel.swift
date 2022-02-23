@@ -11,7 +11,7 @@ import CoreStore
 
 class BaseObjectViewModel<Object>: BaseViewModel where Object: CoreStoreObject & ImportableUniqueObject {
     
-    @Published var publisher: ObjectPublisher<Object>?
+    var publisher: ObjectPublisher<Object>?
     var snapshot: ObjectSnapshot<Object>? {
         publisher?.asSnapshot(in: .defaultStack)
     }
@@ -42,24 +42,33 @@ class BaseObjectViewModel<Object>: BaseViewModel where Object: CoreStoreObject &
 
 extension BaseObjectViewModel where Object == FDUserProfile {
     func loadObject() async throws {
-        try await LibraryAPI.shared.getUser(ID: objectID) { [weak self] object in
-            self?.publisher = object.asPublisher(in: .defaultStack)
+        try await LibraryAPI.shared.getUser(ID: objectID) { object in
+            DispatchQueue.main.async {  [weak self] in
+                guard self?.publisher == nil else { return }
+                self?.publisher = object.asPublisher(in: .defaultStack)
+            }
         }
     }
 }
 
 extension BaseObjectViewModel where Object == FDInvitation {
     func loadObject() async throws {
-        try await LibraryAPI.shared.getInvitation(ID: objectID) { [weak self] object in
-            self?.publisher = object.asPublisher(in: .defaultStack)
+        try await LibraryAPI.shared.getInvitation(ID: objectID) { object in
+            DispatchQueue.main.async {  [weak self] in
+                guard self?.publisher == nil else { return }
+                self?.publisher = object.asPublisher(in: .defaultStack)
+            }
         }
     }
 }
 
 extension BaseObjectViewModel where Object == FDPlace {
     func loadObject() async throws {
-        try await LibraryAPI.shared.getPlace(ID: objectID) { [weak self] object in
-            self?.publisher = object.asPublisher(in: .defaultStack)
+        try await LibraryAPI.shared.getPlace(ID: objectID) { object in
+            DispatchQueue.main.async {  [weak self] in
+                guard self?.publisher == nil else { return }
+                self?.publisher = object.asPublisher(in: .defaultStack)
+            }
         }
     }
 }

@@ -1107,11 +1107,11 @@
 				492D0296269D4CB400F944D0 /* AppFlow.swift */,
 				4902DDBE277C280F004E88CD /* AppDelegate.swift */,
 				49C6E74727C51A8C00FB0CC4 /* Constant.swift */,
+				49DA1ECE26A0390F001BF85B /* API */,
 				498CAD8626E7885900478403 /* ViewModel */,
 				492D03C326A01DB800F944D0 /* Screen */,
 				492D033D269EEBB100F944D0 /* CoreData */,
 				492D02B6269D6AC200F944D0 /* Model */,
-				49DA1ECE26A0390F001BF85B /* API */,
 				492D0315269ED30F00F944D0 /* Extension */,
 				49DA1ECC26A038EF001BF85B /* Resource */,
 				496F32622761FD3900DA705E /* Helper */,
@@ -1250,6 +1250,7 @@
 		49DA1ECC26A038EF001BF85B /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				49DA1ED626A03B87001BF85B /* PreviewResource.swift */,
 				49DA1ECD26A038FD001BF85B /* Preview */,
 			);
 			path = Resource;
@@ -1266,7 +1267,6 @@
 				494EFA18278EEA5700743D89 /* notification_page.json */,
 				499109C4279686D50094C803 /* notification_page_shorten.json */,
 				499109C92796A5D60094C803 /* notification_page_shorten_2.json */,
-				49DA1ED626A03B87001BF85B /* PreviewResource.swift */,
 			);
 			path = Preview;
 			sourceTree = "<group>";
