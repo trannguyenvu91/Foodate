@@ -13,7 +13,7 @@ class Tests_LocationService: BaseTestCase {
         locationManager.authorizationStatus = .notDetermined
         locationManager._willChangeAuthorizationStatus = .authorizedWhenInUse
         locationManager._updatingLocationResult = .success(.init(latitude: 9, longitude: 10))
-        let location = try await LocationService.shared.requestLocation()
+        let location = try await locationService.requestLocation()
         XCTAssertNotNil(location)
         XCTAssertEqual(location.coordinate.latitude, 9)
         XCTAssertEqual(location.coordinate.longitude, 10)
@@ -22,7 +22,7 @@ class Tests_LocationService: BaseTestCase {
     func testStatusAuthorized() async throws {
         locationManager.authorizationStatus = .authorizedWhenInUse
         locationManager._updatingLocationResult = .success(.init(latitude: 9, longitude: 10))
-        let location = try await LocationService.shared.requestLocation()
+        let location = try await locationService.requestLocation()
         XCTAssertNotNil(location)
         XCTAssertEqual(location.coordinate.latitude, 9)
         XCTAssertEqual(location.coordinate.longitude, 10)
@@ -32,7 +32,7 @@ class Tests_LocationService: BaseTestCase {
         locationManager.authorizationStatus = .denied
         locationManager._updatingLocationResult = .error(LocationError.notGranted)
         do {
-            let _ = try await LocationService.shared.requestLocation()
+            let _ = try await locationService.requestLocation()
         } catch {
             XCTAssertNotNil(error)
         }
@@ -43,7 +43,7 @@ class Tests_LocationService: BaseTestCase {
         locationManager._willChangeAuthorizationStatus = .authorizedWhenInUse
         locationManager._updatingLocationResult = .error(LocationError.notAvailable)
         do {
-            let _ = try await LocationService.shared.requestLocation()
+            let _ = try await locationService.requestLocation()
         } catch {
             XCTAssertNotNil(error)
         }

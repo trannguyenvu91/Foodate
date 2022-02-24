@@ -34,6 +34,7 @@ extension ListViewModel where Self: BaseViewModel  {
         
     }
     
+    @MainActor
     func fetchNext() async {
         do {
             try await paginator.fetchNext()

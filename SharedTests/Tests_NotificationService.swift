@@ -10,50 +10,45 @@ import UserNotifications
 
 class Tests_NotificationService: BaseTestCase {
     
-    let application = MockApplication()
-    let appDelegate = AppDelegate()
-    let center = MockNotificationCenter()
-    
     lazy var service: NotificationService = {
-        NotificationService(center: center, application: application)
+        NotificationService(center: notificationCenter, application: application)
     }()
 
     override func setUpWithError() throws {
-        NotificationService.shared = service
-        application.delegate = appDelegate
+        try super.setUpWithError()
         UNNotificationSettings.swizzleAuthorizationStatus()
     }
 
     func testRequestAuthorization() async throws {
-        center._requestAuthorizationResult = true
+        notificationCenter._requestAuthorizationResult = true
         var request = try await service.requestAuthorization()
         XCTAssertTrue(request)
-        center._requestAuthorizationResult = false
+        notificationCenter._requestAuthorizationResult = false
         request = try await service.requestAuthorization()
         XCTAssertFalse(request)
     }
     
     func testAuthorizationStatus() async {
         UNNotificationSettings.fakeAuthorizationStatus = .denied
-        var status = await service.getAuthorizationStatus()
+        var status = await service.authorizationStatus
         XCTAssertEqual(status, .denied)
         UNNotificationSettings.fakeAuthorizationStatus = .authorized
-        status = await service.getAuthorizationStatus()
+        status = await service.authorizationStatus
         XCTAssertEqual(status, .authorized)
         UNNotificationSettings.fakeAuthorizationStatus = .notDetermined
-        status = await service.getAuthorizationStatus()
+        status = await service.authorizationStatus
         XCTAssertEqual(status, .notDetermined)
     }
     
     func testRegisterNotificationsError() async throws {
-        center._requestAuthorizationResult = false
+        notificationCenter._requestAuthorizationResult = false
         do {
             let _ = try await service.registerNotifications()
         } catch {
             XCTAssertEqual(error as? NotificationError, NotificationError.notGranted)
         }
         //Granted
-        center._requestAuthorizationResult = true
+        notificationCenter._requestAuthorizationResult = true
         application._notificationRegisterResult = .error(NotificationError.notAvailable)
         do {
             let _ = try await service.registerNotifications()
@@ -64,7 +59,7 @@ class Tests_NotificationService: BaseTestCase {
     
     func testRegisterNotificationsSuccess() async throws {
         let token = "740f4707"
-        center._requestAuthorizationResult = true
+        notificationCenter._requestAuthorizationResult = true
         application._notificationRegisterResult = .success(token)
         let registeredToken = try await service.registerNotifications()
         XCTAssertEqual(token, registeredToken)

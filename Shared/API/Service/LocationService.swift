@@ -35,7 +35,6 @@ extension LocationManager where Self == CLLocationManager {
 }
 
 class LocationService: NSObject {
-    static var shared: LocationService!
     private var manager: LocationManager
     private var queueCallbacks = [LocationCallback]()
     private var lastLocation: CLLocation?

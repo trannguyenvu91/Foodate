@@ -7,71 +7,76 @@
 
 import XCTest
 import CoreStore
+import Combine
 
 class Tests_BaseObjectViewModel: BaseTestCase {
     
-    lazy var objectID: Int = {
-        try! MockResponse.invitation.jsonValue["id"] as! Int
-    }()
-    lazy var model = BaseObjectViewModel<FDInvitation>(objectID)
-
+    lazy var model = BaseObjectViewModel<FDInvitation>(invitationID)
+    var invitationJSON: JSON {
+        try! MockResponse.invitation.jsonValue
+    }
+    var invitationID: Int {
+        invitationJSON["id"] as! Int
+    }
+    
     override func setUpWithError() throws {
         try super.setUpWithError()
         MockNetworkActor.responseCase = .invitation
-        try PersistanceService.shared.deleteAll(Where<FDInvitation>(true))
-    }
-
-    override func tearDownWithError() throws {}
-
-    func testLoadObjectSuccess() async throws {
-        var local = try await model.fetchLocalObject()
-        XCTAssertNil(local)
-        XCTAssertNil(model.publisher)
-        XCTAssertNil(model.snapshot)
-        
-        try await model.loadObject()
-        XCTAssertNotNil(model.publisher)
-        XCTAssertNotNil(model.snapshot)
-        
-        local = try await model.fetchLocalObject()
-        XCTAssertNotNil(local)
+        try LibraryAPI.shared.deleteAll(FDInvitation.self)
     }
     
-    func testLoadObjectFailed() async throws {
+    func testExistedLocalWithErrorNetwork() async throws {
         MockNetworkActor.responseCase = .error
-        var local = try await model.fetchLocalObject()
-        XCTAssertNil(local)
-        XCTAssertNil(model.publisher)
-        XCTAssertNil(model.snapshot)
-        
+        try LibraryAPI.shared.saveUniqueObject(FDInvitation.self, from: invitationJSON)
+        let expect = XCTestExpectation()
         do {
-            try await model.loadObject()
+            try await LibraryAPI.shared.getInvitation(ID: invitationID,
+                                                      success: { publisher in
+                publisher != nil ? expect.fulfill() : ()
+            })
         } catch {
-            XCTAssertNotNil(error)
+            XCTAssert(error is NetworkError)
         }
-        XCTAssertNil(model.publisher)
-        XCTAssertNil(model.snapshot)
-        
-        local = try await model.fetchLocalObject()
-        XCTAssertNil(local)
+        wait(for: [expect], timeout: 2)
     }
     
-    func testFetchLocalObject() async throws {
-        //import local object
+    func testEmptyLocalWithErrorNetwork() async throws {
+        MockNetworkActor.responseCase = .error
+        try LibraryAPI.shared.deleteAll(FDInvitation.self)
+        let expect = XCTestExpectation()
+        do {
+            try await LibraryAPI.shared.getInvitation(ID: invitationID,
+                                                      success: { publisher in
+                publisher == nil ? expect.fulfill() : ()
+            })
+        } catch {
+            XCTAssert(error is NetworkError)
+        }
+        wait(for: [expect], timeout: 2)
+    }
+    
+    func testEmptyLocalWithSuccessNetwork() async throws {
         MockNetworkActor.responseCase = .invitation
-        let _ = try await FDInvitation.fetchRemoteObject(id: objectID)
-        MockNetworkActor.responseCase = .error
-        let local = try await model.fetchLocalObject()
+        try LibraryAPI.shared.deleteAll(FDInvitation.self)
         
-        //fetch local success but failed at remote
-        XCTAssertNotNil(local)
-        XCTAssertNil(model.publisher)
-        do {
-            try await model.loadObject()
-        } catch {
-            XCTAssertNotNil(error)
-        }
-        XCTAssertNotNil(model.publisher)
+        let expect = XCTestExpectation()
+        try await LibraryAPI.shared.getInvitation(ID: invitationID,
+                                                  success: { publisher in
+            publisher != nil ? expect.fulfill() : ()
+        })
+        wait(for: [expect], timeout: 2)
     }
-
+    
+    func testExistedLocalWithSuccessNetwork() async throws {
+        MockNetworkActor.responseCase = .invitation
+        try LibraryAPI.shared.saveUniqueObject(FDInvitation.self, from: invitationJSON)
+        
+        let expect = XCTestExpectation()
+        try await LibraryAPI.shared.getInvitation(ID: invitationID,
+                                                  success: { publisher in
+            publisher != nil ? expect.fulfill() : ()
+        })
+        wait(for: [expect], timeout: 2)
+    }
+    
 }

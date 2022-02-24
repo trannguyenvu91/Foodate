@@ -23,6 +23,7 @@ class Tests_SearchablePaginator: BaseTestCase {
 
     override func tearDownWithError() throws {}
 
+    @MainActor
     func testSearch() async throws {
         try await paginator.search(["name": "a"])
         XCTAssertEqual(paginator.items.asSnapshots().map(\.$id), searchPage.results?.asSnapshots().map(\.$id))

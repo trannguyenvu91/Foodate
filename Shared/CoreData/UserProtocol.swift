@@ -16,19 +16,25 @@ protocol UserProtocol {
 extension UserProtocol {
     var userProfile: FDUserProfile {
         get throws {
-            if let profile = try LibraryAPI.shared.fetchOne(FDUserProfile.self, id: id) {
-                return profile
-            }
-            let profile = try DataStack.defaultStack.perform { transaction -> FDUserProfile in
-                let profile = transaction.create(Into<FDUserProfile>())
-                let photo = transaction.create(Into<FDPhoto>())
-                profile.id = id
-                profile.firstName = name
-                photo.baseURL = imageURL
-                profile.photos = [photo]
-                return profile
-            }
+            try LibraryAPI.shared.fetchUserProfile(from: self)
+        }
+    }
+}
+
+internal extension LibraryAPI {
+    func fetchUserProfile(from user: UserProtocol) throws -> FDUserProfile {
+        if let profile = try LibraryAPI.shared.fetchOne(FDUserProfile.self, id: user.id) {
             return profile
         }
+        let profile = try dataStack.perform { transaction -> FDUserProfile in
+            let profile = transaction.create(Into<FDUserProfile>())
+            let photo = transaction.create(Into<FDPhoto>())
+            profile.id = user.id
+            profile.firstName = user.name
+            photo.baseURL = user.imageURL
+            profile.photos = [photo]
+            return profile
+        }
+        return profile
     }
 }

@@ -11,14 +11,23 @@ import Combine
 class BaseTestCase: XCTestCase {
     
     var cancelableSet = [AnyCancellable]()
-    let mockActor = MockNetworkActor()
+    let networkActor = MockNetworkActor()
     let locationManager = MockLocationManager()
+    let application = MockApplication()
+    let notificationCenter = MockNotificationCenter()
+    let appDelegate = AppDelegate()
+    
+    lazy var persistance = try! PersistanceService(.test)
+    lazy var networkService = NetworkService(networkActor)
+    lazy var locationService = LocationService(locationManager)
     
     override func setUpWithError() throws {
         try super.setUpWithError()
-        LocationService.shared = LocationService(locationManager)
-        try PersistanceService.shared.setup(.test)
-        NetworkService.shared = NetworkService(mockActor)
+        application.delegate = appDelegate
+        LibraryAPI.shared = LibraryAPI(application,
+                                       persistance: persistance,
+                                       networkService: networkService,
+                                       locationService: locationService)
     }
 
     override func tearDownWithError() throws {

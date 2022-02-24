@@ -20,25 +20,31 @@ class LibraryAPI {
     var userSnapshot: ObjectSnapshot<FDSessionUser>?
     var newInvitation = PassthroughSubject<FDInvitation, Never>()
     
-    private let database = try! PersistanceService()
-    private let networkService = NetworkService(.standard)
-    private let locationService = LocationService(.standard)
+    private let persistance: PersistanceService
+    private let networkService: NetworkService
+    private let locationService: LocationService
     private var notificationService: NotificationService
     
-    init(_ application: Application) {
-        notificationService = NotificationService(center: .current,
+    init(_ application: Application,
+         persistance: PersistanceService = try! PersistanceService(),
+         networkService: NetworkService = NetworkService(.standard),
+         locationService: LocationService = LocationService(.standard)) {
+        self.persistance = persistance
+        self.networkService = networkService
+        self.locationService = locationService
+        self.notificationService = NotificationService(center: .current,
                                                   application: application)
         try? resetSessionUser()
     }
     
     func resetSessionUser() throws {
-        userSnapshot = try database.fetchOne(FDSessionUser.self)?
+        userSnapshot = try persistance.fetchOne(FDSessionUser.self)?
             .asSnapshot()
     }
     
     func logOut() throws {
         userSnapshot = nil
-        try database.deleteAll(FDSessionUser.self)
+        try persistance.deleteAll(FDSessionUser.self)
     }
     
 }
@@ -59,10 +65,6 @@ extension LibraryAPI {
 
 //MARK: Notification
 extension LibraryAPI {
-    
-    func didReceiveNotification(token: String?, error: Error?) {
-        notificationService.didReceive(token: token, error: error)
-    }
     
     func didReceiveNotification(_ notification: UNNotification) async {
         //TODO: Popup banner for in app noti
@@ -94,50 +96,50 @@ extension LibraryAPI {
     @discardableResult
     func deleteAll<O>(_ type: O.Type,
                       condition: Where<O> = .init(true)) throws -> Int where O: CoreStoreObject {
-        try database.deleteAll(type, condition: condition)
+        try persistance.deleteAll(type, condition: condition)
     }
     
     @discardableResult
     func saveUniqueObject<O>(_ type: O.Type,
                              from source: O.ImportSource) throws -> O where O: CoreStoreObject & ImportableUniqueObject {
-        try database.saveUniqueObject(type, from: source)
+        try persistance.saveUniqueObject(type, from: source)
     }
     
     @discardableResult
     func saveUniqueObjects<O>(_ type: O.Type,
                               from source: [O.ImportSource]) throws -> [O] where O: CoreStoreObject & ImportableUniqueObject {
-        try database.saveUniqueObjects(type, from: source)
+        try persistance.saveUniqueObjects(type, from: source)
     }
     
     @discardableResult
     func saveObject<O>(_ type: O.Type,
                              from source: O.ImportSource) throws -> O where O: CoreStoreObject & ImportableObject {
-        try database.saveObject(type, from: source)
+        try persistance.saveObject(type, from: source)
     }
     
     @discardableResult
     func saveObjects<O>(_ type: O.Type,
                               from source: [O.ImportSource]) throws -> [O] where O: CoreStoreObject & ImportableObject {
-        try database.saveObjects(type, from: source)
+        try persistance.saveObjects(type, from: source)
     }
     
     func fetchOne<O>(_ type: O.Type,
                      condition: Where<O> = .init(true)) throws -> O? where O: CoreStoreObject {
-        try database.fetchOne(type, condition: condition)
+        try persistance.fetchOne(type, condition: condition)
     }
     
     func fetchOne<O: ImportableUniqueObject>(_ type: O.Type, id: O.UniqueIDType) throws -> O? where O: CoreStoreObject {
         let condition = Where<O>(O.uniqueIDKeyPath, isEqualTo: id)
-        return try database.fetchOne(type, condition: condition)
+        return try persistance.fetchOne(type, condition: condition)
     }
     
     func fetchAll<O>(_ type: O.Type,
                      condition: Where<O> = .init(true)) throws -> [O] where O: CoreStoreObject {
-        try database.fetchAll(type, condition: condition)
+        try persistance.fetchAll(type, condition: condition)
     }
     
     var dataStack: DataStack {
-        database.dataStack
+        persistance.dataStack
     }
     
 }
@@ -211,6 +213,7 @@ extension LibraryAPI {
                           parameters: parameters)
     }
     
+    @MainActor
     func getUser(ID: Int, success: SuccessCallback<ObjectPublisher<FDUserProfile>?>) async throws {
         let local = try? fetchOne(FDUserProfile.self, id: ID)?
             .asPublisher(in: .defaultStack)
@@ -222,6 +225,7 @@ extension LibraryAPI {
     }
     
     //MARK: Invitation
+    @MainActor
     func getInvitation(ID: Int, success: SuccessCallback<ObjectPublisher<FDInvitation>?>) async throws {
         let local = try? fetchOne(FDInvitation.self, id: ID)?
             .asPublisher(in: .defaultStack)
@@ -272,6 +276,7 @@ extension LibraryAPI {
     }
     
     //MARK: Place
+    @MainActor
     func getPlace(ID: String, success: SuccessCallback<ObjectPublisher<FDPlace>?>) async throws {
         let local = try? fetchOne(FDPlace.self, id: ID)?.asPublisher(in: .defaultStack)
         success(local)

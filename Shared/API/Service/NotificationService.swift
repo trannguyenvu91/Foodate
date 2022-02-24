@@ -10,7 +10,7 @@ import UserNotifications
 import Combine
 import UIKit
 
-protocol NotificationCenter {
+protocol UserNotificationCenter {
     func requestAuthorization(options: UNAuthorizationOptions) async throws -> Bool
     func notificationSettings() async -> UNNotificationSettings
     var delegate: UNUserNotificationCenterDelegate? { get set }
@@ -21,10 +21,10 @@ protocol Application {
     var delegate: UIApplicationDelegate? { get set }
 }
 
-extension UNUserNotificationCenter: NotificationCenter {}
+extension UNUserNotificationCenter: UserNotificationCenter {}
 extension UIApplication: Application {}
 
-extension NotificationCenter where Self == UNUserNotificationCenter {
+extension UserNotificationCenter where Self == UNUserNotificationCenter {
     static var current: Self {
         UNUserNotificationCenter.current()
     }
@@ -32,16 +32,17 @@ extension NotificationCenter where Self == UNUserNotificationCenter {
 
 class NotificationService: NSObject {
     
-    private(set) var center: NotificationCenter
+    private(set) var center: UserNotificationCenter
     private(set) var application: Application
     private var token: String? = nil
     private var registerCallback: ((String?, Error?) -> Void)?
     
-    init(center: NotificationCenter, application: Application) {
+    init(center: UserNotificationCenter, application: Application) {
         self.center = center
         self.application = application
         super.init()
         self.center.delegate = self
+        observeNotificationToken()
     }
     
     func requestAuthorization() async throws -> Bool {
@@ -79,15 +80,26 @@ class NotificationService: NSObject {
         }
     }
     
-    func didReceive(token: String?, error: Error?) {
-        registerCallback?(token, error)
-    }
-    
     func didReceive(notification: UNNotification) async {
         //TODO: Do not use Library API here. Push notfication instead.
         await LibraryAPI.shared.didReceiveNotification(notification)
     }
     
+    func observeNotificationToken() {
+        NotificationCenter.default.addObserver(forName: .didReceiveNotificationToken,
+                                               object: nil,
+                                               queue: .main) { [weak self] noti in
+            guard let userInfo = noti.userInfo else { return }
+            let token = userInfo["token"] as? String
+            let error = userInfo["error"] as? Error
+            self?.registerCallback?(token, error)
+        }
+    }
+    
+}
+
+extension NSNotification.Name {
+    static var didReceiveNotificationToken: Self = NSNotification.Name("didReceiveNotificationToken")
 }
 
 extension NotificationService: UNUserNotificationCenterDelegate {

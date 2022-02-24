@@ -10,11 +10,10 @@ import XCTest
 class Tests_OnboardingViewModel: BaseTestCase {
     
     let model = OnboardingViewModel()
-    let config = AppFlow.shared
 
     override func setUpWithError() throws {
         try super.setUpWithError()
-        try config.logOut()
+        try LibraryAPI.shared.logOut()
         locationManager.authorizationStatus = .authorizedWhenInUse
         locationManager._updatingLocationResult = .success(.init())
     }
@@ -35,17 +34,17 @@ class Tests_OnboardingViewModel: BaseTestCase {
     }
     
     func testAuthenticateUserSuccess() async throws {
-        XCTAssertNil(config.sessionUser)
+        XCTAssertNil(LibraryAPI.shared.userSnapshot)
         MockNetworkActor.responseCase = .sessionUser
         try await model.authenticateUser()
-        XCTAssertNotNil(config.sessionUser)
+        XCTAssertNotNil(LibraryAPI.shared.userSnapshot)
     }
     
     func testAuthenticateUserFailed() async throws {
-        XCTAssertNil(config.sessionUser)
+        XCTAssertNil(LibraryAPI.shared.userSnapshot)
         MockNetworkActor.responseCase = .error
         try? await model.authenticateUser()
-        XCTAssertNil(config.sessionUser)
+        XCTAssertNil(LibraryAPI.shared.userSnapshot)
     }
 
 }

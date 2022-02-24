@@ -1,5 +1,5 @@
 //
-//  NotificationCenter+Mock.swift
+//  UserNotificationCenter+Mock.swift
 //  Foodate
 //
 //  Created by Vu Tran on 1/13/22.
@@ -23,7 +23,7 @@ extension UNNotificationSettings {
     }
 }
 
-class MockNotificationCenter: NotificationCenter {
+class MockNotificationCenter: UserNotificationCenter {
     var delegate: UNUserNotificationCenterDelegate?
     var _requestAuthorizationResult = true
     

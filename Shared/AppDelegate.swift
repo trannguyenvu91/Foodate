@@ -22,11 +22,15 @@ extension AppDelegate: UIApplicationDelegate {
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         let tokenParts = deviceToken.map { data in String(format: "%02.2hhx", data) }
         let token = tokenParts.joined()
-        LibraryAPI.shared.didReceiveNotification(token: token, error: nil)
+        NotificationCenter.default.post(name: .didReceiveNotificationToken,
+                                        object: nil,
+                                        userInfo: ["token": token])
     }
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
-        LibraryAPI.shared.didReceiveNotification(token: nil, error: error)
+        NotificationCenter.default.post(name: .didReceiveNotificationToken,
+                                        object: nil,
+                                        userInfo: ["error": error])
     }
     
 }
