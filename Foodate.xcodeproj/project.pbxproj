@@ -459,6 +459,10 @@
 		499D079926E9B60E00F0056C /* ViewShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499D079726E9B60E00F0056C /* ViewShape.swift */; };
 		49A16E9027C88A1F00BD7540 /* Tests_SocketMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A16E8F27C88A1F00BD7540 /* Tests_SocketMonitor.swift */; };
 		49A16E9127C88A1F00BD7540 /* Tests_SocketMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A16E8F27C88A1F00BD7540 /* Tests_SocketMonitor.swift */; };
+		49A16E9327C8999B00BD7540 /* NotificationSocketMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A16E9227C8999B00BD7540 /* NotificationSocketMonitor.swift */; };
+		49A16E9427C8999B00BD7540 /* NotificationSocketMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A16E9227C8999B00BD7540 /* NotificationSocketMonitor.swift */; };
+		49A16E9527C8999B00BD7540 /* NotificationSocketMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A16E9227C8999B00BD7540 /* NotificationSocketMonitor.swift */; };
+		49A16E9627C8999B00BD7540 /* NotificationSocketMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A16E9227C8999B00BD7540 /* NotificationSocketMonitor.swift */; };
 		49A44BA927B2581B00766CDE /* ClockService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A44BA827B2581B00766CDE /* ClockService.swift */; };
 		49A44BAA27B2581B00766CDE /* ClockService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A44BA827B2581B00766CDE /* ClockService.swift */; };
 		49A44BAB27B2581B00766CDE /* ClockService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A44BA827B2581B00766CDE /* ClockService.swift */; };
@@ -786,6 +790,7 @@
 		499C85DB2701841C0073224D /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		499D079726E9B60E00F0056C /* ViewShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewShape.swift; sourceTree = "<group>"; };
 		49A16E8F27C88A1F00BD7540 /* Tests_SocketMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_SocketMonitor.swift; sourceTree = "<group>"; };
+		49A16E9227C8999B00BD7540 /* NotificationSocketMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSocketMonitor.swift; sourceTree = "<group>"; };
 		49A44BA827B2581B00766CDE /* ClockService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockService.swift; sourceTree = "<group>"; };
 		49ACE0F827B4D7A4007A2532 /* SocketMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketMonitor.swift; sourceTree = "<group>"; };
 		49B29EDC277EE43D009104D3 /* TabItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItemType.swift; sourceTree = "<group>"; };
@@ -1037,6 +1042,7 @@
 			isa = PBXGroup;
 			children = (
 				49ACE0F827B4D7A4007A2532 /* SocketMonitor.swift */,
+				49A16E9227C8999B00BD7540 /* NotificationSocketMonitor.swift */,
 				492D0377269FD5D100F944D0 /* PaginatorProtocol.swift */,
 				492D0345269EED9100F944D0 /* NetworkPage.swift */,
 				492D0343269EED9000F944D0 /* Paginator.swift */,
@@ -1574,6 +1580,7 @@
 				494EFA0D278ED5D100743D89 /* JSON.swift in Sources */,
 				495A9F0426E25726003F65B3 /* DraftUserProfile.swift in Sources */,
 				49DA1EB126A031BA001BF85B /* UserProfileViewModel.swift in Sources */,
+				49A16E9327C8999B00BD7540 /* NotificationSocketMonitor.swift in Sources */,
 				49CD463627C61344003F098F /* KeyPath+Helper.swift in Sources */,
 				492D030D269ED30700F944D0 /* NSCoder.swift in Sources */,
 				49CB63F02768D8BC00224DAB /* FDNotification.swift in Sources */,
@@ -1685,6 +1692,7 @@
 				499109BE279669BE0094C803 /* SearchablePaginator.swift in Sources */,
 				49FA1C892766FB7B0088C245 /* NotificationView.swift in Sources */,
 				496F327D276357DD00DA705E /* EndResultView.swift in Sources */,
+				49A16E9427C8999B00BD7540 /* NotificationSocketMonitor.swift in Sources */,
 				49DA1F5526A1814E001BF85B /* ASCache.swift in Sources */,
 				499109DD279A6DB90094C803 /* SettingView.swift in Sources */,
 				494EF9AE278D340700743D89 /* SearchView.swift in Sources */,
@@ -1900,6 +1908,7 @@
 				494EF99A278D33D900743D89 /* NotificationViewModel.swift in Sources */,
 				494EF9C3278D346000743D89 /* ViewShape.swift in Sources */,
 				494EF9FA278D35FB00743D89 /* CalendarType.swift in Sources */,
+				49A16E9527C8999B00BD7540 /* NotificationSocketMonitor.swift in Sources */,
 				494EF944278D2E9800743D89 /* FDInvitation.swift in Sources */,
 				494EF9BE278D346000743D89 /* LazyView.swift in Sources */,
 				494EF9A2278D33EC00743D89 /* UserProfileView.swift in Sources */,
@@ -2072,6 +2081,7 @@
 				4989B682269D43C900611D10 /* Tests_macOS.swift in Sources */,
 				49C6E70F27C49C8A00FB0CC4 /* LocationPermissionView.swift in Sources */,
 				49C6E71127C49C9000FB0CC4 /* InvitationViewModel.swift in Sources */,
+				49A16E9627C8999B00BD7540 /* NotificationSocketMonitor.swift in Sources */,
 				494EF94B278D2E9900743D89 /* FDPlace.swift in Sources */,
 				494EF98E278D33A100743D89 /* ForEach.swift in Sources */,
 				49C6E71427C49C9B00FB0CC4 /* NotificationViewModel.swift in Sources */,

@@ -24,6 +24,7 @@ class LibraryAPI {
     private let networkService: NetworkService
     private let locationService: LocationService
     private var notificationService: NotificationService
+    private(set) var notificationSocketMonitor: NotificationSocketMonitor?
     
     init(_ application: Application,
          persistance: PersistanceService = try! PersistanceService(),
@@ -41,11 +42,12 @@ class LibraryAPI {
     func resetSessionUser() throws {
         userSnapshot = try persistance.fetchOne(FDSessionUser.self)?
             .asSnapshot()
+        try resetSocketMonitor()
     }
     
     func logOut() throws {
-        userSnapshot = nil
         try persistance.deleteAll(FDSessionUser.self)
+        try resetSessionUser()
     }
     
 }
@@ -67,9 +69,14 @@ extension LibraryAPI {
 //MARK: Notification
 extension LibraryAPI {
     
-    func didReceiveNotification(_ notification: UNNotification) async {
+    func didReceiveNotification(_ notification: UNNotification, completionHandler: SuccessCallback<Void>) {
         //TODO: Popup banner for in app noti
         AppFlow.shared.pushedScreen = .invitation(71)
+        completionHandler(())
+    }
+    
+    func receivedUpdate(on notification: FDNotification) {
+        
     }
     
     var notificationSettings: UNNotificationSettings {
@@ -90,20 +97,29 @@ extension LibraryAPI {
     }
     
     internal func observeReceivingNotificationResponse() {
-        NotificationCenter.default.addObserver(forName: .didReceiveNotificationResponse, object: nil, queue: nil) { noti in
+        NotificationCenter.default.addObserver(forName: .didReceiveNotificationResponse, object: nil, queue: nil) { [weak self] noti in
             guard let userInfo = noti.userInfo,
-            let reponse = userInfo["response"] as? UNNotificationResponse,
+            let response = userInfo["response"] as? UNNotificationResponse,
                 let handler = userInfo["handler"] as? SuccessCallback<Void> else {
                 return
             }
-            //TODO: Implement banner
-            print(reponse.notification)
-            print(handler)
+            self?.didReceiveNotification(response.notification,
+                                         completionHandler: handler)
         }
     }
     
     //Notification Socket
-    
+    internal func resetSocketMonitor() throws {
+        notificationSocketMonitor?.stop()
+        notificationSocketMonitor = nil
+        guard let id = userSnapshot?.$id else {
+            return
+        }
+        notificationSocketMonitor = try NotificationSocketMonitor(userID: id)
+        notificationSocketMonitor?.observe({ [weak self] notification in
+            self?.receivedUpdate(on: notification)
+        })
+    }
     
 }
 
@@ -172,6 +188,7 @@ extension LibraryAPI {
         return HTTPHeaders(headers)
     }
     
+    @MainActor
     func request<Result: ImportableJSONObject>(url: String?,
                                                method: HTTPMethod = .get,
                                                parameters: JSON? = nil) async throws -> Result {
@@ -184,6 +201,7 @@ extension LibraryAPI {
                                          headers: httpHeaders)
     }
     
+    @MainActor
     func request<Result: ImportableJSONObject>(api: String?,
                                                method: HTTPMethod = .get,
                                                parameters: JSON? = nil) async throws -> Result {
@@ -196,6 +214,7 @@ extension LibraryAPI {
                                          headers: httpHeaders)
     }
     
+    @MainActor
     func requestNext<Item>(of page: NetworkPage<Item>) async throws -> NetworkPage<Item> {
         try await request(url: page.nextURL, parameters: page.params)
     }

@@ -46,7 +46,6 @@ class LocationService: NSObject {
         self.manager.delegate = self
     }
     
-    @MainActor
     func requestLocation() async throws -> CLLocation  {
         try await withCheckedThrowingContinuation { continuation in
             let newBlock: LocationCallback = { location, error in

@@ -29,5 +29,14 @@ class Tests_LibraryAPI: BaseTestCase {
         XCTAssertNil(sessionUser)
         XCTAssertNil(LibraryAPI.shared.userSnapshot)
     }
+    
+    func testResetSessionUser() throws {
+        let monitor = LibraryAPI.shared.notificationSocketMonitor!
+        XCTAssertNotNil(monitor)
+        XCTAssertTrue(monitor.isRunning)
+        try LibraryAPI.shared.resetSessionUser()
+        XCTAssertNotEqual(monitor, LibraryAPI.shared.notificationSocketMonitor)
+        XCTAssertFalse(monitor.isRunning)
+    }
 
 }

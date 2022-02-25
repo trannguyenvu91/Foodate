@@ -8,10 +8,12 @@
 import XCTest
 
 internal class MockSocketTask: NSObject, SocketTask {
+    var isRunning: Bool = false
+    
     weak var delegate: URLSessionTaskDelegate?
     
     func resume() {
-        isExecuting = true
+        isRunning = true
     }
     
     func send(_ message: URLSessionWebSocketTask.Message) async throws {
@@ -21,7 +23,7 @@ internal class MockSocketTask: NSObject, SocketTask {
     }
     
     func cancel(with closeCode: URLSessionWebSocketTask.CloseCode, reason: Data?) {
-        isExecuting = false
+        isRunning = false
     }
     
     func receive(completionHandler: @escaping (Result<URLSessionWebSocketTask.Message, Error>) -> Void) {
@@ -35,7 +37,6 @@ internal class MockSocketTask: NSObject, SocketTask {
     var pingReceiveError: Error?
     var sendMessageError: Error?
     var receiveMessageHandler: ((Result<URLSessionWebSocketTask.Message, Error>) -> Void)?
-    var isExecuting = false
 }
 
 class Tests_SocketMonitor: BaseTestCase {
@@ -74,7 +75,7 @@ class Tests_SocketMonitor: BaseTestCase {
     
     func testStop() {
         monitor.stop()
-        XCTAssertFalse(socketTask.isExecuting)
+        XCTAssertFalse(socketTask.isRunning)
     }
     
     func testStartWithStringMesasage() {
@@ -94,7 +95,7 @@ class Tests_SocketMonitor: BaseTestCase {
                 XCTFail("Should only receive string")
             }
         }
-        XCTAssertTrue(socketTask.isExecuting)
+        XCTAssertTrue(socketTask.isRunning)
         messages.forEach { str in
             socketTask.receiveMessageHandler?(.success(.string(str)))
         }

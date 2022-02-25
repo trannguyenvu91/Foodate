@@ -33,5 +33,9 @@ extension AppDelegate: UIApplicationDelegate {
                                         userInfo: ["error": error])
     }
     
+    func applicationWillTerminate(_ application: UIApplication) {
+        LibraryAPI.shared.notificationSocketMonitor?.stop()
+    }
+    
 }
 
