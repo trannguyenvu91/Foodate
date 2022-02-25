@@ -80,11 +80,6 @@ class NotificationService: NSObject {
         }
     }
     
-    func didReceive(notification: UNNotification) async {
-        //TODO: Do not use Library API here. Push notfication instead.
-        await LibraryAPI.shared.didReceiveNotification(notification)
-    }
-    
     func observeNotificationToken() {
         NotificationCenter.default.addObserver(forName: .didReceiveNotificationToken,
                                                object: nil,
@@ -100,6 +95,7 @@ class NotificationService: NSObject {
 
 extension NSNotification.Name {
     static var didReceiveNotificationToken: Self = NSNotification.Name("didReceiveNotificationToken")
+    static var didReceiveNotificationResponse: Self = NSNotification.Name("didReceiveNotificationResponse")
 }
 
 extension NotificationService: UNUserNotificationCenterDelegate {
@@ -108,8 +104,13 @@ extension NotificationService: UNUserNotificationCenterDelegate {
         return [.badge, .sound, .banner, .list]
     }
     
-    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse) async {
-        await didReceive(notification: response.notification)
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                         didReceive response: UNNotificationResponse,
+                                         withCompletionHandler completionHandler: @escaping () -> Void) {
+        NotificationCenter.default.post(name: .didReceiveNotificationResponse,
+                                        object: nil,
+                                        userInfo: ["response": response,
+                                                   "handler": completionHandler])
     }
     
 }

@@ -457,6 +457,8 @@
 		499B8DA227BA4B2F0038492B /* LibraryAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499B8D9B27BA3D750038492B /* LibraryAPI.swift */; };
 		499D079826E9B60E00F0056C /* ViewShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499D079726E9B60E00F0056C /* ViewShape.swift */; };
 		499D079926E9B60E00F0056C /* ViewShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499D079726E9B60E00F0056C /* ViewShape.swift */; };
+		49A16E9027C88A1F00BD7540 /* Tests_SocketMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A16E8F27C88A1F00BD7540 /* Tests_SocketMonitor.swift */; };
+		49A16E9127C88A1F00BD7540 /* Tests_SocketMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A16E8F27C88A1F00BD7540 /* Tests_SocketMonitor.swift */; };
 		49A44BA927B2581B00766CDE /* ClockService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A44BA827B2581B00766CDE /* ClockService.swift */; };
 		49A44BAA27B2581B00766CDE /* ClockService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A44BA827B2581B00766CDE /* ClockService.swift */; };
 		49A44BAB27B2581B00766CDE /* ClockService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A44BA827B2581B00766CDE /* ClockService.swift */; };
@@ -783,6 +785,7 @@
 		499B8D9B27BA3D750038492B /* LibraryAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryAPI.swift; sourceTree = "<group>"; };
 		499C85DB2701841C0073224D /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		499D079726E9B60E00F0056C /* ViewShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewShape.swift; sourceTree = "<group>"; };
+		49A16E8F27C88A1F00BD7540 /* Tests_SocketMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_SocketMonitor.swift; sourceTree = "<group>"; };
 		49A44BA827B2581B00766CDE /* ClockService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockService.swift; sourceTree = "<group>"; };
 		49ACE0F827B4D7A4007A2532 /* SocketMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketMonitor.swift; sourceTree = "<group>"; };
 		49B29EDC277EE43D009104D3 /* TabItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItemType.swift; sourceTree = "<group>"; };
@@ -915,12 +918,11 @@
 		492D02B6269D6AC200F944D0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				495F53E526B1545600E6E981 /* Paginators */,
+				495F53E526B1545600E6E981 /* Network */,
 				496F3268276202AB00DA705E /* Enum */,
 				495A9F0326E25726003F65B3 /* DraftUserProfile.swift */,
 				4948F78426D5D0E1003232DE /* DraftInvitation.swift */,
 				49904CDE26E26D9A006CE74F /* PropertyWrapper.swift */,
-				49ACE0F827B4D7A4007A2532 /* SocketMonitor.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1014,6 +1016,7 @@
 				49874C2127955F12000EC5B0 /* Tests_BaseViewModel.swift */,
 				49874C1E27955EFC000EC5B0 /* Tests_BaseObjectViewModel.swift */,
 				49451563279E4CCF0066B693 /* Tests_SearchViewModel.swift */,
+				49A16E8F27C88A1F00BD7540 /* Tests_SocketMonitor.swift */,
 			);
 			path = SharedTests;
 			sourceTree = "<group>";
@@ -1030,9 +1033,10 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
-		495F53E526B1545600E6E981 /* Paginators */ = {
+		495F53E526B1545600E6E981 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				49ACE0F827B4D7A4007A2532 /* SocketMonitor.swift */,
 				492D0377269FD5D100F944D0 /* PaginatorProtocol.swift */,
 				492D0345269EED9100F944D0 /* NetworkPage.swift */,
 				492D0343269EED9000F944D0 /* Paginator.swift */,
@@ -1044,7 +1048,7 @@
 				4965F2B026BA987400C9B8E7 /* InvitationPaginator.swift */,
 				49CB63EC2768D88900224DAB /* NotificationPaginator.swift */,
 			);
-			path = Paginators;
+			path = Network;
 			sourceTree = "<group>";
 		};
 		496F32622761FD3900DA705E /* Helper */ = {
@@ -1840,6 +1844,7 @@
 				494EF988278D33A000743D89 /* Alert.swift in Sources */,
 				494EF9D6278D346800743D89 /* PlaceCell.swift in Sources */,
 				494EF9D4278D346800743D89 /* UserCell.swift in Sources */,
+				49A16E9027C88A1F00BD7540 /* Tests_SocketMonitor.swift in Sources */,
 				494EF9E2278D347E00743D89 /* InviteFooter.swift in Sources */,
 				494EF9C4278D346000743D89 /* ViewDidLoadModifier.swift in Sources */,
 				4945156F279E50AE0066B693 /* UserDefaults+Key.swift in Sources */,
@@ -2007,6 +2012,7 @@
 				494EF98D278D33A100743D89 /* Alert.swift in Sources */,
 				494EF9FB278D35FC00743D89 /* TabItemType.swift in Sources */,
 				49C6E71D27C49CBB00FB0CC4 /* PlaceProfileView.swift in Sources */,
+				49A16E9127C88A1F00BD7540 /* Tests_SocketMonitor.swift in Sources */,
 				49874C2027955EFC000EC5B0 /* Tests_BaseObjectViewModel.swift in Sources */,
 				49C6E71827C49CAA00FB0CC4 /* EditProfileViewModel.swift in Sources */,
 				49C6E73627C49DB500FB0CC4 /* RateHeader.swift in Sources */,

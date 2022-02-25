@@ -21,62 +21,43 @@ class Tests_BaseObjectViewModel: BaseTestCase {
     
     override func setUpWithError() throws {
         try super.setUpWithError()
-        MockNetworkActor.responseCase = .invitation
         try LibraryAPI.shared.deleteAll(FDInvitation.self)
     }
     
     func testExistedLocalWithErrorNetwork() async throws {
         MockNetworkActor.responseCase = .error
         try LibraryAPI.shared.saveUniqueObject(FDInvitation.self, from: invitationJSON)
-        let expect = XCTestExpectation()
         do {
-            try await LibraryAPI.shared.getInvitation(ID: invitationID,
-                                                      success: { publisher in
-                publisher != nil ? expect.fulfill() : ()
-            })
+            try await model.loadObject()
+            XCTAssertNotNil(model.publisher)
         } catch {
             XCTAssert(error is NetworkError)
         }
-        wait(for: [expect], timeout: 2)
     }
     
     func testEmptyLocalWithErrorNetwork() async throws {
         MockNetworkActor.responseCase = .error
         try LibraryAPI.shared.deleteAll(FDInvitation.self)
-        let expect = XCTestExpectation()
         do {
-            try await LibraryAPI.shared.getInvitation(ID: invitationID,
-                                                      success: { publisher in
-                publisher == nil ? expect.fulfill() : ()
-            })
+            try await model.loadObject()
+            XCTAssertNil(model.publisher)
         } catch {
             XCTAssert(error is NetworkError)
         }
-        wait(for: [expect], timeout: 2)
     }
     
     func testEmptyLocalWithSuccessNetwork() async throws {
         MockNetworkActor.responseCase = .invitation
         try LibraryAPI.shared.deleteAll(FDInvitation.self)
-        
-        let expect = XCTestExpectation()
-        try await LibraryAPI.shared.getInvitation(ID: invitationID,
-                                                  success: { publisher in
-            publisher != nil ? expect.fulfill() : ()
-        })
-        wait(for: [expect], timeout: 2)
+        try await model.loadObject()
+        XCTAssertNotNil(model.publisher)
     }
     
     func testExistedLocalWithSuccessNetwork() async throws {
         MockNetworkActor.responseCase = .invitation
         try LibraryAPI.shared.saveUniqueObject(FDInvitation.self, from: invitationJSON)
-        
-        let expect = XCTestExpectation()
-        try await LibraryAPI.shared.getInvitation(ID: invitationID,
-                                                  success: { publisher in
-            publisher != nil ? expect.fulfill() : ()
-        })
-        wait(for: [expect], timeout: 2)
+        try await model.loadObject()
+        XCTAssertNotNil(model.publisher)
     }
     
 }

@@ -35,6 +35,7 @@ class LibraryAPI {
         self.notificationService = NotificationService(center: .current,
                                                   application: application)
         try? resetSessionUser()
+        observeReceivingNotificationResponse()
     }
     
     func resetSessionUser() throws {
@@ -87,6 +88,22 @@ extension LibraryAPI {
         let token = try await notificationService.registerNotifications()
         try await userSnapshot?.update(notificationToken: token)
     }
+    
+    internal func observeReceivingNotificationResponse() {
+        NotificationCenter.default.addObserver(forName: .didReceiveNotificationResponse, object: nil, queue: nil) { noti in
+            guard let userInfo = noti.userInfo,
+            let reponse = userInfo["response"] as? UNNotificationResponse,
+                let handler = userInfo["handler"] as? SuccessCallback<Void> else {
+                return
+            }
+            //TODO: Implement banner
+            print(reponse.notification)
+            print(handler)
+        }
+    }
+    
+    //Notification Socket
+    
     
 }
 
