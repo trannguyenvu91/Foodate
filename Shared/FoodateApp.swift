@@ -26,6 +26,13 @@ struct FoodateApp: App {
                         EmptyView()
                     }
                 }
+                .overlay(alignment: .top) {
+                    if let noti = flow.presentingNotification?.asPublisher(in: .defaultStack) {
+                        NotificationBanner(notification: noti)
+                    } else {
+                        EmptyView()
+                    }
+                }
         }
     }
     

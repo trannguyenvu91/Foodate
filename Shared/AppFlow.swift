@@ -14,10 +14,16 @@ import CoreLocation
 class AppFlow: ObservableObject {
     
     static let shared = AppFlow()
+
+    @AppStorage(UserDefaultsKey.skipNotificationSetting) var skipNotificationSetting = false
     @Published var isPresentingScreen: Bool = false
     @Published var isPushingScreen: Bool = false
     @Published var refresh: Bool = false
-    @AppStorage(UserDefaultsKey.skipNotificationSetting) var skipNotificationSetting = false
+    var presentingNotification: FDNotification? {
+        didSet {
+            refresh.toggle()
+        }
+    }
     
     var presentScreen: ScreenType? {
         didSet {

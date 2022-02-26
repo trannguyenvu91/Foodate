@@ -42,7 +42,7 @@ struct TabBarView: View {
         }
         .tabViewStyle(.automatic)
         .task {
-            try? await LibraryAPI.shared.updateUserLocation()
+//            try? await LibraryAPI.shared.updateUserLocation()
             try? await AppFlow.shared.updateNotificationsToken()
         }
     }

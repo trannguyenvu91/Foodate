@@ -9,17 +9,13 @@ import UIKit
 
 final class NotificationSocketMonitor: SocketMonitor {
     
-    private override init(_ task: SocketTask) {
-        super.init(task)
-    }
-    
-    init(userID: Int) throws {
+    convenience init(userID: Int) throws {
         guard let url = URL(string: socketBaseURL + "/ws/notifications/\(userID)/") else {
             throw NetworkError.invalidAPI(socketBaseURL + "/ws/notifications/\(userID)/")
         }
         let task = URLSession(configuration: .default)
             .webSocketTask(with: url)
-        super.init(task)
+        self.init(task)
     }
     
     internal override func start(listening: @escaping SuccessCallback<SocketMonitor.SocketMessageResult>) {
@@ -27,13 +23,15 @@ final class NotificationSocketMonitor: SocketMonitor {
     }
     
     func observe(_ observing: @escaping SuccessCallback<FDNotification>) {
-        start { result in
+        start { [weak self] result in
             switch result {
             case .success(let message):
-                guard case .data(let data) = message,
+                guard case .string(let str) = message,
+                      let data = str.data(using: .utf8),
                       let json = try? JSONSerialization.jsonObject(with: data,
                                                                    options: .allowFragments) as? JSON,
-                      let notification = try? FDNotification.importUniqueObject(from: json) else {
+                      let info = json["notification"] as? JSON,
+                      let notification = try? FDNotification.importUniqueObject(from: info) else {
                           return
                       }
                 observing(notification)

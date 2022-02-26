@@ -76,7 +76,7 @@ extension LibraryAPI {
     }
     
     func receivedUpdate(on notification: FDNotification) {
-        
+        AppFlow.shared.presentingNotification = notification
     }
     
     var notificationSettings: UNNotificationSettings {
@@ -117,7 +117,9 @@ extension LibraryAPI {
         }
         notificationSocketMonitor = try NotificationSocketMonitor(userID: id)
         notificationSocketMonitor?.observe({ [weak self] notification in
-            self?.receivedUpdate(on: notification)
+            DispatchQueue.main.async {
+                self?.receivedUpdate(on: notification)
+            }
         })
     }
     

@@ -463,6 +463,10 @@
 		49A16E9427C8999B00BD7540 /* NotificationSocketMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A16E9227C8999B00BD7540 /* NotificationSocketMonitor.swift */; };
 		49A16E9527C8999B00BD7540 /* NotificationSocketMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A16E9227C8999B00BD7540 /* NotificationSocketMonitor.swift */; };
 		49A16E9627C8999B00BD7540 /* NotificationSocketMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A16E9227C8999B00BD7540 /* NotificationSocketMonitor.swift */; };
+		49A16E9827C8D53900BD7540 /* NotificationBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A16E9727C8D53900BD7540 /* NotificationBanner.swift */; };
+		49A16E9927C8D53900BD7540 /* NotificationBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A16E9727C8D53900BD7540 /* NotificationBanner.swift */; };
+		49A16E9A27C8D53900BD7540 /* NotificationBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A16E9727C8D53900BD7540 /* NotificationBanner.swift */; };
+		49A16E9B27C8D53900BD7540 /* NotificationBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A16E9727C8D53900BD7540 /* NotificationBanner.swift */; };
 		49A44BA927B2581B00766CDE /* ClockService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A44BA827B2581B00766CDE /* ClockService.swift */; };
 		49A44BAA27B2581B00766CDE /* ClockService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A44BA827B2581B00766CDE /* ClockService.swift */; };
 		49A44BAB27B2581B00766CDE /* ClockService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A44BA827B2581B00766CDE /* ClockService.swift */; };
@@ -606,6 +610,10 @@
 		49DFA5912768D99200583FF2 /* NotificationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DFA58F2768D99200583FF2 /* NotificationType.swift */; };
 		49DFA5932768DEE200583FF2 /* NotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DFA5922768DEE200583FF2 /* NotificationViewModel.swift */; };
 		49DFA5942768DEE200583FF2 /* NotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DFA5922768DEE200583FF2 /* NotificationViewModel.swift */; };
+		49E3EAD227C9D3BD0004E85E /* Tests_NotificationSocketMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E3EAD127C9D3BD0004E85E /* Tests_NotificationSocketMonitor.swift */; };
+		49E3EAD327C9D3BD0004E85E /* Tests_NotificationSocketMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E3EAD127C9D3BD0004E85E /* Tests_NotificationSocketMonitor.swift */; };
+		49E3EAD527CA2E9F0004E85E /* MockSocketTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E3EAD427CA2E9F0004E85E /* MockSocketTask.swift */; };
+		49E3EAD627CA2E9F0004E85E /* MockSocketTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E3EAD427CA2E9F0004E85E /* MockSocketTask.swift */; };
 		49F05C2526AD6E03000333E7 /* ReplyFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F05C2426AD6E03000333E7 /* ReplyFooter.swift */; };
 		49F05C2626AD6E03000333E7 /* ReplyFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F05C2426AD6E03000333E7 /* ReplyFooter.swift */; };
 		49FA1C852766EEE90088C245 /* EmptyResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FA1C842766EEE90088C245 /* EmptyResultView.swift */; };
@@ -791,6 +799,7 @@
 		499D079726E9B60E00F0056C /* ViewShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewShape.swift; sourceTree = "<group>"; };
 		49A16E8F27C88A1F00BD7540 /* Tests_SocketMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_SocketMonitor.swift; sourceTree = "<group>"; };
 		49A16E9227C8999B00BD7540 /* NotificationSocketMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSocketMonitor.swift; sourceTree = "<group>"; };
+		49A16E9727C8D53900BD7540 /* NotificationBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationBanner.swift; sourceTree = "<group>"; };
 		49A44BA827B2581B00766CDE /* ClockService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockService.swift; sourceTree = "<group>"; };
 		49ACE0F827B4D7A4007A2532 /* SocketMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketMonitor.swift; sourceTree = "<group>"; };
 		49B29EDC277EE43D009104D3 /* TabItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItemType.swift; sourceTree = "<group>"; };
@@ -829,6 +838,8 @@
 		49DE75C926AD677D00B4D883 /* SendRequestFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendRequestFooter.swift; sourceTree = "<group>"; };
 		49DFA58F2768D99200583FF2 /* NotificationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationType.swift; sourceTree = "<group>"; };
 		49DFA5922768DEE200583FF2 /* NotificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewModel.swift; sourceTree = "<group>"; };
+		49E3EAD127C9D3BD0004E85E /* Tests_NotificationSocketMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_NotificationSocketMonitor.swift; sourceTree = "<group>"; };
+		49E3EAD427CA2E9F0004E85E /* MockSocketTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSocketTask.swift; sourceTree = "<group>"; };
 		49F05C2426AD6E03000333E7 /* ReplyFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplyFooter.swift; sourceTree = "<group>"; };
 		49FA1C842766EEE90088C245 /* EmptyResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyResultView.swift; sourceTree = "<group>"; };
 		49FA1C872766FB7B0088C245 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
@@ -890,6 +901,7 @@
 				4914AEDF26A97654002F2634 /* InvitationCellModel.swift */,
 				49B9D543270EEDE0005BD619 /* InviteCell.swift */,
 				490C486127699300005CEBDA /* NotificationCell.swift */,
+				49A16E9727C8D53900BD7540 /* NotificationBanner.swift */,
 				497558CB2779C302009F0132 /* ErrorView.swift */,
 			);
 			path = Cell;
@@ -1022,6 +1034,7 @@
 				49874C1E27955EFC000EC5B0 /* Tests_BaseObjectViewModel.swift */,
 				49451563279E4CCF0066B693 /* Tests_SearchViewModel.swift */,
 				49A16E8F27C88A1F00BD7540 /* Tests_SocketMonitor.swift */,
+				49E3EAD127C9D3BD0004E85E /* Tests_NotificationSocketMonitor.swift */,
 			);
 			path = SharedTests;
 			sourceTree = "<group>";
@@ -1034,6 +1047,7 @@
 				494EFA23278FE1A800743D89 /* Application+Mock.swift */,
 				494EFA26278FE27E00743D89 /* NotificationCenter+Mock.swift */,
 				494EFA15278EE8F700743D89 /* BaseTestCase.swift */,
+				49E3EAD427CA2E9F0004E85E /* MockSocketTask.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -1592,6 +1606,7 @@
 				4914AEE926A98416002F2634 /* CircleView.swift in Sources */,
 				492D0378269FD5D100F944D0 /* PaginatorProtocol.swift in Sources */,
 				49CB63E62768713900224DAB /* ResetPasswordViewModel.swift in Sources */,
+				49A16E9827C8D53900BD7540 /* NotificationBanner.swift in Sources */,
 				492D034D269EED9100F944D0 /* NetworkPage.swift in Sources */,
 				496F327C276357DD00DA705E /* EndResultView.swift in Sources */,
 				4902DDBF277C280F004E88CD /* AppDelegate.swift in Sources */,
@@ -1730,6 +1745,7 @@
 				4914AEF926AA6409002F2634 /* GroupPhotosView.swift in Sources */,
 				49DE75C826AD56D900B4D883 /* FDSessionUser.swift in Sources */,
 				495F53E826B154A600E6E981 /* ListViewModel.swift in Sources */,
+				49A16E9927C8D53900BD7540 /* NotificationBanner.swift in Sources */,
 				492D0379269FD5D100F944D0 /* PaginatorProtocol.swift in Sources */,
 				497F9481276066B3003DC213 /* HTTPMethod.swift in Sources */,
 				49CB63EB276880A800224DAB /* IconInputView.swift in Sources */,
@@ -1896,6 +1912,7 @@
 				494EF967278D338000743D89 /* DataStack+SQLiteStore.swift in Sources */,
 				49874C2227955F12000EC5B0 /* Tests_BaseViewModel.swift in Sources */,
 				499109D42796AFB40094C803 /* InvitationObservable.swift in Sources */,
+				49E3EAD227C9D3BD0004E85E /* Tests_NotificationSocketMonitor.swift in Sources */,
 				494EF961278D336900743D89 /* HTTPMethod.swift in Sources */,
 				494EFA2A278FE2EB00743D89 /* Tests_NotificationService.swift in Sources */,
 				494EF96F278D339100743D89 /* ASCache.swift in Sources */,
@@ -1964,6 +1981,7 @@
 				494EF977278D339900743D89 /* NSCoder.swift in Sources */,
 				494EF94F278D32EA00743D89 /* PreviewResource.swift in Sources */,
 				494EFA27278FE27E00743D89 /* NotificationCenter+Mock.swift in Sources */,
+				49E3EAD527CA2E9F0004E85E /* MockSocketTask.swift in Sources */,
 				494EF9DD278D347200743D89 /* RateHeader.swift in Sources */,
 				494EF9EC278D35E300743D89 /* DraftInvitation.swift in Sources */,
 				494EF942278D2E9800743D89 /* FDUser.swift in Sources */,
@@ -1976,6 +1994,7 @@
 				49C6E70827C49C5200FB0CC4 /* ResetPasswordView.swift in Sources */,
 				494EF9DC278D346F00743D89 /* UserHeader.swift in Sources */,
 				494EF9F2278D35FB00743D89 /* TabItemType.swift in Sources */,
+				49A16E9A27C8D53900BD7540 /* NotificationBanner.swift in Sources */,
 				499109C2279681910094C803 /* Tests_SearchablePaginator.swift in Sources */,
 				494EF9DF278D347800743D89 /* TimeHeader.swift in Sources */,
 			);
@@ -1995,6 +2014,7 @@
 				494EFA25278FE1A800743D89 /* Application+Mock.swift in Sources */,
 				49874C1A279519A9000EC5B0 /* Tests_LibraryAPI.swift in Sources */,
 				494EF9FC278D35FC00743D89 /* OnboardingMode.swift in Sources */,
+				49A16E9B27C8D53900BD7540 /* NotificationBanner.swift in Sources */,
 				494EF981278D339A00743D89 /* Bundle.swift in Sources */,
 				494EF97D278D339A00743D89 /* Combine.swift in Sources */,
 				494EFA00278D35FC00743D89 /* InvitationAction.swift in Sources */,
@@ -2017,6 +2037,7 @@
 				494EF9EF278D35E700743D89 /* PropertyWrapper.swift in Sources */,
 				494EF97C278D339A00743D89 /* String.swift in Sources */,
 				49874C282795A1CA000EC5B0 /* UserProtocol.swift in Sources */,
+				49E3EAD627CA2E9F0004E85E /* MockSocketTask.swift in Sources */,
 				494EF946278D2E9900743D89 /* FDRequester.swift in Sources */,
 				494EF98D278D33A100743D89 /* Alert.swift in Sources */,
 				494EF9FB278D35FC00743D89 /* TabItemType.swift in Sources */,
@@ -2050,6 +2071,7 @@
 				49C6E72527C49D6800FB0CC4 /* CircleView.swift in Sources */,
 				49C6E74B27C51A8C00FB0CC4 /* Constant.swift in Sources */,
 				49C6E71527C49C9F00FB0CC4 /* CalendarView.swift in Sources */,
+				49E3EAD327C9D3BD0004E85E /* Tests_NotificationSocketMonitor.swift in Sources */,
 				494EF9EB278D35DF00743D89 /* DraftUserProfile.swift in Sources */,
 				494EF92C278D2E5500743D89 /* v1.swift in Sources */,
 				494EF949278D2E9900743D89 /* FDLocation.swift in Sources */,

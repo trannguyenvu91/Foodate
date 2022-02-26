@@ -76,7 +76,11 @@ class SocketMonitor: NSObject {
     
     private func receive() {
         task.receive { [weak self] result in
-            self?.listener?(result)
+            guard let listener = self?.listener else {
+                return
+            }
+            listener(result)
+            self?.start(listening: listener)
         }
     }
     
